@@ -1,5 +1,6 @@
 <?php
 include "config/config.php";
+include "include/tools.php";
 include "include/functions.php";
 ?>
 <!doctype html>
@@ -24,6 +25,7 @@ include "include/functions.php";
   <h1>MMDVM-Dashboard by DG9VH <small>Repeater: <?php echo REPEATERCALLSIGN?></small></h1>
 </div>
 <?php
+include "include/sysinfo.php";
 include "include/lh.php";
 ?>
 	<div class="panel panel-info">

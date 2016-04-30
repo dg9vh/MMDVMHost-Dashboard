@@ -16,6 +16,7 @@ $lastHeard = getLastHeard();
       <th>Callsign</th>
       <th>DSTAR-ID</th>
       <th>Target</th>
+      <th>Source</th>
     </tr>
 <?php
 foreach ($lastHeard as $listElem) {
@@ -26,6 +27,7 @@ foreach ($lastHeard as $listElem) {
 		echo"<td>$listElem[2]</td>";
 		echo"<td>$listElem[3]</td>";
 		echo"<td>$listElem[4]</td>";
+		echo"<td>$listElem[5]</td>";
 		echo"</tr>";
 	}
 

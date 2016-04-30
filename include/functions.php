@@ -3,6 +3,7 @@
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
+// M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
 
 function getLastHeard() {
 	$lastHeard = array();
@@ -24,9 +25,13 @@ function getLastHeard() {
 				$id = substr($callsign2, strpos($callsign2,"/") + 1);
 			}
 			$target = substr($logLine, strpos($logLine, "to") + 3); 
+			$source = "RF";
+			if (strpos($logLine,"network") > 0 ) {
+				$source = "Network";
+			}
 			
 			if ( strlen($callsign <7) ) {
-				array_push($heardList, array($timestamp, $mode, $callsign, $id, $target));
+				array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source));
 			}
 			//Last-Heard-Liste: Array aufbauen in umgekehrter Richtung des Logs
 			//Zeilen ausblenden, bei denen das Callsign länger als 6 Stellen ist
@@ -35,8 +40,8 @@ function getLastHeard() {
 	}
 	array_multisort($heardList,SORT_DESC);
 	foreach ($heardList as $listElem) {
-		if(!(array_search($listElem[2], $heardCalls) > -1)) {
-			array_push($heardCalls, $listElem[2]);
+		if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
+			array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
 			array_push($lastHeard, $listElem);
 		}
 	}
