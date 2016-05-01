@@ -24,4 +24,8 @@ function format_time($seconds) {
 	}
 	return $uptimeString;
 }
+
+function startsWith($haystack, $needle) {
+    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+}
 ?>

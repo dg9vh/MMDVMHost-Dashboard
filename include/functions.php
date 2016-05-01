@@ -1,14 +1,12 @@
 <?php
+
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
-
-function getLastHeard() {
-	$lastHeard = array();
+function getHeardList() {
 	$heardList = array();
-	$heardCalls = array();
 	if ($log = fopen(LOGFILE,'r')) {
 		while ($logLine = fgets($log)) {
 			// timestamp, mode, callsign, dstarid, target
@@ -33,20 +31,25 @@ function getLastHeard() {
 			if ( strlen($callsign <7) ) {
 				array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source));
 			}
-			//Last-Heard-Liste: Array aufbauen in umgekehrter Richtung des Logs
-			//Zeilen ausblenden, bei denen das Callsign länger als 6 Stellen ist
 		}
 		fclose($log);
 	}
+	return $heardList;
+}
+
+function getLastHeard() {
+	$lastHeard = array();
+	$heardCalls = array();
+	$heardList = getHeardList();
 	array_multisort($heardList,SORT_DESC);
 	foreach ($heardList as $listElem) {
-		if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
-			array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
-			array_push($lastHeard, $listElem);
+		if ( ($listElem[1] == "D-Star") || (startsWith($listElem[1], "DMR")) ) {
+			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
+				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
+				array_push($lastHeard, $listElem);
+			}
 		}
 	}
 	return $lastHeard;
 }
-
-//getLastHeard();
 ?>
