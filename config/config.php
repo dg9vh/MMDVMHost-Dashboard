@@ -8,4 +8,5 @@ define("REFRESHAFTER","60");
 define("TEMPERATUREALERT",true);
 define("TEMPERATUREHIGHLEVEL", 60);
 define("SHOWPROGRESSBARS", true);
+define("LHLINES", 20);
 ?>

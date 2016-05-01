@@ -5,7 +5,7 @@ $lastHeard = getLastHeard();
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Last Heard List</div>
   <div class="panel-body">
-    <p>In the following table you find the last  heard callsigns on this repeater of the current day</p>
+    <p>In the following table you find the last maximum <?php echo LHLINES; ?> heard callsigns on this repeater of the current day</p>
   </div>
 
   <!-- Tabelle -->
@@ -19,7 +19,8 @@ $lastHeard = getLastHeard();
       <th>Source</th>
     </tr>
 <?php
-foreach ($lastHeard as $listElem) {
+for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
+		$listElem = $lastHeard[$i];
 		//$timestamp, $mode, $callsign, $id, $target
 		echo"<tr>";
 		echo"<td>$listElem[0]</td>";
@@ -28,7 +29,7 @@ foreach ($lastHeard as $listElem) {
 		echo"<td>$listElem[3]</td>";
 		echo"<td>$listElem[4]</td>";
 		echo"<td>$listElem[5]</td>";
-		echo"</tr>";
+		echo"</tr>\n";
 	}
 
 ?>
