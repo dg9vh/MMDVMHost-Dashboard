@@ -26,6 +26,7 @@ include "include/functions.php";
 </div>
 <?php
 include "include/sysinfo.php";
+include "include/repeaterinfo.php";
 include "include/lh.php";
 ?>
 	<div class="panel panel-info">

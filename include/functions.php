@@ -67,6 +67,39 @@ function getLastHeard($logLines) {
 	return $lastHeard;
 }
 
+function getActualMode($logLines) {
+	array_multisort($logLines,SORT_DESC);
+	foreach ($logLines as $logLine) {
+		if (strpos($logLine, "Mode set to")) {
+			return substr($logLine, 39);
+			//break;
+		}	
+	}
+	return "Idle";
+}
+
+function getActualLink($logLines, $mode) {
+//M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
+	array_multisort($logLines,SORT_DESC);
+	switch ($mode) {
+    case "D-Star":
+        foreach ($logLines as $logLine) {
+			if (strpos($logLine, "D-Star link status set to")) {
+				return substr($logLine, 54, strlen($logLine) - 56);
+			}	
+		}
+        break;
+    case "DMR Slot 1":
+        return "still to be implemented";
+        break;
+    case "DMR Slot 2":
+        return "still to be implemented";
+        break;
+}
+	
+	return "still to be implemented";
+}
+
 //Some basic inits
 $logLines = getLog();
 ?>
