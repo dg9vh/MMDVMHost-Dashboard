@@ -11,7 +11,7 @@ $lastHeard = getLastHeard($logLines);
   <!-- Tabelle -->
   <table class="table">
     <tr>
-      <th>Time</th>
+      <th>Time (UTC)</th>
       <th>Mode</th>
       <th>Callsign</th>
       <th>DSTAR-ID</th>
