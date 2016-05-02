@@ -80,24 +80,50 @@ function getActualMode($logLines) {
 
 function getActualLink($logLines, $mode) {
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
+//M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
+//M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
 	array_multisort($logLines,SORT_DESC);
 	switch ($mode) {
     case "D-Star":
         foreach ($logLines as $logLine) {
 			if (strpos($logLine, "D-Star link status set to")) {
 				return substr($logLine, 54, strlen($logLine) - 56);
-			}	
+			} 
 		}
+		return "not linked";
         break;
     case "DMR Slot 1":
-        return "still to be implemented";
+        foreach ($logLines as $logLine) {
+        	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
+	        	$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
+				if (strlen($from) == 4 && startsWith($from,"4")) {
+					if ($from == "4000") {
+						return "not linked";
+					} else {
+						return $from;
+					}
+				}
+        	}
+		}
+		return "not linked";
         break;
     case "DMR Slot 2":
-        return "still to be implemented";
+        foreach ($logLines as $logLine) {
+        	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
+	        	$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
+				if (strlen($from) == 4 && startsWith($from,"4")) {
+					if ($from == "4000") {
+						return "not linked";
+					} else {
+						return $from;
+					}
+				}
+        	}
+		}
+		return "not linked";
         break;
-}
-	
-	return "still to be implemented";
+	}
+	return "something went wrong!";
 }
 
 //Some basic inits

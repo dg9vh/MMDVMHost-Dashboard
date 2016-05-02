@@ -1,17 +1,17 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Repeater Info</div>
-  <!--<div class="panel-body">
-    <p>Put here some text</p>
-  </div>-->
+  <div class="panel-body">
+    <p>Some Infos about link-states</p>
+  </div>
 
   <!-- Tabelle -->
   <table class="table">
     <tr>
       <th>Actual Mode</th>
       <th>D-Star linked to</th>
-      <th>DMR TS1</th>
-      <th>DMR TS2</th>
+      <th>DMR TS1 linked to</th>
+      <th>DMR TS2 linked to</th>
     </tr>
 <?php
 	echo"<tr>";
