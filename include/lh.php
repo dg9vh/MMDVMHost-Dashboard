@@ -1,5 +1,5 @@
 <?php
-$lastHeard = getLastHeard();
+$lastHeard = getLastHeard($logLines);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
