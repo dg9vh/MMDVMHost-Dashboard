@@ -17,6 +17,9 @@ $lastHeard = getLastHeard($logLines);
       <th>DSTAR-ID</th>
       <th>Target</th>
       <th>Source</th>
+      <th>Duration (s)</th>
+      <th>Loss</th>
+      <th>BER</th>
     </tr>
 <?php
 for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
@@ -29,6 +32,9 @@ for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
 		echo"<td>$listElem[3]</td>";
 		echo"<td>$listElem[4]</td>";
 		echo"<td>$listElem[5]</td>";
+		echo"<td>$listElem[6]</td>";
+		echo"<td>$listElem[7]</td>";
+		echo"<td>$listElem[8]</td>";
 		echo"</tr>\n";
 	}
 

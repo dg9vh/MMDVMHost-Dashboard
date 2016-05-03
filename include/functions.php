@@ -17,7 +17,11 @@ function getLog() {
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
 function getHeardList($logLines) {
+	array_multisort($logLines,SORT_DESC);
 	$heardList = array();
+	$duration = "";
+	$loss = "";
+	$ber = "";
 	foreach ($logLines as $logLine) {
 		//removing invalid lines
 		if(strpos($logLine,"BS_Dwn_Act")) {
@@ -26,6 +30,18 @@ function getHeardList($logLines) {
 			continue;
 		}
 		
+		if(strpos($logLine,"end of")) {
+			$lineTokens = explode(", ",$logLine);
+			$duration = strtok($lineTokens[2], " ");
+			$loss = $lineTokens[3];
+			if (startsWith($loss,"BER")) {
+				$ber = substr($loss, 5);
+				$loss = "";
+			} else {
+				$loss = strtok($loss, " ");
+				$ber = substr($lineTokens[4], 5);
+			}
+		}
 		$timestamp = substr($logLine, 3, 19);
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
@@ -45,7 +61,10 @@ function getHeardList($logLines) {
 		}
 		
 		if ( strlen($callsign) < 7 ) {
-			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source));
+			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
+			$duration = "";
+			$loss ="";
+			$ber = "";
 		}
 	}
 	return $heardList;
@@ -55,7 +74,6 @@ function getLastHeard($logLines) {
 	$lastHeard = array();
 	$heardCalls = array();
 	$heardList = getHeardList($logLines);
-	array_multisort($heardList,SORT_DESC);
 	foreach ($heardList as $listElem) {
 		if ( ($listElem[1] == "D-Star") || (startsWith($listElem[1], "DMR")) ) {
 			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
