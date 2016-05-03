@@ -21,9 +21,9 @@ function getHeardList($logLines) {
 	foreach ($logLines as $logLine) {
 		//removing invalid lines
 		if(strpos($logLine,"BS_Dwn_Act")) {
-			break;
+			continue;
 		} else if(strpos($logLine,"invalid access")) {
-			break;
+			continue;
 		}
 		
 		$timestamp = substr($logLine, 3, 19);
@@ -44,7 +44,7 @@ function getHeardList($logLines) {
 			$source = "Network";
 		}
 		
-		if ( strlen($callsign <7) ) {
+		if ( strlen($callsign) < 7 ) {
 			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source));
 		}
 	}
