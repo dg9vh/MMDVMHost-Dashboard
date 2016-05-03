@@ -19,10 +19,20 @@ function getLog() {
 function getHeardList($logLines) {
 	array_multisort($logLines,SORT_DESC);
 	$heardList = array();
-	$duration = "";
-	$loss = "";
-	$ber = "";
+	$ts1duration = "";
+	$ts1loss = "";
+	$ts1ber = "";
+	$ts2duration = "";
+	$ts2loss = "";
+	$ts2ber = "";
+	$dstarduration = "";
+	$dstarloss = "";
+	$dstarber = "";
 	foreach ($logLines as $logLine) {
+		$duration = "";
+		$loss = "";
+		$ber = "";
+		$endmode = "";
 		//removing invalid lines
 		if(strpos($logLine,"BS_Dwn_Act")) {
 			continue;
@@ -32,6 +42,7 @@ function getHeardList($logLines) {
 		
 		if(strpos($logLine,"end of")) {
 			$lineTokens = explode(", ",$logLine);
+			
 			$duration = strtok($lineTokens[2], " ");
 			$loss = $lineTokens[3];
 			if (startsWith($loss,"BER")) {
@@ -40,6 +51,23 @@ function getHeardList($logLines) {
 			} else {
 				$loss = strtok($loss, " ");
 				$ber = substr($lineTokens[4], 5);
+			}
+			switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
+				case "D-Star":
+					$dstarduration = $duration;
+					$dstarloss = $loss;
+					$dstarber = $ber;
+					break;
+				case "DMR Slot 1":
+					$ts1duration = $duration;
+					$ts1loss = $loss;
+					$ts1ber = $ber;
+					break;
+				case "DMR Slot 2":
+					$ts2duration = $duration;
+					$ts2loss = $loss;
+					$ts2ber = $ber;
+					break;
 			}
 		}
 		$timestamp = substr($logLine, 3, 19);
@@ -59,6 +87,25 @@ function getHeardList($logLines) {
 		if (strpos($logLine,"network") > 0 ) {
 			$source = "Network";
 		}
+
+		switch ($mode) {
+			case "D-Star":
+				$duration = $dstarduration;
+				$loss = $dstarloss;
+				$ber = $dstarber;
+				break;
+			case "DMR Slot 1":
+				$duration = $ts1duration;
+				$loss = $ts1loss;
+				$ber = $ts1ber;
+				break;
+			case "DMR Slot 2":
+				$duration = $ts2duration;
+				$loss = $ts2loss;
+				$ber = $ts2ber;
+				break;
+		}
+
 		
 		if ( strlen($callsign) < 7 ) {
 			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
