@@ -16,7 +16,7 @@ include "include/functions.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <title>MMDVM-Dashboard by DG9VH</title>
+    <title><?php echo REPEATERCALLSIGN?> - MMDVM-Dashboard by DG9VH</title>
   </head>
   <body>
   <div class="page-header">
