@@ -20,7 +20,7 @@ include "include/functions.php";
   </head>
   <body>
   <div class="page-header">
-  <h1>MMDVM-Dashboard by DG9VH <small>Repeater: <?php echo REPEATERCALLSIGN?></small></h1>
+  <h1><small>MMDVM-Dashboard by DG9VH</small> Repeater: <?php echo REPEATERCALLSIGN?></h1>
 </div>
 <?php
 include "include/sysinfo.php";
