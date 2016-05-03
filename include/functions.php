@@ -107,7 +107,7 @@ function getHeardList($logLines) {
 		}
 
 		
-		if ( strlen($callsign) < 7 ) {
+		if ( strlen($callsign) < 8 ) {
 			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
 			$duration = "";
 			$loss ="";
