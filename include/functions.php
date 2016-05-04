@@ -28,6 +28,9 @@ function getHeardList($logLines) {
 	$dstarduration = "";
 	$dstarloss = "";
 	$dstarber = "";
+	$ysfduration = "";
+    $ysfloss = "";
+    $ysfber = "";
 	foreach ($logLines as $logLine) {
 		$duration = "";
 		$loss = "";
@@ -70,6 +73,11 @@ function getHeardList($logLines) {
 					$ts2loss = $loss;
 					$ts2ber = $ber;
 					break;
+				 case "YSF":
+                    $ysfduration = $duration;
+                    $ysfloss = $loss;
+                    $ysfber = $ber;
+                    break;
 			}
 		}
 		$timestamp = substr($logLine, 3, 19);
@@ -106,6 +114,11 @@ function getHeardList($logLines) {
 				$loss = $ts2loss;
 				$ber = $ts2ber;
 				break;
+			case "YSF":
+                $duration = $ysfduration;
+                $loss = $ysfloss;
+                $ber = $ysfber;
+                break;
 		}
 
 		
@@ -124,7 +137,7 @@ function getLastHeard($logLines) {
 	$heardCalls = array();
 	$heardList = getHeardList($logLines);
 	foreach ($heardList as $listElem) {
-		if ( ($listElem[1] == "D-Star") || (startsWith($listElem[1], "DMR")) ) {
+		if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || (startsWith($listElem[1], "DMR")) ) {
 			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
 				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
 				array_push($lastHeard, $listElem);
