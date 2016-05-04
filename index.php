@@ -1,4 +1,9 @@
 <?php
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$start = $time;
+
 include "config/config.php";
 include "include/tools.php";
 include "include/functions.php";
@@ -29,10 +34,16 @@ include "include/lh.php";
 ?>
 	<div class="panel panel-info">
 <?php
-	date_default_timezone_set("UTC");
-	$datum = date("d.m.Y");
-	$uhrzeit = date("H:i:s");
-	echo "Last Update $datum, $uhrzeit";
+date_default_timezone_set("UTC");
+$datum = date("d.m.Y");
+$uhrzeit = date("H:i:s");
+echo "Last Update $datum, $uhrzeit";
+$time = microtime();
+$time = explode(' ', $time);
+$time = $time[1] + $time[0];
+$finish = $time;
+$total_time = round(($finish - $start), 4);
+echo '<!--Page generated in '.$total_time.' seconds.-->';	
 ?>
 	</div>
   </body>
