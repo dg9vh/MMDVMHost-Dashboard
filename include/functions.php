@@ -38,6 +38,8 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"invalid access")) {
 			continue;
+		} else if(strpos($logLine,"received RF header for wrong repeater")) {
+			continue;
 		}
 		
 		if(strpos($logLine,"end of")) {
