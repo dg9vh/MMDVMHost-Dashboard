@@ -9,9 +9,9 @@
   <table class="table">
     <tr>
       <th>Actual Mode</th>
-      <th>D-Star linked to</th>
-      <th>DMR TS1 linked to</th>
-      <th>DMR TS2 linked to</th>
+      <th>D-Star last linked to</th>
+      <th>DMR TS1 last linked to</th>
+      <th>DMR TS2 last linked to</th>
     </tr>
 <?php
 	echo"<tr>";
