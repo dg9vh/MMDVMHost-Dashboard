@@ -2,7 +2,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Repeater Info</div>
   <div class="panel-body">
-    <p>Some Infos about link-states</p>
+    <p>Some info about link states</p>
   </div>
 
   <!-- Tabelle -->
