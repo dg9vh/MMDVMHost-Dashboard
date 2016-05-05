@@ -24,7 +24,6 @@ $lastHeard = getLastHeard($logLines);
 <?php
 for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
 		$listElem = $lastHeard[$i];
-		//$timestamp, $mode, $callsign, $id, $target
 		echo"<tr>";
 		echo"<td>$listElem[0]</td>";
 		echo"<td>$listElem[1]</td>";

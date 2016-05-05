@@ -35,7 +35,6 @@ function getHeardList($logLines) {
 		$duration = "";
 		$loss = "";
 		$ber = "";
-		$endmode = "";
 		//removing invalid lines
 		if(strpos($logLine,"BS_Dwn_Act")) {
 			continue;
@@ -50,6 +49,8 @@ function getHeardList($logLines) {
 			
 			$duration = strtok($lineTokens[2], " ");
 			$loss = $lineTokens[3];
+			
+			// if RF-Packet, no LOSS would be reported, so BER is in LOSS position
 			if (startsWith($loss,"BER")) {
 				$ber = substr($loss, 5);
 				$loss = "";
@@ -57,6 +58,7 @@ function getHeardList($logLines) {
 				$loss = strtok($loss, " ");
 				$ber = substr($lineTokens[4], 5);
 			}
+			
 			switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
 				case "D-Star":
 					$dstarduration = $duration;
@@ -80,6 +82,7 @@ function getHeardList($logLines) {
                     break;
 			}
 		}
+		
 		$timestamp = substr($logLine, 3, 19);
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
@@ -88,10 +91,12 @@ function getHeardList($logLines) {
 			$callsign = substr($callsign2, 0, strpos($callsign2,"/"));
 		}
 		$callsign = trim($callsign);
+		
 		$id ="";
 		if ($mode == "D-Star") {
 			$id = substr($callsign2, strpos($callsign2,"/") + 1);
 		}
+		
 		$target = substr($logLine, strpos($logLine, "to") + 3); 
 		$source = "RF";
 		if (strpos($logLine,"network") > 0 ) {
@@ -120,8 +125,8 @@ function getHeardList($logLines) {
                 $ber = $ysfber;
                 break;
 		}
-
 		
+		// Callsign or ID should be less than 8 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 8 ) {
 			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
 			$duration = "";
@@ -152,7 +157,6 @@ function getActualMode($logLines) {
 	foreach ($logLines as $logLine) {
 		if (strpos($logLine, "Mode set to")) {
 			return substr($logLine, 39);
-			//break;
 		}	
 	}
 	return "Idle";
@@ -214,14 +218,6 @@ function getActualLink($logLines, $mode) {
 	array_multisort($logLines,SORT_DESC);
 	switch ($mode) {
     case "D-Star":
-    	/*
-        foreach ($logLines as $logLine) {
-			if (strpos($logLine, "D-Star link status set to")) {
-				return substr($logLine, 54, strlen($logLine) - 56);
-			} 
-		}
-		return "not linked";
-		*/
 		return getDSTARLinks();
         break;
     case "DMR Slot 1":
