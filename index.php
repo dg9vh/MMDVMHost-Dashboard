@@ -34,7 +34,6 @@ include "include/lh.php";
 ?>
 	<div class="panel panel-info">
 <?php
-date_default_timezone_set("UTC");
 $datum = date("d.m.Y");
 $uhrzeit = date("H:i:s");
 echo "Last Update $datum, $uhrzeit";
