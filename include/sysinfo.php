@@ -94,7 +94,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">System Info</div>
   <div class="panel-body">
-    <p>In the following table you find some important system information</p>
+    <p>In the following table you will find some important system information</p>
   </div>
 
   <!-- Tabelle -->

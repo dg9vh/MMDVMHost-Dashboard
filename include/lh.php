@@ -5,7 +5,7 @@ $lastHeard = getLastHeard($logLines);
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Last Heard List</div>
   <div class="panel-body">
-    <p>In the following table you find the last maximum <?php echo LHLINES; ?> heard callsigns on this repeater of the current day</p>
+    <p>In the following table you will find a maximum of the last <?php echo LHLINES; ?> callsigns heard on this repeater for the current day</p>
   </div>
 
   <!-- Tabelle -->
