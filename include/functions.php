@@ -163,7 +163,7 @@ function getActualMode($logLines) {
 }
 
 function getDSTARLinks() {
-	$out = "";
+	$out = "<table>";
 	if ($linkLog = fopen(LINKLOGPATH,'r')) {
 		while ($linkLine = fgets($linkLog)) {
 			$linkDate = "&nbsp;";
@@ -205,9 +205,10 @@ function getDSTARLinks() {
 				$linkDest = $linx[4][0];
 				$linkDir = $linx[5][0];
 			}
-			$out .= $protocol . "-link to &gt;" . $linkDest . "&lt; " . $linkDir . "<br>";
+			$out .= "<tr><td>" . $linkSource . "</td><td>&nbsp;" . $protocol . "-link</td><td>&nbsp;to&nbsp;</td><td>&gt;" . $linkDest . "&lt;</td><td>&nbsp;" . $linkDir . "</td></tr>";
 		}
 	}
+	$out .= "</table>";
 	return $out;
 }
 
