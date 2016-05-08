@@ -50,11 +50,11 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 	If you are using Raspbian Jessie, you do it with
 
-	>cp -R /home/MMDVMHost-Dashboard /var/www/html/	
+	>cp -R /home/pi/MMDVMHost-Dashboard /var/www/html/	
 
 	If you are using Raspbian Wheezy, you do it with
 
-	>cp -R /home/MMDVMHost-Dashboard /var/www/
+	>cp -R /home/pi/MMDVMHost-Dashboard /var/www/
 
 8. To make sure that the dashboard is delivered by the webserver, remove the default "index.html" within the webroot-directory /var/www/html respective /var/www with
 
