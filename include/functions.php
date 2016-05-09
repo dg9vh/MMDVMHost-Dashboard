@@ -1,4 +1,51 @@
 <?php
+
+function getMMDVMHostVersion() {
+	$filename = MMDVMHOSTPATH . "MMDVMHost";
+	if (file_exists($filename)) {
+	    return date("Y-m-d", filectime($filename));
+	}
+}	
+	
+function getMMDVMConfig() {
+	$mmdvmconfigs = array();
+	if ($configs = fopen(MMDVMINIPATH."MMDVM.ini", 'r')) {
+		while ($config = fgets($configs)) {
+			array_push($mmdvmconfigs, substr($config, 0, -1));
+		}
+		fclose($configs);
+	}
+	return $mmdvmconfigs;
+}
+
+function getCallsign($mmdvmconfigs) {
+	foreach ($mmdvmconfigs as $config) {
+	    $pos = strpos($config, "Callsign");
+	    if ($pos !== false) {
+	    	return substr($config, 9); 
+	    }
+	}
+}
+
+function getEnabled ($mode, $mmdvmconfigs) {
+	$modepos = array_search($mode,$mmdvmconfigs);
+	while(strpos($mmdvmconfigs[$modepos],"Enable") === false ) {
+		$modepos++;
+	}
+	return substr($mmdvmconfigs[$modepos], 7);
+}
+
+function showMode($mode, $mmdvmconfigs) {
+?>
+      <td><span class="label <?php 
+	if (getEnabled("[" . $mode . "]", $mmdvmconfigs) == 1) {
+    	echo "label-success";      } else {
+    	echo "label-danger";
+    }
+    ?>"><?php echo $mode ?></span></td>
+<?php
+}
+
 function getLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();
@@ -256,5 +303,6 @@ function getActualLink($logLines, $mode) {
 }
 
 //Some basic inits
+$mmdvmconfigs = getMMDVMConfig();
 $logLines = getLog();
 ?>

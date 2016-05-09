@@ -1,9 +1,10 @@
 <?php
 date_default_timezone_set('UTC');
-define("REPEATERCALLSIGN", "DG9VH");
 define("MMDVMLOGPATH", "/mnt/ramdisk/"); // hint: add trailing / !!!
 define("MMDVMLOGPREFIX", "MMDVM");
 define("MMDVMLOGFILE", MMDVMLOGPATH . MMDVMLOGPREFIX . "-" . date("Y-m-d") . ".log");
+define("MMDVMINIPATH", "/opt/mmdvm/"); // hint: add trailing / !!!
+define("MMDVMHOSTPATH", "/opt/mmdvm/"); // hint: add trailing / !!!
 
 // enter exact path to your log files.
 // If your Linux is a MARYLAND-DSTAR-Image, this paths would work.

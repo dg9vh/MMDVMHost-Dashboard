@@ -21,15 +21,17 @@ include "include/functions.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <title><?php echo REPEATERCALLSIGN?> - MMDVM-Dashboard by DG9VH</title>
+    <title><?php echo getCallsign($mmdvmconfigs) ?> - MMDVM-Dashboard by DG9VH</title>
   </head>
   <body>
   <div class="page-header">
-  <h1><small>MMDVM-Dashboard by DG9VH for Repeater:</small>  <?php echo REPEATERCALLSIGN?></h1>
+  <h1><small>MMDVM-Dashboard by DG9VH for Repeater:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
+  <h4>MMDVMHost v<?php echo getMMDVMHostVersion() ?> by G4KLX</h4>
 </div>
 <?php
 include "include/sysinfo.php";
 include "include/repeaterinfo.php";
+include "include/modes.php";
 include "include/lh.php";
 ?>
 	<div class="panel panel-info">
