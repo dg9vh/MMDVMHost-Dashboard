@@ -25,7 +25,7 @@ include "include/functions.php";
   </head>
   <body>
   <div class="page-header">
-  <h1><small>MMDVM-Dashboard by DG9VH</small> Repeater: <?php echo REPEATERCALLSIGN?></h1>
+  <h1><small>MMDVM-Dashboard by DG9VH for Repeater:</small>  <?php echo REPEATERCALLSIGN?></h1>
 </div>
 <?php
 include "include/sysinfo.php";
@@ -34,7 +34,7 @@ include "include/lh.php";
 ?>
 	<div class="panel panel-info">
 <?php
-$datum = date("d.m.Y");
+$datum = date("Y-m-d");
 $uhrzeit = date("H:i:s");
 echo "Last Update $datum, $uhrzeit";
 $time = microtime();
