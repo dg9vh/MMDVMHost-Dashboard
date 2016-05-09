@@ -17,7 +17,7 @@ $lastHeard = getLastHeard($logLines);
       <th>DSTAR-ID</th>
       <th>Target</th>
       <th>Source</th>
-      <th>Duration (s)</th>
+      <th>Dur (s)</th>
       <th>Loss</th>
       <th>BER</th>
     </tr>
