@@ -9,7 +9,7 @@ function getMMDVMHostVersion() {
 	
 function getMMDVMConfig() {
 	$mmdvmconfigs = array();
-	if ($configs = fopen(MMDVMINIPATH."MMDVM.new.ini", 'r')) {
+	if ($configs = fopen(MMDVMINIPATH."MMDVM.ini", 'r')) {
 		while ($config = fgets($configs)) {
 			array_push($mmdvmconfigs, trim ( $config, " \t\n\r\0\x0B"));
 		}
