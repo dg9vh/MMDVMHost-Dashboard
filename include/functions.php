@@ -19,27 +19,33 @@ function getMMDVMConfig() {
 }
 
 function getCallsign($mmdvmconfigs) {
-	foreach ($mmdvmconfigs as $config) {
-	    $pos = strpos($config, "Callsign");
-	    if ($pos !== false) {
-	    	return substr($config, 9); 
-	    }
+	return getConfigItem("general", "Callsign", $mmdvmconfigs);
+}
+
+function getConfigItem($section, $key, $configs) {
+	$sectionpos = array_search("[" . $section . "]", $configs) + 1;
+	$len = count($configs);
+	while(startsWith($configs[$sectionpos],$key."=") === false && $sectionpos <= ($len) ) {
+		if (startsWith($configs[$sectionpos],"[")) {
+			return null;
+		}
+		$sectionpos++;
 	}
+	
+	return substr($configs[$sectionpos], strlen($key) + 1);
 }
 
 function getEnabled ($mode, $mmdvmconfigs) {
-	$modepos = array_search($mode,$mmdvmconfigs);
-	while(strpos($mmdvmconfigs[$modepos],"Enable") === false ) {
-		$modepos++;
-	}
-	return substr($mmdvmconfigs[$modepos], 7);
+	return getConfigItem($mode, "Enable", $mmdvmconfigs);
+	
 }
 
 function showMode($mode, $mmdvmconfigs) {
 ?>
       <td><span class="label <?php 
-	if (getEnabled("[" . $mode . "]", $mmdvmconfigs) == 1) {
-    	echo "label-success";      } else {
+	if (getEnabled($mode, $mmdvmconfigs) == 1) {
+    	echo "label-success";      
+	} else {
     	echo "label-danger";
     }
     ?>"><?php echo $mode ?></span></td>
