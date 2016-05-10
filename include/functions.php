@@ -46,7 +46,7 @@ function showMode($mode, $mmdvmconfigs) {
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
     	echo "label-success";      
 	} else {
-    	echo "label-danger";
+    	echo "label-default";
     }
     ?>"><?php echo $mode ?></span></td>
 <?php
