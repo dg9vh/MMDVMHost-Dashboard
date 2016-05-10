@@ -9,9 +9,9 @@ function getMMDVMHostVersion() {
 	
 function getMMDVMConfig() {
 	$mmdvmconfigs = array();
-	if ($configs = fopen(MMDVMINIPATH."MMDVM.ini", 'r')) {
+	if ($configs = fopen(MMDVMINIPATH."MMDVM.new.ini", 'r')) {
 		while ($config = fgets($configs)) {
-			array_push($mmdvmconfigs, substr($config, 0, -1));
+			array_push($mmdvmconfigs, trim ( $config, " \t\n\r\0\x0B"));
 		}
 		fclose($configs);
 	}
@@ -19,7 +19,7 @@ function getMMDVMConfig() {
 }
 
 function getCallsign($mmdvmconfigs) {
-	return getConfigItem("general", "Callsign", $mmdvmconfigs);
+	return getConfigItem("General", "Callsign", $mmdvmconfigs);
 }
 
 function getConfigItem($section, $key, $configs) {
