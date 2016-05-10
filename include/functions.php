@@ -1,6 +1,7 @@
 <?php
 
 function getMMDVMHostVersion() {
+	// returns creation-time of MMDVMHost as version-number
 	$filename = MMDVMHOSTPATH . "MMDVMHost";
 	if (file_exists($filename)) {
 	    return date("Y-m-d", filectime($filename));
@@ -8,6 +9,7 @@ function getMMDVMHostVersion() {
 }	
 	
 function getMMDVMConfig() {
+	// loads MMDVM.ini into array for further use
 	$mmdvmconfigs = array();
 	if ($configs = fopen(MMDVMINIPATH."MMDVM.ini", 'r')) {
 		while ($config = fgets($configs)) {
@@ -19,10 +21,12 @@ function getMMDVMConfig() {
 }
 
 function getCallsign($mmdvmconfigs) {
+	// returns Callsign from MMDVM-config
 	return getConfigItem("General", "Callsign", $mmdvmconfigs);
 }
 
 function getConfigItem($section, $key, $configs) {
+	// retrieves the corresponding config-entry within a [section]
 	$sectionpos = array_search("[" . $section . "]", $configs) + 1;
 	$len = count($configs);
 	while(startsWith($configs[$sectionpos],$key."=") === false && $sectionpos <= ($len) ) {
@@ -36,11 +40,12 @@ function getConfigItem($section, $key, $configs) {
 }
 
 function getEnabled ($mode, $mmdvmconfigs) {
+	// returns enabled/disabled-State of mode
 	return getConfigItem($mode, "Enable", $mmdvmconfigs);
-	
 }
 
 function showMode($mode, $mmdvmconfigs) {
+	// shows if mode is enabled or not.
 ?>
       <td><span class="label <?php 
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
@@ -191,6 +196,7 @@ function getHeardList($logLines) {
 }
 
 function getLastHeard($logLines) {
+	//returns last heard list from log
 	$lastHeard = array();
 	$heardCalls = array();
 	$heardList = getHeardList($logLines);
@@ -206,6 +212,7 @@ function getLastHeard($logLines) {
 }
 
 function getActualMode($logLines) {
+	// returns mode of repeater actual working in
 	array_multisort($logLines,SORT_DESC);
 	foreach ($logLines as $logLine) {
 		if (strpos($logLine, "Mode set to")) {
@@ -216,6 +223,7 @@ function getActualMode($logLines) {
 }
 
 function getDSTARLinks() {
+	// returns link-states of all D-Star-modules
 	$out = "<table>";
 	if ($linkLog = fopen(LINKLOGPATH,'r')) {
 		while ($linkLine = fgets($linkLog)) {
@@ -266,6 +274,7 @@ function getDSTARLinks() {
 }
 
 function getActualLink($logLines, $mode) {
+	// returns actual link state of specific mode
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094

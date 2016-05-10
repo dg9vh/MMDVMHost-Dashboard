@@ -71,9 +71,18 @@ switch (DISTRIBUTION) {
 define("CONFIGFILENAME", "ircddbgateway");
 define("GATEWAYCONFIGPATH", CONFIGPATH . "/" . CONFIGFILENAME);
 
+// set time to refresh page
 define("REFRESHAFTER", "60");
+
+// enables CPU-temperature alert
 define("TEMPERATUREALERT", true);
+
+// defines temperature of warning
 define("TEMPERATUREHIGHLEVEL", 60);
+
+// enables progress-bars
 define("SHOWPROGRESSBARS", true);
+
+// defines number of lines in last heard list
 define("LHLINES", 20);
 ?>

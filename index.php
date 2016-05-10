@@ -4,6 +4,7 @@ $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $start = $time;
 
+// do not touch this includes!!! Never ever!!!
 include "config/config.php";
 include "include/tools.php";
 include "include/functions.php";
@@ -29,6 +30,7 @@ include "include/functions.php";
   <h4>MMDVMHost v<?php echo getMMDVMHostVersion() ?> by G4KLX</h4>
 </div>
 <?php
+// Here you can feel free to disable info-sections by commenting out with // before include
 include "include/sysinfo.php";
 include "include/repeaterinfo.php";
 include "include/modes.php";

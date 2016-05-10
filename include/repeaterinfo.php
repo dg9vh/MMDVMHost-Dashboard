@@ -1,10 +1,7 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Repeater Info</div>
-  <!--<div class="panel-body">
-    <p>Some info about link states</p>
-  </div>-->
-
+  
   <!-- Tabelle -->
   <table class="table">
     <tr>
