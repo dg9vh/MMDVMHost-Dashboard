@@ -38,7 +38,7 @@
 					+(null==zIndex  ? '' : '; z-index:'+zIndex)
 					+(null==bgColor ? '' : '; background-color:'+bgColor);
 
-					var LR = '<DIV id='+id+' style="'+ST+'">CPU-Temerature is very high!<br><input type="button" value="Close" onclick="deleteLayer(\'LYR1\')"></DIV>';
+					var LR = '<DIV id='+id+' style="'+ST+'">CPU-Temperature is very high!<br><input type="button" value="Close" onclick="deleteLayer(\'LYR1\')"></DIV>';
 
 					if (document.body) {
 						if (document.body.insertAdjacentHTML)
