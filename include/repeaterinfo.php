@@ -18,5 +18,59 @@
 	echo"<td>".getActualLink($logLines, "DMR Slot 2")."</td>";
 	echo"</tr>\n";
 ?>
+    <tr>
+      <td colspan="4">
+        <table class="table">
+          <tr>
+            <th>Location</th>
+            <th>TX-Frq.</th>
+            <th>Rx-Frq.</th>
+<?php
+	if (getEnabled("DMR", $mmdvmconfigs) == 1) {
+?>
+            <th>DMR CC</th>
+<?php
+		if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
+?>
+            <th>DMR-Master</th>
+	        <th>TS1</th>
+            <th>TS2</th>
+<?php
+		}
+	} 
+?>
+          </tr>
+<?php
+	echo"<tr>";
+	echo"<td>".getConfigItem("Info", "Location", $mmdvmconfigs)."</td>";
+	echo"<td>".getConfigItem("Info", "TXFrequency", $mmdvmconfigs)."</td>";
+	echo"<td>".getConfigItem("Info", "RXFrequency", $mmdvmconfigs)."</td>";
+	if (getEnabled("DMR", $mmdvmconfigs) == 1) {
+		echo"<td>".getConfigItem("DMR", "ColorCode", $mmdvmconfigs)."</td>";
+		if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
+			echo"<td>".getConfigItem("DMR Network", "Address", $mmdvmconfigs)."</td>";
+?>
+            <td><span class="label <?php 
+			if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == 1) {
+		    	echo 'label-success">enabled';      
+			} else {
+		    	echo 'label-default">disabled';
+		    }
+    ?></span></td>
+            <td><span class="label <?php 
+			if (getConfigItem("DMR Network", "Slot2", $mmdvmconfigs) == 1) {
+		    	echo 'label-success">enabled';      
+			} else {
+		    	echo 'label-default">disabled';
+		    }
+    ?></span></td>
+<?php
+		}
+	}
+?>
+		  </tr>
+        </table>
+      </td>
+    </tr>
   </table>
 </div>
