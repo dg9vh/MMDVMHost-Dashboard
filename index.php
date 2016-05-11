@@ -35,6 +35,7 @@ include "include/sysinfo.php";
 include "include/repeaterinfo.php";
 include "include/modes.php";
 include "include/lh.php";
+include "include/localtx.php";
 ?>
 	<div class="panel panel-info">
 <?php
