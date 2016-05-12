@@ -228,7 +228,7 @@ function getActualMode($logLines, $mmdvmconfigs) {
 	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
 
 	if ($now->format('U') > $timestamp->format('U')) {
-		return idle;
+		return "idle";
 	} else {
 		return $mode;
 	}
