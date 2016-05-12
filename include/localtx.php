@@ -6,7 +6,7 @@ array_multisort($localTXList,SORT_DESC);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Last 10 local transmissions.</div>
+  <div class="panel-heading">Today's last 10 local transmissions.</div>
   <!-- Tabelle -->
   <table class="table">
     <tr>
