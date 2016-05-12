@@ -3,8 +3,8 @@ date_default_timezone_set('UTC');
 define("MMDVMLOGPATH", "/mnt/ramdisk/"); // hint: add trailing / !!!
 define("MMDVMLOGPREFIX", "MMDVM");
 define("MMDVMLOGFILE", MMDVMLOGPATH . MMDVMLOGPREFIX . "-" . date("Y-m-d") . ".log");
-define("MMDVMINIPATH", "/opt/mmdvm/"); // hint: add trailing / !!!
-define("MMDVMHOSTPATH", "/opt/mmdvm/"); // hint: add trailing / !!!
+define("MMDVMINIPATH", "/etc/mmdvm/"); // hint: add trailing / !!!
+define("MMDVMHOSTPATH", "/usr/local/bin/"); // hint: add trailing / !!!
 
 // enter exact path to your log files.
 // If your Linux is a MARYLAND-DSTAR-Image, this paths would work.
@@ -12,8 +12,8 @@ define("MMDVMHOSTPATH", "/opt/mmdvm/"); // hint: add trailing / !!!
 // Adjust to suit, uncomment correct line, if none of the given distributions fit, customize
 // OTHER to suitable paths.
 
-define("DISTRIBUTION", "MARYLAND");
-//define("DISTRIBUTION", "WESTERN");
+//define("DISTRIBUTION", "MARYLAND");
+define("DISTRIBUTION", "WESTERN");
 //define("DISTRIBUTION", "DL5DI_DEBIAN");
 //define("DISTRIBUTION", "DL5DI_CENTOS");
 //define("DISTRIBUTION", "OTHER");
