@@ -211,15 +211,27 @@ function getLastHeard($logLines) {
 	return $lastHeard;
 }
 
-function getActualMode($logLines) {
+function getActualMode($logLines, $mmdvmconfigs) {
 	// returns mode of repeater actual working in
-	array_multisort($logLines,SORT_DESC);
-	foreach ($logLines as $logLine) {
-		if (strpos($logLine, "Mode set to")) {
-			return substr($logLine, 39);
-		}	
+	$lastHeard = getLastHeard($logLines);
+	array_multisort($lastHeard,SORT_DESC);
+	$listElem = $lastHeard[0];
+	
+	$timestamp = new DateTime($listElem[0]);
+	$mode = $listElem[1];
+	if (startsWith($mode, "DMR")) {
+		$mode = "DMR";
 	}
-	return "Idle";
+	
+	$now =  new DateTime();
+	$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
+	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+
+	if ($now->format('U') > $timestamp->format('U')) {
+		return idle;
+	} else {
+		return $mode;
+	}
 }
 
 function getDSTARLinks() {

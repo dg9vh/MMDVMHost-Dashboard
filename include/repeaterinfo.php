@@ -12,7 +12,7 @@
     </tr>
 <?php
 	echo"<tr>";
-	echo"<td>".getActualMode($logLines)."</td>";
+	echo"<td>".getActualMode($logLines, $mmdvmconfigs)."</td>";
 	echo"<td>".getActualLink($logLines, "D-Star")."</td>";
 	echo"<td>".getActualLink($logLines, "DMR Slot 1")."</td>";
 	echo"<td>".getActualLink($logLines, "DMR Slot 2")."</td>";
@@ -23,8 +23,8 @@
         <table class="table">
           <tr>
             <th>Location</th>
-            <th>TX-Frq.</th>
-            <th>Rx-Frq.</th>
+            <th>TX-Freq.</th>
+            <th>Rx-Freq.</th>
 <?php
 	if (getEnabled("DMR", $mmdvmconfigs) == 1) {
 ?>
@@ -43,8 +43,8 @@
 <?php
 	echo"<tr>";
 	echo"<td>".getConfigItem("Info", "Location", $mmdvmconfigs)."</td>";
-	echo"<td>".getConfigItem("Info", "TXFrequency", $mmdvmconfigs)."</td>";
-	echo"<td>".getConfigItem("Info", "RXFrequency", $mmdvmconfigs)."</td>";
+	echo"<td>".getMHZ(getConfigItem("Info", "TXFrequency", $mmdvmconfigs))."</td>";
+	echo"<td>".getMHZ(getConfigItem("Info", "RXFrequency", $mmdvmconfigs))."</td>";
 	if (getEnabled("DMR", $mmdvmconfigs) == 1) {
 		echo"<td>".getConfigItem("DMR", "ColorCode", $mmdvmconfigs)."</td>";
 		if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
