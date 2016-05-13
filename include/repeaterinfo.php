@@ -12,7 +12,7 @@
     </tr>
 <?php
 	echo"<tr>";
-	echo"<td>".getActualMode($logLines, $mmdvmconfigs)."</td>";
+	echo"<td>".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
 	echo"<td>".getActualLink($logLines, "D-Star")."</td>";
 	echo"<td>".getActualLink($logLines, "DMR Slot 1")."</td>";
 	echo"<td>".getActualLink($logLines, "DMR Slot 2")."</td>";

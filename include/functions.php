@@ -87,7 +87,9 @@ function getLog() {
 	$logLines = array();
 	if ($log = fopen(MMDVMLOGFILE,'r')) {
 		while ($logLine = fgets($log)) {
-			array_push($logLines, $logLine);
+			if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK")) {
+				array_push($logLines, $logLine);
+			}
 		}
 		fclose($log);
 	}
@@ -225,20 +227,25 @@ function getLastHeard($logLines) {
 	$lastHeard = array();
 	$heardCalls = array();
 	$heardList = getHeardList($logLines);
+	$counter = 0;
 	foreach ($heardList as $listElem) {
 		if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || (startsWith($listElem[1], "DMR")) ) {
 			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
 				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
 				array_push($lastHeard, $listElem);
+				$counter++;
+			}
+			if ($counter == LHLINES) {
+				return $lastHeard;
 			}
 		}
 	}
 	return $lastHeard;
 }
 
-function getActualMode($logLines, $mmdvmconfigs) {
+function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	// returns mode of repeater actual working in
-	$lastHeard = getLastHeard($logLines);
+	$lastHeard = $metaLastHeard;
 	array_multisort($lastHeard,SORT_DESC);
 	$listElem = $lastHeard[0];
 	
@@ -364,4 +371,5 @@ function getActualLink($logLines, $mode) {
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
 $logLines = getLog();
+$lastHeard = getLastHeard($logLines);
 ?>
