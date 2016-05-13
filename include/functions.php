@@ -6,8 +6,19 @@ function getMMDVMHostVersion() {
 	if (file_exists($filename)) {
 	    return date("Y-m-d", filectime($filename));
 	}
-}	
-	
+}
+
+function isProcessRunning($processname) {
+	exec("pgrep " . $processname, $pids);
+	if(empty($pids)) {
+	    // process not running!
+	    return false;
+	} else {
+		// process running!
+		return true;
+	}
+}
+
 function getMMDVMConfig() {
 	// loads MMDVM.ini into array for further use
 	$mmdvmconfigs = array();
@@ -49,7 +60,21 @@ function showMode($mode, $mmdvmconfigs) {
 ?>
       <td><span class="label <?php 
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
-    	echo "label-success";      
+		if ($mode == "D-Star" || $mode == "D-Star Network") {
+			if (isProcessRunning(IRCDDBGATEWAY)) {
+				echo "label-success";		
+			} else {
+				echo "label-danger";
+			}
+		} else {
+			if ($mode =="DMR" || $mode =="DMR Network" || $mode =="System Fusion" || $mode =="System Fusion Network") {
+				if (isProcessRunning("MMDVMHost")) {
+					echo "label-success";		
+				} else {
+					echo "label-danger";
+				}
+			}	
+		}
 	} else {
     	echo "label-default";
     }
@@ -236,6 +261,9 @@ function getActualMode($logLines, $mmdvmconfigs) {
 
 function getDSTARLinks() {
 	// returns link-states of all D-Star-modules
+	if (filesize(LINKLOGPATH) == 0) {
+		return "not linked";
+	}
 	$out = "<table>";
 	if ($linkLog = fopen(LINKLOGPATH,'r')) {
 		while ($linkLine = fgets($linkLog)) {
@@ -293,7 +321,11 @@ function getActualLink($logLines, $mode) {
 	array_multisort($logLines,SORT_DESC);
 	switch ($mode) {
     case "D-Star":
-		return getDSTARLinks();
+    	if (isProcessRunning(IRCDDBGATEWAY)) {
+			return getDSTARLinks();
+    	} else {
+    		return "ircddbgateway not running!";
+    	}
         break;
     case "DMR Slot 1":
         foreach ($logLines as $logLine) {

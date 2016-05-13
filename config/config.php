@@ -71,6 +71,9 @@ switch (DISTRIBUTION) {
 define("CONFIGFILENAME", "ircddbgateway");
 define("GATEWAYCONFIGPATH", CONFIGPATH . "/" . CONFIGFILENAME);
 
+// set to called ircddbgateway-programm like ircddbgatewayd or ircddbgateway
+define("IRCDDBGATEWAY", "ircddbgatewayd");
+
 // set time to refresh page
 define("REFRESHAFTER", "60");
 
