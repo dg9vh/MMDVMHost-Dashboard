@@ -60,14 +60,14 @@ function showMode($mode, $mmdvmconfigs) {
 ?>
       <td><span class="label <?php 
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
-		if ($mode == "D-Star" || $mode == "D-Star Network") {
+		if ($mode == "D-Star Network") {
 			if (isProcessRunning(IRCDDBGATEWAY)) {
 				echo "label-success";		
 			} else {
 				echo "label-danger";
 			}
 		} else {
-			if ($mode =="DMR" || $mode =="DMR Network" || $mode =="System Fusion" || $mode =="System Fusion Network") {
+			if ($mode == "D-Star" || $mode =="DMR" || $mode =="DMR Network" || $mode =="System Fusion" || $mode =="System Fusion Network") {
 				if (isProcessRunning("MMDVMHost")) {
 					echo "label-success";		
 				} else {
