@@ -4,6 +4,7 @@ define("MMDVMLOGPATH", "/mnt/ramdisk/"); // hint: add trailing / !!!
 define("MMDVMLOGPREFIX", "MMDVM");
 define("MMDVMLOGFILE", MMDVMLOGPATH . MMDVMLOGPREFIX . "-" . date("Y-m-d") . ".log");
 define("MMDVMINIPATH", "/etc/mmdvm/"); // hint: add trailing / !!!
+define("MMDVMINIFILENAME", "MMDVM.ini");
 define("MMDVMHOSTPATH", "/usr/local/bin/"); // hint: add trailing / !!!
 
 // enter exact path to your log files.

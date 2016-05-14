@@ -15,7 +15,7 @@
 	echo"<td>".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
 	echo"<td>".getActualLink($logLines, "D-Star")."</td>";
 	echo"<td>".getActualLink($logLines, "DMR Slot 1")."</td>";
-	echo"<td>".getActualLink($logLines, "DMR Slot 2")."</td>";
+	echo"<td>".getActualLink($logLines, "DMR Slot 2")."/". getActualReflector($logLines, "DMR Slot 2") ."</td>";
 	echo"</tr>\n";
 ?>
     <tr>

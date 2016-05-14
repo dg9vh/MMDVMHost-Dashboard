@@ -26,7 +26,13 @@ include "include/functions.php";
   </head>
   <body>
   <div class="page-header">
-  <h1><small>MMDVM-Dashboard by DG9VH for Repeater:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
+  <h1><small>MMDVM-Dashboard by DG9VH for <?php
+  if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
+  	echo "Repeater";
+  } else {
+  	echo "Hotspot";
+  }
+  ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost v<?php echo getMMDVMHostVersion() ?> by G4KLX</h4>
 </div>
 <?php
