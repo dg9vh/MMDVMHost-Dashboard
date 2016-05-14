@@ -33,7 +33,7 @@ include "include/functions.php";
   	echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
-  <h4>MMDVMHost v<?php echo getMMDVMHostVersion() ?> by G4KLX</h4>
+  <h4>MMDVMHost by G4KLX - Version: <?php echo getMMDVMHostVersion() ?></h4>
 </div>
 <?php
 // Here you can feel free to disable info-sections by commenting out with // before include
