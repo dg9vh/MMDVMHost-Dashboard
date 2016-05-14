@@ -3,8 +3,15 @@
 function getMMDVMHostVersion() {
 	// returns creation-time of MMDVMHost as version-number
 	$filename = MMDVMHOSTPATH . "MMDVMHost";
+	exec($filename." 2>&1", $output);
+	return substr($output[1],10,8)." (compiled ".getMMDVMHostFileVersion().")";
+}
+
+function getMMDVMHostFileVersion() {
+	// returns creation-time of MMDVMHost as version-number
+	$filename = MMDVMHOSTPATH . "MMDVMHost";
 	if (file_exists($filename)) {
-	    return date("Y-m-d", filectime($filename));
+	    return date("d M y", filectime($filename));
 	}
 }
 
