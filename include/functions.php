@@ -64,14 +64,14 @@ function showMode($mode, $mmdvmconfigs) {
 			if (isProcessRunning(IRCDDBGATEWAY)) {
 				echo "label-success";		
 			} else {
-				echo "label-danger";
+				echo "label-danger\" title=\"ircddbgateway is down!";
 			}
 		} else {
 			if ($mode == "D-Star" || $mode =="DMR" || $mode =="DMR Network" || $mode =="System Fusion" || $mode =="System Fusion Network") {
 				if (isProcessRunning("MMDVMHost")) {
 					echo "label-success";		
 				} else {
-					echo "label-danger";
+					echo "label-danger\" title=\"MMDVMHost is down!";
 				}
 			}	
 		}
