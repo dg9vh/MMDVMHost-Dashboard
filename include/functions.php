@@ -3,18 +3,12 @@
 function getMMDVMHostVersion() {
 	// returns creation-time of MMDVMHost as version-number
 	$filename = MMDVMHOSTPATH . "MMDVMHost";
-<<<<<<< HEAD
-	exec($filename . " 2>&1", $output);
-	$version = substr($output[1], 10, 4)."-".substr($output[1], 14, 2)."-".substr($output[1], 16, 2)." (compiled ".getMMDVMHostFileVersion().")";
-	return $version;
-=======
 	exec($filename." -v 2>&1", $output);
 	if (substr($output[0],18,8) == ".ini fil") {
 		return getMMDVMHostFileVersion();
 	} else {
 		return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion().")";
 	}
->>>>>>> d49dbc67902a058b9de8b74c08002ee49f6366c7
 }
 
 function getMMDVMHostFileVersion() {
