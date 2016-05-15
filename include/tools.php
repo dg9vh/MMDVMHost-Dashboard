@@ -33,4 +33,15 @@ function getMHZ($freq) {
 	return substr($freq,0,3) . "." . substr($freq,3,3) . "." . substr($freq,6) . " Mhz";
 }
 
+function isProcessRunning($processname) {
+	exec("pgrep " . $processname, $pids);
+	if(empty($pids)) {
+	    // process not running!
+	    return false;
+	} else {
+		// process running!
+		return true;
+	}
+}
+
 ?>

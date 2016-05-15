@@ -19,17 +19,6 @@ function getMMDVMHostFileVersion() {
 	}
 }
 
-function isProcessRunning($processname) {
-	exec("pgrep " . $processname, $pids);
-	if(empty($pids)) {
-	    // process not running!
-	    return false;
-	} else {
-		// process running!
-		return true;
-	}
-}
-
 function getMMDVMConfig() {
 	// loads MMDVM.ini into array for further use
 	$mmdvmconfigs = array();
