@@ -27,8 +27,10 @@ for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
 		echo"<td>$listElem[4]</td>";
 		echo"<td>$listElem[5]</td>";
 		if ($listElem[6] == null) {
-			echo'<td colspan="3">transmitting</td>';	
-		} else {
+				echo'<td colspan="3">transmitting</td>';
+			} else if ($listElem[6] == "SMS") {
+				echo'<td colspan="3">sending or receiving SMS</td>';
+			} else {
 			echo"<td>$listElem[6]</td>";
 			echo"<td>$listElem[7]</td>";
 			echo"<td>$listElem[8]</td>";

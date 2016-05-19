@@ -129,7 +129,7 @@ function getHeardList($logLines) {
 			continue;
 		}
 		
-		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired")) {
+		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 			$lineTokens = explode(", ",$logLine);
 			
 			$duration = strtok($lineTokens[2], " ");
@@ -144,27 +144,38 @@ function getHeardList($logLines) {
 				$ber = substr($lineTokens[4], 5);
 			}
 			
-			switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
-				case "D-Star":
-					$dstarduration = $duration;
-					$dstarloss = $loss;
-					$dstarber = $ber;
-					break;
-				case "DMR Slot 1":
-					$ts1duration = $duration;
-					$ts1loss = $loss;
-					$ts1ber = $ber;
-					break;
-				case "DMR Slot 2":
-					$ts2duration = $duration;
-					$ts2loss = $loss;
-					$ts2ber = $ber;
-					break;
-				 case "YSF":
-                    $ysfduration = $duration;
-                    $ysfloss = $loss;
-                    $ysfber = $ber;
-                    break;
+			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
+				switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
+					case "DMR Slot 1":
+						$ts1duration = "SMS";
+						break;
+					case "DMR Slot 2":
+						$ts2duration = "SMS";
+						break;
+				}
+			} else {
+				switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
+					case "D-Star":
+						$dstarduration = $duration;
+						$dstarloss = $loss;
+						$dstarber = $ber;
+						break;
+					case "DMR Slot 1":
+						$ts1duration = $duration;
+						$ts1loss = $loss;
+						$ts1ber = $ber;
+						break;
+					case "DMR Slot 2":
+						$ts2duration = $duration;
+						$ts2loss = $loss;
+						$ts2ber = $ber;
+						break;
+					 case "YSF":
+	                    $ysfduration = $duration;
+	                    $ysfloss = $loss;
+	                    $ysfber = $ber;
+	                    break;
+				}
 			}
 		}
 		
