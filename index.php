@@ -36,6 +36,7 @@ include "include/functions.php";
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
 </div>
 <?php
+checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/sysinfo.php";
 include "include/repeaterinfo.php";

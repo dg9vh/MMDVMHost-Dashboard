@@ -44,4 +44,21 @@ function isProcessRunning($processname) {
 	}
 }
 
+function createConfigLines() { 
+	$out ="";
+	foreach($_GET as $key=>$val) { 
+		if($key != "cmd") {
+			$out .= "define(\"$key\", \"$val\");"."\n";
+		}
+	}
+	return $out;
+} 
+
+function checkSetup() {
+	if (file_exists ("setup.php")) {
+?>
+<div class="alert alert-danger" role="alert">You forgot to remove setup.php in root-directory of your dashboard! Please delete the file!</div>
+<?php
+	}
+}
 ?>

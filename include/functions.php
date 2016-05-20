@@ -2,7 +2,7 @@
 
 function getMMDVMHostVersion() {
 	// returns creation-time of MMDVMHost as version-number
-	$filename = MMDVMHOSTPATH . "MMDVMHost";
+	$filename = MMDVMHOSTPATH."/MMDVMHost";
 	exec($filename." -v 2>&1", $output);
 	if (!startsWith(substr($output[0],18,8),"20")) {
 		return getMMDVMHostFileVersion();
@@ -13,7 +13,7 @@ function getMMDVMHostVersion() {
 
 function getMMDVMHostFileVersion() {
 	// returns creation-time of MMDVMHost as version-number
-	$filename = MMDVMHOSTPATH . "MMDVMHost";
+	$filename = MMDVMHOSTPATH."/MMDVMHost";
 	if (file_exists($filename)) {
 	    return date("d M y", filectime($filename));
 	}
@@ -85,7 +85,7 @@ function showMode($mode, $mmdvmconfigs) {
 function getLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();
-	if ($log = fopen(MMDVMLOGFILE,'r')) {
+	if ($log = fopen(MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log", 'r')) {
 		while ($logLine = fgets($log)) {
 			if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK")) {
 				array_push($logLines, $logLine);

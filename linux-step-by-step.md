@@ -60,7 +60,7 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 	>rm index.html
 
-9. When this is done you should configure the dashboard by editing /var/www/html/config/config.php respective /var/www/config/config.php to your personal fits. 
+9. When this is done you should configure the dashboard by calling setup.php in your browser to create /var/www/html/config/config.php respective /var/www/config/config.php with your personal fits. 
 
 10. Last step is to put www-user into sudoers by editing `/etc/sudoers` with
 

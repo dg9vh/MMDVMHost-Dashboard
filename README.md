@@ -24,7 +24,8 @@ Installation
 ============
 * Please ensure to not put loglevels at 0 in MMDVM.ini.
 * Copy all files into your webroot and enjoy working with it.
-* Edit config.php located in /config-folder in your web-folder.
+* Create a config/config.php by calling setup.php and giving suitable values
+* If Dashboard is working, remove setup.php from your webroot
 
 For detailled installation see `linux-step-by-step.md` within this repository.
 
