@@ -19,6 +19,9 @@ include "include/tools.php";
   <body>
 <?php
 	if ($_GET['cmd'] =="writeconfig") {
+		if (!file_exists('./config')) {
+		    mkdir('./config', 0777, true);
+		}
 		$configfile = fopen("config/config.php", w);
 		fwrite($configfile,"<?php\n");
 		fwrite($configfile,"# This is an auto-generated config-file!\n");
