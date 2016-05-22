@@ -279,11 +279,11 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 
 function getDSTARLinks() {
 	// returns link-states of all D-Star-modules
-	if (filesize(LINKLOGPATH) == 0) {
+	if (filesize(LINKLOGPATH."/Links.log") == 0) {
 		return "not linked";
 	}
 	$out = "<table>";
-	if ($linkLog = fopen(LINKLOGPATH,'r')) {
+	if ($linkLog = fopen(LINKLOGPATH."/Links.log",'r')) {
 		while ($linkLine = fgets($linkLog)) {
 			$linkDate = "&nbsp;";
 			$protocol = "&nbsp;";

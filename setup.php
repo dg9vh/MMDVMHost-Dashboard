@@ -22,7 +22,7 @@ include "include/tools.php";
 		if (!file_exists('./config')) {
 		    mkdir('./config', 0777, true);
 		}
-		$configfile = fopen("config/config.php", w);
+		$configfile = fopen("config/config.php", 'w');
 		fwrite($configfile,"<?php\n");
 		fwrite($configfile,"# This is an auto-generated config-file!\n");
 		fwrite($configfile,"# Be careful, when manual editing this!\n\n");
