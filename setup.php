@@ -26,6 +26,7 @@ include "include/tools.php";
 		fwrite($configfile,"<?php\n");
 		fwrite($configfile,"# This is an auto-generated config-file!\n");
 		fwrite($configfile,"# Be careful, when manual editing this!\n\n");
+		fwrite($configfile,"date_default_timezone_set('UTC');\n");
 		fwrite($configfile, createConfigLines());
 		fwrite($configfile,"?>\n");
 		fclose($configfile);
