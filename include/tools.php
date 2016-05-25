@@ -55,10 +55,17 @@ function createConfigLines() {
 } 
 
 function checkSetup() {
-	if (file_exists ("setup.php")) {
+	if (null == DISTRIBUTION) {
 ?>
-<div class="alert alert-danger" role="alert">You forgot to remove setup.php in root-directory of your dashboard! Please delete the file!</div>
+<div class="alert alert-danger" role="alert">You are using an old config.php. Please configure your Dashboard by calling <a href="setup.php">setup.php</a>!</div>
 <?php
-	}
+		
+		} else {
+		if (file_exists ("setup.php")) {
+	?>
+	<div class="alert alert-danger" role="alert">You forgot to remove setup.php in root-directory of your dashboard or you forgot to configure it! Please delete the file or configure your Dashboard by calling <a href="setup.php">setup.php</a>!</div>
+	<?php
+		}
+		}
 }
 ?>

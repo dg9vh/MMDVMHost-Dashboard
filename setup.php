@@ -20,7 +20,12 @@ include "include/tools.php";
 <?php
 	if ($_GET['cmd'] =="writeconfig") {
 		if (!file_exists('./config')) {
-		    mkdir('./config', 0777, true);
+		    if (!mkdir('./config', 0777, true)) {
+?>
+<div class="alert alert-danger" role="alert">You forgot to give write-permissions to your webserver-user, see point 3 in <a href="linux-step-by-step.md">linux-step-by-step.md</a>!</div>
+
+<?php
+		    }
 		}
 		$configfile = fopen("config/config.php", 'w');
 		fwrite($configfile,"<?php\n");
