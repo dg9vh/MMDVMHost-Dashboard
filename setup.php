@@ -49,41 +49,41 @@ include "include/tools.php";
       <h2>MMDVMHost-Configuration</h2>
       <div class="input-group">
         <span class="input-group-addon" id="MMDVMLOGPATH" style="width: 300px">Path to MMDVMHost-logfile</span>
-        <input type="text" name="MMDVMLOGPATH" class="form-control" placeholder="/var/log/mmdvm/" aria-describedby="MMDVMLOGPATH">
+        <input type="text" name="MMDVMLOGPATH" class="form-control" placeholder="/var/log/mmdvm/" aria-describedby="MMDVMLOGPATH" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="MMDVMLOGPREFIX" style="width: 300px">Logfile-prefix</span>
-        <input type="text" name="MMDVMLOGPREFIX" class="form-control" placeholder="MMDVM" aria-describedby="MMDVMLOGPREFIX">
+        <input type="text" name="MMDVMLOGPREFIX" class="form-control" placeholder="MMDVM" aria-describedby="MMDVMLOGPREFIX" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="MMDVMINIPATH" style="width: 300px">Path to MMDVM.ini</span>
-        <input type="text" name="MMDVMINIPATH" class="form-control" placeholder="/etc/mmdvm/" aria-describedby="MMDVMINIPATH">
+        <input type="text" name="MMDVMINIPATH" class="form-control" placeholder="/etc/mmdvm/" aria-describedby="MMDVMINIPATH" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="MMDVMINIFILENAME" style="width: 300px">MMDVM.ini-filename</span>
-        <input type="text" name="MMDVMINIFILENAME" class="form-control" placeholder="MMDVM.ini" aria-describedby="MMDVMINIFILENAME">
+        <input type="text" name="MMDVMINIFILENAME" class="form-control" placeholder="MMDVM.ini" aria-describedby="MMDVMINIFILENAME" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="MMDVMHOSTPATH" style="width: 300px">Path to MMDVMHost-executable</span>
-        <input type="text" name="MMDVMHOSTPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="MMDVMHOSTPATH">
+        <input type="text" name="MMDVMHOSTPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="MMDVMHOSTPATH" required data-fv-notempty-message="Value is required">
       </div>
     </div>
     <div class="container">
       <h2>ircddbgateway-Configuration</h2>
       <div class="input-group">
         <span class="input-group-addon" id="LINKLOGPATH" style="width: 300px">Path to Links.log</span>
-        <input type="text" name="LINKLOGPATH" class="form-control" placeholder="/var/log/" aria-describedby="LINKLOGPATH">
+        <input type="text" name="LINKLOGPATH" class="form-control" placeholder="/var/log/" aria-describedby="LINKLOGPATH" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="IRCDDBGATEWAY" style="width: 300px">Name of ircddbgateway-executeable</span>
-        <input type="text" name="IRCDDBGATEWAY" class="form-control" placeholder="ircddbgatewayd" aria-describedby="IRCDDBGATEWAY">
+        <input type="text" name="IRCDDBGATEWAY" class="form-control" placeholder="ircddbgatewayd" aria-describedby="IRCDDBGATEWAY" required data-fv-notempty-message="Value is required">
       </div>
     </div>
     <div class="container">
       <h2>Global Configuration</h2>
       <div class="input-group">
         <span class="input-group-addon" id="REFRESHAFTER" style="width: 300px">Refresh page after in seconds</span>
-        <input type="text" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER">
+        <input type="text" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="SHOWPROGRESSBARS" style="width: 300px">Show progressbars</span>
@@ -95,11 +95,11 @@ include "include/tools.php";
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="TEMPERATUREHIGHLEVEL" style="width: 300px">Warning temperature</span>
-        <input type="text" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL">
+        <input type="text" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="LHLINES" style="width: 300px">Last heard list lines:</span>
-        <input type="text" name="LHLINES" class="form-control" placeholder="20" aria-describedby="LHLINES">
+        <input type="text" name="LHLINES" class="form-control" placeholder="20" aria-describedby="LHLINES" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
       <span class="input-group-btn">
