@@ -26,6 +26,11 @@
             <th>TX-Freq.</th>
             <th>Rx-Freq.</th>
 <?php
+	if (getEnabled("System Fusion Network", $mmdvmconfigs) == 1) {
+?>
+            <th>YSF-Master</th>
+<?php
+	}
 	if (getEnabled("DMR", $mmdvmconfigs) == 1) {
 ?>
             <th>DMR CC</th>
@@ -45,6 +50,9 @@
 	echo"<td>".getConfigItem("Info", "Location", $mmdvmconfigs)."</td>";
 	echo"<td>".getMHZ(getConfigItem("Info", "TXFrequency", $mmdvmconfigs))."</td>";
 	echo"<td>".getMHZ(getConfigItem("Info", "RXFrequency", $mmdvmconfigs))."</td>";
+	if (getEnabled("System Fusion Network", $mmdvmconfigs) == 1) {
+		echo"<td>".getConfigItem("System Fusion Network", "Address", $mmdvmconfigs)."</td>";
+	}
 	if (getEnabled("DMR", $mmdvmconfigs) == 1) {
 		echo"<td>".getConfigItem("DMR", "ColorCode", $mmdvmconfigs)."</td>";
 		if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
