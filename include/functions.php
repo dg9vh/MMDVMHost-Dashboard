@@ -133,7 +133,9 @@ function getHeardList($logLines) {
 			$lineTokens = explode(", ",$logLine);
 			
 			$duration = strtok($lineTokens[2], " ");
-			$loss = $lineTokens[3];
+			if (array_key_exists(3,$lineTokens)) {
+				$loss = $lineTokens[3];
+			}
 			
 			// if RF-Packet, no LOSS would be reported, so BER is in LOSS position
 			if (startsWith($loss,"BER")) {
@@ -141,7 +143,9 @@ function getHeardList($logLines) {
 				$loss = "";
 			} else {
 				$loss = strtok($loss, " ");
-				$ber = substr($lineTokens[4], 5);
+				if (array_key_exists(4,$lineTokens)) {
+					$ber = substr($lineTokens[4], 5);
+				}
 			}
 			
 			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
