@@ -55,6 +55,8 @@ function createConfigLines() {
 } 
 
 function checkSetup() {
+	$el = error_reporting();
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 	if (defined(DISTRIBUTION)) {
 ?>
 <div class="alert alert-danger" role="alert">You are using an old config.php. Please configure your Dashboard by calling <a href="setup.php">setup.php</a>!</div>
@@ -66,6 +68,7 @@ function checkSetup() {
 	<div class="alert alert-danger" role="alert">You forgot to remove setup.php in root-directory of your dashboard or you forgot to configure it! Please delete the file or configure your Dashboard by calling <a href="setup.php">setup.php</a>!</div>
 	<?php
 		}
-		}
+	}
+	error_reporting($el);
 }
 ?>
