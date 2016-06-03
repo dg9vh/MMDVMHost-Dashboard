@@ -260,12 +260,13 @@ function getLastHeard($logLines) {
 
 function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	// returns mode of repeater actual working in
-	$lastHeard = $metaLastHeard;
-	array_multisort($lastHeard,SORT_DESC);
-	$listElem = $lastHeard[0];
-	
+	//$lastHeard = $metaLastHeard;
+	//array_multisort($lastHeard,SORT_DESC);
+	//$listElem = $lastHeard[0];
+	$listElem = $metaLastHeard[0];
 	$timestamp = new DateTime($listElem[0]);
 	$mode = $listElem[1];
+	var_dump($listElem);
 	if (startsWith($mode, "DMR")) {
 		$mode = "DMR";
 	}
