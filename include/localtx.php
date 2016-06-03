@@ -1,7 +1,7 @@
 <?php
 
-$localTXList = getHeardList($logLines);
-array_multisort($localTXList,SORT_DESC);
+$localTXList = getHeardList($reverseLogLines);
+//array_multisort($localTXList,SORT_DESC);
 
 ?>
   <div class="panel panel-default">

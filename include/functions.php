@@ -102,7 +102,7 @@ function getLog() {
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
 function getHeardList($logLines) {
-	array_multisort($logLines,SORT_DESC);
+	//array_multisort($logLines,SORT_DESC);
 	$heardList = array();
 	$ts1duration = "";
 	$ts1loss = "";
@@ -340,7 +340,7 @@ function getActualLink($logLines, $mode) {
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
-	array_multisort($logLines,SORT_DESC);
+	//array_multisort($logLines,SORT_DESC);
 	switch ($mode) {
     case "D-Star":
     	if (isProcessRunning(IRCDDBGATEWAY)) {
@@ -386,7 +386,7 @@ function getActualReflector($logLines, $mode) {
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
-	array_multisort($logLines,SORT_DESC);
+	//array_multisort($logLines,SORT_DESC);
 	
     foreach ($logLines as $logLine) {
     	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
@@ -407,5 +407,7 @@ function getActualReflector($logLines, $mode) {
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
 $logLines = getLog();
-$lastHeard = getLastHeard($logLines);
+$reverseLogLines = $logLines;
+array_multisort($reverseLogLines,SORT_DESC);
+$lastHeard = getLastHeard($reverseLogLines);
 ?>
