@@ -332,6 +332,8 @@ function getDSTARLinks() {
 		}
 	}
 	$out .= "</table>";
+	
+	fclose($linkLog);
 	return $out;
 }
 
