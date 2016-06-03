@@ -266,7 +266,6 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	$listElem = $metaLastHeard[0];
 	$timestamp = new DateTime($listElem[0]);
 	$mode = $listElem[1];
-	var_dump($listElem);
 	if (startsWith($mode, "DMR")) {
 		$mode = "DMR";
 	}
