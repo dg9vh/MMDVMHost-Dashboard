@@ -226,8 +226,8 @@ function getHeardList($logLines) {
                 break;
 		}
 		
-		// Callsign or ID should be less than 10 chars long, otherwise it could be errorneous
-		if ( strlen($callsign) < 10 ) {
+		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
+		if ( strlen($callsign) < 11 ) {
 			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
 			$duration = "";
 			$loss ="";
