@@ -104,9 +104,6 @@ function getLog() {
 function getHeardList($logLines) {
 	//array_multisort($logLines,SORT_DESC);
 	$heardList = array();
-	$heardCalls = array();
-	$counter = 0;
-	$counter2 = 0;
 	$ts1duration = "";
 	$ts1loss = "";
 	$ts1ber = "";
@@ -230,28 +227,12 @@ function getHeardList($logLines) {
 		}
 		
 		// Callsign or ID should be less than 8 chars long, otherwise it could be errorneous
-		if ( strlen($callsign) <= 10 ) {
-			if(!(array_search($callsign."#".$mode.$id, $heardCalls) > -1) && ($source == "Network")) {
-				array_push($heardCalls, $callsign."#".$mode.$id);
-				$counter++;
-			}
-			if (($counter <= LHLINES) && ($source == "Network")) {
-				array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
-				$duration = "";
-				$loss ="";
-				$ber = "";
-			}
-			
-			if (($counter2 <= 10) && ($source == "RF")) {
-				array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
-				$duration = "";
-				$loss ="";
-				$ber = "";
-				$counter2++;
-			}
-			
+		if ( strlen($callsign) < 10 ) {
+			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
+			$duration = "";
+			$loss ="";
+			$ber = "";
 		}
-
 	}
 	return $heardList;
 }
