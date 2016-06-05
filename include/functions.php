@@ -15,7 +15,7 @@ function getMMDVMHostFileVersion() {
 	// returns creation-time of MMDVMHost as version-number
 	$filename = MMDVMHOSTPATH."/MMDVMHost";
 	if (file_exists($filename)) {
-	    return date("d M y", filectime($filename));
+		return date("d M y", filectime($filename));
 	}
 }
 
@@ -76,7 +76,7 @@ function showMode($mode, $mmdvmconfigs) {
 			}	
 		}
 	} else {
-    	echo "label-default";
+		echo "label-default";
     }
     ?>"><?php echo $mode ?></span></td>
 <?php
@@ -174,11 +174,11 @@ function getHeardList($logLines) {
 						$ts2loss = $loss;
 						$ts2ber = $ber;
 						break;
-					 case "YSF":
-	                    $ysfduration = $duration;
-	                    $ysfloss = $loss;
-	                    $ysfber = $ber;
-	                    break;
+					case "YSF":
+						$ysfduration = $duration;
+						$ysfloss = $loss;
+						$ysfber = $ber;
+						break;
 				}
 			}
 		}
@@ -202,7 +202,7 @@ function getHeardList($logLines) {
 		if (strpos($logLine,"network") > 0 ) {
 			$source = "Network";
 		}
-
+		
 		switch ($mode) {
 			case "D-Star":
 				$duration = $dstarduration;
@@ -260,9 +260,6 @@ function getLastHeard($logLines) {
 
 function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	// returns mode of repeater actual working in
-	//$lastHeard = $metaLastHeard;
-	//array_multisort($lastHeard,SORT_DESC);
-	//$listElem = $lastHeard[0];
 	$listElem = $metaLastHeard[0];
 	$timestamp = new DateTime($listElem[0]);
 	$mode = $listElem[1];
@@ -342,7 +339,6 @@ function getActualLink($logLines, $mode) {
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
-	//array_multisort($logLines,SORT_DESC);
 	switch ($mode) {
     case "D-Star":
     	if (isProcessRunning(IRCDDBGATEWAY)) {
@@ -354,7 +350,7 @@ function getActualLink($logLines, $mode) {
     case "DMR Slot 1":
         foreach ($logLines as $logLine) {
         	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
-	        	$to = ""; 
+				$to = ""; 
 				if (strpos($logLine,"to")) {
 					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
 				}
@@ -368,7 +364,7 @@ function getActualLink($logLines, $mode) {
     case "DMR Slot 2":
         foreach ($logLines as $logLine) {
         	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
-	        	$to = ""; 
+				$to = ""; 
 				if (strpos($logLine,"to")) {
 					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
 				}
@@ -391,8 +387,8 @@ function getActualReflector($logLines, $mode) {
 	//array_multisort($logLines,SORT_DESC);
 	
     foreach ($logLines as $logLine) {
-    	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
-        	$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
+		if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
+			$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
 			
 			if (strlen($from) == 4 && startsWith($from,"4")) {
 				if ($from == "4000") {
@@ -401,7 +397,7 @@ function getActualReflector($logLines, $mode) {
 					return "Reflector ".$from;
 				}
 			} 
-    	}
+		}
 	}
 	return "Reflector not linked";
 }
