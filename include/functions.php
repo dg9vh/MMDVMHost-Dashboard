@@ -157,8 +157,9 @@ function getHeardList($logLines) {
 		
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 			$lineTokens = explode(", ",$logLine);
-			
-			$duration = strtok($lineTokens[2], " ");
+			if (array_key_exists(2,$lineTokens)) {
+				$duration = strtok($lineTokens[2], " ");
+			}
 			if (array_key_exists(3,$lineTokens)) {
 				$loss = $lineTokens[3];
 			}
