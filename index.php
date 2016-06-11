@@ -43,6 +43,9 @@ include "include/repeaterinfo.php";
 include "include/modes.php";
 include "include/lh.php";
 include "include/localtx.php";
+if (defined("SHOWPROGRESSBARS")) {
+	include "include/ysfgatewayinfo.php";
+}
 ?>
 	<div class="panel panel-info">
 <?php

@@ -74,6 +74,30 @@ include "include/tools.php";
       </div>
     </div>
     <div class="container">
+      <h2>YSFGateway-Configuration</h2>
+      
+      <div class="input-group">
+        <span class="input-group-addon" id="ENABLEYSFGATEWAY" style="width: 300px">Enable YSFGateway</span>
+        <div class="panel-body"><input type="checkbox" name="ENABLEYSFGATEWAY"></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="YSFGATEWAYLOGPATH" style="width: 300px">Path to YSFGateway-logfile</span>
+        <input type="text" name="YSFGATEWAYLOGPATH" class="form-control" placeholder="/var/log/YSFGateway/" aria-describedby="YSFGATEWAYLOGPATH" required data-fv-notempty-message="Value is required">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="YSFGATEWAYLOGPREFIX" style="width: 300px">Logfile-prefix</span>
+        <input type="text" name="YSFGATEWAYLOGPREFIX" class="form-control" placeholder="YSFGateway" aria-describedby="YSFGATEWAYLOGPREFIX" required data-fv-notempty-message="Value is required">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="YSFGATEWAYINIPATH" style="width: 300px">Path to YSFGateway.ini</span>
+        <input type="text" name="YSFGATEWAYINIPATH" class="form-control" placeholder="/etc/YSFGateway/" aria-describedby="YSFGATEWAYINIPATH" required data-fv-notempty-message="Value is required">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="YSFGATEWAYINIFILENAME" style="width: 300px">YSFGateway.ini-filename</span>
+        <input type="text" name="YSFGATEWAYINIFILENAME" class="form-control" placeholder="YSFGateway.ini" aria-describedby="YSFGATEWAYINIFILENAME" required data-fv-notempty-message="Value is required">
+      </div>
+    </div>   
+    <div class="container">
       <h2>ircddbgateway-Configuration</h2>
       <div class="input-group">
         <span class="input-group-addon" id="LINKLOGPATH" style="width: 300px">Path to Links.log</span>

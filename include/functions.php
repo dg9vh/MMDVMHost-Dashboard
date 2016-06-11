@@ -21,14 +21,26 @@ function getMMDVMHostFileVersion() {
 
 function getMMDVMConfig() {
 	// loads MMDVM.ini into array for further use
-	$mmdvmconfigs = array();
+	$conf = array();
 	if ($configs = fopen(MMDVMINIPATH."/".MMDVMINIFILENAME, 'r')) {
 		while ($config = fgets($configs)) {
-			array_push($mmdvmconfigs, trim ( $config, " \t\n\r\0\x0B"));
+			array_push($conf, trim ( $config, " \t\n\r\0\x0B"));
 		}
 		fclose($configs);
 	}
-	return $mmdvmconfigs;
+	return $conf;
+}
+
+function getYSFGatewayConfig() {
+	// loads MMDVM.ini into array for further use
+	$conf = array();
+	if ($configs = fopen(YSFGATEWAYINIPATH."/".YSFGATEWAYINIFILENAME, 'r')) {
+		while ($config = fgets($configs)) {
+			array_push($conf, trim ( $config, " \t\n\r\0\x0B"));
+		}
+		fclose($configs);
+	}
+	return $conf;
 }
 
 function getCallsign($mmdvmconfigs) {
@@ -82,7 +94,7 @@ function showMode($mode, $mmdvmconfigs) {
 <?php
 }
 
-function getLog() {
+function getMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();
 	if ($log = fopen(MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log", 'r')) {
@@ -90,6 +102,20 @@ function getLog() {
 			if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK") && !startsWith($logLine,"I:")) {
 				array_push($logLines, $logLine);
 			}
+		}
+		fclose($log);
+	}
+	return $logLines;
+}
+
+function getYSFGatewayLog() {
+	// Open Logfile and copy loglines into LogLines-Array()
+	$logLines = array();
+	if ($log = fopen(YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log", 'r')) {
+		while ($logLine = fgets($log)) {
+		//	if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK") && !startsWith($logLine,"I:")) {
+				array_push($logLines, $logLine);
+		//	}
 		}
 		fclose($log);
 	}
@@ -402,10 +428,38 @@ function getActualReflector($logLines, $mode) {
 	return "Reflector not linked";
 }
 
+function getActiveYSFReflectors($logLines) {
+// 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
+// 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
+// D: 2016-06-11 19:09:31.371 Have reflector status reply from 89164/FUSIONBE2       /FusionBelgium /002
+	$reflectors = Array();
+	$reflectorlist = Array();
+	foreach ($logLines as $logLine) {
+		if (strpos($logLine, "Have reflector status reply from")) {
+			$timestamp = substr($logLine, 3, 19);
+			$str = substr($logLine, 60);
+			$id = strtok($str, "/");
+			$name = strtok("/");
+			$description = strtok("/");
+			$concount = strtok("/");
+			if(!(array_search($name, $reflectors) > -1)) {
+				array_push($reflectors,$name);
+				array_push($reflectorlist, array($name, $description, $id, $concount, $timestamp));
+			}
+		}
+	}
+	array_multisort($reflectorlist);
+	return $reflectorlist;
+}
+
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
-$logLines = getLog();
-$reverseLogLines = $logLines;
-array_multisort($reverseLogLines,SORT_DESC);
-$lastHeard = getLastHeard($reverseLogLines);
+$logLinesMMDVM = getMMDVMLog();
+$reverseLogLinesMMDVM = $logLinesMMDVM;
+array_multisort($reverseLogLinesMMDVM,SORT_DESC);
+$lastHeard = getLastHeard($reverseLogLinesMMDVM);
+$YSFGatewayconfigs = getYSFGatewayConfig();
+$logLinesYSFGateway = getYSFGatewayLog();
+$reverseLogLinesYSFGateway = $logLinesYSFGateway;
+array_multisort($reverseLogLinesYSFGateway,SORT_DESC);
 ?>

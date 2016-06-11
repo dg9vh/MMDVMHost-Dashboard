@@ -13,9 +13,9 @@
 <?php
 	echo"<tr>";
 	echo"<td>".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
-	echo"<td>".getActualLink($reverseLogLines, "D-Star")."</td>";
-	echo"<td>".getActualLink($reverseLogLines, "DMR Slot 1")."</td>";
-	echo"<td>".getActualLink($reverseLogLines, "DMR Slot 2")."/". getActualReflector($logLines, "DMR Slot 2") ."</td>";
+	echo"<td>".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
+	echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
+	echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ."</td>";
 	echo"</tr>\n";
 ?>
     <tr>
