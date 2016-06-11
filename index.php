@@ -43,7 +43,7 @@ include "include/repeaterinfo.php";
 include "include/modes.php";
 include "include/lh.php";
 include "include/localtx.php";
-if (defined("SHOWPROGRESSBARS")) {
+if (defined("ENABLEYSFGATEWAY")) {
 	include "include/ysfgatewayinfo.php";
 }
 ?>
