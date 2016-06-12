@@ -20,7 +20,7 @@
 </div>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Reflectors-Info</div>
+  <div class="panel-heading">YSFReflectors reported active last 2 hours</div>
   <!-- Tabelle -->
   <table class="table">
 
@@ -30,6 +30,7 @@
 		if (count($activeYSFReflectors) > 0) {
 		?>
 			<tr>
+				<th>No.</th>
 				<th>Name</th>
 				<th>Description</th>
 				<th>ID</th>
@@ -37,12 +38,15 @@
 				<th>Last info of</th>
 			</tr>
 			<?php
+			$counter = 1;
 			foreach ($activeYSFReflectors as $reflector) {
 				echo "<tr>";
+				echo "<td>$counter</td>";
 				for ($i = 0; $i < 5; $i++) {
 					echo"<td>$reflector[$i]</td>";
 				}
 				echo "</tr>";
+				$counter++;
 			}
 		}
 ?>

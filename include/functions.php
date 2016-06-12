@@ -113,9 +113,9 @@ function getYSFGatewayLog() {
 	$logLines = array();
 	if ($log = fopen(YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log", 'r')) {
 		while ($logLine = fgets($log)) {
-		//	if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK") && !startsWith($logLine,"I:")) {
+			if (startsWith($logLine,"D:")) {
 				array_push($logLines, $logLine);
-		//	}
+			}
 		}
 		fclose($log);
 	}
@@ -438,14 +438,20 @@ function getActiveYSFReflectors($logLines) {
 	foreach ($logLines as $logLine) {
 		if (strpos($logLine, "Have reflector status reply from")) {
 			$timestamp = substr($logLine, 3, 19);
-			$str = substr($logLine, 60);
-			$id = strtok($str, "/");
-			$name = strtok("/");
-			$description = strtok("/");
-			$concount = strtok("/");
-			if(!(array_search($name, $reflectors) > -1)) {
-				array_push($reflectors,$name);
-				array_push($reflectorlist, array($name, $description, $id, $concount, $timestamp));
+			$timestamp2 = new DateTime($timestamp);
+			$now =  new DateTime();
+			$timestamp2->add(new DateInterval('PT2H'));
+		
+			if ($now->format('U') <= $timestamp2->format('U')) {
+				$str = substr($logLine, 60);
+				$id = strtok($str, "/");
+				$name = strtok("/");
+				$description = strtok("/");
+				$concount = strtok("/");
+				if(!(array_search($name, $reflectors) > -1)) {
+					array_push($reflectors,$name);
+					array_push($reflectorlist, array($name, $description, $id, $concount, $timestamp));
+				}
 			}
 		}
 	}
