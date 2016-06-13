@@ -16,8 +16,6 @@ Required are
 * Webserver like 
 * lighttpd
 * php5
-* entry in /etc/sudoers: 
-  www-data ALL=(ALL) NOPASSWD: ALL
 
 
 Installation
