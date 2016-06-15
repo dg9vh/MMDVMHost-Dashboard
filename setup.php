@@ -131,10 +131,6 @@ include "include/tools.php";
         <input type="text" name="LHLINES" class="form-control" placeholder="20" aria-describedby="LHLINES" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="submit" form="config">Save configuration</button>
-      </span>
-      <div class="input-group">
         <span class="input-group-addon" id="REBOOTMMDVM" style="width: 300px">Reboot MMDVMHost command:</span>
         <input type="text" name="REBOOTMMDVM" class="form-control" placeholder="sudo systemctl restart mmdvmhost.service" aria-describedby="REBOOTMMDVM">
       </div>	
@@ -143,11 +139,14 @@ include "include/tools.php";
         <input type="text" name="REBOOTSYS" class="form-control" placeholder="sudo reboot" aria-describedby="REBOOTSYS">
       </div>	  
       <div class="input-group">
-      <div class="input-group">
         <span class="input-group-addon" id="HALTSYS" style="width: 300px">Halt system command:</span>
         <input type="text" name="HALTSYS" class="form-control" placeholder="sudo halt" aria-describedby="HALTSYS">
-      </div>	      
-    </div>
+      </div>	  
+      <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit" form="config">Save configuration</button>
+      </span>      
+      </div>
     </div>
   </form>
   <?php
