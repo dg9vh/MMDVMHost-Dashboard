@@ -4,7 +4,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Last Heard List of today's <?php echo LHLINES; ?> callsigns.</div>
   <!-- Tabelle -->
-  <table class="table">
+  <table id="lastHeard" class="table table-condensed">
     <tr>
       <th>Time (UTC)</th>
       <th>Mode</th>
