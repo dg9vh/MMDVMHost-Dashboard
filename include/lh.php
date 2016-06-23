@@ -25,7 +25,11 @@ for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
 		echo"<td>$listElem[2]</td>";
 		echo"<td>$listElem[3]</td>";
 		echo"<td>$listElem[4]</td>";
-		echo"<td>$listElem[5]</td>";
+		if ($listElem[5] == "RF"){
+			echo "<td><span class=\"label label-success\">RF</span></td>";
+		}else{
+			echo"<td>$listElem[5]</td>";
+		}
 		if ($listElem[6] == null) {
 				echo'<td colspan="3">transmitting</td>';
 			} else if ($listElem[6] == "SMS") {
