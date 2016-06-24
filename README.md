@@ -42,6 +42,11 @@ At the moment there are several information-sections shown:
   This is a list of the last x callsigns heard in general in the system over all modes and directions. X is to be configured in /config/config.php
 * Today's last 10 local transmissions:
   For better debugging/calibrating etc. the last 10 local transmissions (RF-side of the repeater) are listed.
+New features by EA4GKQ
+======================
+* Buttons toolbar
+* LastHeard table are sorted 
+* Some mods to improve mobile experience
 
 Contact
 =======
