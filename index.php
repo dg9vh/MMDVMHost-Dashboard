@@ -75,6 +75,16 @@ $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';		
 ?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
 	</div>
-
+	<script>
+	$(document).ready(function(){
+	  
+	  $('#lastHeard').dataTable( {
+	    "aaSorting": [[0,'desc']]
+	  } );
+	  $('#localTx').dataTable( {
+	    "aaSorting": [[0,'desc']]
+	  } );
+	});
+	</script>
   </body>
 </html>
