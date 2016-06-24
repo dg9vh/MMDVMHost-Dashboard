@@ -3,6 +3,7 @@
   <div class="panel-heading">Repeater Info</div>
   
   <!-- Tabelle -->
+  <div class="table-responsive">  
   <table class="table">
     <tr>
       <th>Actual Mode</th>
@@ -81,4 +82,5 @@
       </td>
     </tr>
   </table>
+  </div>
 </div>
