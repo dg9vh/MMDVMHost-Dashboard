@@ -74,10 +74,10 @@ echo '<!--Page generated in '.$total_time.' seconds.-->';
 <script>
 $(document).ready(function(){
   
-  $('#lastHeard').dataTable( {
+var lastHeardT = $('#lastHeard').dataTable( {
    "aaSorting": [[0,'desc']]
   } );
-  $('#localTx').dataTable( {
+var localTxT = $('#localTx').dataTable( {
     "aaSorting": [[0,'desc']]
   } );
 });
