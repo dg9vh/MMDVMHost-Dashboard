@@ -1,8 +1,9 @@
 <?php
+$totalLH = count($lastHeard);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Last Heard List of today's <?php echo LHLINES; ?> callsigns.</div>
+  <div class="panel-heading">Last Heard List of today's <?php echo $totalLH; ?> callsigns.</div>
   <!-- Tabelle -->
   <div class="table-responsive">  
   <table id="lastHeard" class="table table-condensed">
@@ -21,7 +22,7 @@
    </thead>
    <tbody>
 <?php
-for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
+for ($i = 0;  ($i < $totalLH); $i++) {
 		$listElem = $lastHeard[$i];
 		echo"<tr>";
 		echo"<td nowrap>$listElem[0]</td>";
