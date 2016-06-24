@@ -11,6 +11,8 @@ It relies on MMDVMHost by G4KLX (see https://github.com/g4klx/MMDVMHost). At
 this place a big thank you to Jonathan for his great work he did with this 
 software.
 
+Based on G4KLX code, mod by EA4GKQ
+
 Required are
 ============
 * Webserver like 
@@ -43,4 +45,5 @@ At the moment there are several information-sections shown:
 
 Contact
 =======
-Feel free to contact the author via email: dg9vh@darc.de
+Feel free to contact the author via email: dg9vh[@]darc.de
+Feel free to contact the mod author via email: ea4gkq[@]ure.es
