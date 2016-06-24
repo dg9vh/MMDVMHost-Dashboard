@@ -23,10 +23,6 @@ include "include/functions.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
-
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
-
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"></style>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
@@ -75,16 +71,16 @@ $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';		
 ?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
 	</div>
-	<script>
-	$(document).ready(function(){
-	  
-	  $('#lastHeard').dataTable( {
-	    "aaSorting": [[0,'desc']]
-	  } );
-	  $('#localTx').dataTable( {
-	    "aaSorting": [[0,'desc']]
-	  } );
-	});
-	</script>
+<script>
+$(document).ready(function(){
+  
+  $('#lastHeard').dataTable( {
+   "aaSorting": [[0,'desc']]
+  } );
+  $('#localTx').dataTable( {
+    "aaSorting": [[0,'desc']]
+  } );
+});
+</script>
   </body>
 </html>
