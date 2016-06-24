@@ -56,12 +56,4 @@ for ($i = 0; $i < count($localTXList); $i++) {
   </table>
  </div>
 </div>
-<script>
-$(document).ready(function(){
-  
-  $('#localTx').dataTable( {
-    "aaSorting": [[0,'desc']]
-  } );
-	
-});
-</script>
+
