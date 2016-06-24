@@ -73,7 +73,7 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';		
-?> | get your own at: <a href="https://github.com/ayasystems/MMDVMHost-Dashboard">Github</a>
+?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
 	</div>
 
   </body>
