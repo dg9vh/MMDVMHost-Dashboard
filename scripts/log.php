@@ -15,8 +15,8 @@ $fileName = MMDVMLOGPATH. "/MMDVM-".date(Y)."-".date(m)."-".date(d).".log";
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="<?php echo REFRESHAFTER?>">
+    <meta name="viewport" content="width=800px,initial-scale=0.4,maximum-scale=0.6">
+    <!--<meta http-equiv="refresh" content="<?php echo REFRESHAFTER?>">-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -48,7 +48,10 @@ $fileName = MMDVMLOGPATH. "/MMDVM-".date(Y)."-".date(m)."-".date(d).".log";
    <div class="panel-heading">
       <span class="label label-info">Fichero log <?php echo $fileName ?></span>
    </div>
-<div class="panel-body">
+  <div class="table-responsive">  
+  <table class="table table-condensed">
+    <tr>Log file</tr>
+
 <?php
 /*
 $fileOutput = file_get_contents($fileName, FILE_USE_INCLUDE_PATH);
@@ -62,15 +65,21 @@ $file = new SplFileObject($fileName);
 // Loop until we reach the end of the file.
 while (!$file->eof()) {
     // Echo one line from the file.
-    echo $file->fgets();
-    echo "<br>";
+	echo"<tr>";
+    echo "<td>";
+	echo $file->fgets();
+    echo "</td>";
+	echo"</tr>\n";
 }
 
 // Unset the file to call __destruct(), closing the file handle.
 $file = null;
 
 ?>
+   </table>
    </div>
+   
+   
    <A NAME="TheEnd">
   </div>
 	<div class="panel panel-info">
