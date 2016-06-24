@@ -52,12 +52,4 @@ for ($i = 0;  ($i < $totalLH); $i++) {
   </table>
   </div>  
 </div>
-<script>
-$(document).ready(function(){
-  
-  $('#lastHeard').dataTable( {
-    "aaSorting": [[0,'desc']]
-  } );
-	
-});
-</script>
+
