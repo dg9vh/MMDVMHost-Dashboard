@@ -13,7 +13,7 @@ include "include/functions.php";
 <html lang="de">
   <head>
     <meta charset="utf-8">
-     <meta name="viewport" content="width=600px,initial-scale=0.4,maximum-scale=0.4, user-scalable=no">
+     <meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=1, user-scalable=yes">
 	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
     <meta http-equiv="refresh" content="<?php echo REFRESHAFTER?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
@@ -27,15 +27,11 @@ include "include/functions.php";
 
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
 
-<link rel="stylesheet" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"></style>
-<script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"></style>
+    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
 
-	<style>
-	    h4 {
-		display: inline
-		}		
-	</style>
+ 
     <title><?php echo getCallsign($mmdvmconfigs) ?> - MMDVM-Dashboard by DG9VH</title>
   </head>
   <body>
@@ -77,7 +73,8 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';	
-?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
+?> | get your own at: <a href="https://github.com/ayasystems/MMDVMHost-Dashboard">Github</a>
 	</div>
+
   </body>
 </html>
