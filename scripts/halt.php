@@ -13,7 +13,7 @@ include "../include/functions.php";
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=extend-to-zoom, initial-scale=1.0">
  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
