@@ -30,7 +30,7 @@ function startsWith($haystack, $needle) {
 }
 
 function getMHZ($freq) {
-	return substr($freq,0,3) . "." . substr($freq,3,3) . "." . substr($freq,6) . " Mhz";
+	return substr($freq,0,3) . "." . substr($freq,3,6) . " MHz";
 }
 
 function isProcessRunning($processname) {
