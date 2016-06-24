@@ -47,9 +47,6 @@ for ($i = 0; $i < count($localTXList); $i++) {
 			}
 			echo"</tr>\n";
 			$counter++;
-			if ($counter == 20) {
-				break;
-			}
 		}
 	}
 
