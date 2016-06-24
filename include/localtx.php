@@ -9,7 +9,7 @@ $localTXList = getHeardList($reverseLogLinesMMDVM);
   <div class="panel-heading">Today's last 20 local transmissions.</div>
   <!-- Tabelle -->
 <div class="table-responsive">  
-  <table id="localTx" class="table table-condensed table-hover">
+  <table id="localTx" class="table table-condensed">
    <thead>
     <tr>
       <th>Time (UTC)</th>
