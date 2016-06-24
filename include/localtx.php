@@ -1,6 +1,6 @@
 <?php
 
-$localTXList = getHeardList($reverseLogLinesMMDVM);
+$localTXList = getHeardList($reverseLogLines);
 //array_multisort($localTXList,SORT_DESC);
 
 ?>
@@ -8,7 +8,8 @@ $localTXList = getHeardList($reverseLogLinesMMDVM);
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Today's last 10 local transmissions.</div>
   <!-- Tabelle -->
-  <table class="table">
+<div class="table-responsive">  
+  <table class="table table-condensed">
     <tr>
       <th>Time (UTC)</th>
       <th>Mode</th>
@@ -23,7 +24,7 @@ $localTXList = getHeardList($reverseLogLinesMMDVM);
 <?php
 $counter = 0;
 for ($i = 0; $i < count($localTXList); $i++) {
-		$listElem = $localTXList[$i];
+		$listElem = $localTXList[$i];		
 		if ($listElem[5] == "RF" && ($listElem[1]=="D-Star" || startsWith($listElem[1], "DMR") || $listElem[1]=="YSF")) {
 			echo"<tr>";
 			echo"<td>$listElem[0]</td>";
@@ -33,7 +34,7 @@ for ($i = 0; $i < count($localTXList); $i++) {
 			echo"<td>$listElem[4]</td>";
 			echo"<td>$listElem[5]</td>";
 			if ($listElem[6] == null) {
-				echo'<td colspan="3">transmitting</td>';
+				echo'<td colspan="3">in TX</td>';
 			} else if ($listElem[6] == "SMS") {
 				echo'<td colspan="3">sending or receiving SMS</td>';
 			} else {
@@ -50,5 +51,7 @@ for ($i = 0; $i < count($localTXList); $i++) {
 	}
 
 ?>
+   
   </table>
+ </div>
 </div>
