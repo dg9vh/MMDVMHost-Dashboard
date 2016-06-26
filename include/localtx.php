@@ -37,9 +37,9 @@ for ($i = 0; $i < count($localTXList); $i++) {
 			echo"<td nowrap>$listElem[4]</td>";
 			echo"<td nowrap>$listElem[5]</td>";
 			if ($listElem[6] == null) {
-				echo'<td  nowrap colspan="3">in TX</td>';
+				echo'<td  nowrap>in TX</td><td></td><td></td>';
 			} else if ($listElem[6] == "SMS") {
-				echo'<td nowrap colspan="3">sending or receiving SMS</td>';
+				echo'<td nowrap>sending or receiving SMS</td><td></td><td></td>';
 			} else {
 				echo"<td nowrap>$listElem[6]</td>";
 				echo"<td nowrap>$listElem[7]</td>";
