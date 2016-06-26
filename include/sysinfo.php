@@ -94,6 +94,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">System Info</div>
   <!-- Tabelle -->
+  	     <div class="table-responsive">  
 		<table class="table">
 			<tbody>
 				<tr>
@@ -131,4 +132,5 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
 </div>

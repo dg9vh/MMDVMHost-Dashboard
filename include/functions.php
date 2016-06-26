@@ -227,7 +227,7 @@ function getHeardList($logLines) {
 		$target = substr($logLine, strpos($logLine, "to") + 3); 
 		$source = "RF";
 		if (strpos($logLine,"network") > 0 ) {
-			$source = "Network";
+			$source = "Net";
 		}
 		
 		switch ($mode) {

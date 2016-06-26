@@ -1,10 +1,13 @@
 <?php
+$totalLH = count($lastHeard);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Last Heard List of today's <?php echo LHLINES; ?> callsigns.</div>
+  <div class="panel-heading">Last Heard List of today's <?php echo $totalLH; ?> callsigns.</div>
   <!-- Tabelle -->
-  <table class="table">
+  <div class="table-responsive">  
+  <table id="lastHeard" class="table table-condensed table-striped table-hover">
+   <thead>
     <tr>
       <th>Time (UTC)</th>
       <th>Mode</th>
@@ -16,28 +19,37 @@
       <th>Loss</th>
       <th>BER</th>
     </tr>
+   </thead>
+   <tbody>
 <?php
-for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
+for ($i = 0;  ($i < $totalLH); $i++) {
 		$listElem = $lastHeard[$i];
 		echo"<tr>";
-		echo"<td>$listElem[0]</td>";
-		echo"<td>$listElem[1]</td>";
-		echo"<td>$listElem[2]</td>";
-		echo"<td>$listElem[3]</td>";
-		echo"<td>$listElem[4]</td>";
-		echo"<td>$listElem[5]</td>";
+		echo"<td nowrap>$listElem[0]</td>";
+		echo"<td nowrap>$listElem[1]</td>";
+		echo"<td nowrap>$listElem[2]</td>";
+		echo"<td nowrap>$listElem[3]</td>";
+		echo"<td nowrap>$listElem[4]</td>";
+		if ($listElem[5] == "RF"){
+			echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
+		}else{
+			echo"<td nowrap>$listElem[5]</td>";
+		}
 		if ($listElem[6] == null) {
-				echo'<td colspan="3">transmitting</td>';
+				echo'<td nowrap>transmitting</td><td></td><td></td>';
 			} else if ($listElem[6] == "SMS") {
-				echo'<td colspan="3">sending or receiving SMS</td>';
+				echo'<td nowrap>sending or receiving SMS</td><td></td><td></td>';
 			} else {
-			echo"<td>$listElem[6]</td>";
-			echo"<td>$listElem[7]</td>";
-			echo"<td>$listElem[8]</td>";
+			echo"<td nowrap>$listElem[6]</td>";
+			echo"<td nowrap>$listElem[7]</td>";
+			echo"<td nowrap>$listElem[8]</td>";
 		}
 		echo"</tr>\n";
 	}
 
 ?>
+  </tbody>
   </table>
+  </div>  
 </div>
+
