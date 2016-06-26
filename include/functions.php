@@ -296,8 +296,18 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	
 	$now =  new DateTime();
 	$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
-	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
-
+	
+	if ($hangtime != "") {
+		$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+	} else {
+		$source = $listElem[6];
+		if ($source === "Network") {
+			$hangtime = getConfigItem("General", "NetModeHang", $mmdvmconfigs);
+		} else {
+			$hangtime = getConfigItem("General", "RFModeHang", $mmdvmconfigs);
+		}
+		$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+	}
 	if ($now->format('U') > $timestamp->format('U')) {
 		return "idle";
 	} else {
