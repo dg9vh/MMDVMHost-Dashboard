@@ -45,7 +45,7 @@ At the moment there are several information-sections shown:
 
 New features by EA4GKQ
 ======================
-* Buttons toolbar
+* Buttons toolbar, security-hint: to make this function secure, please enable htpasswd-function for folder "scripts"!
 * LastHeard table are sorted 
 * Some mods to improve mobile experience
 

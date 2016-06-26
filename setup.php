@@ -131,6 +131,10 @@ include "include/tools.php";
         <input type="text" name="LHLINES" class="form-control" placeholder="20" aria-describedby="LHLINES" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="ENABLEMANAGEMENT" style="width: 300px">Enable Management-Functions below</span>
+        <div class="panel-body"><input type="checkbox" name="ENABLEMANAGEMENT"></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="REBOOTMMDVM" style="width: 300px">Reboot MMDVMHost command:</span>
         <input type="text" name="REBOOTMMDVM" class="form-control" placeholder="sudo systemctl restart mmdvmhost.service" aria-describedby="REBOOTMMDVM">
       </div>	
