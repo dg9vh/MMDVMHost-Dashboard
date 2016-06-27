@@ -276,10 +276,10 @@ function getLastHeard($logLines) {
 				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
 				array_push($lastHeard, $listElem);
 				$counter++;
-			}
+			}/*
 			if ($counter == LHLINES) {
 				return $lastHeard;
-			}
+			}*/
 		}
 	}
 	return $lastHeard;

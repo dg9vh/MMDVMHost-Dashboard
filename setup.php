@@ -125,11 +125,11 @@ include "include/tools.php";
       <div class="input-group">
         <span class="input-group-addon" id="TEMPERATUREHIGHLEVEL" style="width: 300px">Warning temperature</span>
         <input type="text" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL" required data-fv-notempty-message="Value is required">
-      </div>
+      </div><!--
       <div class="input-group">
         <span class="input-group-addon" id="LHLINES" style="width: 300px">Last heard list lines:</span>
         <input type="text" name="LHLINES" class="form-control" placeholder="20" aria-describedby="LHLINES" required data-fv-notempty-message="Value is required">
-      </div>
+      </div>-->
       <div class="input-group">
         <span class="input-group-addon" id="ENABLEMANAGEMENT" style="width: 300px">Enable Management-Functions below</span>
         <div class="panel-body"><input type="checkbox" name="ENABLEMANAGEMENT"></div>
