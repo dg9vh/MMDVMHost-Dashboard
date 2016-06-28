@@ -50,6 +50,7 @@ include "include/functions.php";
 checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/sysinfo.php";
+include "include/disk.php";
 include "include/repeaterinfo.php";
 include "include/modes.php";
 include "include/lh.php";
