@@ -459,6 +459,21 @@ function getActiveYSFReflectors($logLines) {
 	return $reflectorlist;
 }
 
+
+ function getSize($filesize, $precision = 2)
+    {
+        $units = array('', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y');
+
+        foreach ($units as $idUnit => $unit)
+        {
+            if ($filesize > 1024)
+                $filesize /= 1024;
+            else
+                break;
+        }
+        
+        return round($filesize, $precision).' '.$units[$idUnit].'B';
+    }
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
 $logLinesMMDVM = getMMDVMLog();
