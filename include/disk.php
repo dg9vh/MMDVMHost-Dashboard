@@ -47,7 +47,7 @@ else
     {
         list($filesystem, $type, $total, $used, $free, $percent, $mount) = explode(',', $mounted);
 
-       if (strpos($type, 'tmpfs') !== false )
+       if ((strpos($type, 'tmpfs') !== false) && (strpos($mount, '/mnt/ramdisk') === false))
             continue;
 
 
