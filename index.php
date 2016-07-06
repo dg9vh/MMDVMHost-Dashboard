@@ -84,6 +84,9 @@ var lastHeardT = $('#lastHeard').dataTable( {
 var localTxT = $('#localTx').dataTable( {
     "aaSorting": [[0,'desc']]
   } );
+var ysfGatewaysT = $('#ysfGateways').dataTable( {
+    "aaSorting": [[0,'asc']]
+  } );
 });
 </script>
   </body>

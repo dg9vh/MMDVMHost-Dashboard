@@ -22,13 +22,15 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">YSFReflectors reported active last 2 hours</div>
   <!-- Tabelle -->
-  <table class="table">
+  <div class="table-responsive">  
+  <table id="ysfGateways" class="table table-condensed table-striped table-hover">
 
 <?php
 	
 		$activeYSFReflectors = getActiveYSFReflectors($reverseLogLinesYSFGateway);
 		if (count($activeYSFReflectors) > 0) {
 		?>
+			<thead>
 			<tr>
 				<th>No.</th>
 				<th>Name</th>
@@ -37,7 +39,9 @@
 				<th>Connections</th>
 				<th>Last info of</th>
 			</tr>
-			<?php
+			</thead>
+			<tbody>
+<?php
 			$counter = 1;
 			foreach ($activeYSFReflectors as $reflector) {
 				$timestamp = $reflector[4];
@@ -63,5 +67,7 @@
 			}
 		}
 ?>
+			<tbody>
   </table>
+  </div>
 </div>
