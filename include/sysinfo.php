@@ -1,8 +1,16 @@
 <?php
-	exec("cat /sys/class/thermal/thermal_zone0/temp", $cputemp);
-	exec("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq", $cpufreq);
-	$cputemp = $cputemp[0] / 1000;
-	if (defined("TEMPERATUREALERT") && $cputemp > TEMPERATUREHIGHLEVEL) {
+	$cputemp = NULL;
+	$cpufreq = NULL;
+	if (file_exists ("/sys/class/thermal/thermal_zone0/temp")) {
+		exec("cat /sys/class/thermal/thermal_zone0/temp", $cputemp);
+		$cputemp = $cputemp[0] / 1000;
+	}
+	if (file_exists ("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq")) {
+		exec("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq", $cpufreq);
+		$cpufreq = $cpufreq[0] / 1000;
+	}
+	
+	if (defined("TEMPERATUREALERT") && $cputemp > TEMPERATUREHIGHLEVEL && $cputemp !== NULL) {
 ?>
 		<script>
 			function deleteLayer(id) {
@@ -62,8 +70,6 @@
 <?php
 	}
 
-	$cpufreq = $cpufreq[0] / 1000;
-
 	$output = shell_exec('cat /proc/loadavg');
 	$sysload = substr($output,0,strpos($output," "))*100; 
 
@@ -94,20 +100,44 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">System Info</div>
   <!-- Tabelle -->
-  	     <div class="table-responsive">  
-		<table class="table">
+	<div class="table-responsive">  
+		<table id="sysinfo" class="table table-condensed">
 			<tbody>
 				<tr>
+					<?php
+					if ($cputemp !== NULL) {
+					?>
 					<th>CPU-Temperature</th>
+					<?php
+					}
+					?>
+					<?php
+					if ($cpufreq !== NULL) {
+					?>
 					<th>CPU-Frequency</th>
+					<?php
+					}
+					?>
 					<th>System-Load</th>
 					<th>CPU-Usage</th>
 					<th>Uptime</th>
 					<th>Idle</th>
 				</tr>
 				<tr class="gatewayinfo">
+					<?php
+					if ($cputemp !== NULL) {
+					?>
 					<td><?php echo $cputemp; ?> &deg;C</td>
+					<?php
+					}
+					?>
+					<?php
+					if ($cpufreq !== NULL) {
+					?>
 					<td><?php echo $cpufreq; ?> MHz</td>
+					<?php
+					}
+					?>
 					<td><?php echo $sysload; ?> %</td>
 					<td>
 <?php
