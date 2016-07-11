@@ -8,6 +8,7 @@ $start = $time;
 include "config/config.php";
 include "include/tools.php";
 include "include/functions.php";
+include "version.php";
 ?>
 <!doctype html>
 <html lang="de">
@@ -66,7 +67,7 @@ if (defined("ENABLEYSFGATEWAY")) {
 <?php
 $datum = date("Y-m-d");
 $uhrzeit = date("H:i:s");
-echo "Last Update $datum, $uhrzeit";
+echo "MMDVMHost-Dashboard V ".VERSION." | Last Reload $datum, $uhrzeit";
 $time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
