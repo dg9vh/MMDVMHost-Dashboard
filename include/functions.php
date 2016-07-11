@@ -153,6 +153,8 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"received RF header for wrong repeater")) {
 			continue;
+		} else if(strpos($logLine,"unable to decode the network CSBK")) {
+			continue;
 		}
 		
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
