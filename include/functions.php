@@ -388,7 +388,9 @@ function getActualLink($logLines, $mode) {
         break;
     case "DMR Slot 1":
         foreach ($logLines as $logLine) {
-        	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
+        	if(strpos($logLine,"unable to decode the network CSBK")) {
+				continue;
+			} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
 				$to = ""; 
 				if (strpos($logLine,"to")) {
 					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
@@ -402,7 +404,9 @@ function getActualLink($logLines, $mode) {
         break;
     case "DMR Slot 2":
         foreach ($logLines as $logLine) {
-        	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
+        	if(strpos($logLine,"unable to decode the network CSBK")) {
+				continue;
+			} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
 				$to = ""; 
 				if (strpos($logLine,"to")) {
 					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
