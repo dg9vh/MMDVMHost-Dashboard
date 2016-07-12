@@ -99,7 +99,7 @@ function getMMDVMLog() {
 	$logLines = array();
 	if ($log = fopen(MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log", 'r')) {
 		while ($logLine = fgets($log)) {
-			if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK") && !startsWith($logLine,"I:")) {
+			if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK") && !startsWith($logLine,"I:") && !startsWith($logLine,"E:")) {
 				array_push($logLines, $logLine);
 			}
 		}
@@ -155,7 +155,10 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"unable to decode the network CSBK")) {
 			continue;
+		} else if(strpos($logLine,"overflow in the DMR slot RF queue")) {
+			continue;
 		}
+
 		
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 			$lineTokens = explode(", ",$logLine);
@@ -475,21 +478,6 @@ function getActiveYSFReflectors($logLines) {
 	return $reflectorlist;
 }
 
-
- function getSize($filesize, $precision = 2)
-    {
-        $units = array('', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y');
-
-        foreach ($units as $idUnit => $unit)
-        {
-            if ($filesize > 1024)
-                $filesize /= 1024;
-            else
-                break;
-        }
-        
-        return round($filesize, $precision).' '.$units[$idUnit].'B';
-    }
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
 $logLinesMMDVM = getMMDVMLog();

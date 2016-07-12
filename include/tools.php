@@ -54,6 +54,17 @@ function createConfigLines() {
 	return $out;
 } 
 
+function getSize($filesize, $precision = 2) {
+	$units = array('', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y');
+	foreach ($units as $idUnit => $unit) {
+		if ($filesize > 1024)
+			$filesize /= 1024;
+		else
+			break;
+	}
+	return round($filesize, $precision).' '.$units[$idUnit].'B';
+}
+
 function checkSetup() {
 	$el = error_reporting();
 	error_reporting(E_ERROR | E_WARNING | E_PARSE);
