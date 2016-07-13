@@ -25,24 +25,24 @@ $totalLH = count($lastHeard);
 for ($i = 0;  ($i < $totalLH); $i++) {
 		$listElem = $lastHeard[$i];
 		echo"<tr>";
-		echo"<td nowrap>$listElem[0]</td>";
-		echo"<td nowrap>$listElem[1]</td>";
-		echo"<td nowrap>$listElem[2]</td>";
-		echo"<td nowrap>$listElem[3]</td>";
-		echo"<td nowrap>$listElem[4]</td>";
+		echo"<td class=\"nowrap\">$listElem[0]</td>";
+		echo"<td class=\"nowrap\">$listElem[1]</td>";
+		echo"<td class=\"nowrap\">$listElem[2]</td>";
+		echo"<td class=\"nowrap\">$listElem[3]</td>";
+		echo"<td class=\"nowrap\">$listElem[4]</td>";
 		if ($listElem[5] == "RF"){
-			echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
+			echo "<td class=\nowrap\"><span class=\"label label-success\">RF</span></td>";
 		}else{
-			echo"<td nowrap>$listElem[5]</td>";
+			echo"<td class=\"nowrap\">$listElem[5]</td>";
 		}
 		if ($listElem[6] == null) {
-				echo'<td nowrap>transmitting</td><td></td><td></td>';
+				echo'<td class=\"nowrap\">transmitting</td><td></td><td></td>';
 			} else if ($listElem[6] == "SMS") {
-				echo'<td nowrap>sending or receiving SMS</td><td></td><td></td>';
+				echo'<td class=\"nowrap\">sending or receiving SMS</td><td></td><td></td>';
 			} else {
-			echo"<td nowrap>$listElem[6]</td>";
-			echo"<td nowrap>$listElem[7]</td>";
-			echo"<td nowrap>$listElem[8]</td>";
+			echo"<td class=\"nowrap\">$listElem[6]</td>";
+			echo"<td class=\"nowrap\">$listElem[7]</td>";
+			echo"<td class=\"nowrap\">$listElem[8]</td>";
 		}
 		echo"</tr>\n";
 	}
