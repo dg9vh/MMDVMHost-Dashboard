@@ -479,6 +479,10 @@ function getActiveYSFReflectors($logLines) {
 }
 
 function getName($callsign) {
+	$callsign = trim($callsign);
+	if (strpos($callsign,"-")) {
+		$callsign = substr($callsign,0,strpos($callsign,"-"));
+	}
 	exec("grep ".$callsign." ".DMRIDDATPATH, $output);
 	$name = substr($output[0], strpos($output[0]," ")+1);
 	$name = substr($name, strpos($name," ")+1);
