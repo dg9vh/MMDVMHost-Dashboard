@@ -478,6 +478,13 @@ function getActiveYSFReflectors($logLines) {
 	return $reflectorlist;
 }
 
+function getName($callsign) {
+	exec("grep ".$callsign." ".DMRIDDATPATH, $output);
+	$name = substr($output[0], strpos($output[0]," ")+1);
+	$name = substr($name, strpos($name," ")+1);
+	return $name;
+}
+
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
 $logLinesMMDVM = getMMDVMLog();

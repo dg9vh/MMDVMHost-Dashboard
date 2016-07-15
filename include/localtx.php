@@ -15,6 +15,13 @@ $localTXList = getHeardList($reverseLogLinesMMDVM);
       <th>Time (UTC)</th>
       <th>Mode</th>
       <th>Callsign</th>
+      <?php
+      if (defined("ENABLEXTDLOOKUP")) {
+      ?>
+      <th>Name</th>
+      <?php
+      }
+      ?>
       <th>DSTAR-ID</th>
       <th>Target</th>
       <th>Source</th>
@@ -33,6 +40,9 @@ for ($i = 0; $i < count($localTXList); $i++) {
 			echo"<td nowrap>$listElem[0]</td>";
 			echo"<td nowrap>$listElem[1]</td>";
 			echo"<td nowrap>$listElem[2]</td>";
+			if (defined("ENABLEXTDLOOKUP")) {
+				echo "<td class=\"nowrap\">".getName($listElem[2])."</td>";
+			}
 			echo"<td nowrap>$listElem[3]</td>";
 			echo"<td nowrap>$listElem[4]</td>";
 			echo"<td nowrap>$listElem[5]</td>";

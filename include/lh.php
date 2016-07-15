@@ -12,6 +12,13 @@ $totalLH = count($lastHeard);
       <th>Time (UTC)</th>
       <th>Mode</th>
       <th>Callsign</th>
+      <?php
+      if (defined("ENABLEXTDLOOKUP")) {
+      ?>
+      <th>Name</th>
+      <?php
+      }
+      ?>
       <th>DSTAR-ID</th>
       <th>Target</th>
       <th>Source</th>
@@ -28,6 +35,9 @@ for ($i = 0;  ($i < $totalLH); $i++) {
 		echo"<td class=\"nowrap\">$listElem[0]</td>";
 		echo"<td class=\"nowrap\">$listElem[1]</td>";
 		echo"<td class=\"nowrap\">$listElem[2]</td>";
+		if (defined("ENABLEXTDLOOKUP")) {
+			echo "<td class=\"nowrap\">".getName($listElem[2])."</td>";
+		}
 		echo"<td class=\"nowrap\">$listElem[3]</td>";
 		echo"<td class=\"nowrap\">$listElem[4]</td>";
 		if ($listElem[5] == "RF"){

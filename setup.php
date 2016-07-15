@@ -72,10 +72,17 @@ include "include/tools.php";
         <span class="input-group-addon" id="MMDVMHOSTPATH" style="width: 300px">Path to MMDVMHost-executable</span>
         <input type="text" value="<?php echo constant("MMDVMHOSTPATH") ?>" name="MMDVMHOSTPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="MMDVMHOSTPATH" required data-fv-notempty-message="Value is required">
       </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="ENABLEXTDLOOKUP" style="width: 300px">Enable extended lookup (show names)</span>
+        <div class="panel-body"><input type="checkbox" name="ENABLEXTDLOOKUP" <?php if (constant("ENABLEXTDLOOKUP")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DMRIDDATPATH" style="width: 300px">Path to DMR-ID-Database-File</span>
+        <input type="text" value="<?php echo constant("DMRIDDATPATH") ?>" name="DMRIDDATPATH" class="form-control" placeholder="/var/mmdvm/DMRIDs.dat" aria-describedby="DMRIDDATPATH">
+      </div>
     </div>
     <div class="container">
       <h2>YSFGateway-Configuration</h2>
-      
       <div class="input-group">
         <span class="input-group-addon" id="ENABLEYSFGATEWAY" style="width: 300px">Enable YSFGateway</span>
         <div class="panel-body"><input type="checkbox" name="ENABLEYSFGATEWAY" <?php if (constant("ENABLEYSFGATEWAY")) echo "checked" ?>></div>
