@@ -16,7 +16,13 @@ include "version.php";
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=1, user-scalable=yes">
 	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+<?php
+	if (!isset($_GET['stoprefresh'])) {
+?>
     <meta http-equiv="refresh" content="<?php echo REFRESHAFTER?>">
+<?php		
+	}
+?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -78,7 +84,17 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';		
-?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
+?> |
+<?php
+
+if (!isset($_GET['stoprefresh'])) {
+	echo '<a href="?stoprefresh">stop refreshing</a>';
+} else {
+	echo '<a href=".">start refreshing</a>';
+}
+
+?>
+ | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
 	</div>
 <script>
 $(document).ready(function(){
