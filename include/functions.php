@@ -479,6 +479,9 @@ function getActiveYSFReflectors($logLines) {
 }
 
 function getName($callsign) {
+	if (is_numeric($callsign)) {
+		return "---";
+	}
 	$callsign = trim($callsign);
 	if (strpos($callsign,"-")) {
 		$callsign = substr($callsign,0,strpos($callsign,"-"));
