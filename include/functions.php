@@ -298,25 +298,28 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	if (startsWith($mode, "DMR")) {
 		$mode = "DMR";
 	}
-	
-	$now =  new DateTime();
-	$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
-	
-	if ($hangtime != "") {
-		$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
-	} else {
-		$source = $listElem[6];
-		if ($source === "Network") {
-			$hangtime = getConfigItem("General", "NetModeHang", $mmdvmconfigs);
-		} else {
-			$hangtime = getConfigItem("General", "RFModeHang", $mmdvmconfigs);
-		}
-		$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
-	}
-	if ($now->format('U') > $timestamp->format('U')) {
-		return "idle";
-	} else {
+	if ($listElem[6] ==="") {
 		return $mode;
+	} else {
+		$now =  new DateTime();
+		$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
+		
+		if ($hangtime != "") {
+			$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+		} else {
+			$source = $listElem[6];
+			if ($source === "Network") {
+				$hangtime = getConfigItem("General", "NetModeHang", $mmdvmconfigs);
+			} else {
+				$hangtime = getConfigItem("General", "RFModeHang", $mmdvmconfigs);
+			}
+			$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+		}
+		if ($now->format('U') > $timestamp->format('U')) {
+			return "idle";
+		} else {
+			return $mode;
+		}
 	}
 }
 
