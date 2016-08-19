@@ -9,7 +9,7 @@ include "../config/config.php";
 include "../include/tools.php";
 include "../include/functions.php";
 
-$fileName = MMDVMLOGPATH. "/MMDVM-".date(Y)."-".date(m)."-".date(d).".log";
+$fileName = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
 ?>
 <!doctype html>
 <html lang="es">
@@ -46,7 +46,7 @@ $fileName = MMDVMLOGPATH. "/MMDVM-".date(Y)."-".date(m)."-".date(d).".log";
 </div>
 <div class="panel panel-log">
    <div class="panel-heading">
-      <span class="label label-info">Fichero log <?php echo $fileName ?></span>
+      <span class="label label-info">Viewing log <?php echo $fileName ?></span>
    </div>
   <div class="table-responsive">  
   <table class="table table-condensed">
