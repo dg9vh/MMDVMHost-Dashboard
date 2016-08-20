@@ -150,6 +150,18 @@ include "include/tools.php";
         <input type="text" value="<?php echo constant("HALTSYS") ?>" name="HALTSYS" class="form-control" placeholder="sudo halt" aria-describedby="HALTSYS">
       </div>	  
       <div class="input-group">
+        <span class="input-group-addon" id="SHOWPOWERSTATE" style="width: 300px">Show Powerstate (online or battery, wiringpi needed)</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWPOWERSTATE" <?php if (constant("SHOWPOWERSTATE")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="POWERONLINEPIN" style="width: 300px">GPIO pin to monitor:</span>
+        <input type="text" value="<?php echo constant("POWERONLINEPIN") ?>" name="POWERONLINEPIN" class="form-control" placeholder="18" aria-describedby="POWERONLINEPIN">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="POWERONLINESTATE" style="width: 300px">State that signalizes online-state:</span>
+        <input type="text" value="<?php echo constant("POWERONLINESTATE") ?>" name="POWERONLINESTATE" class="form-control" placeholder="1" aria-describedby="POWERONLINESTATE">
+      </div>
+      <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" form="config">Save configuration</button>
       </span>      

@@ -94,7 +94,8 @@
 	$output = shell_exec('cat /proc/uptime');
 	$uptime = format_time(substr($output,0,strpos($output," ")));
 	$idletime = format_time((substr($output,strpos($output," ")))/$cpucores);
-
+	$pinStatus = trim(shell_exec("gpio -g read ".POWERONLINEPIN)); // Pin 18
+	//returns 0 = low; 1 = high
 ?>
 <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
@@ -104,6 +105,13 @@
 		<table id="sysinfo" class="table table-condensed">
 			<tbody>
 				<tr>
+					<?php
+					if (constant("SHOWPOWERSTATE")) {
+					?>
+					<th>Power</th>
+					<?php
+					}
+					?>
 					<?php
 					if ($cputemp !== NULL) {
 					?>
@@ -124,6 +132,13 @@
 					<th>Idle</th>
 				</tr>
 				<tr class="gatewayinfo">
+					<?php
+					if (constant("SHOWPOWERSTATE")) {
+					?>
+					<td><?php if ($pinStatus == POWERONLINESTATE ) {echo "online";} else {echo "on battery";} ?></td>
+					<?php
+					}
+					?>
 					<?php
 					if ($cputemp !== NULL) {
 					?>
