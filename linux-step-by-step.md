@@ -46,7 +46,7 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 7. Now you can clone the dashboard into your home directory:
 
-	>git clone https://github.com/dg9vh/MMDVMHost-Dashboard.git /~
+	>git clone https://github.com/dg9vh/MMDVMHost-Dashboard.git ~/
 
 8. Next, you need to copy the files into the webroot so they can be served by lighttpd:
 
