@@ -1,20 +1,22 @@
 # Linux Step-By-Step
-This short howto describes step-by-step how to install the MMDVMHost-Dashboard on a Raspberry Pi (or similar) System using a Debian-Linux Distribution like Raspbian.
+This short howto describes step-by-step how to install the MMDVMHost-Dashboard on a Raspberry Pi (or similar) system using a Debian Linux distribution like Raspbian.
 
 ##Installation Steps
-1. Actualize your Liux-system and package sources with the following command:
+1. Update your system:
 
 	>sudo apt-get update && sudo apt-get upgrade
 
-2. Install a tiny webserver with
+2. Install a lightweight webserver:
 
 	>sudo apt-get install lighttpd
 
-3. Now it's time to modify file-system-rights. Following steps would do it for you:
+3. Create a group for the webserver and add yourself to it:
 
 	>sudo groupadd www-data
 
 	>sudo usermod -G www-data -a pi
+	
+4. Set permissions so you and the webserver have full access to the files:
 
 	If you use a current Raspbian Jessie, use following commands:
 
@@ -28,7 +30,7 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 	>sudo chmod -R 775 /var/www
 
-4. Next step would be to install PHP5 and enbale all necessary modules:
+5. Install PHP5 and enable the required modules:
 
 	>sudo apt-get install php5-common php5-cgi php5
 
@@ -38,31 +40,31 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 	>sudo service lighttpd force-reload
 
-5. To install the dashboard you should install git
+6. To install the dashboard you should use git for easy updates:
 
 	>sudo apt-get install git
 
-6. Now you can clone the dashboard into your home-directory (`/home/pi`) with
+7. Now you can clone the dashboard into your home directory:
 
-	>git clone https://github.com/dg9vh/MMDVMHost-Dashboard.git
+	>git clone https://github.com/dg9vh/MMDVMHost-Dashboard.git ~/
 
-7. Now it's time to copy the files into the webroot:
+8. Next, you need to copy the files into the webroot so they can be served by lighttpd:
 
-	If you are using Raspbian Jessie, you do it with
+	If you are using Raspbian Jessie, run:
 
 	>sudo cp -R /home/pi/MMDVMHost-Dashboard /var/www/html/	
 
-	If you are using Raspbian Wheezy, you do it with
+	If you are using Raspbian Wheezy, run:
 
 	>sudo cp -R /home/pi/MMDVMHost-Dashboard /var/www/
 
-8. To make sure that the dashboard is delivered by the webserver, remove the default "index.html" within the webroot-directory /var/www/html respective /var/www with
+9. To make sure the dashboard is served instead of the default "index.html", change into the webroot /var/www/html respectively /var/www and remove that file:
 
 	>sudo rm index.html
 
-9. When this is done you should configure the dashboard by calling setup.php in your browser to create /var/www/html/config/config.php respective /var/www/config/config.php with your personal fits. 
+10. Finally, you need to configure the dashboard by pointing your browser to http://IP-OF-YOUR-HOTSPOT/setup.php . This will create /var/www/html/config/config.php respectively /var/www/config/config.php which contains your custom settings. 
 
-After all is done the dashboard should be reachable via http://IP-OF-YOUR-HOTSPOT/
+Now the dashboard should be reachable via http://IP-OF-YOUR-HOTSPOT/
 
 ##Configuration Of Dashboard
-When configuring the dashboard take care of the directories containing the logs etc. If here you are doing something wrong, no last-heard or other info would be shown in the dashboard!
+When configuring the dashboard, make sure to set the correct paths for logs etc. If they are wrong, no last-heard or similar information will be shown on the dashboard!
