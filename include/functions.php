@@ -489,10 +489,11 @@ function getName($callsign) {
 	if (strpos($callsign,"-")) {
 		$callsign = substr($callsign,0,strpos($callsign,"-"));
 	}
-	exec("grep ".$callsign." ".DMRIDDATPATH, $output);
 	$delimiter =" ";
-	if (strpos($output[0],"\t")) {
-	$delimiter = "\t";
+	exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+	if (count($output) == 0) {
+		$delimiter = "\t";
+		exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
 	}
 	$name = substr($output[0], strpos($output[0],$delimiter)+1);
 	$name = substr($name, strpos($name,$delimiter)+1);
