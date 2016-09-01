@@ -72,20 +72,35 @@ function showMode($mode, $mmdvmconfigs) {
 ?>
       <td><span class="label <?php 
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
-		if ($mode == "D-Star Network") {
-			if (isProcessRunning(IRCDDBGATEWAY)) {
-				echo "label-success";		
-			} else {
-				echo "label-danger\" title=\"ircddbgateway is down!";
-			}
-		} else {
-			if ($mode == "D-Star" || $mode =="DMR" || $mode =="DMR Network" || $mode =="System Fusion" || $mode =="System Fusion Network") {
+		switch ($mode) {
+			case "D-Star Network":
+				if (getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "localhost" || getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "127.0.0.1") {
+					if (isProcessRunning(IRCDDBGATEWAY)) {
+						echo "label-success";		
+					} else {
+						echo "label-danger\" title=\"ircddbgateway is down!";
+					}
+				} else {
+					echo "label-default\" title=\"Remote gateway configured - not checked!";
+				}
+				break;
+			case "System Fusion Network":
+				if (getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "localhost" || getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "127.0.0.1") {
+					if (isProcessRunning("YSFGateway")) {
+						echo "label-success";		
+					} else {
+						echo "label-danger\" title=\"YSFGateway is down!";
+					}
+				} else {
+					echo "label-default\" title=\"Remote gateway configured - not checked!";
+				}
+				break;
+			default:
 				if (isProcessRunning("MMDVMHost")) {
 					echo "label-success";		
 				} else {
 					echo "label-danger\" title=\"MMDVMHost is down!";
 				}
-			}	
 		}
 	} else {
 		echo "label-default";
