@@ -29,6 +29,10 @@ Installation
 
 For detailled installation see `linux-step-by-step.md` within this repository.
 
+Usage
+=====
+To use the dashboard simply call the corresponding address in a webbrowser. The webbrowser has to be javascript-enabled because of the usage of DataTables, that would only be functional with Javascript enabled for this site!
+
 Features
 ========
 At the moment there are several information-sections shown:
