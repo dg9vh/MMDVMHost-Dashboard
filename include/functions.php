@@ -461,6 +461,17 @@ function getActualReflector($logLines, $mode) {
 					return "Reflector ".$from;
 				}
 			} 
+	                $source = "RF";
+        	        if (strpos($logLine,"network") > 0 ) {
+                	        $source = "Net";
+                	}
+
+			if ( $source == "RF") {
+				$to = substr($logLine, strpos($logLine, "to") + 3);
+				if (strlen($to) == 5 && startsWith($to, "4")) {
+					return "Reflector ".$to;
+				}
+			}
 		}
 	}
 	return "Reflector not linked";
