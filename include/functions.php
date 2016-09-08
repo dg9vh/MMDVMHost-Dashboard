@@ -469,7 +469,7 @@ function getActualReflector($logLines, $mode) {
 			if ( $source == "RF") {
 				$to = substr($logLine, strpos($logLine, "to") + 3);
 				if (strlen($to) == 5 && startsWith($to, "4")) {
-					return "Reflector ".$to;
+					return "Reflector ".$to." (not cfmd)";
 				}
 			}
 		}
