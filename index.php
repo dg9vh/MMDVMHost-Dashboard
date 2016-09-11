@@ -8,6 +8,7 @@ $start = $time;
 include "config/config.php";
 include "include/tools.php";
 include "include/functions.php";
+include "include/init.php";
 include "version.php";
 ?>
 <!doctype html>
@@ -63,6 +64,7 @@ if (defined("ENABLEMANAGEMENT")) {
 }
 checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
+include "include/txinfo.php";
 include "include/sysinfo.php";
 include "include/disk.php";
 include "include/repeaterinfo.php";

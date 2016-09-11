@@ -123,6 +123,14 @@ function getMMDVMLog() {
 	return $logLines;
 }
 
+function getShortMMDVMLog() {
+	// Open Logfile and copy loglines into LogLines-Array()
+	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+
+	$logLines = explode("\n", `tail -n10 $logPath`);
+	return $logLines;
+}
+
 function getYSFGatewayLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();
@@ -142,7 +150,7 @@ function getYSFGatewayLog() {
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
-function getHeardList($logLines) {
+function getHeardList($logLines, $onlyLast) {
 	//array_multisort($logLines,SORT_DESC);
 	$heardList = array();
 	$ts1duration = "";
@@ -279,16 +287,19 @@ function getHeardList($logLines) {
 			$duration = "";
 			$loss ="";
 			$ber = "";
+			if ($onlyLast) {
+				return $heardList;
+			}
 		}
 	}
 	return $heardList;
 }
 
-function getLastHeard($logLines) {
+function getLastHeard($logLines, $onlyLast) {
 	//returns last heard list from log
 	$lastHeard = array();
 	$heardCalls = array();
-	$heardList = getHeardList($logLines);
+	$heardList = getHeardList($logLines, $onlyLast);
 	$counter = 0;
 	foreach ($heardList as $listElem) {
 		if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || (startsWith($listElem[1], "DMR")) ) {
@@ -526,16 +537,4 @@ function getName($callsign) {
 	return $name;
 }
 
-//Some basic inits
-$mmdvmconfigs = getMMDVMConfig();
-$logLinesMMDVM = getMMDVMLog();
-$reverseLogLinesMMDVM = $logLinesMMDVM;
-array_multisort($reverseLogLinesMMDVM,SORT_DESC);
-$lastHeard = getLastHeard($reverseLogLinesMMDVM);
-if (defined("ENABLEYSFGATEWAY")) {
-	$YSFGatewayconfigs = getYSFGatewayConfig();
-	$logLinesYSFGateway = getYSFGatewayLog();
-	$reverseLogLinesYSFGateway = $logLinesYSFGateway;
-	array_multisort($reverseLogLinesYSFGateway,SORT_DESC);
-}
 ?>
