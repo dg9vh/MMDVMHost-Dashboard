@@ -15,8 +15,7 @@ Based on G4KLX code, mod by EA4GKQ
 
 Required are
 ============
-* Webserver like 
-* lighttpd
+* Webserver like lighttpd or similar
 * php5
 
 
