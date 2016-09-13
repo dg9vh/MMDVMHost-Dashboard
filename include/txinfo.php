@@ -21,8 +21,8 @@
       <th>Source</th>
     </tr>
    </thead>
-   <tbody>
-    <tr id="txline">
+   <tbody id="txline">
+    <!--<tr >
      <td></td>
      <td></td>
      <td></td>
@@ -36,7 +36,7 @@
      <td></td>
      <td></td>
      <td></td>
-    </tr>
+    </tr>-->
   </tbody>
   </table>
   </div>  

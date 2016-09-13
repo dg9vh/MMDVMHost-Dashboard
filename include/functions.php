@@ -127,7 +127,7 @@ function getShortMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
 
-	$logLines = explode("\n", `tail -n10 $logPath`);
+	$logLines = explode("\n", `tail -n100 $logPath`);
 	return $logLines;
 }
 
@@ -287,7 +287,7 @@ function getHeardList($logLines, $onlyLast) {
 			$duration = "";
 			$loss ="";
 			$ber = "";
-			if ($onlyLast) {
+			if ($onlyLast && count($heardList )> 4) {
 				return $heardList;
 			}
 		}
