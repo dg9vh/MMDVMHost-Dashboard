@@ -1,7 +1,7 @@
 <?php
 
 function getMMDVMHostVersion() {
-	// returns creation-time of MMDVMHost as version-number
+	// returns creation-time or version of MMDVMHost as version-number
 	$filename = MMDVMHOSTPATH."/MMDVMHost";
 	exec($filename." -v 2>&1", $output);
 	if (!startsWith(substr($output[0],18,8),"20")) {
@@ -32,7 +32,7 @@ function getMMDVMConfig() {
 }
 
 function getYSFGatewayConfig() {
-	// loads MMDVM.ini into array for further use
+	// loads YSFGateway.ini into array for further use
 	$conf = array();
 	if ($configs = fopen(YSFGATEWAYINIPATH."/".YSFGATEWAYINIFILENAME, 'r')) {
 		while ($config = fgets($configs)) {
@@ -109,6 +109,7 @@ function showMode($mode, $mmdvmconfigs) {
 <?php
 }
 
+/*
 function getMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();
@@ -122,6 +123,15 @@ function getMMDVMLog() {
 	}
 	return $logLines;
 }
+*/
+
+function getMMDVMLog() {
+	// Open Logfile and copy loglines into LogLines-Array()
+	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+
+	$logLines = explode("\n", `grep M: $logPath`);
+	return $logLines;
+}
 
 function getShortMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
@@ -131,6 +141,7 @@ function getShortMMDVMLog() {
 	return $logLines;
 }
 
+/*
 function getYSFGatewayLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logLines = array();
@@ -142,6 +153,15 @@ function getYSFGatewayLog() {
 		}
 		fclose($log);
 	}
+	return $logLines;
+}
+*/
+
+function getYSFGatewayLog() {
+	// Open Logfile and copy loglines into LogLines-Array()
+	$logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
+
+	$logLines = explode("\n", `grep D: $logPath`);
 	return $logLines;
 }
 
