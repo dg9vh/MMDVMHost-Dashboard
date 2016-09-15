@@ -19,6 +19,7 @@
       <th>DSTAR-ID</th>
       <th>Target</th>
       <th>Source</th>
+      <th>TX-Time</th>
     </tr>
    </thead>
    <tbody id="txline">

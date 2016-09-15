@@ -12,19 +12,24 @@ $lastHeard = getLastHeard($reverseLogLinesMMDVM, True);
 foreach ($lastHeard as $listElem) {
 	echo "<tr>";
 	if ($listElem[6] == null) {
-		echo"<td class=\"nowrap\">$listElem[0]</td>";
-		echo"<td class=\"nowrap\">$listElem[1]</td>";
-		echo"<td class=\"nowrap\">$listElem[2]</td>";
+		echo"<td nowrap>$listElem[0]</td>";
+		echo"<td nowrap>$listElem[1]</td>";
+		echo"<td nowrap>$listElem[2]</td>";
 		if (defined("ENABLEXTDLOOKUP")) {
-			echo "<td class=\"nowrap\">".getName($listElem[2])."</td>";
+			echo "<td nowrap>".getName($listElem[2])."</td>";
 		}
-		echo"<td class=\"nowrap\">$listElem[3]</td>";
-		echo"<td class=\"nowrap\">$listElem[4]</td>";
+		echo"<td nowrap>$listElem[3]</td>";
+		echo"<td nowrap>$listElem[4]</td>";
 		if ($listElem[5] == "RF"){
-			echo "<td class=\nowrap\"><span class=\"label label-success\">RF</span></td>";
+			echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
 		}else{
-			echo"<td class=\"nowrap\">$listElem[5]</td>";
+			echo"<td nowrap>$listElem[5]</td>";
 		}
+		$UTC = new DateTimeZone("UTC");
+		$d1 = new DateTime($listElem[0], $UTC);
+		$d2 = new DateTime('now', $UTC);
+		$diff = $d2->getTimestamp() - $d1->getTimestamp();
+		echo"<td nowrap>$diff s</td>";
 	}
 	echo "</tr>";
 }
