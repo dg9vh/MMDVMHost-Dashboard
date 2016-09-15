@@ -6,9 +6,9 @@ $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 $lastHeard = getLastHeard($reverseLogLinesMMDVM);
 if (defined("ENABLEYSFGATEWAY")) {
-        $YSFGatewayconfigs = getYSFGatewayConfig();
-        $logLinesYSFGateway = getYSFGatewayLog();
-        $reverseLogLinesYSFGateway = $logLinesYSFGateway;
-        array_multisort($reverseLogLinesYSFGateway,SORT_DESC);
+		$YSFGatewayconfigs = getYSFGatewayConfig();
+		$logLinesYSFGateway = getYSFGatewayLog();
+		$reverseLogLinesYSFGateway = $logLinesYSFGateway;
+		array_multisort($reverseLogLinesYSFGateway,SORT_DESC);
 }
 ?>

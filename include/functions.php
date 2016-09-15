@@ -58,7 +58,6 @@ function getConfigItem($section, $key, $configs) {
 		}
 		$sectionpos++;
 	}
-	
 	return substr($configs[$sectionpos], strlen($key) + 1);
 }
 
@@ -109,26 +108,9 @@ function showMode($mode, $mmdvmconfigs) {
 <?php
 }
 
-/*
-function getMMDVMLog() {
-	// Open Logfile and copy loglines into LogLines-Array()
-	$logLines = array();
-	if ($log = fopen(MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log", 'r')) {
-		while ($logLine = fgets($log)) {
-			if (!strpos($logLine, "Debug") && !strpos($logLine,"Received a NAK") && !startsWith($logLine,"I:") && !startsWith($logLine,"E:")) {
-				array_push($logLines, $logLine);
-			}
-		}
-		fclose($log);
-	}
-	return $logLines;
-}
-*/
-
 function getMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-
 	$logLines = explode("\n", `grep M: $logPath`);
 	return $logLines;
 }
@@ -136,31 +118,13 @@ function getMMDVMLog() {
 function getShortMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-
 	$logLines = explode("\n", `tail -n100 $logPath`);
 	return $logLines;
 }
 
-/*
-function getYSFGatewayLog() {
-	// Open Logfile and copy loglines into LogLines-Array()
-	$logLines = array();
-	if ($log = fopen(YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log", 'r')) {
-		while ($logLine = fgets($log)) {
-			if (startsWith($logLine,"D:")) {
-				array_push($logLines, $logLine);
-			}
-		}
-		fclose($log);
-	}
-	return $logLines;
-}
-*/
-
 function getYSFGatewayLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
-
 	$logLines = explode("\n", `grep D: $logPath`);
 	return $logLines;
 }
@@ -171,7 +135,6 @@ function getYSFGatewayLog() {
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
 function getHeardList($logLines, $onlyLast) {
-	//array_multisort($logLines,SORT_DESC);
 	$heardList = array();
 	$ts1duration = "";
 	$ts1loss = "";
@@ -201,7 +164,6 @@ function getHeardList($logLines, $onlyLast) {
 		} else if(strpos($logLine,"overflow in the DMR slot RF queue")) {
 			continue;
 		}
-
 		
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 			$lineTokens = explode(", ",$logLine);
@@ -327,10 +289,7 @@ function getLastHeard($logLines, $onlyLast) {
 				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
 				array_push($lastHeard, $listElem);
 				$counter++;
-			}/*
-			if ($counter == LHLINES) {
-				return $lastHeard;
-			}*/
+			}
 		}
 	}
 	return $lastHeard;
@@ -479,8 +438,6 @@ function getActualReflector($logLines, $mode) {
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
-	//array_multisort($logLines,SORT_DESC);
-	
     foreach ($logLines as $logLine) {
 		if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
 			$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
@@ -492,11 +449,11 @@ function getActualReflector($logLines, $mode) {
 					return "Reflector ".$from;
 				}
 			} 
-	                $source = "RF";
-        	        if (strpos($logLine,"network") > 0 ) {
-                	        $source = "Net";
-                	}
-
+			$source = "RF";
+			if (strpos($logLine,"network") > 0 ) {
+				$source = "Net";
+			}
+			
 			if ( $source == "RF") {
 				$to = substr($logLine, strpos($logLine, "to") + 3);
 				if (strlen($to) == 5 && startsWith($to, "4")) {
@@ -556,5 +513,4 @@ function getName($callsign) {
 	$name = substr($name, strpos($name,$delimiter)+1);
 	return $name;
 }
-
 ?>

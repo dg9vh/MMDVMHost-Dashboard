@@ -32,7 +32,6 @@ $localTXList = getHeardList($reverseLogLinesMMDVM);
    </thead>
    <tbody>	
 <?php
-$counter = 0;
 for ($i = 0; $i < count($localTXList); $i++) {
 		$listElem = $localTXList[$i];		
 		if ($listElem[5] == "RF" && ($listElem[1]=="D-Star" || startsWith($listElem[1], "DMR") || $listElem[1]=="YSF")) {
@@ -56,12 +55,10 @@ for ($i = 0; $i < count($localTXList); $i++) {
 				echo"<td nowrap>$listElem[8]</td>";
 			}
 			echo"</tr>\n";
-			$counter++;
 		}
 	}
 
 ?>
-   
   </tbody>
   </table>
  </div>

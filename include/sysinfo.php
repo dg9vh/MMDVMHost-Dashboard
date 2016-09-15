@@ -111,15 +111,11 @@
 					<th>Power</th>
 					<?php
 					}
-					?>
-					<?php
 					if ($cputemp !== NULL) {
 					?>
 					<th>CPU-Temperature</th>
 					<?php
 					}
-					?>
-					<?php
 					if ($cpufreq !== NULL) {
 					?>
 					<th>CPU-Frequency</th>
@@ -138,15 +134,11 @@
 					<td><?php if ($pinStatus == POWERONLINESTATE ) {echo "online";} else {echo "on battery";} ?></td>
 					<?php
 					}
-					?>
-					<?php
 					if ($cputemp !== NULL) {
 					?>
 					<td><?php echo $cputemp; ?> &deg;C</td>
 					<?php
 					}
-					?>
-					<?php
 					if ($cpufreq !== NULL) {
 					?>
 					<td><?php echo $cpufreq; ?> MHz</td>

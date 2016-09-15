@@ -22,22 +22,7 @@
     </tr>
    </thead>
    <tbody id="txline">
-    <!--<tr >
-     <td></td>
-     <td></td>
-     <td></td>
-      <?php
-      if (defined("ENABLEXTDLOOKUP")) {
-      ?>
-     <td></td>
-      <?php
-      }
-      ?>
-     <td></td>
-     <td></td>
-     <td></td>
-    </tr>-->
-  </tbody>
+   </tbody>
   </table>
   </div>  
 </div>

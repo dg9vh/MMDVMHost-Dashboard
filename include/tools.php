@@ -26,7 +26,7 @@ function format_time($seconds) {
 }
 
 function startsWith($haystack, $needle) {
-    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+	return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
 }
 
 function getMHZ($freq) {
@@ -36,8 +36,8 @@ function getMHZ($freq) {
 function isProcessRunning($processname) {
 	exec("pgrep " . $processname, $pids);
 	if(empty($pids)) {
-	    // process not running!
-	    return false;
+		// process not running!
+		return false;
 	} else {
 		// process running!
 		return true;

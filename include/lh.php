@@ -56,7 +56,6 @@ for ($i = 0;  ($i < $totalLH); $i++) {
 		}
 		echo"</tr>\n";
 	}
-
 ?>
   </tbody>
   </table>

@@ -1,7 +1,6 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Repeater Info</div>
-  
   <!-- Tabelle -->
   <div class="table-responsive">  
   <table class="table">
@@ -61,16 +60,16 @@
 ?>
             <td><span class="label <?php 
 			if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == 1) {
-		    	echo 'label-success">enabled';      
+				echo 'label-success">enabled';      
 			} else {
-		    	echo 'label-default">disabled';
+				echo 'label-default">disabled';
 		    }
     ?></span></td>
             <td><span class="label <?php 
 			if (getConfigItem("DMR Network", "Slot2", $mmdvmconfigs) == 1) {
-		    	echo 'label-success">enabled';      
+				echo 'label-success">enabled';      
 			} else {
-		    	echo 'label-default">disabled';
+				echo 'label-default">disabled';
 		    }
     ?></span></td>
 <?php

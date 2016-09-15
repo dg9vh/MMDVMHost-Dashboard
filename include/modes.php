@@ -1,8 +1,6 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Enabled Modes</div>
-
-
   <!-- Tabelle -->
   <table class="table">
     <tr>
