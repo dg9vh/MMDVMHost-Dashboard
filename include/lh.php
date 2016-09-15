@@ -34,7 +34,7 @@ for ($i = 0;  ($i < $totalLH); $i++) {
 		echo"<tr>";
 		echo"<td nowrap>$listElem[0]</td>";
 		echo"<td nowrap>$listElem[1]</td>";
-		echo"<td nowrap>$listElem[2]</td>";
+		echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[2])."</td>";
 		if (defined("ENABLEXTDLOOKUP")) {
 			echo "<td nowrap>".getName($listElem[2])."</td>";
 		}
