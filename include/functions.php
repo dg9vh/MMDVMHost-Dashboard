@@ -15,7 +15,7 @@ function getMMDVMHostFileVersion() {
 	// returns creation-time of MMDVMHost as version-number
 	$filename = MMDVMHOSTPATH."/MMDVMHost";
 	if (file_exists($filename)) {
-		return date("d M y", filectime($filename));
+		return date("d M Y", filectime($filename));
 	}
 }
 
