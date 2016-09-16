@@ -118,7 +118,8 @@ function getMMDVMLog() {
 function getShortMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-	$logLines = explode("\n", `tail -n100 $logPath`);
+	//$logLines = explode("\n", `tail -n100 $logPath`);
+	$logLines = explode("\n", `egrep -h "from|end|watchdog" $logPath | tail -4`);
 	return $logLines;
 }
 
