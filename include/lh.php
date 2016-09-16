@@ -34,7 +34,7 @@ for ($i = 0;  ($i < $totalLH); $i++) {
 		echo"<tr>";
 		echo"<td nowrap>$listElem[0]</td>";
 		echo"<td nowrap>$listElem[1]</td>";
-		if (constant("SHOWQRZ")) {
+		if (constant("SHOWQRZ") && $listElem[2] !== "??????????") {
 			echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
 		} else {
 			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[2])."</td>";
@@ -52,7 +52,7 @@ for ($i = 0;  ($i < $totalLH); $i++) {
 		if ($listElem[6] == null) {
 				echo'<td nowrap>transmitting</td><td></td><td></td>';
 			} else if ($listElem[6] == "SMS") {
-				echo'<td nowrap colspan=\"3\">sending or receiving SMS</td>';
+				echo'<td nowrap>sending or receiving SMS</td><td></td><td></td>';
 			} else {
 			echo"<td nowrap>$listElem[6]</td>";
 			echo"<td nowrap>$listElem[7]</td>";
