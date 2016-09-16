@@ -160,6 +160,10 @@ include "include/tools.php";
       <div class="input-group">
         <span class="input-group-addon" id="POWERONLINESTATE" style="width: 300px">State that signalizes online-state:</span>
         <input type="text" value="<?php echo constant("POWERONLINESTATE") ?>" name="POWERONLINESTATE" class="form-control" placeholder="1" aria-describedby="POWERONLINESTATE">
+      </div>	  
+      <div class="input-group">
+        <span class="input-group-addon" id="SHOWQRZ" style="width: 300px">Show link to QRZ.com on Callsigns</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWQRZ" <?php if (constant("SHOWQRZ")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
       <span class="input-group-btn">
