@@ -14,7 +14,7 @@ foreach ($lastHeard as $listElem) {
 	if ($listElem[6] == null) {
 		echo"<td nowrap>$listElem[0]</td>";
 		echo"<td nowrap>$listElem[1]</td>";
-		if (constant("SHOWQRZ")) {
+		if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
 			echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
 		} else {
 			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[2])."</td>";
