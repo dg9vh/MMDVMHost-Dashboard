@@ -1,6 +1,6 @@
 <?php
 
-$localTXList = getHeardList($reverseLogLinesMMDVM);
+$localTXList = getHeardList($reverseLogLinesMMDVM, FALSE);
 //array_multisort($localTXList,SORT_DESC);
 
 ?>

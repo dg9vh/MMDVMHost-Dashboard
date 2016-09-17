@@ -18,23 +18,24 @@ include "include/tools.php";
   </head>
   <body>
 <?php
-	if ($_GET['cmd'] =="writeconfig") {
-		if (!file_exists('./config')) {
-		    if (!mkdir('./config', 0777, true)) {
+	if (isset($_GET['cmd'])) {
+		if ( "writeconfig" == $_GET['cmd']) {
+			if (!file_exists('./config')) {
+			    if (!mkdir('./config', 0777, true)) {
 ?>
 <div class="alert alert-danger" role="alert">You forgot to give write-permissions to your webserver-user, see point 3 in <a href="linux-step-by-step.md">linux-step-by-step.md</a>!</div>
 
 <?php
-		    }
-		}
-		$configfile = fopen("config/config.php", 'w');
-		fwrite($configfile,"<?php\n");
-		fwrite($configfile,"# This is an auto-generated config-file!\n");
-		fwrite($configfile,"# Be careful, when manual editing this!\n\n");
-		fwrite($configfile,"date_default_timezone_set('UTC');\n");
-		fwrite($configfile, createConfigLines());
-		fwrite($configfile,"?>\n");
-		fclose($configfile);
+			    }
+			}
+			$configfile = fopen("config/config.php", 'w');
+			fwrite($configfile,"<?php\n");
+			fwrite($configfile,"# This is an auto-generated config-file!\n");
+			fwrite($configfile,"# Be careful, when manual editing this!\n\n");
+			fwrite($configfile,"date_default_timezone_set('UTC');\n");
+			fwrite($configfile, createConfigLines());
+			fwrite($configfile,"?>\n");
+			fclose($configfile);
 ?>
   <div class="page-header">
     <h1><small>MMDVM-Dashboard by DG9VH</small> Setup-Process</h1>
@@ -42,6 +43,7 @@ include "include/tools.php";
     <p><a href="index.php">Your dashboard is now available.</a></p>
   </div>
 <?php
+		}
 	} else {
 ?>
   <div class="page-header">
@@ -74,7 +76,7 @@ include "include/tools.php";
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="ENABLEXTDLOOKUP" style="width: 300px">Enable extended lookup (show names)</span>
-        <div class="panel-body"><input type="checkbox" name="ENABLEXTDLOOKUP" <?php if (constant("ENABLEXTDLOOKUP")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="ENABLEXTDLOOKUP" <?php if (defined("ENABLEXTDLOOKUP")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="DMRIDDATPATH" style="width: 300px">Path to DMR-ID-Database-File</span>
@@ -123,11 +125,11 @@ include "include/tools.php";
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="SHOWPROGRESSBARS" style="width: 300px">Show progressbars</span>
-        <div class="panel-body"><input type="checkbox" name="SHOWPROGRESSBARS" <?php if (constant("SHOWPROGRESSBARS")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="SHOWPROGRESSBARS" <?php if (defined("SHOWPROGRESSBARS")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="TEMPERATUREALERT" style="width: 300px">Enable CPU-temperature-warning</span>
-        <div class="panel-body"><input type="checkbox" name="TEMPERATUREALERT" <?php if (constant("TEMPERATUREALERT")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="TEMPERATUREALERT" <?php if (defined("TEMPERATUREALERT")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="TEMPERATUREHIGHLEVEL" style="width: 300px">Warning temperature</span>
@@ -151,7 +153,7 @@ include "include/tools.php";
       </div>	  
       <div class="input-group">
         <span class="input-group-addon" id="SHOWPOWERSTATE" style="width: 300px">Show Powerstate (online or battery, wiringpi needed)</span>
-        <div class="panel-body"><input type="checkbox" name="SHOWPOWERSTATE" <?php if (constant("SHOWPOWERSTATE")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="SHOWPOWERSTATE" <?php if (defined("SHOWPOWERSTATE")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="POWERONLINEPIN" style="width: 300px">GPIO pin to monitor:</span>
@@ -163,7 +165,7 @@ include "include/tools.php";
       </div>	  
       <div class="input-group">
         <span class="input-group-addon" id="SHOWQRZ" style="width: 300px">Show link to QRZ.com on Callsigns</span>
-        <div class="panel-body"><input type="checkbox" name="SHOWQRZ" <?php if (constant("SHOWQRZ")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="SHOWQRZ" <?php if (defined("SHOWQRZ")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
       <span class="input-group-btn">

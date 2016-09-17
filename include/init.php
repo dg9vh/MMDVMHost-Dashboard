@@ -4,7 +4,7 @@ $mmdvmconfigs = getMMDVMConfig();
 $logLinesMMDVM = getMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
-$lastHeard = getLastHeard($reverseLogLinesMMDVM);
+$lastHeard = getLastHeard($reverseLogLinesMMDVM, FALSE);
 if (defined("ENABLEYSFGATEWAY")) {
 		$YSFGatewayconfigs = getYSFGatewayConfig();
 		$logLinesYSFGateway = getYSFGatewayLog();

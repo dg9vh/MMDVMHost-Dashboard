@@ -106,7 +106,7 @@
 			<tbody>
 				<tr>
 					<?php
-					if (constant("SHOWPOWERSTATE")) {
+					if (defined("SHOWPOWERSTATE")) {
 					?>
 					<th>Power</th>
 					<?php
@@ -129,7 +129,7 @@
 				</tr>
 				<tr class="gatewayinfo">
 					<?php
-					if (constant("SHOWPOWERSTATE")) {
+					if (defined("SHOWPOWERSTATE")) {
 					?>
 					<td><?php if ($pinStatus == POWERONLINESTATE ) {echo "online";} else {echo "on battery";} ?></td>
 					<?php
