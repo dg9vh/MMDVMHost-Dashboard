@@ -440,7 +440,7 @@ function getActualReflector($logLines, $mode) {
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
     foreach ($logLines as $logLine) {
-		if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
+    	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
 			$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
 			
 			if (strlen($from) == 4 && startsWith($from,"4")) {
@@ -457,7 +457,7 @@ function getActualReflector($logLines, $mode) {
 			
 			if ( $source == "RF") {
 				$to = substr($logLine, strpos($logLine, "to") + 3);
-				if (strlen($to) == 5 && startsWith($to, "4")) {
+				if (strlen($to) < 6 && startsWith($to, "4")) {
 					return "Reflector ".$to." (not cfmd)";
 				}
 			}
