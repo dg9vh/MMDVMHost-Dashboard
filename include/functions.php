@@ -147,8 +147,8 @@ function getHeardList($logLines, $onlyLast) {
 	$dstarloss = "";
 	$dstarber = "";
 	$ysfduration = "";
-    $ysfloss = "";
-    $ysfber = "";
+	$ysfloss = "";
+	$ysfber = "";
 	foreach ($logLines as $logLine) {
 		$duration = "";
 		$loss = "";
@@ -391,45 +391,45 @@ function getActualLink($logLines, $mode) {
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
 	switch ($mode) {
-    case "D-Star":
-    	if (isProcessRunning(IRCDDBGATEWAY)) {
-			return getDSTARLinks();
-    	} else {
-    		return "ircddbgateway not running!";
-    	}
-        break;
-    case "DMR Slot 1":
-        foreach ($logLines as $logLine) {
-        	if(strpos($logLine,"unable to decode the network CSBK")) {
-				continue;
-			} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
-				$to = ""; 
-				if (strpos($logLine,"to")) {
-					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
+		case "D-Star":
+			if (isProcessRunning(IRCDDBGATEWAY)) {
+				return getDSTARLinks();
+			} else {
+				return "ircddbgateway not running!";
+			}
+			break;
+		case "DMR Slot 1":
+			foreach ($logLines as $logLine) {
+				if(strpos($logLine,"unable to decode the network CSBK")) {
+					continue;
+				} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
+					$to = ""; 
+					if (strpos($logLine,"to")) {
+						$to = trim(substr($logLine, strpos($logLine,"to") + 3));
+					}
+					if ($to !== "") {
+						return $to;
+					}
 				}
-				if ($to !== "") {
-					return $to;
+			}
+			return "not linked";
+			break;
+		case "DMR Slot 2":
+			foreach ($logLines as $logLine) {
+				if(strpos($logLine,"unable to decode the network CSBK")) {
+					continue;
+				} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
+					$to = ""; 
+					if (strpos($logLine,"to")) {
+						$to = trim(substr($logLine, strpos($logLine,"to") + 3));
+					}
+					if ($to !== "") {
+						return $to;
+					}
 				}
-        	}
-		}
-		return "not linked";
-        break;
-    case "DMR Slot 2":
-        foreach ($logLines as $logLine) {
-        	if(strpos($logLine,"unable to decode the network CSBK")) {
-				continue;
-			} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
-				$to = ""; 
-				if (strpos($logLine,"to")) {
-					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
-				}
-				if ($to !== "") {
-					return $to;
-				}
-        	}
-		}
-		return "not linked";
-        break;
+			}
+			return "not linked";
+			break;
 	}
 	return "something went wrong!";
 }
