@@ -69,13 +69,13 @@ function getEnabled ($mode, $mmdvmconfigs) {
 function showMode($mode, $mmdvmconfigs) {
 	// shows if mode is enabled or not.
 ?>
-      <td><span class="label <?php 
+      <td><span class="label <?php
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
 		switch ($mode) {
 			case "D-Star Network":
 				if (getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "localhost" || getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "127.0.0.1") {
 					if (isProcessRunning(IRCDDBGATEWAY)) {
-						echo "label-success";		
+						echo "label-success";
 					} else {
 						echo "label-danger\" title=\"ircddbgateway is down!";
 					}
@@ -86,7 +86,7 @@ function showMode($mode, $mmdvmconfigs) {
 			case "System Fusion Network":
 				if (getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "localhost" || getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "127.0.0.1") {
 					if (isProcessRunning("YSFGateway")) {
-						echo "label-success";		
+						echo "label-success";
 					} else {
 						echo "label-danger\" title=\"YSFGateway is down!";
 					}
@@ -96,7 +96,7 @@ function showMode($mode, $mmdvmconfigs) {
 				break;
 			default:
 				if (isProcessRunning("MMDVMHost")) {
-					echo "label-success";		
+					echo "label-success";
 				} else {
 					echo "label-danger\" title=\"MMDVMHost is down!";
 				}
@@ -135,6 +135,7 @@ function getYSFGatewayLog() {
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
+// M: 2016-09-16 09:14:12.886 P25, received RF from DF2ET to TG10100
 function getHeardList($logLines, $onlyLast) {
 	$heardList = array();
 	$ts1duration = "";
@@ -147,8 +148,8 @@ function getHeardList($logLines, $onlyLast) {
 	$dstarloss = "";
 	$dstarber = "";
 	$ysfduration = "";
-    $ysfloss = "";
-    $ysfber = "";
+	$ysfloss = "";
+	$ysfber = "";
 	foreach ($logLines as $logLine) {
 		$duration = "";
 		$loss = "";
@@ -165,7 +166,7 @@ function getHeardList($logLines, $onlyLast) {
 		} else if(strpos($logLine,"overflow in the DMR slot RF queue")) {
 			continue;
 		}
-		
+
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 			$lineTokens = explode(", ",$logLine);
 			if (array_key_exists(2,$lineTokens)) {
@@ -174,7 +175,7 @@ function getHeardList($logLines, $onlyLast) {
 			if (array_key_exists(3,$lineTokens)) {
 				$loss = $lineTokens[3];
 			}
-			
+
 			// if RF-Packet, no LOSS would be reported, so BER is in LOSS position
 			if (startsWith($loss,"BER")) {
 				$ber = substr($loss, 5);
@@ -185,7 +186,7 @@ function getHeardList($logLines, $onlyLast) {
 					$ber = substr($lineTokens[4], 5);
 				}
 			}
-			
+
 			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 				switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
 					case "DMR Slot 1":
@@ -217,10 +218,15 @@ function getHeardList($logLines, $onlyLast) {
 						$ysfloss = $loss;
 						$ysfber = $ber;
 						break;
+					case "P25":
+						$p25duration = $duration;
+						$p25loss = $loss;
+						$p25ber = $ber;
+						break;
 				}
 			}
 		}
-		
+
 		$timestamp = substr($logLine, 3, 19);
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
@@ -229,18 +235,18 @@ function getHeardList($logLines, $onlyLast) {
 			$callsign = substr($callsign2, 0, strpos($callsign2,"/"));
 		}
 		$callsign = trim($callsign);
-		
+
 		$id ="";
 		if ($mode == "D-Star") {
 			$id = substr($callsign2, strpos($callsign2,"/") + 1);
 		}
-		
-		$target = substr($logLine, strpos($logLine, "to") + 3); 
+
+		$target = substr($logLine, strpos($logLine, "to") + 3);
 		$source = "RF";
 		if (strpos($logLine,"network") > 0 ) {
 			$source = "Net";
 		}
-		
+
 		switch ($mode) {
 			case "D-Star":
 				$duration = $dstarduration;
@@ -258,12 +264,17 @@ function getHeardList($logLines, $onlyLast) {
 				$ber = $ts2ber;
 				break;
 			case "YSF":
-                $duration = $ysfduration;
-                $loss = $ysfloss;
-                $ber = $ysfber;
-                break;
+				$duration = $ysfduration;
+				$loss = $ysfloss;
+				$ber = $ysfber;
+				break;
+			case "P25":
+				$duration = $p25duration;
+				$loss = $p25loss;
+				$ber = $p25ber;
+				break;
 		}
-		
+
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
 			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
@@ -285,7 +296,7 @@ function getLastHeard($logLines, $onlyLast) {
 	$heardList = getHeardList($logLines, $onlyLast);
 	$counter = 0;
 	foreach ($heardList as $listElem) {
-		if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || (startsWith($listElem[1], "DMR")) ) {
+		if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || (startsWith($listElem[1], "DMR")) ) {
 			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
 				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
 				array_push($lastHeard, $listElem);
@@ -309,7 +320,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	} else {
 		$now =  new DateTime();
 		$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
-		
+
 		if ($hangtime != "") {
 			$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
 		} else {
@@ -365,7 +376,7 @@ function getDSTARLinks() {
 				$linkDest = $linx[4][0];
 				$linkDir = $linx[5][0];
 			}
-// Dongle-Link, sample: 
+// Dongle-Link, sample:
 // 2011-09-24 07:26:59: DPlus link - Type: Dongle User: DC1PIA	Dir: Incoming
 // 2012-03-14 21:32:18: DPlus link - Type: Dongle User: DC1PIA Dir: Incoming
 			if(preg_match_all('/^(.{19}).*(D[A-Za-z]*).*Type: ([A-Za-z]*).*User: (.{6,8}).*Dir: (.*)$/',$linkLine,$linx) > 0){
@@ -380,7 +391,7 @@ function getDSTARLinks() {
 		}
 	}
 	$out .= "</table>";
-	
+
 	fclose($linkLog);
 	return $out;
 }
@@ -391,45 +402,45 @@ function getActualLink($logLines, $mode) {
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
 	switch ($mode) {
-    case "D-Star":
-    	if (isProcessRunning(IRCDDBGATEWAY)) {
-			return getDSTARLinks();
-    	} else {
-    		return "ircddbgateway not running!";
-    	}
-        break;
-    case "DMR Slot 1":
-        foreach ($logLines as $logLine) {
-        	if(strpos($logLine,"unable to decode the network CSBK")) {
-				continue;
-			} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
-				$to = ""; 
-				if (strpos($logLine,"to")) {
-					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
+		case "D-Star":
+			if (isProcessRunning(IRCDDBGATEWAY)) {
+				return getDSTARLinks();
+			} else {
+				return "ircddbgateway not running!";
+			}
+			break;
+		case "DMR Slot 1":
+			foreach ($logLines as $logLine) {
+				if(strpos($logLine,"unable to decode the network CSBK")) {
+					continue;
+				} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
+					$to = "";
+					if (strpos($logLine,"to")) {
+						$to = trim(substr($logLine, strpos($logLine,"to") + 3));
+					}
+					if ($to !== "") {
+						return $to;
+					}
 				}
-				if ($to !== "") {
-					return $to;
+			}
+			return "not linked";
+			break;
+		case "DMR Slot 2":
+			foreach ($logLines as $logLine) {
+				if(strpos($logLine,"unable to decode the network CSBK")) {
+					continue;
+				} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
+					$to = "";
+					if (strpos($logLine,"to")) {
+						$to = trim(substr($logLine, strpos($logLine,"to") + 3));
+					}
+					if ($to !== "") {
+						return $to;
+					}
 				}
-        	}
-		}
-		return "not linked";
-        break;
-    case "DMR Slot 2":
-        foreach ($logLines as $logLine) {
-        	if(strpos($logLine,"unable to decode the network CSBK")) {
-				continue;
-			} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
-				$to = ""; 
-				if (strpos($logLine,"to")) {
-					$to = trim(substr($logLine, strpos($logLine,"to") + 3));
-				}
-				if ($to !== "") {
-					return $to;
-				}
-        	}
-		}
-		return "not linked";
-        break;
+			}
+			return "not linked";
+			break;
 	}
 	return "something went wrong!";
 }
@@ -439,22 +450,22 @@ function getActualReflector($logLines, $mode) {
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
-    foreach ($logLines as $logLine) {
-    	if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
+	foreach ($logLines as $logLine) {
+		if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
 			$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
-			
+
 			if (strlen($from) == 4 && startsWith($from,"4")) {
 				if ($from == "4000") {
 					return "Reflector not linked";
 				} else {
 					return "Reflector ".$from;
 				}
-			} 
+			}
 			$source = "RF";
 			if (strpos($logLine,"network") > 0 ) {
 				$source = "Net";
 			}
-			
+
 			if ( $source == "RF") {
 				$to = substr($logLine, strpos($logLine, "to") + 3);
 				if (strlen($to) < 6 && startsWith($to, "4")) {
@@ -478,7 +489,7 @@ function getActiveYSFReflectors($logLines) {
 			$timestamp2 = new DateTime($timestamp);
 			$now =  new DateTime();
 			$timestamp2->add(new DateInterval('PT2H'));
-		
+
 			if ($now->format('U') <= $timestamp2->format('U')) {
 				$str = substr($logLine, 60);
 				$id = strtok($str, "/");
