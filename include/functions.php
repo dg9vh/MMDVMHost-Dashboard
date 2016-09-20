@@ -135,6 +135,7 @@ function getYSFGatewayLog() {
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
+// M: 2016-09-16 09:14:12.886 P25, received RF from DF2ET to TG10100
 function getHeardList($logLines, $onlyLast) {
 	$heardList = array();
 	$ts1duration = "";
