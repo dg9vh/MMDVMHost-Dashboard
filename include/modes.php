@@ -10,6 +10,7 @@
     <?php showMode("D-Star Network", $mmdvmconfigs);?>
     <?php showMode("System Fusion", $mmdvmconfigs);?>
     <?php showMode("System Fusion Network", $mmdvmconfigs);?>
+    <?php showMode("P25", $mmdvmconfigs);?>
     </tr>
   </table>
 </div>
