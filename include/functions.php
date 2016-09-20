@@ -69,13 +69,13 @@ function getEnabled ($mode, $mmdvmconfigs) {
 function showMode($mode, $mmdvmconfigs) {
 	// shows if mode is enabled or not.
 ?>
-      <td><span class="label <?php 
+      <td><span class="label <?php
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
 		switch ($mode) {
 			case "D-Star Network":
 				if (getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "localhost" || getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "127.0.0.1") {
 					if (isProcessRunning(IRCDDBGATEWAY)) {
-						echo "label-success";		
+						echo "label-success";
 					} else {
 						echo "label-danger\" title=\"ircddbgateway is down!";
 					}
@@ -86,7 +86,7 @@ function showMode($mode, $mmdvmconfigs) {
 			case "System Fusion Network":
 				if (getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "localhost" || getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "127.0.0.1") {
 					if (isProcessRunning("YSFGateway")) {
-						echo "label-success";		
+						echo "label-success";
 					} else {
 						echo "label-danger\" title=\"YSFGateway is down!";
 					}
@@ -96,7 +96,7 @@ function showMode($mode, $mmdvmconfigs) {
 				break;
 			default:
 				if (isProcessRunning("MMDVMHost")) {
-					echo "label-success";		
+					echo "label-success";
 				} else {
 					echo "label-danger\" title=\"MMDVMHost is down!";
 				}
@@ -165,7 +165,7 @@ function getHeardList($logLines, $onlyLast) {
 		} else if(strpos($logLine,"overflow in the DMR slot RF queue")) {
 			continue;
 		}
-		
+
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 			$lineTokens = explode(", ",$logLine);
 			if (array_key_exists(2,$lineTokens)) {
@@ -174,7 +174,7 @@ function getHeardList($logLines, $onlyLast) {
 			if (array_key_exists(3,$lineTokens)) {
 				$loss = $lineTokens[3];
 			}
-			
+
 			// if RF-Packet, no LOSS would be reported, so BER is in LOSS position
 			if (startsWith($loss,"BER")) {
 				$ber = substr($loss, 5);
@@ -185,7 +185,7 @@ function getHeardList($logLines, $onlyLast) {
 					$ber = substr($lineTokens[4], 5);
 				}
 			}
-			
+
 			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 				switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
 					case "DMR Slot 1":
@@ -220,7 +220,7 @@ function getHeardList($logLines, $onlyLast) {
 				}
 			}
 		}
-		
+
 		$timestamp = substr($logLine, 3, 19);
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
@@ -229,18 +229,18 @@ function getHeardList($logLines, $onlyLast) {
 			$callsign = substr($callsign2, 0, strpos($callsign2,"/"));
 		}
 		$callsign = trim($callsign);
-		
+
 		$id ="";
 		if ($mode == "D-Star") {
 			$id = substr($callsign2, strpos($callsign2,"/") + 1);
 		}
-		
-		$target = substr($logLine, strpos($logLine, "to") + 3); 
+
+		$target = substr($logLine, strpos($logLine, "to") + 3);
 		$source = "RF";
 		if (strpos($logLine,"network") > 0 ) {
 			$source = "Net";
 		}
-		
+
 		switch ($mode) {
 			case "D-Star":
 				$duration = $dstarduration;
@@ -263,7 +263,7 @@ function getHeardList($logLines, $onlyLast) {
 				$ber = $ysfber;
 				break;
 		}
-		
+
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
 			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
@@ -309,7 +309,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	} else {
 		$now =  new DateTime();
 		$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
-		
+
 		if ($hangtime != "") {
 			$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
 		} else {
@@ -365,7 +365,7 @@ function getDSTARLinks() {
 				$linkDest = $linx[4][0];
 				$linkDir = $linx[5][0];
 			}
-// Dongle-Link, sample: 
+// Dongle-Link, sample:
 // 2011-09-24 07:26:59: DPlus link - Type: Dongle User: DC1PIA	Dir: Incoming
 // 2012-03-14 21:32:18: DPlus link - Type: Dongle User: DC1PIA Dir: Incoming
 			if(preg_match_all('/^(.{19}).*(D[A-Za-z]*).*Type: ([A-Za-z]*).*User: (.{6,8}).*Dir: (.*)$/',$linkLine,$linx) > 0){
@@ -380,7 +380,7 @@ function getDSTARLinks() {
 		}
 	}
 	$out .= "</table>";
-	
+
 	fclose($linkLog);
 	return $out;
 }
@@ -403,7 +403,7 @@ function getActualLink($logLines, $mode) {
 				if(strpos($logLine,"unable to decode the network CSBK")) {
 					continue;
 				} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 1") {
-					$to = ""; 
+					$to = "";
 					if (strpos($logLine,"to")) {
 						$to = trim(substr($logLine, strpos($logLine,"to") + 3));
 					}
@@ -419,7 +419,7 @@ function getActualLink($logLines, $mode) {
 				if(strpos($logLine,"unable to decode the network CSBK")) {
 					continue;
 				} else if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
-					$to = ""; 
+					$to = "";
 					if (strpos($logLine,"to")) {
 						$to = trim(substr($logLine, strpos($logLine,"to") + 3));
 					}
@@ -442,19 +442,19 @@ function getActualReflector($logLines, $mode) {
 	foreach ($logLines as $logLine) {
 		if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
 			$from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
-			
+
 			if (strlen($from) == 4 && startsWith($from,"4")) {
 				if ($from == "4000") {
 					return "Reflector not linked";
 				} else {
 					return "Reflector ".$from;
 				}
-			} 
+			}
 			$source = "RF";
 			if (strpos($logLine,"network") > 0 ) {
 				$source = "Net";
 			}
-			
+
 			if ( $source == "RF") {
 				$to = substr($logLine, strpos($logLine, "to") + 3);
 				if (strlen($to) < 6 && startsWith($to, "4")) {
@@ -478,7 +478,7 @@ function getActiveYSFReflectors($logLines) {
 			$timestamp2 = new DateTime($timestamp);
 			$now =  new DateTime();
 			$timestamp2->add(new DateInterval('PT2H'));
-		
+
 			if ($now->format('U') <= $timestamp2->format('U')) {
 				$str = substr($logLine, 60);
 				$id = strtok($str, "/");
