@@ -218,6 +218,11 @@ function getHeardList($logLines, $onlyLast) {
 						$ysfloss = $loss;
 						$ysfber = $ber;
 						break;
+					case "P25":
+						$p25duration = $duration;
+						$p25loss = $loss;
+						$p25ber = $ber;
+						break;
 				}
 			}
 		}
@@ -262,6 +267,11 @@ function getHeardList($logLines, $onlyLast) {
 				$duration = $ysfduration;
 				$loss = $ysfloss;
 				$ber = $ysfber;
+				break;
+			case "P25":
+				$duration = $p25duration;
+				$loss = $p25loss;
+				$ber = $p25ber;
 				break;
 		}
 
