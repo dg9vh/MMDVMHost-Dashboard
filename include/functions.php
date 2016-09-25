@@ -450,7 +450,11 @@ function getActualLink($logLines, $mode) {
 				$to = "";
 				if (strpos($logLine,"Starting YSFGateway")) {
 					$to = -1;
-				}if (strpos($logLine,"Connect to")) {
+				}
+				if (strpos($logLine,"DISCONNECT Reply")) {
+					$to = -1;
+				}
+				if (strpos($logLine,"Connect to")) {
 					$to = substr($logLine, 47, 5);
 				}
 				if ($to !== "") {
