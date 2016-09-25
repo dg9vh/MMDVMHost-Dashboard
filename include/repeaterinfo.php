@@ -7,6 +7,7 @@
     <tr>
       <th>Actual Mode</th>
       <th>D-Star linked to</th>
+      <th>YSF linked to</th>
       <th>DMR TS1 last linked to</th>
       <th>DMR TS2 last linked to</th>
     </tr>
@@ -14,12 +15,13 @@
 	echo"<tr>";
 	echo"<td>".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
 	echo"<td>".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
+	echo"<td>".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
 	echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
 	echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ."</td>";
 	echo"</tr>\n";
 ?>
     <tr>
-      <td colspan="4">
+      <td colspan="5">
         <table class="table">
           <tr>
             <th>Location</th>

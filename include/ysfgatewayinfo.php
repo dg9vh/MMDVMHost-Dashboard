@@ -27,7 +27,6 @@
 
 <?php
 	
-		$activeYSFReflectors = getActiveYSFReflectors($reverseLogLinesYSFGateway);
 		if (count($activeYSFReflectors) > 0) {
 		?>
 			<thead>

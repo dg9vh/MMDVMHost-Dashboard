@@ -441,6 +441,20 @@ function getActualLink($logLines, $mode) {
 			}
 			return "not linked";
 			break;
+		case "YSF":
+
+// 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
+// 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
+// M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH  
+			foreach($logLines as $logLine) {
+				$to = "";
+				if (strpos($logLine,"Connect to")) {
+					$to = substr($logLine, 47, 5);
+				}
+				if ($to !== "") {
+					return $to;
+				}
+			}
 	}
 	return "something went wrong!";
 }
@@ -506,6 +520,14 @@ function getActiveYSFReflectors($logLines) {
 	array_multisort($reflectorlist);
 	return $reflectorlist;
 }
+
+function getYSFReflectorById($id, $reflectors) {
+	foreach($reflectors as $reflector) {
+		if ($reflector[2] === $id) {
+			return $reflector[0];
+		}
+	}
+}	
 
 function getName($callsign) {
 	if (is_numeric($callsign)) {
