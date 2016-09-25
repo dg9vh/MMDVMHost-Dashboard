@@ -2,6 +2,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Enabled Modes</div>
   <!-- Tabelle -->
+  <div class="table-responsive">  
   <table class="table">
     <tr>
     <?php showMode("DMR", $mmdvmconfigs);?>
@@ -14,4 +15,5 @@
     <?php showMode("P25 Network", $mmdvmconfigs);?>
     </tr>
   </table>
+  </div>
 </div>
