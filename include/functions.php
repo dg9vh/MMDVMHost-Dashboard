@@ -457,6 +457,8 @@ function getActualLink($logLines, $mode) {
 					return $to;
 				}
 			}
+			return "not linked";
+			break;
 	}
 	return "something went wrong!";
 }
