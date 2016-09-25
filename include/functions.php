@@ -448,7 +448,9 @@ function getActualLink($logLines, $mode) {
 // M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH  
 			foreach($logLines as $logLine) {
 				$to = "";
-				if (strpos($logLine,"Connect to")) {
+				if (strpos($logLine,"Starting YSFGateway")) {
+					$to = -1;
+				}if (strpos($logLine,"Connect to")) {
 					$to = substr($logLine, 47, 5);
 				}
 				if ($to !== "") {
@@ -522,9 +524,13 @@ function getActiveYSFReflectors($logLines) {
 }
 
 function getYSFReflectorById($id, $reflectors) {
-	foreach($reflectors as $reflector) {
-		if ($reflector[2] === $id) {
-			return $reflector[0];
+	if ($id ==-1) {
+		return "not linked";
+	} else {
+		foreach($reflectors as $reflector) {
+			if ($reflector[2] === $id) {
+				return $reflector[0];
+			}
 		}
 	}
 }	
