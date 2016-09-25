@@ -119,7 +119,7 @@ function getShortMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
 	//$logLines = explode("\n", `tail -n100 $logPath`);
-	$logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath | tail -4`);
+	$logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath | tail -100`);
 	return $logLines;
 }
 
