@@ -120,6 +120,10 @@ include "include/tools.php";
     <div class="container">
       <h2>Global Configuration</h2>
       <div class="input-group">
+        <span class="input-group-addon" id="LOGO" style="width: 300px">URL to Logo</span>
+        <input type="text" value="<?php echo constant("LOGO") ?>" name="LOGO" class="form-control" placeholder="http://your-logo" aria-describedby="LOGO">
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="REFRESHAFTER" style="width: 300px">Refresh page after in seconds</span>
         <input type="text" value="<?php echo constant("REFRESHAFTER") ?>" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER" required data-fv-notempty-message="Value is required">
       </div>
