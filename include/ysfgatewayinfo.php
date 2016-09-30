@@ -20,7 +20,7 @@
 </div>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">YSFReflectors reported active last 2 hours</div>
+  <div class="panel-heading">YSFReflectors reported active</div>
   <!-- Tabelle -->
   <div class="table-responsive">  
   <table id="ysfGateways" class="table table-condensed table-striped table-hover">
@@ -36,29 +36,15 @@
 				<th>Description</th>
 				<th>ID</th>
 				<th>Connections</th>
-				<th>Last info of</th>
 			</tr>
 			</thead>
 			<tbody>
 <?php
 			$counter = 1;
 			foreach ($activeYSFReflectors as $reflector) {
-				$timestamp = $reflector[4];
-				$timestamp2 = new DateTime($timestamp);
-				$now =  new DateTime();
-				$timestamp2->add(new DateInterval('PT60M'));
-			    if ($now->format('U') >= $timestamp2->format('U')) {
-					echo "<tr class=\"danger\">";
-				} else {
-					$timestamp2 = new DateTime($timestamp);
-					$timestamp2->add(new DateInterval('PT30M'));
-				    if ($now->format('U') >= $timestamp2->format('U')) {
-						echo "<tr class=\"warning\">";
-					} else {echo "<tr>";
-					}
-				}
+				echo "<tr>";
 				echo "<td>$counter</td>";
-				for ($i = 0; $i < 5; $i++) {
+				for ($i = 0; $i < 4; $i++) {
 					echo"<td>$reflector[$i]</td>";
 				}
 				echo "</tr>\n";

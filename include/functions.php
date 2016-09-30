@@ -499,6 +499,18 @@ function getActualReflector($logLines, $mode) {
 	return "Reflector not linked";
 }
 
+function getActiveYSFReflectors() {
+	$reflectorlist = Array();
+	$file = fopen(YSFHOSTSPATH."/".YSFHOSTSFILENAME, 'r');
+	while (($line = fgetcsv($file, 1000, ";")) !== FALSE) {
+		//$line is an array of the csv elements
+//		print_r($line);
+		array_push($reflectorlist, array($line[1], $line[2], $line[0], $line[5]));
+	}
+	fclose($file);
+	return $reflectorlist;
+}
+/*
 function getActiveYSFReflectors($logLines) {
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
@@ -528,7 +540,7 @@ function getActiveYSFReflectors($logLines) {
 	array_multisort($reflectorlist);
 	return $reflectorlist;
 }
-
+*/
 function getYSFReflectorById($id, $reflectors) {
 	if ($id ==-1) {
 		return "not linked";

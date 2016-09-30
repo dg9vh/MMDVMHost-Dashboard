@@ -79,7 +79,7 @@ include "include/tools.php";
         <div class="panel-body"><input type="checkbox" name="ENABLEXTDLOOKUP" <?php if (defined("ENABLEXTDLOOKUP")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="DMRIDDATPATH" style="width: 300px">Path to DMR-ID-Database-File</span>
+        <span class="input-group-addon" id="DMRIDDATPATH" style="width: 300px">Path to DMR-ID-Database-File (including filename)</span>
         <input type="text" value="<?php echo constant("DMRIDDATPATH") ?>" name="DMRIDDATPATH" class="form-control" placeholder="/var/mmdvm/DMRIDs.dat" aria-describedby="DMRIDDATPATH">
       </div>
     </div>
@@ -104,6 +104,14 @@ include "include/tools.php";
       <div class="input-group">
         <span class="input-group-addon" id="YSFGATEWAYINIFILENAME" style="width: 300px">YSFGateway.ini-filename</span>
         <input type="text" value="<?php echo constant("YSFGATEWAYINIFILENAME") ?>" name="YSFGATEWAYINIFILENAME" class="form-control" placeholder="YSFGateway.ini" aria-describedby="YSFGATEWAYINIFILENAME">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="YSFHOSTSPATH" style="width: 300px">Path to YSFHosts.txt</span>
+        <input type="text" value="<?php echo constant("YSFHOSTSPATH") ?>" name="YSFHOSTSPATH" class="form-control" placeholder="/etc/YSFGateway/" aria-describedby="YSFHOSTSPATH">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="YSFHOSTSFILENAME" style="width: 300px">YSFGateway.ini-filename</span>
+        <input type="text" value="<?php echo constant("YSFHOSTSFILENAME") ?>" name="YSFHOSTSFILENAME" class="form-control" placeholder="YSFHosts.txt" aria-describedby="YSFHOSTSFILENAME">
       </div>
     </div>   
     <div class="container">
