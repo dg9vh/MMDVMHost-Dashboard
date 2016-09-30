@@ -447,7 +447,7 @@ function getActualLink($logLines, $mode) {
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH  
 			foreach($logLines as $logLine) {
-				$to = -1;
+				$to = "";
 				if (strpos($logLine,"Starting YSFGateway")) {
 					$to = -1;
 				}
