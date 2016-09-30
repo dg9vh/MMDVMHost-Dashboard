@@ -110,7 +110,7 @@ include "include/tools.php";
         <input type="text" value="<?php echo constant("YSFHOSTSPATH") ?>" name="YSFHOSTSPATH" class="form-control" placeholder="/etc/YSFGateway/" aria-describedby="YSFHOSTSPATH">
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="YSFHOSTSFILENAME" style="width: 300px">YSFGateway.ini-filename</span>
+        <span class="input-group-addon" id="YSFHOSTSFILENAME" style="width: 300px">YSFHosts.txt-filename</span>
         <input type="text" value="<?php echo constant("YSFHOSTSFILENAME") ?>" name="YSFHOSTSFILENAME" class="form-control" placeholder="YSFHosts.txt" aria-describedby="YSFHOSTSFILENAME">
       </div>
     </div>   
