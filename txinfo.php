@@ -17,7 +17,7 @@ foreach ($lastHeard as $listElem) {
 		if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
 			echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
 		} else {
-			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[2])."</td>";
+			echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</td>";
 		}
 		if (defined("ENABLEXTDLOOKUP")) {
 			echo "<td nowrap>".getName($listElem[2])."</td>";
