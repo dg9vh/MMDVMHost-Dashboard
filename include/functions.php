@@ -502,10 +502,12 @@ function getActualReflector($logLines, $mode) {
 function getActiveYSFReflectors() {
 	$reflectorlist = Array();
 	$file = fopen(YSFHOSTSPATH."/".YSFHOSTSFILENAME, 'r');
-	while (($line = fgetcsv($file, 1000, ";")) !== FALSE) {
-		//$line is an array of the csv elements
-//		print_r($line);
-		array_push($reflectorlist, array($line[1], $line[2], $line[0], $line[5]));
+	if ($file) {
+		while (($line = fgetcsv($file, 1000, ";")) !== FALSE) {
+			//$line is an array of the csv elements
+	//		print_r($line);
+			array_push($reflectorlist, array($line[1], $line[2], $line[0], $line[5]));
+		}
 	}
 	fclose($file);
 	return $reflectorlist;
