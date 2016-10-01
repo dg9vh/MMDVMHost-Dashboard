@@ -126,7 +126,7 @@ function getShortMMDVMLog() {
 function getYSFGatewayLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
-	$logLines = explode("\n", `grep D: $logPath`);
+	$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
 	return $logLines;
 }
 
@@ -445,7 +445,9 @@ function getActualLink($logLines, $mode) {
 
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
-// M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH  
+// M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH
+// M: 2016-10-01 17:52:36.586 Automatic connection to 62829
+
 			foreach($logLines as $logLine) {
 				$to = "";
 				if (strpos($logLine,"Starting YSFGateway")) {
@@ -456,6 +458,9 @@ function getActualLink($logLines, $mode) {
 				}
 				if (strpos($logLine,"Connect to")) {
 					$to = substr($logLine, 47, 5);
+				}
+				if (strpos($logLine,"Automatic connection to")) {
+					$to = substr($logLine, 51, 5);
 				}
 				if ($to !== "") {
 					return $to;
