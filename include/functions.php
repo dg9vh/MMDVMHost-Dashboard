@@ -277,7 +277,8 @@ function getHeardList($logLines, $onlyLast) {
 
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
-			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
+			$name = "";//getName($callsign);
+			array_push($heardList, array($timestamp, $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber));
 			$duration = "";
 			$loss ="";
 			$ber = "";
@@ -297,8 +298,17 @@ function getLastHeard($logLines, $onlyLast) {
 	$counter = 0;
 	foreach ($heardList as $listElem) {
 		if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || (startsWith($listElem[1], "DMR")) ) {
-			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[3], $heardCalls) > -1)) {
-				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[3]);
+			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
+				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[4]);
+				
+				$listElem[3] = getName($listElem[2]);
+				
+				if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
+					$listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
+				} else {
+					$listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</a>";
+				}
+				
 				array_push($lastHeard, $listElem);
 				$counter++;
 			}

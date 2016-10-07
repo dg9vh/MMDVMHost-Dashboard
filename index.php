@@ -1,4 +1,5 @@
 <?php
+session_start();
 $time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
@@ -17,13 +18,6 @@ include "version.php";
   <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=1, user-scalable=yes">
-<?php
-	if (!isset($_GET['stoprefresh'])) {
-?>
-    <meta http-equiv="refresh" content="<?php echo REFRESHAFTER?>">
-<?php		
-	}
-?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
@@ -74,8 +68,8 @@ include "include/sysinfo.php";
 include "include/disk.php";
 include "include/repeaterinfo.php";
 include "include/modes.php";
-include "include/lh.php";
-include "include/localtx.php";
+include "include/lh_ajax.php";
+include "include/localtx_ajax.php";
 if (defined("ENABLEYSFGATEWAY")) {
 	include "include/ysfgatewayinfo.php";
 }
@@ -105,11 +99,51 @@ if (!isset($_GET['stoprefresh'])) {
 $(document).ready(function(){
   
 var lastHeardT = $('#lastHeard').dataTable( {
-   "aaSorting": [[0,'desc']]
+	"aaSorting": [[0,'desc']],
+	"ajax": '<?php
+	$protocol = "http";
+	if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) 
+  		$protocol = "https";
+  	echo $protocol."://";
+	$base_dir  = __DIR__; // Absolute path to your installation, ex: /var/www/mywebsite
+	$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
+	echo $_SERVER['HTTP_HOST'].preg_replace("!^${doc_root}!", '', $base_dir) ?>/ajax.php?section=lastHeard',
+	"deferRender": true
   } );
+
+<?php
+	if (!isset($_GET['stoprefresh'])) {
+?>
+setInterval( function () {
+    lastHeardT.api().ajax.reload( );
+}, <?php echo REFRESHAFTER * 1000 ?> );
+<?php		
+	}
+?>  
+
 var localTxT = $('#localTx').dataTable( {
-    "aaSorting": [[0,'desc']]
+    "aaSorting": [[0,'desc']],
+	"ajax": '<?php
+	$protocol = "http";
+	if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) 
+  		$protocol = "https";
+  	echo $protocol."://";
+	$base_dir  = __DIR__; // Absolute path to your installation, ex: /var/www/mywebsite
+	$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
+	echo $_SERVER['HTTP_HOST'].preg_replace("!^${doc_root}!", '', $base_dir) ?>/ajax.php?section=localTx',
+	"deferRender": true
   } );
+
+<?php
+	if (!isset($_GET['stoprefresh'])) {
+?>
+setInterval( function () {
+    localTxT.api().ajax.reload( );
+}, <?php echo REFRESHAFTER * 1000 ?> );
+<?php		
+	}
+?>
+
 var ysfGatewaysT = $('#ysfGateways').dataTable( {
     "aaSorting": [[0,'asc']]
   } );
