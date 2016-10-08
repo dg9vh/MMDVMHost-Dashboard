@@ -24,6 +24,8 @@ $fileName = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <title><?php echo getCallsign($mmdvmconfigs) ?> - MMDVM-Dashboard by DG9VH</title>
 
   </head>
@@ -49,25 +51,30 @@ $fileName = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
       <span class="label label-info">Viewing log <?php echo $fileName ?></span>
    </div>
   <div class="table-responsive">  
-  <table class="table table-condensed">
-    <tr>Log file</tr>
-
+  <table id="log" class="table table-condensed table-striped table-hover">
+  <thead>
+    <tr>
+    <th>Level</th>
+    <th>Timestamp</th>
+    <th>Info</th>
+    </tr>
+  </thead>
 <?php
-/*
-$fileOutput = file_get_contents($fileName, FILE_USE_INCLUDE_PATH);
-
-var_dump($fileOutput);
-*/
-
-
 $file = new SplFileObject($fileName);
 
 // Loop until we reach the end of the file.
 while (!$file->eof()) {
+	$line = $file->fgets();
     // Echo one line from the file.
 	echo"<tr>";
     echo "<td>";
-	echo $file->fgets();
+	echo substr($line,0,3);
+    echo "</td>";
+    echo "<td>";
+	echo substr($line,3,24);
+    echo "</td>";
+    echo "<td>";
+	echo substr($line,27);
     echo "</td>";
 	echo"</tr>\n";
 }
@@ -78,9 +85,6 @@ $file = null;
 ?>
    </table>
    </div>
-   
-   
-   <A NAME="TheEnd">
   </div>
 	<div class="panel panel-info">
 
@@ -98,8 +102,12 @@ echo '<!--Page generated in '.$total_time.' seconds.-->';
 ?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
 	</div>
 	<script>
+$(document).ready(function(){
 
-window.location.hash = '#TheEnd';
+var logT = $('#log').dataTable( {
+    "aaSorting": [[1,'asc']]
+  } );
+});
 </script>
   </body>
 </html>
