@@ -10,6 +10,9 @@ $lastHeard = getLastHeard($reverseLogLinesMMDVM, FALSE);
 $_SESSION['lastHeard'] = $lastHeard;
 
 if (defined("ENABLEYSFGATEWAY")) {
-		$activeYSFReflectors = getActiveYSFReflectors();
+	$logLinesYSFGateway = getYSFGatewayLog();
+	$reverseLogLinesYSFGateway = $logLinesYSFGateway;
+  	array_multisort($reverseLogLinesYSFGateway,SORT_DESC);	
+  	$activeYSFReflectors = getActiveYSFReflectors();
 }
 ?>
