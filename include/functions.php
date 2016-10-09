@@ -301,8 +301,11 @@ function getLastHeard($logLines, $onlyLast) {
 			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
 				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[4]);
 				
-				$listElem[3] = getName($listElem[2]);
-				
+				if ($listElem[2] !== "??????????") {
+					$listElem[3] = getName($listElem[2]);
+				} else {
+					$listElem[3] = "---";
+				}
 				if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
 					$listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
 				} else {
@@ -574,18 +577,23 @@ function getName($callsign) {
 	if (is_numeric($callsign)) {
 		return "---";
 	}
-	$callsign = trim($callsign);
-	if (strpos($callsign,"-")) {
-		$callsign = substr($callsign,0,strpos($callsign,"-"));
-	}
-	$delimiter =" ";
-	exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
-	if (count($output) == 0) {
-		$delimiter = "\t";
+	
+	if (file_exists(DMRIDDATPATH)) {
+		$callsign = trim($callsign);
+		if (strpos($callsign,"-")) {
+			$callsign = substr($callsign,0,strpos($callsign,"-"));
+		}
+		$delimiter =" ";
 		exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+		if (count($output) == 0) {
+			$delimiter = "\t";
+			exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+		}
+		$name = substr($output[0], strpos($output[0],$delimiter)+1);
+		$name = substr($name, strpos($name,$delimiter)+1);
+		return $name;
+	} else {
+		return "DMRIDs.dat not correct!";
 	}
-	$name = substr($output[0], strpos($output[0],$delimiter)+1);
-	$name = substr($name, strpos($name,$delimiter)+1);
-	return $name;
 }
 ?>
