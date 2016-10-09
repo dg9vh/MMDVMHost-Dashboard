@@ -470,7 +470,7 @@ function getActualLink($logLines, $mode) {
 					$to = -1;
 				}
 				if (strpos($logLine,"Connect to")) {
-					$to = substr($logLine, 47, 5);
+					$to = substr($logLine, 38, 5);
 				}
 				if (strpos($logLine,"Automatic connection to")) {
 					$to = substr($logLine, 51, 5);
