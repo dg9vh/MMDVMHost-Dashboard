@@ -328,7 +328,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	if (startsWith($mode, "DMR")) {
 		$mode = "DMR";
 	}
-	if ($listElem[6] ==="") {
+	if ($listElem[7] ==="") {
 		return $mode;
 	} else {
 		$now =  new DateTime();

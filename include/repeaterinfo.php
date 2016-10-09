@@ -13,7 +13,7 @@
     </tr>
 <?php
 	echo"<tr>";
-	echo"<td>".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
+	echo"<td id=\"mode\">".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
 	echo"<td>".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
 	echo"<td>".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
 	echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";

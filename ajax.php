@@ -11,6 +11,10 @@ $logLinesMMDVM = getMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 //$lastHeard = $_SESSION['lastHeard'];
+if ($_GET['section'] == "mode") {
+	$mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, TRUE), $mmdvmconfigs);
+	echo $mode;
+}
 if ($_GET['section'] == "lastHeard") {
 	$lastHeard = getLastHeard($reverseLogLinesMMDVM, FALSE);
 	echo '{"data": '.json_encode($lastHeard)."}";

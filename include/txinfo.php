@@ -44,8 +44,8 @@ function doXMLHTTPRequest(scriptname, elem) {
 	xmlhttp.send();
 }
 
-function refreshInQSOAndLastHeardList() {
-	doXMLHTTPRequest("txinfo.php","txline");
+function refreshMode() {
+	doXMLHTTPRequest("ajax.php?section=mode","mode");
 }
 
 var transmitting = false;
@@ -65,6 +65,7 @@ function loadXMLDoc() {
 	xmlhttp.send();
 
 	var timeout = window.setTimeout("loadXMLDoc()", 1000);
+	refreshMode();
 }
 loadXMLDoc();
 </script>
