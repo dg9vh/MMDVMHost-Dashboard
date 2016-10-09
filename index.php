@@ -45,7 +45,7 @@ include "version.php";
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
   <?php
-  if (defined("LOGO")) {
+  if (LOGO !== "") {
 ?>
 <div id="Logo" style="position:absolute;top:-43px;right:10px;"><img src="<?php echo LOGO ?>" width="250px" style="width:250px; border-radius:10px;box-shadow:2px 2px 2px #808080; padding:1px;background:#FFFFFF;border:1px solid #808080;" border="0" hspace="10" vspace="10" align="absmiddle"></div>
 <?php  	
