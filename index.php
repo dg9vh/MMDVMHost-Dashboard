@@ -106,60 +106,6 @@ if (!isset($_GET['stoprefresh'])) {
 ?>
  | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
 	</div>
-<script>
-$(document).ready(function(){
-  
-var lastHeardT = $('#lastHeard').dataTable( {
-	"aaSorting": [[0,'desc']],
-	"ajax": '<?php
-	$protocol = "http";
-	if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) 
-  		$protocol = "https";
-  	echo $protocol."://";
-	$base_dir  = __DIR__; // Absolute path to your installation, ex: /var/www/mywebsite
-	$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
-	echo $_SERVER['HTTP_HOST'].preg_replace("!^${doc_root}!", '', $base_dir) ?>/ajax.php?section=lastHeard',
-	"deferRender": true
-  } );
-
-<?php
-	if (!isset($_GET['stoprefresh'])) {
-?>
-setInterval( function () {
-    lastHeardT.api().ajax.reload( );
-}, <?php echo REFRESHAFTER * 1000 ?> );
-<?php		
-	}
-?>  
-
-var localTxT = $('#localTx').dataTable( {
-    "aaSorting": [[0,'desc']],
-	"ajax": '<?php
-	$protocol = "http";
-	if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) 
-  		$protocol = "https";
-  	echo $protocol."://";
-	$base_dir  = __DIR__; // Absolute path to your installation, ex: /var/www/mywebsite
-	$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
-	echo $_SERVER['HTTP_HOST'].preg_replace("!^${doc_root}!", '', $base_dir) ?>/ajax.php?section=localTx',
-	"deferRender": true
-  } );
-
-<?php
-	if (!isset($_GET['stoprefresh'])) {
-?>
-setInterval( function () {
-    localTxT.api().ajax.reload( );
-}, <?php echo REFRESHAFTER * 1000 ?> );
-<?php		
-	}
-?>
-
-var ysfGatewaysT = $('#ysfGateways').dataTable( {
-    "aaSorting": [[0,'asc']]
-  } );
-});
-</script>
 	<noscript>
 	 For full functionality of this site it is necessary to enable JavaScript.
 	 Here are the <a href="http://www.enable-javascript.com/" target="_blank">

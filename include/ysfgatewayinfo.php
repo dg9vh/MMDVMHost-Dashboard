@@ -56,3 +56,11 @@
   </table>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+var ysfGatewaysT = $('#ysfGateways').dataTable( {
+    "aaSorting": [[0,'asc']]
+  } );
+});
+</script>

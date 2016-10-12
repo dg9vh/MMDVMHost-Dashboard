@@ -10,7 +10,7 @@ $logLinesMMDVM = getShortMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 $lastHeard = getLastHeard($reverseLogLinesMMDVM, True);
-$oldLastHeard = $_SESSION['lastHeard'];
+//$oldLastHeard = $_SESSION['lastHeard'];
 echo"<!--";
 var_dump($lastHeard);
 echo"-->";

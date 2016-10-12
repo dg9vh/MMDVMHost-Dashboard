@@ -25,7 +25,6 @@ function loadXMLDocSysinfo() {
 	xmlhttp.send();
 
 	var timeout = window.setTimeout("loadXMLDocSysinfo()", 20000);
-	refreshMode();
 }
 loadXMLDocSysinfo();
 </script>
