@@ -68,7 +68,7 @@ checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/txinfo.php";
 showLapTime("txinfo");
-include "include/sysinfo.php";
+include "include/sysinfo_ajax.php";
 showLapTime("sysinfo");
 include "include/disk.php";
 showLapTime("disk");
