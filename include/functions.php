@@ -5,8 +5,10 @@ function getMMDVMHostVersion() {
 	$filename = MMDVMHOSTPATH."/MMDVMHost";
 	exec($filename." -v 2>&1", $output);
 	if (!startsWith(substr($output[0],18,8),"20")) {
+		showLapTime("getMMDVMHostVersion");
 		return getMMDVMHostFileVersion();
 	} else {
+		showLapTime("getMMDVMHostVersion");
 		return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion().")";
 	}
 }
@@ -15,6 +17,7 @@ function getMMDVMHostFileVersion() {
 	// returns creation-time of MMDVMHost as version-number
 	$filename = MMDVMHOSTPATH."/MMDVMHost";
 	if (file_exists($filename)) {
+		showLapTime("getMMDVMHostFileVersion");
 		return date("d M Y", filectime($filename));
 	}
 }
@@ -40,6 +43,7 @@ function getYSFGatewayConfig() {
 		}
 		fclose($configs);
 	}
+	showLapTime("getYSFGatewayConfig");
 	return $conf;
 }
 
@@ -118,7 +122,6 @@ function getMMDVMLog() {
 function getShortMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-	//$logLines = explode("\n", `tail -n100 $logPath`);
 	$logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath | tail -100`);
 	return $logLines;
 }
@@ -277,8 +280,12 @@ function getHeardList($logLines, $onlyLast) {
 
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
-			$name = "";//getName($callsign);
-			array_push($heardList, array($timestamp, $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber));
+			$name = "";
+			if (defined("ENABLEXTDLOOKUP")) {
+				array_push($heardList, array($timestamp, $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber));
+			} else {
+				array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
+			}
 			$duration = "";
 			$loss ="";
 			$ber = "";
@@ -300,11 +307,13 @@ function getLastHeard($logLines, $onlyLast) {
 		if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || (startsWith($listElem[1], "DMR")) ) {
 			if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
 				array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[4]);
-				
-				if ($listElem[2] !== "??????????") {
-					$listElem[3] = getName($listElem[2]);
-				} else {
-					$listElem[3] = "---";
+				if (defined("ENABLEXTDLOOKUP")) {
+					if ($listElem[2] !== "??????????") {
+						//$listElem[3] = "Dummy"; //Should speed up this function - time-issue!
+						$listElem[3] = getName($listElem[2]); //Should speed up this function - time-issue!
+					} else {
+						$listElem[3] = "---";
+					}
 				}
 				if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
 					$listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
@@ -522,45 +531,13 @@ function getActiveYSFReflectors() {
 	$file = fopen(YSFHOSTSPATH."/".YSFHOSTSFILENAME, 'r');
 	if ($file) {
 		while (($line = fgetcsv($file, 1000, ";")) !== FALSE) {
-			//$line is an array of the csv elements
-	//		print_r($line);
 			array_push($reflectorlist, array($line[1], $line[2], $line[0], $line[5]));
 		}
 	}
 	fclose($file);
 	return $reflectorlist;
 }
-/*
-function getActiveYSFReflectors($logLines) {
-// 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
-// 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
-// D: 2016-06-11 19:09:31.371 Have reflector status reply from 89164/FUSIONBE2       /FusionBelgium /002
-	$reflectors = Array();
-	$reflectorlist = Array();
-	foreach ($logLines as $logLine) {
-		if (strpos($logLine, "Have reflector status reply from")) {
-			$timestamp = substr($logLine, 3, 19);
-			$timestamp2 = new DateTime($timestamp);
-			$now =  new DateTime();
-			$timestamp2->add(new DateInterval('PT2H'));
 
-			if ($now->format('U') <= $timestamp2->format('U')) {
-				$str = substr($logLine, 60);
-				$id = strtok($str, "/");
-				$name = strtok("/");
-				$description = strtok("/");
-				$concount = strtok("/");
-				if(!(array_search($name, $reflectors) > -1)) {
-					array_push($reflectors,$name);
-					array_push($reflectorlist, array($name, $description, $id, $concount, $timestamp));
-				}
-			}
-		}
-	}
-	array_multisort($reflectorlist);
-	return $reflectorlist;
-}
-*/
 function getYSFReflectorById($id, $reflectors) {
 	if ($id ==-1) {
 		return "not linked";
@@ -572,6 +549,39 @@ function getYSFReflectorById($id, $reflectors) {
 		}
 	}
 }	
+
+/*
+function getNames($delimiter) {
+	if (!isset($_SESSION['dmrIDs'])) {
+		$dmrIDs = Array();
+		$file = fopen(DMRIDDATPATH, 'r');
+		if ($file) {
+			while (($line = fgetcsv($file, 1000, $delimiter)) !== FALSE) {
+				array_push($dmrIDs, array('id'=>$line[0], 'callsign'=>$line[1], 'name'=>$line[2]));
+			}
+		}
+		$_SESSION['dmrIDs'] = $dmrIDs;
+	}
+}
+function getName($callsign) {
+	$dmrIDs = $_SESSION['dmrIDs'];
+	$key = array_search("$callsign", array_column($dmrIDs, 'callsign'));
+	//return $key;
+	$dmrID = $_SESSION['dmrIDs'][$key];
+	//var_dump($dmrID);
+	return $dmrID['name'];
+}
+
+function getName($callsign) {
+//	var_dump($_SESSION['dmrIDs']);
+	foreach ($_SESSION['dmrIDs'] as $dmrID) {
+		if ($dmrID[1] == $callsign) {
+			return $dmrID[2];
+		}
+	}
+	return "---";
+}
+*/	
 
 function getName($callsign) {
 	if (is_numeric($callsign)) {
@@ -596,4 +606,5 @@ function getName($callsign) {
 		return "DMRIDs.dat not correct!";
 	}
 }
+
 ?>

@@ -5,10 +5,12 @@
 		exec("cat /sys/class/thermal/thermal_zone0/temp", $cputemp);
 		$cputemp = $cputemp[0] / 1000;
 	}
+	showLapTime("cputemp");
 	if (file_exists ("/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq")) {
 		exec("cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq", $cpufreq);
 		$cpufreq = $cpufreq[0] / 1000;
 	}
+	showLapTime("cpufreq");
 	
 	if (defined("TEMPERATUREALERT") && $cputemp > TEMPERATUREHIGHLEVEL && $cputemp !== NULL) {
 ?>
@@ -72,7 +74,7 @@
 
 	$output = shell_exec('cat /proc/loadavg');
 	$sysload = substr($output,0,strpos($output," "))*100; 
-
+	showLapTime("sysload");
 	$stat1 = file('/proc/stat'); 
 	sleep(1); 
 	$stat2 = file('/proc/stat'); 
@@ -86,7 +88,8 @@
 	$total = array_sum($dif); 
 	$cpu = array(); 
 	foreach($dif as $x=>$y) $cpu[$x] = round($y / $total * 100, 1); 
-	$cpuusage = round($cpu['user'] + $cpu['sys'], 2);  
+	$cpuusage = round($cpu['user'] + $cpu['sys'], 2); 
+	showLapTime("cpuusage");
 	
 	$output = shell_exec('grep -c processor /proc/cpuinfo');
 	$cpucores = $output;
@@ -94,7 +97,11 @@
 	$output = shell_exec('cat /proc/uptime');
 	$uptime = format_time(substr($output,0,strpos($output," ")));
 	$idletime = format_time((substr($output,strpos($output," ")))/$cpucores);
-	$pinStatus = trim(shell_exec("gpio -g read ".POWERONLINEPIN)); // Pin 18
+	showLapTime("idletime");
+	
+	if (defined("SHOWPOWERSTATE")) {
+		$pinStatus = trim(shell_exec("gpio -g read ".POWERONLINEPIN)); // Pin 18
+	}
 	//returns 0 = low; 1 = high
 ?>
 <div class="panel panel-default">

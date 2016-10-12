@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 include "config/config.php";
@@ -16,7 +16,7 @@ var_dump($lastHeard);
 echo"-->";
 foreach ($lastHeard as $listElem) {
 	echo "<tr>";
-	if ($listElem[7] == null) {
+	if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
 		echo"<td nowrap>$listElem[0]</td>";
 		echo"<td nowrap>$listElem[1]</td>";
 		/*if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
@@ -28,20 +28,33 @@ foreach ($lastHeard as $listElem) {
 		
 		if (defined("ENABLEXTDLOOKUP")) {
 			//echo "<td nowrap>".getName($listElem[2])."</td>";
-			echo "<td nowrap>$listElem[3]</td>";
+			echo"<td nowrap>$listElem[3]</td>";
+			echo"<td nowrap>$listElem[4]</td>";
+			echo"<td nowrap>$listElem[5]</td>";
+			if ($listElem[6] == "RF"){
+				echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
+			}else{
+				echo"<td nowrap>$listElem[6]</td>";
+			}
+			$UTC = new DateTimeZone("UTC");
+			$d1 = new DateTime($listElem[0], $UTC);
+			$d2 = new DateTime('now', $UTC);
+			$diff = $d2->getTimestamp() - $d1->getTimestamp();
+			echo"<td nowrap>$diff s</td>";
+		} else {
+			echo"<td nowrap>$listElem[3]</td>";
+			echo"<td nowrap>$listElem[4]</td>";
+			if ($listElem[5] == "RF"){
+				echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
+			}else{
+				echo"<td nowrap>$listElem[5]</td>";
+			}
+			$UTC = new DateTimeZone("UTC");
+			$d1 = new DateTime($listElem[0], $UTC);
+			$d2 = new DateTime('now', $UTC);
+			$diff = $d2->getTimestamp() - $d1->getTimestamp();
+			echo"<td nowrap>$diff s</td>";
 		}
-		echo"<td nowrap>$listElem[4]</td>";
-		echo"<td nowrap>$listElem[5]</td>";
-		if ($listElem[5] == "RF"){
-			echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
-		}else{
-			echo"<td nowrap>$listElem[6]</td>";
-		}
-		$UTC = new DateTimeZone("UTC");
-		$d1 = new DateTime($listElem[0], $UTC);
-		$d2 = new DateTime('now', $UTC);
-		$diff = $d2->getTimestamp() - $d1->getTimestamp();
-		echo"<td nowrap>$diff s</td>";
 	} 
 	echo "</tr>";
 }

@@ -82,4 +82,28 @@ function checkSetup() {
 	}
 	error_reporting($el);
 }
+
+function startStopwatch() {
+	$time = microtime();
+	$time = explode(' ', $time);
+	$time = $time[1] + $time[0];
+	$_SESSION['starttime'] = $time;
+	return $time;
+}
+
+function getLapTime() {
+	$start = $_SESSION['starttime'];
+	$time = microtime();
+	$time = explode(' ', $time);
+	$time = $time[1] + $time[0];
+	$finish = $time;
+	$lap_time = round(($finish - $start), 4);
+	return $lap_time;
+}
+
+function showLapTime($func) {
+	if( defined("DEBUG") ) {
+	?><script>console.log('<?php echo $func . ": ". getLapTime(); ?> sec.');</script><?php
+	}	
+}
 ?>

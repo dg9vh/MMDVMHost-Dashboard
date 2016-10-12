@@ -2,17 +2,25 @@
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
 $logLinesMMDVM = getMMDVMLog();
-$_SESSION['logLinesMMDVM'] = $logLinesMMDVM;
+showLapTime("getMMDVMLog");
+//getNames(" ");
+showLapTime("getNames");
+//$_SESSION['logLinesMMDVM'] = $logLinesMMDVM;
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
-$_SESSION['reverseLogLinesMMDVM'] = $reverseLogLinesMMDVM;
+showLapTime("array_multisort");
+//$_SESSION['reverseLogLinesMMDVM'] = $reverseLogLinesMMDVM;
 $lastHeard = getLastHeard($reverseLogLinesMMDVM, FALSE);
-$_SESSION['lastHeard'] = $lastHeard;
+showLapTime("getLastHeard");
+//$_SESSION['lastHeard'] = $lastHeard;
 
 if (defined("ENABLEYSFGATEWAY")) {
 	$logLinesYSFGateway = getYSFGatewayLog();
+	showLapTime("getYSFGatewayLog");
 	$reverseLogLinesYSFGateway = $logLinesYSFGateway;
   	array_multisort($reverseLogLinesYSFGateway,SORT_DESC);	
+	showLapTime("array_multisort");
   	$activeYSFReflectors = getActiveYSFReflectors();
+	showLapTime("getActiveYSFReflectors");
 }
 ?>

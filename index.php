@@ -1,14 +1,17 @@
 <?php
-session_start();
+//session_start();
+/*
 $time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
-$start = $time;
+$start = $time;*/
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 // do not touch this includes!!! Never ever!!!
 include "config/config.php";
 include "include/tools.php";
+startStopwatch();
+showLapTime("Start of page");
 include "include/functions.php";
 include "include/init.php";
 include "version.php";
@@ -64,14 +67,22 @@ if (defined("ENABLEMANAGEMENT")) {
 checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/txinfo.php";
+showLapTime("txinfo");
 include "include/sysinfo.php";
+showLapTime("sysinfo");
 include "include/disk.php";
+showLapTime("disk");
 include "include/repeaterinfo.php";
+showLapTime("repeaterinfo");
 include "include/modes.php";
+showLapTime("modes");
 include "include/lh_ajax.php";
+showLapTime("lh_ajax");
 include "include/localtx_ajax.php";
+showLapTime("localtx_ajax");
 if (defined("ENABLEYSFGATEWAY")) {
 	include "include/ysfgatewayinfo.php";
+	showLapTime("ysfgatewayinfo");
 }
 ?>
 	<div class="panel panel-info">
@@ -79,12 +90,12 @@ if (defined("ENABLEYSFGATEWAY")) {
 $datum = date("Y-m-d");
 $uhrzeit = date("H:i:s");
 echo "MMDVMHost-Dashboard V ".VERSION." | Last Reload $datum, $uhrzeit";
-$time = microtime();
+/*$time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $finish = $time;
-$total_time = round(($finish - $start), 4);
-echo '<!--Page generated in '.$total_time.' seconds.-->';		
+$total_time = round(($finish - $start), 4);*/
+echo '<!--Page generated in '.getLapTime().' seconds.-->';		
 ?> |
 <?php
 if (!isset($_GET['stoprefresh'])) {
@@ -149,5 +160,13 @@ var ysfGatewaysT = $('#ysfGateways').dataTable( {
   } );
 });
 </script>
+	<noscript>
+	 For full functionality of this site it is necessary to enable JavaScript.
+	 Here are the <a href="http://www.enable-javascript.com/" target="_blank">
+	 instructions how to enable JavaScript in your web browser</a>.
+	</noscript>
   </body>
 </html>
+<?php
+	showLapTime("End of Page");
+?>
