@@ -34,15 +34,12 @@ $totalLH = count($lastHeard);
 $(document).ready(function(){
   var lastHeardT = $('#lastHeard').dataTable( {
 	"aaSorting": [[0,'desc']],
-	"ajax": '<?php
-	$protocol = "http";
-	if ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) 
-  		$protocol = "https";
-  	echo $protocol."://";
-	$base_dir  = __DIR__;// Absolute path to your installation, ex: /var/www/mywebsite
-	$base_dir = substr($basedir,0,strpos($basedir,"include"));
-	$doc_root  = preg_replace("!${_SERVER['SCRIPT_NAME']}$!", '', $_SERVER['SCRIPT_FILENAME']); # ex: /var/www
-	echo $_SERVER['HTTP_HOST'].preg_replace("!^${doc_root}!", '', $base_dir) ?>/ajax.php?section=lastHeard',
+	<?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}"; 
+	if (strpos($request,"index.php")> 0) {
+		$request = substr($request,0,strpos($request,"index.php"));
+	}
+	?>
+	"ajax": '<?php echo $request?>/ajax.php?section=lastHeard',
 	"deferRender": true
   } );
 
