@@ -22,6 +22,22 @@ function getMMDVMHostFileVersion() {
 	}
 }
 
+function getFirmwareVersion() {
+	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+	$logLines = explode("\n", `grep "MMDVM protocol version" $logPath`);
+	$firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
+	if (strlen($firmware) > 0) {
+		$fp = fopen('/tmp/MMDVMFirmware.txt', 'w');
+		fwrite($fp, $firmware);
+		fclose($fp);
+	} else {
+		$fp = fopen('/tmp/MMDVMFirmware.txt', 'r');
+		$contents = fread($fp, filesize("/tmp/MMDVMFirmware.txt"));
+		$firmware = $contents;
+	}
+	echo $firmware;
+}
+
 function getMMDVMConfig() {
 	// loads MMDVM.ini into array for further use
 	$conf = array();
@@ -601,9 +617,12 @@ function getName($callsign) {
 			$delimiter = "\t";
 			exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
 		}
-		$name = substr($output[0], strpos($output[0],$delimiter)+1);
-		$name = substr($name, strpos($name,$delimiter)+1);
-		return $name;
+		if (count($output) !== 0) {
+			$name = substr($output[0], strpos($output[0],$delimiter)+1);
+			$name = substr($name, strpos($name,$delimiter)+1);
+			return $name;
+		} else
+			return "---";
 	} else {
 		return "DMRIDs.dat not correct!";
 	}
