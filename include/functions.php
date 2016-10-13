@@ -115,7 +115,8 @@ function showMode($mode, $mmdvmconfigs) {
 function getMMDVMLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-	$logLines = explode("\n", `grep M: $logPath`);
+	//$logLines = explode("\n", `grep M: $logPath`);
+	$logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
 	return $logLines;
 }
 
@@ -129,7 +130,8 @@ function getShortMMDVMLog() {
 function getYSFGatewayLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
-	$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
+	//$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
+	$logLines = explode("\n", `egrep -h "Starting|DISCONNECT|Connect|Automatic" $logPath`);
 	return $logLines;
 }
 
