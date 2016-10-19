@@ -186,6 +186,8 @@ function getHeardList($logLines, $onlyLast) {
 			continue;
 		} else if(strpos($logLine,"overflow in the DMR slot RF queue")) {
 			continue;
+		} else if(strpos($logLine,"bad LC received")) {
+			continue;
 		}
 
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
