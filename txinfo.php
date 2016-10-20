@@ -15,8 +15,8 @@ echo"<!--";
 var_dump($lastHeard);
 echo"-->";
 foreach ($lastHeard as $listElem) {
-	echo "<tr>";
 	if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
+		echo "<tr>";
 		echo"<td nowrap>$listElem[0]</td>";
 		echo"<td nowrap>$listElem[1]</td>";
 		/*if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
@@ -55,8 +55,7 @@ foreach ($lastHeard as $listElem) {
 			$diff = $d2->getTimestamp() - $d1->getTimestamp();
 			echo"<td nowrap>$diff s</td>";
 		}
-	} 
-	echo "</tr>";
+		echo "</tr>";
+	}
 }
 ?>
-
