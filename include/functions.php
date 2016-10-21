@@ -358,7 +358,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 		$mode = "DMR";
 	}
 	if ($listElem[7] ==="") {
-		return $mode;
+		return "<span class=\"label label-danger\">".$mode."</span>";
 	} else {
 		$now =  new DateTime();
 		$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
@@ -377,7 +377,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 		if ($now->format('U') > $timestamp->format('U')) {
 			return "idle";
 		} else {
-			return $mode;
+			return "<span class=\"label label-warning\">".$mode."</span>";
 		}
 	}
 }
