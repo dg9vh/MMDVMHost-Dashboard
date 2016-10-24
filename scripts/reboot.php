@@ -43,7 +43,7 @@ include "../include/functions.php";
 checkSetup();
    exec('sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &');
 ?>
-<div class="alert alert-info" role="alert">Exceuteing  <b><?php echo 'sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &'?></b><br>Reboot system in progress</div>	
+<div class="alert alert-info" role="alert">Executeing  <b><?php echo 'sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &'?></b><br>Reboot system in progress</div>	
  
 	<div class="panel panel-info">
 

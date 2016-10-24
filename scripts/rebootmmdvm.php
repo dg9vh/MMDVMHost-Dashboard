@@ -45,7 +45,7 @@ checkSetup();
 include "../include/sysinfo.php";
    exec( REBOOTMMDVM );
 ?>
-<div class="alert alert-info" role="alert">Exceuteing  <b><?php echo REBOOTMMDVM ?></b><br>Reboot MMDVMHost service in progress</div>	
+<div class="alert alert-info" role="alert">Executeing  <b><?php echo REBOOTMMDVM ?></b><br>Reboot MMDVMHost service in progress</div>	
  
 	<div class="panel panel-info">
 
