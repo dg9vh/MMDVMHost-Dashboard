@@ -46,7 +46,7 @@ include "version.php";
   	echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
-  <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?>, Firmware: <?php echo getFirmwareVersion() ?></h4>
+  <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?></h4>
   <?php
   if (LOGO !== "") {
 ?>
