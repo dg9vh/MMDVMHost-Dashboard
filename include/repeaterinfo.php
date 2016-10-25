@@ -60,9 +60,9 @@
 		if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
 			echo"<td>";
 			if (getDMRMasterState()) {
-				echo "<span class=\"label label-success\">";
+				echo "<span class=\"label label-success\" title=\"Master connected\">";
 			} else {
-				echo "<span class=\"label label-danger\">";
+				echo "<span class=\"label label-danger\" title=\"Master not connected\">";
 			}
 			echo getConfigItem("DMR Network", "Address", $mmdvmconfigs)."</td>";
 ?>
