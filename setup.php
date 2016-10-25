@@ -152,6 +152,38 @@ include "include/tools.php";
         <div class="panel-body"><input type="checkbox" name="ENABLEMANAGEMENT" <?php if (constant("ENABLEMANAGEMENT")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="VIEWLOGUSER" style="width: 300px">Username for view log:</span>
+        <input type="text" value="<?php echo constant("VIEWLOGUSER") ?>" name="VIEWLOGUSER" class="form-control" placeholder="username" aria-describedby="VIEWLOGUSER">
+      </div>	
+      <div class="input-group">
+        <span class="input-group-addon" id="VIEWLOGPW" style="width: 300px">Password for view log:</span>
+        <input type="text" value="<?php echo constant("VIEWLOGPW") ?>" name="VIEWLOGPW" class="form-control" placeholder="password" aria-describedby="VIEWLOGPW">
+      </div>	
+      <div class="input-group">
+        <span class="input-group-addon" id="HALTUSER" style="width: 300px">Username for halt:</span>
+        <input type="text" value="<?php echo constant("HALTUSER") ?>" name="HALTUSER" class="form-control" placeholder="username" aria-describedby="HALTUSER">
+      </div>	
+      <div class="input-group">
+        <span class="input-group-addon" id="HALTPW" style="width: 300px">Password for halt:</span>
+        <input type="text" value="<?php echo constant("HALTPW") ?>" name="HALTPW" class="form-control" placeholder="password" aria-describedby="HALTPW">
+      </div>	
+      <div class="input-group">
+        <span class="input-group-addon" id="REBOOTUSER" style="width: 300px">Username for reboot:</span>
+        <input type="text" value="<?php echo constant("REBOOTUSER") ?>" name="REBOOTUSER" class="form-control" placeholder="username" aria-describedby="REBOOTUSER">
+      </div>	
+      <div class="input-group">
+        <span class="input-group-addon" id="REBOOTPW" style="width: 300px">Password for reboot:</span>
+        <input type="text" value="<?php echo constant("REBOOTPW") ?>" name="REBOOTPW" class="form-control" placeholder="password" aria-describedby="REBOOTPW">
+      </div>	
+      <div class="input-group">
+        <span class="input-group-addon" id="RESTARTUSER" style="width: 300px">Username for restart:</span>
+        <input type="text" value="<?php echo constant("RESTARTUSER") ?>" name="RESTARTUSER" class="form-control" placeholder="username" aria-describedby="RESTARTUSER">
+      </div>	
+      <div class="input-group">
+        <span class="input-group-addon" id="RESTARTPW" style="width: 300px">Password for restart:</span>
+        <input type="text" value="<?php echo constant("RESTARTPW") ?>" name="RESTARTPW" class="form-control" placeholder="password" aria-describedby="RESTARTPW">
+      </div>	
+      <div class="input-group">
         <span class="input-group-addon" id="REBOOTMMDVM" style="width: 300px">Reboot MMDVMHost command:</span>
         <input type="text" value="<?php echo constant("REBOOTMMDVM") ?>" name="REBOOTMMDVM" class="form-control" placeholder="sudo systemctl restart mmdvmhost.service" aria-describedby="REBOOTMMDVM">
       </div>	
