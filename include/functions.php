@@ -38,6 +38,31 @@ function getFirmwareVersion() {
 	echo $firmware;
 }
 
+function getDMRMasterState() {
+	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+	$logLines = explode("\n", `egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);
+	$state = -1;
+	foreach($logLines as $logLine) {
+		if (strpos($logLine, "successfully") > 0) {
+			$state = 1;
+		} 
+		if (strpos($logLine, "Closing") > 0) {
+			$state = 0;
+		}
+	}
+	if ($state >= 0) {
+		$fp = fopen('/tmp/DMRMasterState.txt', 'w');
+		fwrite($fp, $state);
+		fclose($fp);
+	} else {
+		$fp = fopen('/tmp/DMRMasterState.txt', 'r');
+		$contents = fread($fp, filesize("/tmp/DMRMasterState.txt"));
+		$state = $contents;
+	}
+	return $state;
+	
+}
+
 function getMMDVMConfig() {
 	// loads MMDVM.ini into array for further use
 	$conf = array();

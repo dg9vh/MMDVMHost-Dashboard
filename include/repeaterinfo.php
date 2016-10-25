@@ -58,8 +58,15 @@
 	if (getEnabled("DMR", $mmdvmconfigs) == 1) {
 		echo"<td>".getConfigItem("DMR", "ColorCode", $mmdvmconfigs)."</td>";
 		if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
-			echo"<td>".getConfigItem("DMR Network", "Address", $mmdvmconfigs)."</td>";
+			echo"<td>";
+			if (getDMRMasterState()) {
+				echo "<span class=\"label label-success\">";
+			} else {
+				echo "<span class=\"label label-danger\">";
+			}
+			echo getConfigItem("DMR Network", "Address", $mmdvmconfigs)."</td>";
 ?>
+			</span>
             <td><span class="label <?php 
 			if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == 1) {
 				echo 'label-success">enabled';      
