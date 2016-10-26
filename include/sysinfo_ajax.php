@@ -2,7 +2,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">System Info</div>
   <!-- Tabelle -->
-	<div class="table-responsive">  
+	<div class="table-responsive">
 		<table id="sysinfo" class="table table-condensed">
 		</table>
 	</div>

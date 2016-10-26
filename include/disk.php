@@ -2,7 +2,7 @@
   <!-- Standard-Panel-Inhalt -->
 	  <div class="panel-heading">Disk Use</div>
 	  <!-- Tabelle -->
-	  <div class="table-responsive">  
+	  <div class="table-responsive">
 			<table id="diskuse" class="table table-condensed table-striped table-hover">
 					<thead>
 						<tr>
@@ -45,7 +45,7 @@ try{
 								<td><?php echo getSize($used * 1024) ?></td>
 								<td><?php echo getSize($total * 1024) ?></td>
 							</tr>
-	<?php					
+	<?php
 			$key++;
 		}
 	}
@@ -53,8 +53,8 @@ try{
 	return false;
 }
 
-?>  
+?>
 					</tbody>
 			</table>
-	  </div>  
+	  </div>
   </div>

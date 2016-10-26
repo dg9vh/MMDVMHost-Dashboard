@@ -5,7 +5,7 @@ $totalLH = count($lastHeard);
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Today's local transmissions</div>
   <!-- Tabelle -->
-  <div class="table-responsive">  
+  <div class="table-responsive">
 <table id="localTx" class="table table-condensed table-striped table-hover">
         <thead>
             <tr>
@@ -28,14 +28,14 @@ $totalLH = count($lastHeard);
             </tr>
         </thead>
     </table>
-  </div>  
+  </div>
 </div>
 <script>
 $(document).ready(function(){
 	var localTxT = $('#localTx').dataTable( {
     "aaSorting": [[0,'desc']],
-	
-	<?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}"; 
+
+	<?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";
 	if (strpos($request,"index.php")> 0) {
 		$request = substr($request,0,strpos($request,"index.php"));
 	}
@@ -50,7 +50,7 @@ $(document).ready(function(){
 setInterval( function () {
     localTxT.api().ajax.reload( );
 }, <?php echo REFRESHAFTER * 1000 ?> );
-<?php		
+<?php
 	}
 ?>
 });

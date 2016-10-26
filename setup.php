@@ -113,7 +113,7 @@ include "include/tools.php";
         <span class="input-group-addon" id="YSFHOSTSFILENAME" style="width: 300px">YSFHosts.txt-filename</span>
         <input type="text" value="<?php echo constant("YSFHOSTSFILENAME") ?>" name="YSFHOSTSFILENAME" class="form-control" placeholder="YSFHosts.txt" aria-describedby="YSFHOSTSFILENAME">
       </div>
-    </div>   
+    </div>
     <div class="container">
       <h2>ircddbgateway-Configuration</h2>
       <div class="input-group">
@@ -154,47 +154,47 @@ include "include/tools.php";
       <div class="input-group">
         <span class="input-group-addon" id="VIEWLOGUSER" style="width: 300px">Username for view log:</span>
         <input type="text" value="<?php echo constant("VIEWLOGUSER") ?>" name="VIEWLOGUSER" class="form-control" placeholder="username" aria-describedby="VIEWLOGUSER">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="VIEWLOGPW" style="width: 300px">Password for view log:</span>
         <input type="text" value="<?php echo constant("VIEWLOGPW") ?>" name="VIEWLOGPW" class="form-control" placeholder="password" aria-describedby="VIEWLOGPW">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="HALTUSER" style="width: 300px">Username for halt:</span>
         <input type="text" value="<?php echo constant("HALTUSER") ?>" name="HALTUSER" class="form-control" placeholder="username" aria-describedby="HALTUSER">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="HALTPW" style="width: 300px">Password for halt:</span>
         <input type="text" value="<?php echo constant("HALTPW") ?>" name="HALTPW" class="form-control" placeholder="password" aria-describedby="HALTPW">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="REBOOTUSER" style="width: 300px">Username for reboot:</span>
         <input type="text" value="<?php echo constant("REBOOTUSER") ?>" name="REBOOTUSER" class="form-control" placeholder="username" aria-describedby="REBOOTUSER">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="REBOOTPW" style="width: 300px">Password for reboot:</span>
         <input type="text" value="<?php echo constant("REBOOTPW") ?>" name="REBOOTPW" class="form-control" placeholder="password" aria-describedby="REBOOTPW">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="RESTARTUSER" style="width: 300px">Username for restart:</span>
         <input type="text" value="<?php echo constant("RESTARTUSER") ?>" name="RESTARTUSER" class="form-control" placeholder="username" aria-describedby="RESTARTUSER">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="RESTARTPW" style="width: 300px">Password for restart:</span>
         <input type="text" value="<?php echo constant("RESTARTPW") ?>" name="RESTARTPW" class="form-control" placeholder="password" aria-describedby="RESTARTPW">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="REBOOTMMDVM" style="width: 300px">Reboot MMDVMHost command:</span>
         <input type="text" value="<?php echo constant("REBOOTMMDVM") ?>" name="REBOOTMMDVM" class="form-control" placeholder="sudo systemctl restart mmdvmhost.service" aria-describedby="REBOOTMMDVM">
-      </div>	
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="REBOOTSYS" style="width: 300px">Reboot system command:</span>
         <input type="text" value="<?php echo constant("REBOOTSYS") ?>" name="REBOOTSYS" class="form-control" placeholder="sudo reboot" aria-describedby="REBOOTSYS">
-      </div>	  
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="HALTSYS" style="width: 300px">Halt system command:</span>
         <input type="text" value="<?php echo constant("HALTSYS") ?>" name="HALTSYS" class="form-control" placeholder="sudo halt" aria-describedby="HALTSYS">
-      </div>	  
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="SHOWPOWERSTATE" style="width: 300px">Show Powerstate (online or battery, wiringpi needed)</span>
         <div class="panel-body"><input type="checkbox" name="SHOWPOWERSTATE" <?php if (defined("SHOWPOWERSTATE")) echo "checked" ?>></div>
@@ -206,7 +206,7 @@ include "include/tools.php";
       <div class="input-group">
         <span class="input-group-addon" id="POWERONLINESTATE" style="width: 300px">State that signalizes online-state:</span>
         <input type="text" value="<?php echo constant("POWERONLINESTATE") ?>" name="POWERONLINESTATE" class="form-control" placeholder="1" aria-describedby="POWERONLINESTATE">
-      </div>	  
+      </div>
       <div class="input-group">
         <span class="input-group-addon" id="SHOWQRZ" style="width: 300px">Show link to QRZ.com on Callsigns</span>
         <div class="panel-body"><input type="checkbox" name="SHOWQRZ" <?php if (defined("SHOWQRZ")) echo "checked" ?>></div>
@@ -214,7 +214,7 @@ include "include/tools.php";
       <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" form="config">Save configuration</button>
-      </span>      
+      </span>
       </div>
     </div>
   </form>

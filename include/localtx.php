@@ -8,7 +8,7 @@ $localTXList = getHeardList($reverseLogLinesMMDVM, FALSE);
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Today's local transmissions</div>
   <!-- Tabelle -->
-<div class="table-responsive">  
+<div class="table-responsive">
   <table id="localTx" class="table table-condensed table-striped table-hover">
    <thead>
     <tr>
@@ -30,10 +30,10 @@ $localTXList = getHeardList($reverseLogLinesMMDVM, FALSE);
       <th>BER</th>
     </tr>
    </thead>
-   <tbody>	
+   <tbody>
 <?php
 for ($i = 0; $i < count($localTXList); $i++) {
-	$listElem = $localTXList[$i];		
+	$listElem = $localTXList[$i];
 	if ($listElem[6] == "RF" && ($listElem[1]=="D-Star" || startsWith($listElem[1], "DMR") || $listElem[1]=="YSF" || $listElem[1]=="P25")) {
 		echo"<tr>";
 		echo"<td nowrap>$listElem[0]</td>";
