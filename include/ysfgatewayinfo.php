@@ -6,9 +6,9 @@
   <!-- Tabelle -->
   <table class="table">
     <tr>
-    <td><span class="label <?php 
+    <td><span class="label <?php
 		if (isProcessRunning("YSFGateway")) {
-			echo "label-success";	
+			echo "label-success";
 			?>">YSFGateway Process is running</span></td><?php
 		} else {
 			echo "label-danger\" title=\"YSFGateway is down!";
@@ -22,11 +22,11 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">YSFReflectors reported active</div>
   <!-- Tabelle -->
-  <div class="table-responsive">  
+  <div class="table-responsive">
   <table id="ysfGateways" class="table table-condensed table-striped table-hover">
 
 <?php
-	
+
 		if (count($activeYSFReflectors) > 0) {
 		?>
 			<thead>

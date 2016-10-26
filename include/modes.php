@@ -2,7 +2,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Enabled Modes</div>
   <!-- Tabelle -->
-  <div class="table-responsive">  
+  <div class="table-responsive">
   <table class="table">
     <tr>
     <?php showMode("DMR", $mmdvmconfigs);?>

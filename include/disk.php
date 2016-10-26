@@ -1,13 +1,13 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-	  <div class="panel-heading">Disk use</div>
+	  <div class="panel-heading">Disk Use</div>
 	  <!-- Tabelle -->
-	  <div class="table-responsive">  
+	  <div class="table-responsive">
 			<table id="diskuse" class="table table-condensed table-striped table-hover">
 					<thead>
 						<tr>
-							<th class="w10p filesystem">Filesystem</th>
-							<th class="w20p">Mount</th>
+							<th class="w10p filesystem">File System</th>
+							<th class="w20p">Mount Point</th>
 							<th>Use</th>
 							<th class="w15p">Free</th>
 							<th class="w15p">Used</th>
@@ -45,7 +45,7 @@ try{
 								<td><?php echo getSize($used * 1024) ?></td>
 								<td><?php echo getSize($total * 1024) ?></td>
 							</tr>
-	<?php					
+	<?php
 			$key++;
 		}
 	}
@@ -53,8 +53,8 @@ try{
 	return false;
 }
 
-?>  
+?>
 					</tbody>
 			</table>
-	  </div>  
+	  </div>
   </div>

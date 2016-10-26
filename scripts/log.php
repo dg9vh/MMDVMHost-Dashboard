@@ -42,7 +42,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
   	echo "Repeater";
   } else {
-  	echo "Hotspot";  
+  	echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
@@ -57,7 +57,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
    <div class="panel-heading">
       <span class="label label-info">Viewing log <?php echo $fileName ?></span>
    </div>
-  <div class="table-responsive">  
+  <div class="table-responsive">
   <table id="log" class="table table-condensed table-striped table-hover">
   <thead>
     <tr>
@@ -104,9 +104,9 @@ $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
-echo '<!--Page generated in '.$total_time.' seconds.-->';	
+echo '<!--Page generated in '.$total_time.' seconds.-->';
 		} else {
-			
+
     header('WWW-Authenticate: Basic realm="Dashboard"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Zur Ausführung bitte die geforderten Login-Daten eingeben!';

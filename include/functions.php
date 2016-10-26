@@ -45,7 +45,7 @@ function getDMRMasterState() {
 	foreach($logLines as $logLine) {
 		if (strpos($logLine, "successfully") > 0) {
 			$state = 1;
-		} 
+		}
 		if (strpos($logLine, "Closing") > 0) {
 			$state = 0;
 		}
@@ -60,7 +60,7 @@ function getDMRMasterState() {
 		$state = $contents;
 	}
 	return $state;
-	
+
 }
 
 function getMMDVMConfig() {
@@ -545,7 +545,7 @@ function getActualLink($logLines, $mode) {
 				return -2;
 				break;
 			}
-			
+
 	}
 	return "something went wrong!";
 }
@@ -606,7 +606,7 @@ function getYSFReflectorById($id, $reflectors) {
 			}
 		}
 	}
-}	
+}
 
 /*
 function getNames($delimiter) {
@@ -639,13 +639,13 @@ function getName($callsign) {
 	}
 	return "---";
 }
-*/	
+*/
 
 function getName($callsign) {
 	if (is_numeric($callsign)) {
 		return "---";
 	}
-	
+
 	if (file_exists(DMRIDDATPATH)) {
 		$callsign = trim($callsign);
 		if (strpos($callsign,"-")) {

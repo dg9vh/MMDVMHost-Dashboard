@@ -23,7 +23,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -40,7 +40,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
   	echo "Repeater";
   } else {
-  	echo "Hotspot";  
+  	echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
@@ -52,7 +52,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 checkSetup();
    exec('sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &');
 ?>
-<div class="alert alert-info" role="alert">Executeing  <b><?php echo 'sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &'?></b><br>Reboot system in progress</div>	
+<div class="alert alert-info" role="alert">Executing  <b><?php echo 'sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &'?></b><br>Reboot system in progress</div>
  
 	<div class="panel panel-info">
 
@@ -66,9 +66,9 @@ $time = explode(' ', $time);
 $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
-echo '<!--Page generated in '.$total_time.' seconds.-->';	
+echo '<!--Page generated in '.$total_time.' seconds.-->';
 		} else {
-			
+
     header('WWW-Authenticate: Basic realm="Dashboard"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Zur Ausführung bitte die geforderten Login-Daten eingeben!';

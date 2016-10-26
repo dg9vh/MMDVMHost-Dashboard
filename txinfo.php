@@ -31,7 +31,7 @@ foreach ($lastHeard as $listElem) {
 			}
 		}*/
 		echo"<td nowrap>$listElem[2]</td>";
-		
+
 		if (defined("ENABLEXTDLOOKUP")) {
 			//echo "<td nowrap>".getName($listElem[2])."</td>";
 			echo"<td nowrap>$listElem[3]</td>";

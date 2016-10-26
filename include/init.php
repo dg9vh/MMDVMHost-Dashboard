@@ -18,7 +18,7 @@ if (defined("ENABLEYSFGATEWAY")) {
 	$logLinesYSFGateway = getYSFGatewayLog();
 	showLapTime("getYSFGatewayLog");
 	$reverseLogLinesYSFGateway = $logLinesYSFGateway;
-  	array_multisort($reverseLogLinesYSFGateway,SORT_DESC);	
+  	array_multisort($reverseLogLinesYSFGateway,SORT_DESC);
 	showLapTime("array_multisort");
   	$activeYSFReflectors = getActiveYSFReflectors();
 	showLapTime("getActiveYSFReflectors");

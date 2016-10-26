@@ -5,7 +5,7 @@ $totalLH = count($lastHeard);
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Last Heard List of today's <?php echo $totalLH; ?> callsigns.</div>
   <!-- Tabelle -->
-  <div class="table-responsive">  
+  <div class="table-responsive">
   <table id="lastHeard" class="table table-condensed table-striped table-hover">
    <thead>
     <tr>
@@ -69,6 +69,6 @@ for ($i = 0;  ($i < $totalLH); $i++) {
 ?>
   </tbody>
   </table>
-  </div>  
+  </div>
 </div>
 
