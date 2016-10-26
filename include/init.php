@@ -1,7 +1,8 @@
 <?php
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
-define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+if (!defined("MMDVMLOGPREFIX"))
+	define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
 echo MMDVMLOGPREFIX;
 $logLinesMMDVM = getMMDVMLog();
 showLapTime("getMMDVMLog");
