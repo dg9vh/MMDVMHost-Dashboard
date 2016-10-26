@@ -38,10 +38,16 @@ for ($i = 0; $i < count($localTXList); $i++) {
 		echo"<tr>";
 		echo"<td nowrap>$listElem[0]</td>";
 		echo"<td nowrap>$listElem[1]</td>";
-		if (constant("SHOWQRZ") && $listElem[2] !== "??????????" && !is_numeric($listElem[2])) {
-			echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
-		} else {
-			echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</td>";
+		if ($listElem[2] !== "??????????") {
+			if (!is_numeric($listElem[2])) {
+				if (constant("SHOWQRZ")) {
+					echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
+				} else {
+					echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</td>";
+				}
+			} else {
+				echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</td>";
+			}
 		}
 		if (defined("ENABLEXTDLOOKUP")) {
 			echo "<td class=\"nowrap\">$listElem[3]</td>";
