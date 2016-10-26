@@ -52,7 +52,7 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 checkSetup();
    exec('sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &');
 ?>
-<div class="alert alert-info" role="alert">Executeing  <b><?php echo 'sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &'?></b><br>Reboot system in progress</div>	
+<div class="alert alert-info" role="alert">Executing  <b><?php echo 'sleep 5s && '. REBOOTSYS . ' > /dev/null 2>&1 &'?></b><br>Reboot system in progress</div>	
  
 	<div class="panel panel-info">
 

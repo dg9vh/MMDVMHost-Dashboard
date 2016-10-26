@@ -52,7 +52,7 @@ checkSetup();
 include "../include/sysinfo.php";
    exec(HALTSYS. ' > /dev/null 2>&1 &');
 ?>
-<div class="alert alert-info" role="alert">Executeing  <b><?php echo HALTSYS ?></b><br>Halt in progress...bye</div>	
+<div class="alert alert-info" role="alert">Executing  <b><?php echo HALTSYS ?></b><br>Halt in progress...bye</div>	
  
 	<div class="panel panel-info">
 
