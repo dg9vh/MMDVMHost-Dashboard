@@ -59,10 +59,6 @@ include "include/tools.php";
         <input type="text" value="<?php echo constant("MMDVMLOGPATH") ?>" name="MMDVMLOGPATH" class="form-control" placeholder="/var/log/mmdvm/" aria-describedby="MMDVMLOGPATH" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="MMDVMLOGPREFIX" style="width: 300px">Logfile-prefix</span>
-        <input type="text" value="<?php echo constant("MMDVMLOGPREFIX") ?>" name="MMDVMLOGPREFIX" class="form-control" placeholder="MMDVM" aria-describedby="MMDVMLOGPREFIX" required data-fv-notempty-message="Value is required">
-      </div>
-      <div class="input-group">
         <span class="input-group-addon" id="MMDVMINIPATH" style="width: 300px">Path to MMDVM.ini</span>
         <input type="text" value="<?php echo constant("MMDVMINIPATH") ?>" name="MMDVMINIPATH" class="form-control" placeholder="/etc/mmdvm/" aria-describedby="MMDVMINIPATH" required data-fv-notempty-message="Value is required">
       </div>

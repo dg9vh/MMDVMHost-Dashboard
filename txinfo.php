@@ -6,6 +6,7 @@ include "config/config.php";
 include "include/tools.php";
 include "include/functions.php";
 $mmdvmconfigs = getMMDVMConfig();
+define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
 $logLinesMMDVM = getShortMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
