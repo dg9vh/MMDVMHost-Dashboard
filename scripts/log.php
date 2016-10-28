@@ -8,6 +8,7 @@ $start = $time;
 include "../config/config.php";
 include "../include/tools.php";
 include "../include/functions.php";
+include "../include/init.php";
 
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
     header('WWW-Authenticate: Basic realm="Dashboard"');
