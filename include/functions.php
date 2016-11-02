@@ -38,6 +38,19 @@ function getFirmwareVersion() {
 	echo $firmware;
 }
 
+function setDMRNetwork($network) {
+	$fp = fopen('/tmp/DMRNetwork.txt', 'w');
+	fwrite($fp, $network);
+	fclose($fp);
+}
+
+function getDMRNetwork() {
+	$fp = fopen('/tmp/DMRNetwork.txt', 'r');
+	$network = fread($fp, filesize("/tmp/DMRNetwork.txt"));
+	fclose($fp);
+	return $network;
+}
+
 function getDMRMasterState() {
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
 	$logLines = explode("\n", `egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);

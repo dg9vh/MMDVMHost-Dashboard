@@ -144,6 +144,19 @@ include "include/tools.php";
         <input type="text" value="<?php echo constant("TEMPERATUREHIGHLEVEL") ?>" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="ENABLENETWORKSWITCHING" style="width: 300px">Enable Network-Switching-Function</span>
+        <div class="panel-body"><input type="checkbox" name="ENABLENETWORKSWITCHING" <?php if (constant("ENABLENETWORKSWITCHING")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SWITCHNETWORKUSER" style="width: 300px">Username for switching networks:</span>
+        <input type="text" value="<?php echo constant("SWITCHNETWORKUSER") ?>" name="SWITCHNETWORKUSER" class="form-control" placeholder="username" aria-describedby="SWITCHNETWORKUSER">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SWITCHNETWORKPW" style="width: 300px">Password for switching networks:</span>
+        <input type="text" value="<?php echo constant("SWITCHNETWORKPW") ?>" name="SWITCHNETWORKPW" class="form-control" placeholder="password" aria-describedby="SWITCHNETWORKPW">
+      </div>
+      
+      <div class="input-group">
         <span class="input-group-addon" id="ENABLEMANAGEMENT" style="width: 300px">Enable Management-Functions below</span>
         <div class="panel-body"><input type="checkbox" name="ENABLEMANAGEMENT" <?php if (constant("ENABLEMANAGEMENT")) echo "checked" ?>></div>
       </div>

@@ -46,7 +46,12 @@ include "version.php";
   	echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
-  <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?></h4>
+  <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?>
+  <?php
+  if (strlen(getDMRNetwork()) > 0 ) {
+  	echo "<br>DMR-Network: ".getDMRNetwork();
+  }
+  ?></h4>
   <?php
   if (LOGO !== "") {
 ?>
@@ -62,6 +67,12 @@ if (defined("ENABLEMANAGEMENT")) {
   <button onclick="window.location.href='./scripts/rebootmmdvm.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;Reboot MMDVMHost</button>
   <button onclick="window.location.href='./scripts/reboot.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;Reboot System</button>
   <button onclick="window.location.href='./scripts/halt.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;ShutDown System</button>
+<?php
+}
+if (defined("ENABLENETWORKSWITCHING")) {
+?>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=DMRPLUS'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;DMRplus</button>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;BrandMeister</button>
 <?php
 }
 checkSetup();
