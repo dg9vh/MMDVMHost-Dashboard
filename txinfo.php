@@ -57,9 +57,9 @@ foreach ($lastHeard as $listElem) {
 			}else{
 				echo"<td nowrap>$listElem[5]</td>";
 			}
-			$UTC = new DateTimeZone("UTC");
-			$d1 = new DateTime($listElem[0], $UTC);
-			$d2 = new DateTime('now', $UTC);
+			$tz = new DateTimeZone(TIMEZONE);
+			$d1 = new DateTime($listElem[0], $tz);
+			$d2 = new DateTime('now', $tz);
 			$diff = $d2->getTimestamp() - $d1->getTimestamp();
 			echo"<td nowrap>$diff s</td>";
 		}
