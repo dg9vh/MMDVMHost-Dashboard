@@ -340,9 +340,9 @@ function getHeardList($logLines, $onlyLast) {
 		if ( strlen($callsign) < 11 ) {
 			$name = "";
 			if (defined("ENABLEXTDLOOKUP")) {
-				array_push($heardList, array($timestamp, $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber));
+				array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber));
 			} else {
-				array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
+				array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
 			}
 			$duration = "";
 			$loss ="";

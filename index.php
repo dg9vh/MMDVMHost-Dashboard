@@ -98,9 +98,11 @@ if (defined("ENABLEYSFGATEWAY")) {
 ?>
 	<div class="panel panel-info">
 <?php
-$datum = date("Y-m-d");
-$uhrzeit = date("H:i:s");
-echo "MMDVMHost-Dashboard V ".VERSION." | Last Reload $datum, $uhrzeit";
+//$datum = date("Y-m-d");
+//$uhrzeit = date("H:i:s");
+$lastReload = new DateTime();
+$lastReload->setTimezone(new DateTimeZone(TIMEZONE));
+echo "MMDVMHost-Dashboard V ".VERSION." | Last Reload ".$lastReload->format('Y-m-d, H:i:s')." (".TIMEZONE.")";
 /*$time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];

@@ -106,4 +106,10 @@ function showLapTime($func) {
 	?><script>console.log('<?php echo $func . ": ". getLapTime(); ?> sec.');</script><?php
 	}
 }
+
+function convertTimezone($timestamp) {
+	$date = new DateTime($timestamp);
+	$date->setTimezone(new DateTimeZone(TIMEZONE));   
+	return $date->format('Y-m-d H:i:s');
+}
 ?>
