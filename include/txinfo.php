@@ -6,7 +6,7 @@
   <table id="currtx" class="table table-condensed table-striped table-hover">
    <thead>
     <tr>
-      <th>Time (UTC)</th>
+      <th>Time (<?php echo TIMEZONE;?>)</th>
       <th>Mode</th>
       <th>Callsign</th>
       <?php
