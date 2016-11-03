@@ -3,6 +3,8 @@
 $mmdvmconfigs = getMMDVMConfig();
 if (!defined("MMDVMLOGPREFIX"))
 	define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+if (!defined("TIMEZONE"))
+	define("TIMEZONE", "UTC");
 $logLinesMMDVM = getMMDVMLog();
 showLapTime("getMMDVMLog");
 //getNames(" ");

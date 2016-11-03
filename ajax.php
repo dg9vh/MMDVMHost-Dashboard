@@ -9,6 +9,8 @@ include "include/functions.php";
 $mmdvmconfigs = getMMDVMConfig();
 if (!defined("MMDVMLOGPREFIX"))
 	define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+if (!defined("TIMEZONE"))
+	define("TIMEZONE", "UTC");
 $logLinesMMDVM = getMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
