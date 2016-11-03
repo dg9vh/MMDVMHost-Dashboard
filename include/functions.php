@@ -39,14 +39,14 @@ function getFirmwareVersion() {
 }
 
 function setDMRNetwork($network) {
-	$fp = fopen('/tmp/DMRNetwork.txt', 'w');
+	$fp = fopen('../config/DMRNetwork.txt', 'w');
 	fwrite($fp, $network);
 	fclose($fp);
 }
 
 function getDMRNetwork() {
-	$fp = fopen('/tmp/DMRNetwork.txt', 'r');
-	$network = fread($fp, filesize("/tmp/DMRNetwork.txt"));
+	$fp = fopen('config/DMRNetwork.txt', 'r');
+	$network = fread($fp, filesize("config/DMRNetwork.txt"));
 	fclose($fp);
 	return $network;
 }
