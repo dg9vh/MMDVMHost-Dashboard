@@ -64,7 +64,7 @@
 			} else {
 				echo "<span class=\"label label-danger\" title=\"Master not connected\">";
 			}
-			echo getConfigItem("DMR Network", "Address", $mmdvmconfigs)."</td>";
+			echo getConfigItem("DMR Network", "Address", $mmdvmconfigs)." (".getDMRNetwork().")</td>";
 ?>
 			</span>
             <td><span class="label <?php

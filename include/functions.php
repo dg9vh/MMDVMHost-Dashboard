@@ -400,7 +400,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	if (startsWith($mode, "DMR")) {
 		$mode = "DMR";
 	}
-	if ($listElem[7] ==="") {
+	if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
 		return "<span class=\"label label-danger\">".$mode."</span>";
 	} else {
 		$now =  new DateTime();
