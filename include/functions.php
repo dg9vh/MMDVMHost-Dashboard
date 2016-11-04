@@ -395,7 +395,8 @@ function getLastHeard($logLines, $onlyLast) {
 function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	// returns mode of repeater actual working in
 	$listElem = $metaLastHeard[0];
-	$timestamp = new DateTime($listElem[0]);
+	$timestamp = new DateTime($listElem[0],new DateTimeZone(TIMEZONE));
+	
 	$mode = $listElem[1];
 	if (startsWith($mode, "DMR")) {
 		$mode = "DMR";
@@ -403,7 +404,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
 		return "<span class=\"label label-danger\">".$mode."</span>";
 	} else {
-		$now =  new DateTime();
+		$now =  new DateTime('NOW',new DateTimeZone(TIMEZONE));
 		$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
 
 		if ($hangtime != "") {
