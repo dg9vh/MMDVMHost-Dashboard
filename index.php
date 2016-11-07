@@ -55,17 +55,21 @@ include "version.php";
   <?php
   $logourl = "";
   if (getDMRNetwork() == "BrandMeister") {
-    if (defined(BRANDMEISTERLOGO))
+  	if (strlen(BRANDMEISTERLOGO)>0) {
       $logourl = BRANDMEISTERLOGO;
+    }
   }
   if (getDMRNetwork() == "DMRplus") {
-    if (defined(DMRPLUSLOGO))
+  	if (strlen(DMRPLUSLOGO)>0) {
 	  $logourl = DMRPLUSLOGO;
+    }
   }
+  
   if ($logourl == "") {
   	$logourl = LOGO;
   }
   
+  echo $logourl;
   if ($logourl !== "") {
 ?>
 <div id="Logo" style="position:absolute;top:-43px;right:10px;"><img src="<?php echo $logourl ?>" width="250px" style="width:250px; border-radius:10px;box-shadow:2px 2px 2px #808080; padding:1px;background:#FFFFFF;border:1px solid #808080;" border="0" hspace="10" vspace="10" align="absmiddle"></div>
