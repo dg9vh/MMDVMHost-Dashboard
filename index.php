@@ -55,11 +55,11 @@ include "version.php";
   <?php
   $logourl = "";
   if (getDMRNetwork() == "BrandMeister") {
-    if (isset(BRANDMEISTERLOGO))
+    if (defined(BRANDMEISTERLOGO))
       $logourl = BRANDMEISTERLOGO;
   }
   if (getDMRNetwork() == "DMRplus") {
-    if (isset(DMRPLUSLOGO))
+    if (defined(DMRPLUSLOGO))
 	  $logourl = DMRPLUSLOGO;
   }
   if ($logourl == "") {
