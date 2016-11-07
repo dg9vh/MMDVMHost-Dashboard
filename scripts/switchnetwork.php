@@ -70,7 +70,7 @@ if ($_GET['network'] == "BRANDMEISTER") {
 //	exec( "sudo killall MMDVMHost && sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." &" );
 }
 ?>
-<div class="alert alert-info" role="alert">Switching network to <b><?php echo getDMRNetwork() ?></b><br>Restarting in new selected network in progress</div>
+<div class="alert alert-info" role="alert">Switching network to <b><?php echo getDMRNetwork2() ?></b><br>Restarting in new selected network in progress</div>
  
 	<div class="panel panel-info">
 

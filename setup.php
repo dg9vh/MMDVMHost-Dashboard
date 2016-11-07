@@ -186,6 +186,14 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <input type="text" value="<?php echo constant("LOGO") ?>" name="LOGO" class="form-control" placeholder="http://your-logo" aria-describedby="LOGO">
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="DMRPLUSLOGO" style="width: 300px">URL to DMRplus-Logo</span>
+        <input type="text" value="<?php echo constant("DMRPLUSLOGO") ?>" name="DMRPLUSLOGO" class="form-control" placeholder="http://your-logo" aria-describedby="DMRPLUSLOGO">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="BRANDMEISTERLOGO" style="width: 300px">URL to BrandMeister-Logo</span>
+        <input type="text" value="<?php echo constant("BRANDMEISTERLOGO") ?>" name="BRANDMEISTERLOGO" class="form-control" placeholder="http://your-logo" aria-describedby="BRANDMEISTERLOGO">
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="REFRESHAFTER" style="width: 300px">Refresh page after in seconds</span>
         <input type="text" value="<?php echo constant("REFRESHAFTER") ?>" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER" required data-fv-notempty-message="Value is required">
       </div>

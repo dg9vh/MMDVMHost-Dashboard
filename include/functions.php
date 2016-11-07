@@ -51,6 +51,13 @@ function getDMRNetwork() {
 	return $network;
 }
 
+function getDMRNetwork2() {
+	$fp = fopen('../config/DMRNetwork.txt', 'r');
+	$network = fread($fp, filesize("../config/DMRNetwork.txt"));
+	fclose($fp);
+	return $network;
+}
+
 function getDMRMasterState() {
 	$logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
 	$logLines = explode("\n", `egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);
