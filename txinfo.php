@@ -8,6 +8,8 @@ include "include/functions.php";
 $mmdvmconfigs = getMMDVMConfig();
 if (!defined("MMDVMLOGPREFIX"))
 	define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+if (!defined("TIMEZONE"))
+	define("TIMEZONE", "UTC");
 $logLinesMMDVM = getShortMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
@@ -44,9 +46,8 @@ foreach ($lastHeard as $listElem) {
 			}else{
 				echo"<td nowrap>$listElem[6]</td>";
 			}
-			$UTC = new DateTimeZone("UTC");
-			$d1 = new DateTime($listElem[0], $UTC);
-			$d2 = new DateTime('now', $UTC);
+			$d1 = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
+			$d2 = new DateTime('now', new DateTimeZone(TIMEZONE));
 			$diff = $d2->getTimestamp() - $d1->getTimestamp();
 			echo"<td nowrap>$diff s</td>";
 		} else {
