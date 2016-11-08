@@ -38,6 +38,9 @@ $(document).ready(function(){
 	if (strpos($request,"index.php")> 0) {
 		$request = substr($request,0,strpos($request,"index.php"));
 	}
+	if (strpos($request,"?stoprefresh")> 0) {
+		$request = substr($request,0,strpos($request,"?stoprefresh"));
+	}
 	?>
 	"ajax": '<?php echo $request?>/ajax.php?section=lastHeard',
 	"deferRender": true
