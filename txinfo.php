@@ -18,7 +18,9 @@ $lastHeard = getLastHeard($reverseLogLinesMMDVM, True);
 echo"<!--";
 var_dump($lastHeard);
 echo"-->";
+$counter = 0;
 foreach ($lastHeard as $listElem) {
+	$counter +=1;
 	if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
 		echo "<tr>";
 		echo"<td nowrap>$listElem[0]</td>";
@@ -65,6 +67,10 @@ foreach ($lastHeard as $listElem) {
 			echo"<td nowrap>$diff s</td>";
 		}
 		echo "</tr>";
+	} else {
+		if ($counter == 1) {
+			echo "<tr><td colspan='7'></td></tr>";
+		}
 	}
 }
 ?>
