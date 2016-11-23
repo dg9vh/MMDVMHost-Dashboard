@@ -68,9 +68,9 @@
 			if (strlen(getDMRNetwork()) > 0 ) {
 				echo " (".getDMRNetwork().")";
 			}
-			echo "</td>";
 ?>
 			</span>
+			</td>
             <td><span class="label <?php
 			if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == 1) {
 				echo 'label-success">enabled';
