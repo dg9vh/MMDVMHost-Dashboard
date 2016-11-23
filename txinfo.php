@@ -69,7 +69,11 @@ foreach ($lastHeard as $listElem) {
 		echo "</tr>";
 	} else {
 		if ($counter == 1) {
-			echo "<tr><td colspan='7'></td></tr>";
+			if (defined("ENABLEXTDLOOKUP")) {
+				echo "<tr><td colspan='8'></td></tr>";
+			} else {
+				echo "<tr><td colspan='7'></td></tr>";
+			}
 		}
 	}
 }
