@@ -8,7 +8,7 @@ $start = $time;
 include "../config/config.php";
 include "../include/tools.php";
 include "../include/functions.php";
-if (!isset($_SERVER['PHP_AUTH_USER'])) {
+if (!isset($_SERVER['PHP_AUTH_USER']) && REBOOTUSER !== "" && REBOOTPW !== "") {
     header('WWW-Authenticate: Basic realm="Dashboard"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Zur Ausführung bitte die geforderten Login-Daten eingeben!';
