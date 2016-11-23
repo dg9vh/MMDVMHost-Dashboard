@@ -6,7 +6,6 @@
 		<table id="sysinfo" class="table table-condensed">
 		</table>
 	</div>
-  </div>
  </div>
 <script>
 function loadXMLDocSysinfo() {
