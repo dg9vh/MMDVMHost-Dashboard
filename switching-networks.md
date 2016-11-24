@@ -1,10 +1,15 @@
 # Switching Networks
 To make switching networks possible you have to fulfill following conditions:
-1. add www-user to the sudoers file to be able to execute following commands: cp, killall, MMDVMHost
+1. add www-user to the /etc/sudoers file to be able to execute following commands: cp, killall, MMDVMHost
 
   You can do this for example with following line:
   
   www-data ALL=(ALL) NOPASSWD: /bin/cp,/usr/local/bin/MMDVMHost,/usr/bin/killall,/sbin/halt,/sbin/reboot
+
+
+HINT: PLEASE(!) only use visudo for editing the sudoers-file! This validates the file before writing it on the 
+hard-disk. Otherwise there is heavy danger to damange your sudo-system, if you got any error/typo within the line!
+
 
 2. create two ini-files, one with the name DMRPLUS.ini and the other with the name BRANDMEISTER.ini within the same directory where your MMDVM.ini resists, that contains the configurations for the corresponding networks.
 
