@@ -28,6 +28,7 @@ $localTXList = getHeardList($reverseLogLinesMMDVM, FALSE);
       <th>Dur (s)</th>
       <th>Loss</th>
       <th>BER</th>
+      <th>RSSI (min/max/avg)</th>
     </tr>
    </thead>
    <tbody>

@@ -25,6 +25,7 @@ $totalLH = count($lastHeard);
       <th>Dur (s)</th>
       <th>Loss</th>
       <th>BER</th>
+      <th>RSSI (min/max/avg)</th>
             </tr>
         </thead>
     </table>
