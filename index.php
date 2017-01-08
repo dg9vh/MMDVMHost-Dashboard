@@ -135,7 +135,7 @@ if (!isset($_GET['stoprefresh'])) {
 	echo '<a href=".">start refreshing</a>';
 }
 ?>
- | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
+ | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <a href="credits.php">Credits</a>
 	</div>
 	<noscript>
 	 For full functionality of this site it is necessary to enable JavaScript.
