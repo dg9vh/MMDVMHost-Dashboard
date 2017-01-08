@@ -256,7 +256,19 @@ function getHeardList($logLines, $onlyLast) {
 			// and RSSI in BER position
 			if (startsWith($loss,"BER")) {
 				if (substr($ber, 6) != "-0/-0/-0 dBm") {
-					$rssi = substr($ber, 6);
+					$rssiString = substr($ber, 6);
+					$rssiAvg = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+					if ($rssiAvg > "-63") $rssi = "<img src=\"images/4.png\" \> S9+10dB";
+					else if ($rssiAvg > "-73") $rssi = "<img src=\"images/4.png\" \> S9";
+					else if ($rssiAvg > "-79") $rssi = "<img src=\"images/3.png\" \> S8";
+					else if ($rssiAvg > "-85") $rssi = "<img src=\"images/3.png\" \> S7";
+					else if ($rssiAvg > "-91") $rssi = "<img src=\"images/2.png\" \> S6";
+					else if ($rssiAvg > "-97") $rssi = "<img src=\"images/2.png\" \> S5";
+					else if ($rssiAvg > "-103") $rssi = "<img src=\"images/1.png\" \> S4";
+					else if ($rssiAvg > "-109") $rssi = "<img src=\"images/1.png\" \> S3";
+					else if ($rssiAvg > "-115") $rssi = "<img src=\"images/0.png\" \> S2";
+					else if ($rssiAvg > "-121") $rssi = "<img src=\"images/0.png\" \> S1";
+					else $rssi = "<img src=\"images/0.png\" \> S0";
 				}
 				$ber = substr($loss, 5);
 				$loss = "";
@@ -266,7 +278,19 @@ function getHeardList($logLines, $onlyLast) {
 					$ber = substr($lineTokens[4], 5);
 				}
 				if (array_key_exists(5,$lineTokens) && substr($lineTokens[5], 6) != "-0/-0/-0 dBm") {
-					$rssi = substr($lineTokens[5], 6);
+					$rssiString = substr($lineTokens[5], 6);
+					$rssiAvg = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+					if ($rssiAvg > "-63") $rssi = "<img src=\"images/4.png\" \> S9+10dB";
+					else if ($rssiAvg > "-73") $rssi = "<img src=\"images/4.png\" \> S9";
+					else if ($rssiAvg > "-79") $rssi = "<img src=\"images/3.png\" \> S8";
+					else if ($rssiAvg > "-85") $rssi = "<img src=\"images/3.png\" \> S7";
+					else if ($rssiAvg > "-91") $rssi = "<img src=\"images/2.png\" \> S6";
+					else if ($rssiAvg > "-97") $rssi = "<img src=\"images/2.png\" \> S5";
+					else if ($rssiAvg > "-103") $rssi = "<img src=\"images/1.png\" \> S4";
+					else if ($rssiAvg > "-109") $rssi = "<img src=\"images/1.png\" \> S3";
+					else if ($rssiAvg > "-115") $rssi = "<img src=\"images/0.png\" \> S2";
+					else if ($rssiAvg > "-121") $rssi = "<img src=\"images/0.png\" \> S1";
+					else $rssi = "<img src=\"images/0.png\" \> S0";
 				}
 			}
 
