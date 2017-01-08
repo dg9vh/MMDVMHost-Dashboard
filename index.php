@@ -21,6 +21,8 @@ include "version.php";
   <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=1, user-scalable=yes">
+    <!-- CSS for tooltip display -->
+    <link rel="stylesheet" href="css/tooltip.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
