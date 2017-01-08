@@ -255,7 +255,9 @@ function getHeardList($logLines, $onlyLast) {
 			// if RF-Packet, no LOSS would be reported, so BER is in LOSS position
 			// and RSSI in BER position
 			if (startsWith($loss,"BER")) {
-				$rssi = substr($ber, 5);
+				if (substr($ber, 6) != "-0/-0/-0 dBm") {
+					$rssi = substr($ber, 6);
+				}
 				$ber = substr($loss, 5);
 				$loss = "";
 			} else {
@@ -263,7 +265,7 @@ function getHeardList($logLines, $onlyLast) {
 				if (array_key_exists(4,$lineTokens)) {
 					$ber = substr($lineTokens[4], 5);
 				}
-				if (array_key_exists(5,$lineTokens)) {
+				if (array_key_exists(5,$lineTokens) && substr($lineTokens[5], 6) != "-0/-0/-0 dBm") {
 					$rssi = substr($lineTokens[5], 6);
 				}
 			}
