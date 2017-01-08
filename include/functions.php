@@ -271,7 +271,6 @@ function getHeardList($logLines, $onlyLast) {
 					else if ($rssiAvg > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
 					else if ($rssiAvg > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
 					else if ($rssiAvg > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-					else $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S0 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
 				}
 				$ber = substr($loss, 5);
 				$loss = "";
@@ -296,7 +295,6 @@ function getHeardList($logLines, $onlyLast) {
 					else if ($rssiAvg > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
 					else if ($rssiAvg > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
 					else if ($rssiAvg > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-					else $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S0 ($rssiAvg dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
 				}
 			}
 
