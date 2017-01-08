@@ -258,20 +258,20 @@ function getHeardList($logLines, $onlyLast) {
 				if (substr($ber, 6) != "-0/-0/-0 dBm") {
 					$rssiString = substr($ber, 6);
 					$rssiAvg = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
-					if ($rssiAvg > "-53") $rssi = "<img src=\"images/4.png\" \> S9+40dB";
-					else if ($rssiAvg > "-63") $rssi = "<img src=\"images/4.png\" \> S9+30dB";
-					else if ($rssiAvg > "-73") $rssi = "<img src=\"images/4.png\" \> S9+20dB";
-					else if ($rssiAvg > "-83") $rssi = "<img src=\"images/4.png\" \> S9+10dB";
-					else if ($rssiAvg > "-93") $rssi = "<img src=\"images/4.png\" \> S9";
-					else if ($rssiAvg > "-99") $rssi = "<img src=\"images/3.png\" \> S8";
-					else if ($rssiAvg > "-105") $rssi = "<img src=\"images/3.png\" \> S7";
-					else if ($rssiAvg > "-111") $rssi = "<img src=\"images/2.png\" \> S6";
-					else if ($rssiAvg > "-117") $rssi = "<img src=\"images/2.png\" \> S5";
-					else if ($rssiAvg > "-123") $rssi = "<img src=\"images/1.png\" \> S4";
-					else if ($rssiAvg > "-129") $rssi = "<img src=\"images/1.png\" \> S3";
-					else if ($rssiAvg > "-135") $rssi = "<img src=\"images/0.png\" \> S2";
-					else if ($rssiAvg > "-141") $rssi = "<img src=\"images/0.png\" \> S1";
-					else $rssi = "<img src=\"images/0.png\" \> S0";
+					if ($rssiAvg > "-53") $rssi = "<img src=\"images/4.png\" \> S9+40dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-63") $rssi = "<img src=\"images/4.png\" \> S9+30dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-73") $rssi = "<img src=\"images/4.png\" \> S9+20dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-83") $rssi = "<img src=\"images/4.png\" \> S9+10dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-93") $rssi = "<img src=\"images/4.png\" \> S9 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-99") $rssi = "<img src=\"images/3.png\" \> S8 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-105") $rssi = "<img src=\"images/3.png\" \> S7 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-111") $rssi = "<img src=\"images/2.png\" \> S6 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-117") $rssi = "<img src=\"images/2.png\" \> S5 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-123") $rssi = "<img src=\"images/1.png\" \> S4 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-129") $rssi = "<img src=\"images/1.png\" \> S3 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-135") $rssi = "<img src=\"images/0.png\" \> S2 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-141") $rssi = "<img src=\"images/0.png\" \> S1 ($rssiAvg dBm)";
+					else $rssi = "<img src=\"images/0.png\" \> S0 ($rssiAvg dBm)";
 				}
 				$ber = substr($loss, 5);
 				$loss = "";
@@ -283,20 +283,20 @@ function getHeardList($logLines, $onlyLast) {
 				if (array_key_exists(5,$lineTokens) && substr($lineTokens[5], 6) != "-0/-0/-0 dBm") {
 					$rssiString = substr($lineTokens[5], 6);
 					$rssiAvg = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
-					if ($rssiAvg > "-53") $rssi = "<img src=\"images/4.png\" \> S9+40dB";
-					else if ($rssiAvg > "-63") $rssi = "<img src=\"images/4.png\" \> S9+30dB";
-					else if ($rssiAvg > "-73") $rssi = "<img src=\"images/4.png\" \> S9+20dB";
-					else if ($rssiAvg > "-83") $rssi = "<img src=\"images/4.png\" \> S9+10dB";
-					else if ($rssiAvg > "-93") $rssi = "<img src=\"images/4.png\" \> S9";
-					else if ($rssiAvg > "-99") $rssi = "<img src=\"images/3.png\" \> S8";
-					else if ($rssiAvg > "-105") $rssi = "<img src=\"images/3.png\" \> S7";
-					else if ($rssiAvg > "-111") $rssi = "<img src=\"images/2.png\" \> S6";
-					else if ($rssiAvg > "-117") $rssi = "<img src=\"images/2.png\" \> S5";
-					else if ($rssiAvg > "-123") $rssi = "<img src=\"images/1.png\" \> S4";
-					else if ($rssiAvg > "-129") $rssi = "<img src=\"images/1.png\" \> S3";
-					else if ($rssiAvg > "-135") $rssi = "<img src=\"images/0.png\" \> S2";
-					else if ($rssiAvg > "-141") $rssi = "<img src=\"images/0.png\" \> S1";
-					else $rssi = "<img src=\"images/0.png\" \> S0";
+					if ($rssiAvg > "-53") $rssi = "<img src=\"images/4.png\" \> S9+40dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-63") $rssi = "<img src=\"images/4.png\" \> S9+30dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-73") $rssi = "<img src=\"images/4.png\" \> S9+20dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-83") $rssi = "<img src=\"images/4.png\" \> S9+10dB ($rssiAvg dBm)";
+					else if ($rssiAvg > "-93") $rssi = "<img src=\"images/4.png\" \> S9 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-99") $rssi = "<img src=\"images/3.png\" \> S8 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-105") $rssi = "<img src=\"images/3.png\" \> S7 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-111") $rssi = "<img src=\"images/2.png\" \> S6 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-117") $rssi = "<img src=\"images/2.png\" \> S5 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-123") $rssi = "<img src=\"images/1.png\" \> S4 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-129") $rssi = "<img src=\"images/1.png\" \> S3 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-135") $rssi = "<img src=\"images/0.png\" \> S2 ($rssiAvg dBm)";
+					else if ($rssiAvg > "-141") $rssi = "<img src=\"images/0.png\" \> S1 ($rssiAvg dBm)";
+					else $rssi = "<img src=\"images/0.png\" \> S0 ($rssiAvg dBm)";
 				}
 			}
 
