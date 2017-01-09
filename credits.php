@@ -15,6 +15,8 @@
   <body>
   <div class="page-header">
     <h1><small>MMDVM-Dashboard by DG9VH</small> Credits</h1>
+  </div>
+  <div class="container">
     <p>I think, after all the time this dashboard is developed mainly by myself, it is time to say "Thank you" to all those, wo delivered some ideas or code into this project.</p>
     <p>This are explicit named following persons:</p>
     <ul>
