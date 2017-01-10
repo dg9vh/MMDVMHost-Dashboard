@@ -32,7 +32,7 @@ if ($_GET['section'] == "localTx") {
             $listElem[3] = getName($listElem[2]);
             if ($listElem[2] !== "??????????") {
                if (!is_numeric($listElem[2])) {
-                  if (constant("SHOWQRZ")) {
+                  if (defined("SHOWQRZ")) {
                      $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
                   } else {
                      $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</a>";
@@ -47,7 +47,7 @@ if ($_GET['section'] == "localTx") {
          if ($listElem[5] == "RF" && ($listElem[1]=="D-Star" || startsWith($listElem[1], "DMR") || $listElem[1]=="YSF" || $listElem[1]=="P25")) {
             if ($listElem[2] !== "??????????") {
                if (!is_numeric($listElem[2])) {
-                  if (constant("SHOWQRZ")) {
+                  if (defined("SHOWQRZ")) {
                      $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
                   } else {
                      $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</a>";

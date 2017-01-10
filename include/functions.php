@@ -25,8 +25,11 @@ function getMMDVMHostFileVersion() {
 function getFirmwareVersion() {
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines = explode("\n", `grep "MMDVM protocol version" $logPath`);
-   $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
-   if (strlen($firmware) > 0) {
+   $firmware = "n/a";
+   if (count($logLines) >= 2) {
+      $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
+   }
+   if ($firmware != "n/a") {
       $fp = fopen('/tmp/MMDVMFirmware.txt', 'w');
       fwrite($fp, $firmware);
       fclose($fp);
@@ -45,26 +48,26 @@ function setDMRNetwork($network) {
 }
 
 function getDMRNetwork() {
-   if (file_exists('config/DMRNetwork.txt')) {
-      $fp = fopen('config/DMRNetwork.txt', 'r');
-      $network = fread($fp, filesize("config/DMRNetwork.txt"));
+   $filename = 'config/DMRNetwork.txt';
+   $network = '';
+   if (file_exists($filename)) {
+      $fp = fopen($filename, 'r');
+      $network = fread($fp, filesize($filename));
       fclose($fp);
-      return $network;	 
-   } else {
-   	  return "";
    }
-   
+   return $network;
 }
 
 function getDMRNetwork2() {
-   if (file_exists('../config/DMRNetwork.txt')) {
-   	  $fp = fopen('../config/DMRNetwork.txt', 'r');
-      $network = fread($fp, filesize("../config/DMRNetwork.txt"));
+   $filename = '../config/DMRNetwork.txt';
+   $network = '';
+   if (file_exists($filename)) {
+      $fp = fopen($filename, 'r');
+      $network = fread($fp, filesize($filename));
       fclose($fp);
-      return $network;	 
-   } else {
-   	  return "";
    }
+   return $network;
+
 }
 
 function getDMRMasterState() {
@@ -445,7 +448,7 @@ function getLastHeard($logLines, $onlyLast) {
             }
             if ($listElem[2] !== "??????????") {
                if (!is_numeric($listElem[2])) {
-                  if (constant("SHOWQRZ")) {
+                  if (defined("SHOWQRZ")) {
                      $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
                   } else {
                      $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</a>";
