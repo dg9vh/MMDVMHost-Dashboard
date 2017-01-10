@@ -83,7 +83,7 @@ include "include/tools.php";
       <h2>YSFGateway-Configuration</h2>
       <div class="input-group">
         <span class="input-group-addon" id="ENABLEYSFGATEWAY" style="width: 300px">Enable YSFGateway</span>
-        <div class="panel-body"><input type="checkbox" name="ENABLEYSFGATEWAY" <?php if (constant("ENABLEYSFGATEWAY")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="ENABLEYSFGATEWAY" <?php if (defined("ENABLEYSFGATEWAY")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="YSFGATEWAYLOGPATH" style="width: 300px">Path to YSFGateway-logfile</span>
@@ -211,7 +211,7 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="ENABLENETWORKSWITCHING" style="width: 300px">Enable Network-Switching-Function</span>
-        <div class="panel-body"><input type="checkbox" name="ENABLENETWORKSWITCHING" <?php if (constant("ENABLENETWORKSWITCHING")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="ENABLENETWORKSWITCHING" <?php if (defined("ENABLENETWORKSWITCHING")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="SWITCHNETWORKUSER" style="width: 300px">Username for switching networks:</span>
