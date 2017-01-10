@@ -52,7 +52,7 @@ function getDMRNetwork() {
    $network = '';
    if (file_exists($filename)) {
       $fp = fopen($filename, 'r');
-      $network = fread($fp, filesize("config/DMRNetwork.txt"));
+      $network = fread($fp, filesize($filename));
       fclose($fp);
    }
    return $network;
@@ -62,8 +62,8 @@ function getDMRNetwork2() {
    $filename = '../config/DMRNetwork.txt';
    $network = '';
    if (file_exists($filename)) {
-      $fp = fopen('../config/DMRNetwork.txt', 'r');
-      $network = fread($fp, filesize("../config/DMRNetwork.txt"));
+      $fp = fopen($filename, 'r');
+      $network = fread($fp, filesize($filename));
       fclose($fp);
    }
    return $network;
