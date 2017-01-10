@@ -29,43 +29,43 @@
 </div>
 <script>
 function doXMLHTTPRequest(scriptname, elem) {
-	var xmlhttp;
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function() {
-		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-			document.getElementById(elem).innerHTML=xmlhttp.responseText;
-		}
-	}
-	xmlhttp.open("GET",scriptname,true);
-	xmlhttp.send();
+   var xmlhttp;
+   if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+   } else {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   xmlhttp.onreadystatechange=function() {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+         document.getElementById(elem).innerHTML=xmlhttp.responseText;
+      }
+   }
+   xmlhttp.open("GET",scriptname,true);
+   xmlhttp.send();
 }
 
 function refreshMode() {
-	doXMLHTTPRequest("ajax.php?section=mode","mode");
+   doXMLHTTPRequest("ajax.php?section=mode","mode");
 }
 
 var transmitting = false;
 function loadXMLDoc() {
-	var xmlhttp;
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange=function() {
-		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-			document.getElementById("txline").innerHTML=xmlhttp.responseText;
-		}
-	}
-	xmlhttp.open("GET","txinfo.php",true);
-	xmlhttp.send();
+   var xmlhttp;
+   if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp=new XMLHttpRequest();
+   } else {// code for IE6, IE5
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   xmlhttp.onreadystatechange=function() {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+         document.getElementById("txline").innerHTML=xmlhttp.responseText;
+      }
+   }
+   xmlhttp.open("GET","txinfo.php",true);
+   xmlhttp.send();
 
-	var timeout = window.setTimeout("loadXMLDoc()", 1000);
-	refreshMode();
+   var timeout = window.setTimeout("loadXMLDoc()", 1000);
+   refreshMode();
 }
 loadXMLDoc();
 </script>

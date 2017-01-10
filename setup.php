@@ -18,24 +18,24 @@ include "include/tools.php";
   </head>
   <body>
 <?php
-	if (isset($_GET['cmd'])) {
-		if ( "writeconfig" == $_GET['cmd']) {
-			if (!file_exists('./config')) {
-			    if (!mkdir('./config', 0777, true)) {
+   if (isset($_GET['cmd'])) {
+      if ( "writeconfig" == $_GET['cmd']) {
+         if (!file_exists('./config')) {
+             if (!mkdir('./config', 0777, true)) {
 ?>
 <div class="alert alert-danger" role="alert">You forgot to give write-permissions to your webserver-user, see point 3 in <a href="linux-step-by-step.md">linux-step-by-step.md</a>!</div>
 
 <?php
-			    }
-			}
-			$configfile = fopen("config/config.php", 'w');
-			fwrite($configfile,"<?php\n");
-			fwrite($configfile,"# This is an auto-generated config-file!\n");
-			fwrite($configfile,"# Be careful, when manual editing this!\n\n");
-			fwrite($configfile,"date_default_timezone_set('UTC');\n");
-			fwrite($configfile, createConfigLines());
-			fwrite($configfile,"?>\n");
-			fclose($configfile);
+             }
+         }
+         $configfile = fopen("config/config.php", 'w');
+         fwrite($configfile,"<?php\n");
+         fwrite($configfile,"# This is an auto-generated config-file!\n");
+         fwrite($configfile,"# Be careful, when manual editing this!\n\n");
+         fwrite($configfile,"date_default_timezone_set('UTC');\n");
+         fwrite($configfile, createConfigLines());
+         fwrite($configfile,"?>\n");
+         fclose($configfile);
 ?>
   <div class="page-header">
     <h1><small>MMDVM-Dashboard by DG9VH</small> Setup-Process</h1>
@@ -43,8 +43,8 @@ include "include/tools.php";
     <p><a href="index.php">Your dashboard is now available.</a></p>
   </div>
 <?php
-		}
-	} else {
+      }
+   } else {
 ?>
   <div class="page-header">
     <h1><small>MMDVM-Dashboard by DG9VH</small> Setup-Process</h1>
@@ -125,9 +125,9 @@ include "include/tools.php";
       <h2>Global Configuration</h2>
 <?php
 function get_tz_options($selectedzone, $label, $desc = '') {
-	echo '<div class="input-group">';
+   echo '<div class="input-group">';
     echo '<span class="input-group-addon" id="TIMEZONE" style="width: 300px">Timezone</span>';
- 	echo '<div class="input"><select name="TIMEZONE">';
+   echo '<div class="input"><select name="TIMEZONE">';
   function timezonechoice($selectedzone) {
     $all = timezone_identifiers_list();
 
@@ -156,9 +156,9 @@ function get_tz_options($selectedzone, $label, $desc = '') {
             $city = $city . '/'. $subcity;
           }
           if ($continent != "UTC") {
-	          $structure .= "<option ".((($continent.'/'.$city)==$selectedzone)?'selected="selected "':'')." value=\"".($continent.'/'.$city)."\">".str_replace('_',' ',$city)."</option>"; //Timezone
+             $structure .= "<option ".((($continent.'/'.$city)==$selectedzone)?'selected="selected "':'')." value=\"".($continent.'/'.$city)."\">".str_replace('_',' ',$city)."</option>"; //Timezone
           } else {
-          	$structure .= "<option ".(("UTC"==$selectedzone)?'selected="selected "':'')." value=\"UTC\">UTC</option>"; //Timezone
+            $structure .= "<option ".(("UTC"==$selectedzone)?'selected="selected "':'')." value=\"UTC\">UTC</option>"; //Timezone
           }
         } else {
           if (!empty($subcity) != ''){
@@ -181,7 +181,7 @@ function get_tz_options($selectedzone, $label, $desc = '') {
 }
 get_tz_options(constant("TIMEZONE"), "Timezone", '');
 ?>
-	  <div class="input-group">
+     <div class="input-group">
         <span class="input-group-addon" id="LOGO" style="width: 300px">URL to Logo</span>
         <input type="text" value="<?php echo constant("LOGO") ?>" name="LOGO" class="form-control" placeholder="http://your-logo" aria-describedby="LOGO">
       </div>
@@ -294,7 +294,7 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
     </div>
   </form>
   <?php
-	}
+   }
   ?>
   </body>
 </html>

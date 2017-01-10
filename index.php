@@ -32,43 +32,43 @@ include "version.php";
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-	<style>
-	.nowrap {
-		white-space:nowrap
-	}
-	</style>
+   <style>
+   .nowrap {
+      white-space:nowrap
+   }
+   </style>
     <title><?php echo getCallsign($mmdvmconfigs) ?> - MMDVM-Dashboard by DG9VH</title>
   </head>
   <body>
   <div class="page-header" style="position:relative;">
   <h1><small>MMDVM-Dashboard by DG9VH for <?php
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
-  	echo "Repeater";
+   echo "Repeater";
   } else {
-  	echo "Hotspot";
+   echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?>
   <?php
   if (strlen(getDMRNetwork()) > 0 ) {
-  	echo "<br>DMR-Network: ".getDMRNetwork();
+   echo "<br>DMR-Network: ".getDMRNetwork();
   }
   ?></h4>
   <?php
   $logourl = "";
   if (getDMRNetwork() == "BrandMeister") {
-  	if (constant('BRANDMEISTERLOGO') !== NULL) {
+   if (constant('BRANDMEISTERLOGO') !== NULL) {
       $logourl = BRANDMEISTERLOGO;
     }
   }
   if (getDMRNetwork() == "DMRplus") {
-  	if (constant('DMRPLUSLOGO') !== NULL) {
-	  $logourl = DMRPLUSLOGO;
+   if (constant('DMRPLUSLOGO') !== NULL) {
+     $logourl = DMRPLUSLOGO;
     }
   }
   
   if ($logourl == "") {
-  	$logourl = LOGO;
+   $logourl = LOGO;
   }
   
   if ($logourl !== "") {
@@ -110,11 +110,11 @@ showLapTime("lh_ajax");
 include "include/localtx_ajax.php";
 showLapTime("localtx_ajax");
 if (defined("ENABLEYSFGATEWAY")) {
-	include "include/ysfgatewayinfo.php";
-	showLapTime("ysfgatewayinfo");
+   include "include/ysfgatewayinfo.php";
+   showLapTime("ysfgatewayinfo");
 }
 ?>
-	<div class="panel panel-info">
+   <div class="panel panel-info">
 <?php
 //$datum = date("Y-m-d");
 //$uhrzeit = date("H:i:s");
@@ -130,20 +130,20 @@ echo '<!--Page generated in '.getLapTime().' seconds.-->';
 ?> |
 <?php
 if (!isset($_GET['stoprefresh'])) {
-	echo '<a href="?stoprefresh">stop refreshing</a>';
+   echo '<a href="?stoprefresh">stop refreshing</a>';
 } else {
-	echo '<a href=".">start refreshing</a>';
+   echo '<a href=".">start refreshing</a>';
 }
 ?>
  | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <a href="credits.php">Credits</a>
-	</div>
-	<noscript>
-	 For full functionality of this site it is necessary to enable JavaScript.
-	 Here are the <a href="http://www.enable-javascript.com/" target="_blank">
-	 instructions how to enable JavaScript in your web browser</a>.
-	</noscript>
+   </div>
+   <noscript>
+    For full functionality of this site it is necessary to enable JavaScript.
+    Here are the <a href="http://www.enable-javascript.com/" target="_blank">
+    instructions how to enable JavaScript in your web browser</a>.
+   </noscript>
   </body>
 </html>
 <?php
-	showLapTime("End of Page");
+   showLapTime("End of Page");
 ?>

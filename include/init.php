@@ -2,9 +2,9 @@
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
 if (!defined("MMDVMLOGPREFIX"))
-	define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+   define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
 if (!defined("TIMEZONE"))
-	define("TIMEZONE", "UTC");
+   define("TIMEZONE", "UTC");
 $logLinesMMDVM = getMMDVMLog();
 showLapTime("getMMDVMLog");
 //getNames(" ");
@@ -19,12 +19,12 @@ showLapTime("getLastHeard");
 //$_SESSION['lastHeard'] = $lastHeard;
 
 if (defined("ENABLEYSFGATEWAY")) {
-	$logLinesYSFGateway = getYSFGatewayLog();
-	showLapTime("getYSFGatewayLog");
-	$reverseLogLinesYSFGateway = $logLinesYSFGateway;
-  	array_multisort($reverseLogLinesYSFGateway,SORT_DESC);
-	showLapTime("array_multisort");
-  	$activeYSFReflectors = getActiveYSFReflectors();
-	showLapTime("getActiveYSFReflectors");
+   $logLinesYSFGateway = getYSFGatewayLog();
+   showLapTime("getYSFGatewayLog");
+   $reverseLogLinesYSFGateway = $logLinesYSFGateway;
+   array_multisort($reverseLogLinesYSFGateway,SORT_DESC);
+   showLapTime("array_multisort");
+   $activeYSFReflectors = getActiveYSFReflectors();
+   showLapTime("getActiveYSFReflectors");
 }
 ?>

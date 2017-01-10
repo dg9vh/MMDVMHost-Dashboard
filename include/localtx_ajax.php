@@ -33,29 +33,29 @@ $totalLH = count($lastHeard);
 </div>
 <script>
 $(document).ready(function(){
-	var localTxT = $('#localTx').dataTable( {
+   var localTxT = $('#localTx').dataTable( {
     "aaSorting": [[0,'desc']],
 
-	<?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";
-	if (strpos($request,"index.php")> 0) {
-		$request = substr($request,0,strpos($request,"index.php"));
-	}
-	if (strpos($request,"?stoprefresh")> 0) {
-		$request = substr($request,0,strpos($request,"?stoprefresh"));
-	}
-	?>
-	"ajax": '<?php echo $request?>/ajax.php?section=localTx',
-	"deferRender": true
+   <?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";
+   if (strpos($request,"index.php")> 0) {
+      $request = substr($request,0,strpos($request,"index.php"));
+   }
+   if (strpos($request,"?stoprefresh")> 0) {
+      $request = substr($request,0,strpos($request,"?stoprefresh"));
+   }
+   ?>
+   "ajax": '<?php echo $request?>/ajax.php?section=localTx',
+   "deferRender": true
   } );
 
 <?php
-	if (!isset($_GET['stoprefresh'])) {
+   if (!isset($_GET['stoprefresh'])) {
 ?>
 setInterval( function () {
     localTxT.api().ajax.reload( );
 }, <?php echo REFRESHAFTER * 1000 ?> );
 <?php
-	}
+   }
 ?>
 });
 </script>
