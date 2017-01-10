@@ -25,8 +25,11 @@ function getMMDVMHostFileVersion() {
 function getFirmwareVersion() {
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines = explode("\n", `grep "MMDVM protocol version" $logPath`);
-   $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
-   if (strlen($firmware) > 0) {
+   $firmware = "n/a";
+   if (count($logLines) >= 2) {
+      $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
+   }
+   if ($firmware != "n/a") {
       $fp = fopen('/tmp/MMDVMFirmware.txt', 'w');
       fwrite($fp, $firmware);
       fclose($fp);
