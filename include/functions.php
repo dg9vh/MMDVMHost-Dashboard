@@ -57,10 +57,14 @@ function getDMRNetwork() {
 }
 
 function getDMRNetwork2() {
-   $fp = fopen('../config/DMRNetwork.txt', 'r');
-   $network = fread($fp, filesize("../config/DMRNetwork.txt"));
-   fclose($fp);
-   return $network;
+   if (file_exists('../config/DMRNetwork.txt')) {
+   	  $fp = fopen('../config/DMRNetwork.txt', 'r');
+      $network = fread($fp, filesize("../config/DMRNetwork.txt"));
+      fclose($fp);
+      return $network;	 
+   } else {
+   	  return "";
+   }
 }
 
 function getDMRMasterState() {
