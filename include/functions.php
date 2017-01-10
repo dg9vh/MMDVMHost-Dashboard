@@ -48,16 +48,24 @@ function setDMRNetwork($network) {
 }
 
 function getDMRNetwork() {
-   $fp = fopen('config/DMRNetwork.txt', 'r');
-   $network = fread($fp, filesize("config/DMRNetwork.txt"));
-   fclose($fp);
+   $filename = 'config/DMRNetwork.txt';
+   $network = '';
+   if (file_exists($filename)) {
+      $fp = fopen($filename, 'r');
+      $network = fread($fp, filesize("config/DMRNetwork.txt"));
+      fclose($fp);
+   }
    return $network;
 }
 
 function getDMRNetwork2() {
-   $fp = fopen('../config/DMRNetwork.txt', 'r');
-   $network = fread($fp, filesize("../config/DMRNetwork.txt"));
-   fclose($fp);
+   $filename = '../config/DMRNetwork.txt';
+   $network = '';
+   if (file_exists($filename)) {
+      $fp = fopen('../config/DMRNetwork.txt', 'r');
+      $network = fread($fp, filesize("../config/DMRNetwork.txt"));
+      fclose($fp);
+   }
    return $network;
 }
 
