@@ -67,6 +67,7 @@ function getDMRNetwork2() {
       fclose($fp);
    }
    return $network;
+
 }
 
 function getDMRMasterState() {
