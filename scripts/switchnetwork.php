@@ -16,8 +16,8 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
     echo 'Zur Ausführung bitte die geforderten Login-Daten eingeben!';
     exit;
 } else {
-	if ($_SERVER['PHP_AUTH_USER'] == SWITCHNETWORKUSER && $_SERVER['PHP_AUTH_PW'] == SWITCHNETWORKPW) {
-	$fileName = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+   if ($_SERVER['PHP_AUTH_USER'] == SWITCHNETWORKUSER && $_SERVER['PHP_AUTH_PW'] == SWITCHNETWORKPW) {
+   $fileName = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
 ?>
 <!doctype html>
 <html lang="es">
@@ -40,9 +40,9 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
   <div class="page-header">
   <h1><small>MMDVM-Dashboard by DG9VH for <?php
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
-  	echo "Repeater";
+   echo "Repeater";
   } else {
-  	echo "Hotspot";
+   echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
@@ -54,26 +54,26 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
 checkSetup();
 include "../include/sysinfo.php";
 if ($_GET['network'] == "DMRPLUS") {
-	setDMRNetwork("DMRplus");
-	exec( "sudo cp ".MMDVMINIPATH."/DMRPLUS.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
-	exec( "sudo killall MMDVMHost");
-	sleep(1);
-	exec( "sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." > /dev/null 2>&1 &" );
-//	exec( "sudo killall MMDVMHost && sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." &");
-//	exec( "sudo /etc/init.d/start_mmdvm restart ");
+   setDMRNetwork("DMRplus");
+   exec( "sudo cp ".MMDVMINIPATH."/DMRPLUS.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
+   exec( "sudo killall MMDVMHost");
+   sleep(1);
+   exec( "sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." > /dev/null 2>&1 &" );
+// exec( "sudo killall MMDVMHost && sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." &");
+// exec( "sudo /etc/init.d/start_mmdvm restart ");
 }
 if ($_GET['network'] == "BRANDMEISTER") {
-	setDMRNetwork("BrandMeister");
-	exec( "sudo cp ".MMDVMINIPATH."/BRANDMEISTER.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
-	exec( "sudo killall MMDVMHost");
-	sleep(1);
-	exec( "sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME."  > /dev/null 2>&1 &" );
-//	exec( "sudo killall MMDVMHost && sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." &" );
+   setDMRNetwork("BrandMeister");
+   exec( "sudo cp ".MMDVMINIPATH."/BRANDMEISTER.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
+   exec( "sudo killall MMDVMHost");
+   sleep(1);
+   exec( "sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME."  > /dev/null 2>&1 &" );
+// exec( "sudo killall MMDVMHost && sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." &" );
 }
 ?>
 <div class="alert alert-info" role="alert">Switching network to <b><?php echo getDMRNetwork2() ?></b><br>Restarting in new selected network in progress</div>
  
-	<div class="panel panel-info">
+   <div class="panel panel-info">
 
 <?php
 
@@ -86,15 +86,15 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';
-		} else {
+      } else {
 
     header('WWW-Authenticate: Basic realm="Dashboard"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Zur Ausführung bitte die geforderten Login-Daten eingeben!';
     exit;
-		}
-	}
+      }
+   }
 ?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
-	</div>
+   </div>
   </body>
 </html>

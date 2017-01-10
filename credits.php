@@ -20,18 +20,18 @@
     <p>I think, after all the time this dashboard is developed mainly by myself, it is time to say "Thank you" to all those, wo delivered some ideas or code into this project.</p>
     <p>This are explicit named following persons:</p>
     <ul>
-    	<li>df2et</li>
-    	<li>dg1tal</li>
-    	<li>ayasystems</li>
-    	<li>on3yh</li>
-    	<li>g0wfv</li>
-    	<li>dg0cco</li>
-    	<li>sa7bnt</li>
-    	<li>and some others...</li>
+      <li>df2et</li>
+      <li>dg1tal</li>
+      <li>ayasystems</li>
+      <li>on3yh</li>
+      <li>g0wfv</li>
+      <li>dg0cco</li>
+      <li>sa7bnt</li>
+      <li>and some others...</li>
     </ul>
-	<p>Those, who felt forgotten, feel free to comit a change into github of this file.</p>
-	<p>Many thanks to you all!</p>
-	<p>Best 73, Kim, DG9VH</p>
+   <p>Those, who felt forgotten, feel free to comit a change into github of this file.</p>
+   <p>Many thanks to you all!</p>
+   <p>Best 73, Kim, DG9VH</p>
   </div>
   </body>
 </html>

@@ -30,42 +30,42 @@ $totalLH = count($lastHeard);
    <tbody>
 <?php
 for ($i = 0;  ($i < $totalLH); $i++) {
-		$listElem = $lastHeard[$i];
-		echo"<tr>";
-		echo"<td nowrap>$listElem[0]</td>";
-		echo"<td nowrap>$listElem[1]</td>";
-		if ($listElem[2] !== "??????????") {
-			if (!is_numeric($listElem[2])) {
-				if (constant("SHOWQRZ")) {
-					echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
-				} else {
-					echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</td>";
-				}
-			} else {
-				echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</td>";
-			}
-		}
-		if (defined("ENABLEXTDLOOKUP")) {
-			echo "<td nowrap>".getName($listElem[2])."</td>";
-		}
-		echo"<td nowrap>$listElem[3]</td>";
-		echo"<td nowrap>$listElem[4]</td>";
-		if ($listElem[5] == "RF"){
-			echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
-		}else{
-			echo"<td nowrap>$listElem[5]</td>";
-		}
-		if ($listElem[6] == null) {
-				echo'<td nowrap>transmitting</td><td></td><td></td>';
-			} else if ($listElem[6] == "SMS") {
-				echo'<td nowrap>sending or receiving SMS</td><td></td><td></td>';
-			} else {
-			echo"<td nowrap>$listElem[6]</td>";
-			echo"<td nowrap>$listElem[7]</td>";
-			echo"<td nowrap>$listElem[8]</td>";
-		}
-		echo"</tr>\n";
-	}
+      $listElem = $lastHeard[$i];
+      echo"<tr>";
+      echo"<td nowrap>$listElem[0]</td>";
+      echo"<td nowrap>$listElem[1]</td>";
+      if ($listElem[2] !== "??????????") {
+         if (!is_numeric($listElem[2])) {
+            if (constant("SHOWQRZ")) {
+               echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
+            } else {
+               echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</td>";
+            }
+         } else {
+            echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</td>";
+         }
+      }
+      if (defined("ENABLEXTDLOOKUP")) {
+         echo "<td nowrap>".getName($listElem[2])."</td>";
+      }
+      echo"<td nowrap>$listElem[3]</td>";
+      echo"<td nowrap>$listElem[4]</td>";
+      if ($listElem[5] == "RF"){
+         echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
+      }else{
+         echo"<td nowrap>$listElem[5]</td>";
+      }
+      if ($listElem[6] == null) {
+            echo'<td nowrap>transmitting</td><td></td><td></td>';
+         } else if ($listElem[6] == "SMS") {
+            echo'<td nowrap>sending or receiving SMS</td><td></td><td></td>';
+         } else {
+         echo"<td nowrap>$listElem[6]</td>";
+         echo"<td nowrap>$listElem[7]</td>";
+         echo"<td nowrap>$listElem[8]</td>";
+      }
+      echo"</tr>\n";
+   }
 ?>
   </tbody>
   </table>

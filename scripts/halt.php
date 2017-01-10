@@ -14,8 +14,8 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && HALTUSER !== "" && HALTPW !== "") {
     echo 'Zur Ausführung bitte die geforderten Login-Daten eingeben!';
     exit;
 } else {
-	if ($_SERVER['PHP_AUTH_USER'] == HALTUSER && $_SERVER['PHP_AUTH_PW'] == HALTPW) {
-	$fileName = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+   if ($_SERVER['PHP_AUTH_USER'] == HALTUSER && $_SERVER['PHP_AUTH_PW'] == HALTPW) {
+   $fileName = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
 ?>
 <!doctype html>
 <html lang="es">
@@ -37,9 +37,9 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && HALTUSER !== "" && HALTPW !== "") {
   <div class="page-header">
   <h1><small>MMDVM-Dashboard by DG9VH for <?php
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
-  	echo "Repeater";
+   echo "Repeater";
   } else {
-  	echo "Hotspot";
+   echo "Hotspot";
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
@@ -54,7 +54,7 @@ include "../include/sysinfo.php";
 ?>
 <div class="alert alert-info" role="alert">Executing  <b><?php echo HALTSYS ?></b><br>Halt in progress...bye</div>
  
-	<div class="panel panel-info">
+   <div class="panel panel-info">
 
 <?php
 
@@ -67,15 +67,15 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';
-		} else {
+      } else {
 
     header('WWW-Authenticate: Basic realm="Dashboard"');
     header('HTTP/1.0 401 Unauthorized');
     echo 'Zur Ausführung bitte die geforderten Login-Daten eingeben!';
     exit;
-		}
-	}
+      }
+   }
 ?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
-	</div>
+   </div>
   </body>
 </html>
