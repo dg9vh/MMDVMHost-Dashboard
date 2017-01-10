@@ -436,7 +436,7 @@ function getLastHeard($logLines, $onlyLast) {
             }
             if ($listElem[2] !== "??????????") {
                if (!is_numeric($listElem[2])) {
-                  if (constant("SHOWQRZ")) {
+                  if (defined("SHOWQRZ")) {
                      $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
                   } else {
                      $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</a>";
