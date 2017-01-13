@@ -357,19 +357,24 @@ function getHeardList($logLines, $onlyLast) {
 
       $timestamp = substr($logLine, 3, 19);
       $mode = substr($logLine, 27, strpos($logLine,",") - 27);
-      $callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
+      $topos = strpos($logLine, "to");
+      if ($topos == strpos($logLine, "to follow")) {
+      	 $topos = strpos($logLine, "to", strpos($logLine, "to follow)") + 1);
+      }
+      $callsign2 = substr($logLine, strpos($logLine,"from") + 5, $topos - strpos($logLine,"from") - 6);
       $callsign = $callsign2;
       if (strpos($callsign2,"/") > 0) {
          $callsign = substr($callsign2, 0, strpos($callsign2,"/"));
       }
       $callsign = trim($callsign);
-
+      
       $id ="";
       if ($mode == "D-Star") {
          $id = substr($callsign2, strpos($callsign2,"/") + 1);
       }
-
-      $target = substr($logLine, strpos($logLine, "to") + 3);
+      
+      
+      $target = substr($logLine, $topos + 3);
       $source = "RF";
       if (strpos($logLine,"network") > 0 ) {
          $source = "Net";
