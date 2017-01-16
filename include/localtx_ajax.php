@@ -6,7 +6,7 @@ $totalLH = count($lastHeard);
   <div class="panel-heading">Today's local transmissions</div>
   <!-- Tabelle -->
   <div class="table-responsive">
-<table id="localTx" class="table table-condensed table-striped table-hover">
+  <table id="localTx" class="table localTx table-condensed table-striped table-hover">
         <thead>
             <tr>
       <th>Time (<?php echo TIMEZONE;?>)</th>
