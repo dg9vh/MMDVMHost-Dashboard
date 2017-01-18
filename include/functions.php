@@ -443,11 +443,13 @@ function getLastHeard($logLines, $onlyLast) {
    foreach ($heardList as $listElem) {
       if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || (startsWith($listElem[1], "DMR")) ) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
+            // Generate a canonicalized call for QRZ and name lookups
+            $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
             array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[4]);
             if (defined("ENABLEXTDLOOKUP")) {
                if ($listElem[2] !== "??????????") {
                   //$listElem[3] = "Dummy"; //Should speed up this function - time-issue!
-                  $listElem[3] = getName($listElem[2]); //Should speed up this function - time-issue!
+                  $listElem[3] = getName($call_canon); //Should speed up this function - time-issue!
                } else {
                   $listElem[3] = "---";
                }
@@ -455,9 +457,9 @@ function getLastHeard($logLines, $onlyLast) {
             if ($listElem[2] !== "??????????") {
                if (!is_numeric($listElem[2])) {
                   if (defined("SHOWQRZ")) {
-                     $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
+                     $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$call_canon\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
                   } else {
-                     $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</a>";
+                     $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$call_canon\">".$listElem[2]."</a>";
                   }
                } else {
                   $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</a>";
