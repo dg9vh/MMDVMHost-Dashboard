@@ -54,7 +54,7 @@ New features by EA4GKQ
 
 Cronjob for updating DMR IDs
 ============================
-You can use the included script to update the DMR IDs periodically. Copy the file updateDMRIDs to /etc/cron.d/ and updateDMRIDs.sh to /var/www. The paths may have to be aligned to your system architecture. The Update script will then be executed once every 24 hours at 3:30. For security considerations please make sure that the cron folder is not copied to your web server's www root directory.
+You can use the included script to update the DMR IDs periodically. Copy the files updateDMRIDs to /etc/cron.d/ and updateDMRIDs.sh to /var/www from the cron folder in this repo. The paths may have to be aligned to your system architecture. The Update script will then be executed once every 24 hours at 3:30. For security considerations please make sure that the cron folder is not copied to your web server's www root directory.
 
 Contact
 =======
