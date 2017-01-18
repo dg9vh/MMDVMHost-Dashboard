@@ -1,0 +1,4 @@
+# Move this file to /etc/cron.d
+# Updates the DMRIds.dat every 24 hours
+* * * * * www-data [ -x /var/www/updateDMRIDs.sh  ] && /var/www/updateDMRIDs.sh
+
