@@ -3,7 +3,7 @@
   <div class="panel-heading">Repeater Info</div>
   <!-- Tabelle -->
   <div class="table-responsive">
-  <table class="table">
+  <table class="table repeaterinfo">
     <tr>
       <th>Current Mode</th>
       <th>D-Star linked to</th>

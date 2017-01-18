@@ -3,7 +3,7 @@
      <div class="panel-heading">Disk Use</div>
      <!-- Tabelle -->
      <div class="table-responsive">
-         <table id="diskuse" class="table table-condensed table-striped table-hover">
+         <table id="diskuse" class="table diskuse table-condensed table-striped table-hover">
                <thead>
                   <tr>
                      <th class="w10p filesystem">File System</th>
