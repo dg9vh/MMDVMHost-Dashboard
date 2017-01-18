@@ -287,6 +287,15 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <div class="panel-body"><input type="checkbox" name="SHOWQRZ" <?php if (defined("SHOWQRZ")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="RSSI" style="width: 300px">RSSI value</span>
+        <div class="input"><select name="RSSI">
+           <option <?php if (constant("RSSI") == "min") echo "selected=\"selected\" "?> value="min">minimal</option>
+           <option <?php if (constant("RSSI") == "max") echo "selected=\"selected\" "?> value="max">maximal</option>
+           <option <?php if (constant("RSSI") == "avg") echo "selected=\"selected\" "?> value="avg">average</option>
+        </select>
+        </div>
+      </div>
+      <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" form="config">Save configuration</button>
       </span>
