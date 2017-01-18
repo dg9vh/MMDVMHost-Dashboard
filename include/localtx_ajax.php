@@ -25,7 +25,12 @@ $totalLH = count($lastHeard);
       <th>Dur (s)</th>
       <th>Loss</th>
       <th>BER</th>
-      <th>RSSI</th>
+      <?php
+      if (constant("RSSI") == "min") echo "<th>RSSI (min)</th>";
+      else if (constant("RSSI") == "max") echo "<th>RSSI (max)</th>";
+      else if (constant("RSSI") == "avg") echo "<th>RSSI (avg)</th>";
+      else echo "<th>RSSI (avg)</th>"; 
+      ?>
             </tr>
         </thead>
     </table>
