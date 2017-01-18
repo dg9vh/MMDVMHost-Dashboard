@@ -23,7 +23,7 @@
   <div class="panel-heading">YSFReflectors reported active</div>
   <!-- Tabelle -->
   <div class="table-responsive">
-  <table id="ysfGateways" class="table table-condensed table-striped table-hover">
+  <table id="ysfGateways" class="table ysfGateways table-condensed table-striped table-hover">
 
 <?php
 
