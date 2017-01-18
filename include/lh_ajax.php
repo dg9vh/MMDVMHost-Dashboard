@@ -6,7 +6,7 @@ $totalLH = count($lastHeard);
   <div class="panel-heading">Last Heard List of today's <?php echo $totalLH; ?> callsigns.</div>
   <!-- Tabelle -->
   <div class="table-responsive">
-  <table id="lastHeard" class="table table-condensed table-striped table-hover">
+  <table id="lastHeard" class="table lastHeard table-condensed table-striped table-hover">
         <thead>
             <tr>
                 <th>Time (<?php echo TIMEZONE;?>)</th>

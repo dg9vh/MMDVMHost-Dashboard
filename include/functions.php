@@ -375,6 +375,7 @@ function getHeardList($logLines, $onlyLast) {
       
       
       $target = substr($logLine, $topos + 3);
+      $target = preg_replace('/\s/', '&nbsp;', $target);
       $source = "RF";
       if (strpos($logLine,"network") > 0 ) {
          $source = "Net";
