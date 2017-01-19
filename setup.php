@@ -289,9 +289,9 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
       <div class="input-group">
         <span class="input-group-addon" id="RSSI" style="width: 300px">RSSI value</span>
         <div class="input"><select name="RSSI">
-           <option <?php if (constant("RSSI") == "min") echo "selected=\"selected\" "?> value="min">minimal</option>
-           <option <?php if (constant("RSSI") == "max") echo "selected=\"selected\" "?> value="max">maximal</option>
-           <option <?php if (constant("RSSI") == "avg") echo "selected=\"selected\" "?> value="avg">average</option>
+           <option <?php if (constant("RSSI") == "min") echo "selected=\"selected\" "?>value="min">minimal</option>
+           <option <?php if (constant("RSSI") == "max") echo "selected=\"selected\" "?>value="max">maximal</option>
+           <option <?php if (constant("RSSI") == "avg" or (!defined("RSSI"))) echo "selected=\"selected\" "?>value="avg">average</option>
         </select>
         </div>
       </div>
