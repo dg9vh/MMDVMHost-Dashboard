@@ -6,18 +6,38 @@
   <table class="table repeaterinfo">
     <tr>
       <th>Current Mode</th>
+<?php
+   if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+?>
       <th>D-Star linked to</th>
+<?php
+   }
+   if (getEnabled("System Fusion", $mmdvmconfigs) == 1) {
+?>
       <th>YSF linked to</th>
+<?php
+   }
+   if (getEnabled("DMR", $mmdvmconfigs) == 1) {
+?>
       <th>DMR TS1 last linked to</th>
       <th>DMR TS2 last linked to</th>
+<?php
+   }
+?>
     </tr>
 <?php
    echo"<tr>";
    echo"<td id=\"mode\">".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
-   echo"<td>".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
-   echo"<td>".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
-   echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
-   echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ."</td>";
+   if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+     echo"<td>".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
+   }
+   if (getEnabled("System Fusion", $mmdvmconfigs) == 1) {
+     echo"<td>".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
+   }
+   if (getEnabled("DMR", $mmdvmconfigs) == 1) {
+     echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
+     echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ."</td>";
+   }
    echo"</tr>\n";
 ?>
     <tr>
