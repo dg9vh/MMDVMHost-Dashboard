@@ -363,9 +363,10 @@ function getHeardList($logLines, $onlyLast) {
 
       $timestamp = substr($logLine, 3, 19);
       $mode = substr($logLine, 27, strpos($logLine,",") - 27);
-      $topos = strpos($logLine, "to");
-      if ($topos == strpos($logLine, "to follow")) {
-      	 $topos = strpos($logLine, "to", strpos($logLine, "to follow)") + 1);
+      if ($topos = strpos($logLine, "to follow)")) {
+         $topos = strpos($logLine, "to", $topos+1);
+      } else {
+         $topos = strpos($logLine, "to");
       }
       $callsign2 = substr($logLine, strpos($logLine,"from") + 5, $topos - strpos($logLine,"from") - 6);
       $callsign = $callsign2;
