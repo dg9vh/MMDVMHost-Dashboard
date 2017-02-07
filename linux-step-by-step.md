@@ -46,17 +46,19 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 7. Now you can clone the dashboard into your home directory:
 
-	>git clone https://github.com/dg9vh/MMDVMHost-Dashboard.git ~/
+	>cd ~
+	
+	>git clone https://github.com/dg9vh/MMDVMHost-Dashboard.git
 
 8. Next, you need to copy the files into the webroot so they can be served by lighttpd:
 
 	If you are using Raspbian Jessie, run:
 
-	>sudo cp -R /home/pi/MMDVMHost-Dashboard /var/www/html/	
+	>sudo cp -R /home/pi/MMDVMHost-Dashboard/* /var/www/html/	
 
 	If you are using Raspbian Wheezy, run:
 
-	>sudo cp -R /home/pi/MMDVMHost-Dashboard /var/www/
+	>sudo cp -R /home/pi/MMDVMHost-Dashboard/* /var/www/
 
 9. To make sure the dashboard is served instead of the default "index.html", change into the webroot /var/www/html respectively /var/www and remove that file:
 
