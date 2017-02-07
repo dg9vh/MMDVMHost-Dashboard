@@ -60,7 +60,7 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 	>sudo cp -R /home/pi/MMDVMHost-Dashboard/* /var/www/
 
-9. To make sure the dashboard is served instead of the default "index.html", change into the webroot /var/www/html respectively /var/www and remove that file:
+9. To make sure the dashboard is served instead of the default "index.html", cd into the webroot /var/www/html respectively /var/www and remove that file:
 
 	>sudo rm index.html
 
