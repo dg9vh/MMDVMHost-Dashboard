@@ -112,4 +112,15 @@ function convertTimezone($timestamp) {
    $date->setTimezone(new DateTimeZone(TIMEZONE));   
    return $date->format('Y-m-d H:i:s');
 }
+
+function encode($hex) {
+	$validchars = " abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789";
+    $str = '';
+    $chrval = hexdec(substr($hex,$i,2));
+    $str = chr($chrval);
+    if (strpos($validchars, $str)>=0)
+      return $str;
+    else
+      return "";
+}
 ?>

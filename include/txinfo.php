@@ -16,6 +16,7 @@
       <?php
       }
       ?>
+      <th>Talker Alias</th>
       <th>DSTAR-ID</th>
       <th>Target</th>
       <th>Source</th>

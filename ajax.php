@@ -19,9 +19,32 @@ if ($_GET['section'] == "mode") {
    echo $mode;
 }
 if ($_GET['section'] == "lastHeard") {
-   $lastHeard = getLastHeard($reverseLogLinesMMDVM, FALSE);
+   $lastHeardList = getLastHeard($reverseLogLinesMMDVM, FALSE);
+   $lastHeard = Array();
+   for ($i = 0; $i < count($lastHeardList); $i++) {
+      $listElem = $lastHeardList[$i];
+      // Generate a canonicalized call for QRZ and name lookups
+      $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
+      if (defined("ENABLEXTDLOOKUP")) {
+      	 $listElem[11] ="";
+         array_push($lastHeard, $listElem);
+      } else {
+         $listElem[10] ="";
+         array_push($lastHeard, $listElem);
+      }
+   }
    echo '{"data": '.json_encode($lastHeard)."}";
 }
+/*
+   for ($i = 0; $i < count($localTXList); $i++) {
+     $listElem = $localTXList[$i];
+   if (defined("ENABLEXTDLOOKUP")) {
+   	 $listElem[11] =""; 
+   } else {
+   	 $listElem[10] ="";
+   }
+   echo '{"data": '.json_encode($lastHeard)."}";
+}*/
 if ($_GET['section'] == "localTx") {
    $localTXList = getHeardList($reverseLogLinesMMDVM, FALSE);
    $lastHeard = Array();
@@ -30,6 +53,7 @@ if ($_GET['section'] == "localTx") {
       // Generate a canonicalized call for QRZ and name lookups
       $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
       if (defined("ENABLEXTDLOOKUP")) {
+      	 $listElem[11] ="";
          if ($listElem[6] == "RF" && ($listElem[1]=="D-Star" || startsWith($listElem[1], "DMR") || $listElem[1]=="YSF" || $listElem[1]=="P25")) {
             $listElem[3] = getName($call_canon);
             if ($listElem[2] !== "??????????") {
@@ -46,6 +70,7 @@ if ($_GET['section'] == "localTx") {
             array_push($lastHeard, $listElem);
          }
       } else {
+          $listElem[10] ="";
          if ($listElem[5] == "RF" && ($listElem[1]=="D-Star" || startsWith($listElem[1], "DMR") || $listElem[1]=="YSF" || $listElem[1]=="P25")) {
             if ($listElem[2] !== "??????????") {
                if (!is_numeric($listElem[2])) {

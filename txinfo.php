@@ -21,6 +21,9 @@ echo"-->";
 $counter = 0;
 foreach ($lastHeard as $listElem) {
    $counter +=1;
+   echo"<!--";
+   var_dump($listElem);
+   echo"-->";
    if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
       echo "<tr>";
       echo"<td nowrap>$listElem[0]</td>";
@@ -41,6 +44,7 @@ foreach ($lastHeard as $listElem) {
       if (defined("ENABLEXTDLOOKUP")) {
          //echo "<td nowrap>".getName($listElem[2])."</td>";
          echo"<td nowrap>$listElem[3]</td>";
+         echo"<td nowrap>$listElem[11]</td>";
          echo"<td nowrap>$listElem[4]</td>";
          echo"<td nowrap>$listElem[5]</td>";
          if ($listElem[6] == "RF"){
@@ -53,6 +57,7 @@ foreach ($lastHeard as $listElem) {
          $diff = $d2->getTimestamp() - $d1->getTimestamp();
          echo"<td nowrap>$diff s</td>";
       } else {
+         echo"<td nowrap>$listElem[10]</td>";
          echo"<td nowrap>$listElem[3]</td>";
          echo"<td nowrap>$listElem[4]</td>";
          if ($listElem[5] == "RF"){
