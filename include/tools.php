@@ -116,7 +116,7 @@ function convertTimezone($timestamp) {
 function encode($hex) {
 	$validchars = " abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789";
     $str = '';
-    $chrval = hexdec(substr($hex,$i,2));
+    $chrval = hexdec($hex);
     $str = chr($chrval);
     if (strpos($validchars, $str)>=0)
       return $str;

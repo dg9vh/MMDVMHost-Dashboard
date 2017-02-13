@@ -242,7 +242,6 @@ function getHeardList($logLines, $onlyLast) {
    $alias = "";
    
    foreach ($logLines as $logLine) {
-   	  //echo $logLine;
       $duration = "";
       $loss = "";
       $ber = "";
@@ -261,7 +260,7 @@ function getHeardList($logLines, $onlyLast) {
       } else if(strpos($logLine,"bad LC received")) {
          continue;
       }
-      //$alias = substr($logLine, 27, 5);
+      
       if(strpos($logLine, "0000") > 0){
       	$decodedAlias = decodeAlias($logLine);
       	if ($alias =="")

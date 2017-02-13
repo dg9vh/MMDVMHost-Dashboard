@@ -15,8 +15,12 @@
       <th>Name</th>
       <?php
       }
+      if (defined("TALKERALIAS")) {
       ?>
       <th>Talker Alias</th>
+      <?php
+      }
+      ?>
       <th>DSTAR-ID</th>
       <th>Target</th>
       <th>Source</th>

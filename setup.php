@@ -296,6 +296,10 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         </div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="TALKERALIAS" style="width: 300px">Show Talker Alias</span>
+        <div class="panel-body"><input type="checkbox" name="TALKERALIAS" <?php if (defined("TALKERALIAS")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" form="config">Save configuration</button>
       </span>
