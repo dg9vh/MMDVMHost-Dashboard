@@ -388,7 +388,7 @@ function getHeardList($logLines, $onlyLast) {
          }
       }
 
-      $timestamp = substr($logLine, 3, 19);
+      $timestamp = substr($logLine, 3, 23);
       $mode = substr($logLine, 27, strpos($logLine,",") - 27);
       if ($topos = strpos($logLine, "to follow)")) {
          $topos = strpos($logLine, "to", $topos+1);
