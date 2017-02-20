@@ -189,14 +189,14 @@ function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `grep M: $logPath`);
-   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath`);
+   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
    return $logLines;
 }
 
 function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | tail -100`);
+   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | tail -20`);
    return $logLines;
 }
 
