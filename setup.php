@@ -75,6 +75,10 @@ include "include/tools.php";
         <div class="panel-body"><input type="checkbox" name="ENABLEXTDLOOKUP" <?php if (defined("ENABLEXTDLOOKUP")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="TALKERALIAS" style="width: 300px">Show Talker Alias</span>
+        <div class="panel-body"><input type="checkbox" name="TALKERALIAS" <?php if (defined("TALKERALIAS")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="DMRIDDATPATH" style="width: 300px">Path to DMR-ID-Database-File (including filename)</span>
         <input type="text" value="<?php echo constant("DMRIDDATPATH") ?>" name="DMRIDDATPATH" class="form-control" placeholder="/var/mmdvm/DMRIDs.dat" aria-describedby="DMRIDDATPATH">
       </div>
@@ -198,6 +202,30 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <input type="text" value="<?php echo constant("REFRESHAFTER") ?>" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="SHOWCPU" style="width: 300px">Show System Info</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWCPU" <?php if (defined("SHOWCPU")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SHOWDISK" style="width: 300px">Show Disk Use</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWDISK" <?php if (defined("SHOWDISK")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SHOWRPTINFO" style="width: 300px">Show Repeater Info</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWRPTINFO" <?php if (defined("SHOWRPTINFO")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SHOWMODES" style="width: 300px">Show Enabled Modes</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWMODES" <?php if (defined("SHOWMODES")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SHOWLH" style="width: 300px">Show Last Heard List of today's</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWLH" <?php if (defined("SHOWLH")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SHOWLOCALTX" style="width: 300px">Show Today's local transmissions</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWLOCALTX" <?php if (defined("SHOWLOCALTX")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="SHOWPROGRESSBARS" style="width: 300px">Show progressbars</span>
         <div class="panel-body"><input type="checkbox" name="SHOWPROGRESSBARS" <?php if (defined("SHOWPROGRESSBARS")) echo "checked" ?>></div>
       </div>
@@ -221,7 +249,7 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <span class="input-group-addon" id="SWITCHNETWORKPW" style="width: 300px">Password for switching networks:</span>
         <input type="text" value="<?php echo constant("SWITCHNETWORKPW") ?>" name="SWITCHNETWORKPW" class="form-control" placeholder="password" aria-describedby="SWITCHNETWORKPW">
       </div>
-      
+
       <div class="input-group">
         <span class="input-group-addon" id="ENABLEMANAGEMENT" style="width: 300px">Enable Management-Functions below</span>
         <div class="panel-body"><input type="checkbox" name="ENABLEMANAGEMENT" <?php if (constant("ENABLEMANAGEMENT")) echo "checked" ?>></div>
@@ -294,10 +322,6 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
            <option <?php if (constant("RSSI") == "avg" or (!defined("RSSI"))) echo "selected=\"selected\" "?>value="avg">average</option>
         </select>
         </div>
-      </div>
-      <div class="input-group">
-        <span class="input-group-addon" id="TALKERALIAS" style="width: 300px">Show Talker Alias</span>
-        <div class="panel-body"><input type="checkbox" name="TALKERALIAS" <?php if (defined("TALKERALIAS")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
       <span class="input-group-btn">
