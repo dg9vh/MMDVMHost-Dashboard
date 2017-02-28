@@ -68,11 +68,11 @@ include "version.php";
      $logourl = DMRPLUSLOGO;
     }
   }
-  
+
   if ($logourl == "") {
    $logourl = LOGO;
   }
-  
+
   if ($logourl !== "") {
 ?>
 <div id="Logo" style="position:absolute;top:-43px;right:10px;"><img src="<?php echo $logourl ?>" width="250px" style="width:250px; border-radius:10px;box-shadow:2px 2px 2px #808080; padding:1px;background:#FFFFFF;border:1px solid #808080;" border="0" hspace="10" vspace="10" align="absmiddle"></div>
@@ -99,18 +99,30 @@ checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/txinfo.php";
 showLapTime("txinfo");
-include "include/sysinfo_ajax.php";
-showLapTime("sysinfo");
-include "include/disk.php";
-showLapTime("disk");
-include "include/repeaterinfo.php";
-showLapTime("repeaterinfo");
-include "include/modes.php";
-showLapTime("modes");
-include "include/lh_ajax.php";
-showLapTime("lh_ajax");
-include "include/localtx_ajax.php";
-showLapTime("localtx_ajax");
+if (defined("SHOWCPU")) {
+   include "include/sysinfo_ajax.php";
+   showLapTime("sysinfo");
+}
+if (defined("SHOWDISK")) {
+   include "include/disk.php";
+   showLapTime("disk");
+}
+if (defined("SHOWRPTINFO")) {
+    include "include/repeaterinfo.php";
+    showLapTime("repeaterinfo");
+}
+if (defined("SHOWMODES")) {
+   include "include/modes.php";
+   showLapTime("modes");
+}
+if (defined("SHOWLH")) {
+   include "include/lh_ajax.php";
+   showLapTime("lh_ajax");
+}
+if (defined("SHOWLOCALTX")) {
+   include "include/localtx_ajax.php";
+   showLapTime("localtx_ajax");
+}
 if (defined("ENABLEYSFGATEWAY")) {
    include "include/ysfgatewayinfo.php";
    showLapTime("ysfgatewayinfo");
