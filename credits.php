@@ -27,6 +27,7 @@
       <li>g0wfv</li>
       <li>dg0cco</li>
       <li>sa7bnt</li>
+      <li>ct2jay</li>
       <li>and some others...</li>
     </ul>
    <p>Those, who felt forgotten, feel free to comit a change into github of this file.</p>
