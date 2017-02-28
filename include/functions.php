@@ -24,7 +24,7 @@ function getMMDVMHostFileVersion() {
 
 function getFirmwareVersion() {
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `grep "MMDVM protocol version" $logPath`);
+   $logLines = explode("\n", `egrep "MMDVM protocol version" $logPath`);
    $firmware = "n/a";
    if (count($logLines) >= 2) {
       $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
@@ -781,20 +781,41 @@ function getName($callsign) {
       return "---";
    }
 
+   $TMP_CALL_NAME = "/tmp/Callsign_Name.txt";
+   if (file_exists($TMP_CALL_NAME)) {
+      $callsign = trim($callsign);
+      if (strpos($callsign,"-")) {
+         $callsign = substr($callsign,0,strpos($callsign,"-"));
+      }
+      $delimiter =" ";
+      exec("egrep -m1 '".$callsign.$delimiter."' ".$TMP_CALL_NAME, $output);
+      if (count($output) !== 0) {
+         $name = substr($output[0], strpos($output[0],$delimiter));
+         $name = substr($name, strpos($name,$delimiter));
+         return $name;
+      }
+   }
+
    if (file_exists(DMRIDDATPATH)) {
       $callsign = trim($callsign);
       if (strpos($callsign,"-")) {
          $callsign = substr($callsign,0,strpos($callsign,"-"));
       }
       $delimiter =" ";
-      exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+      exec("egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
       if (count($output) == 0) {
          $delimiter = "\t";
-         exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+         exec("egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
       }
       if (count($output) !== 0) {
          $name = substr($output[0], strpos($output[0],$delimiter)+1);
          $name = substr($name, strpos($name,$delimiter)+1);
+
+         $fp = fopen($TMP_CALL_NAME .'.TMP', 'a');
+	 $TMP_STRING = $callsign .' '  .$name;
+         fwrite($fp, $TMP_STRING.PHP_EOL);
+         fclose($fp);
+	 exec('sort ' .$TMP_CALL_NAME.'.TMP' .' ' .$TMP_CALL_NAME .' | uniq  > ' .$TMP_CALL_NAME);
          return $name;
       } else
          return "---";
