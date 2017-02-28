@@ -24,7 +24,7 @@ function getMMDVMHostFileVersion() {
 
 function getFirmwareVersion() {
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `grep "MMDVM protocol version" $logPath`);
+   $logLines = explode("\n", `LC_ALL=C egrep "MMDVM protocol version" $logPath`);
    $firmware = "n/a";
    if (count($logLines) >= 2) {
       $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
@@ -72,7 +72,7 @@ function getDMRNetwork2() {
 
 function getDMRMasterState() {
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);
+   $logLines = explode("\n", `LC_ALL=C egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);
    $state = -1;
    foreach($logLines as $logLine) {
       if (strpos($logLine, "successfully") > 0) {
@@ -189,14 +189,14 @@ function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `grep M: $logPath`);
-   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
+   $logLines = explode("\n", `LC_ALL=C egrep -h "from|end|watchdog|lost" $logPath`);
    return $logLines;
 }
 
 function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | tail -20`);
+   $logLines = explode("\n", `LC_ALL=C egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | tail -20`);
    return $logLines;
 }
 
@@ -204,7 +204,7 @@ function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
-   $logLines = explode("\n", `egrep -h "Starting|DISCONNECT|Connect|Automatic" $logPath`);
+   $logLines = explode("\n", `LC_ALL=C egrep -h "Starting|DISCONNECT|Connect|Automatic" $logPath`);
    return $logLines;
 }
 
@@ -787,10 +787,12 @@ function getName($callsign) {
          $callsign = substr($callsign,0,strpos($callsign,"-"));
       }
       $delimiter =" ";
-      exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
-      if (count($output) == 0) {
+//      exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+      exec("LC_ALL=C egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+     if (count($output) == 0) {
          $delimiter = "\t";
-         exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+//         exec("grep -P '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+         exec("LC_ALL=C egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
       }
       if (count($output) !== 0) {
          $name = substr($output[0], strpos($output[0],$delimiter)+1);
