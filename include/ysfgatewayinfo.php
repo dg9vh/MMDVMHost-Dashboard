@@ -2,7 +2,8 @@
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">YSFGateway-Infos</div>
+  <div class="panel-heading">YSFGateway-Infos<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-body">
   <!-- Tabelle -->
   <table class="table">
     <tr>
@@ -18,9 +19,11 @@
     </tr>
   </table>
 </div>
+</div>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">YSFReflectors reported active</div>
+  <div class="panel-heading">YSFReflectors reported active<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
   <table id="ysfGateways" class="table ysfGateways table-condensed table-striped table-hover">
@@ -55,6 +58,7 @@
          <tbody>
   </table>
   </div>
+</div>
 </div>
 
 <script>

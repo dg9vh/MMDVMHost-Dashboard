@@ -1,6 +1,7 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Repeater Info</div>
+  <div class="panel-heading">Repeater Info<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
   <table class="table repeaterinfo">
@@ -114,5 +115,6 @@
       </td>
     </tr>
   </table>
+  </div>
   </div>
 </div>

@@ -1,0 +1,7 @@
+.clickable{
+    cursor: pointer;   
+}
+
+.panel-heading span {
+	font-size: 15px;
+}

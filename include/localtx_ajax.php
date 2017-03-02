@@ -3,7 +3,8 @@ $totalLH = count($lastHeard);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Today's local transmissions</div>
+  <div class="panel-heading">Today's local transmissions<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
   <table id="localTx" class="table localTx table-condensed table-striped table-hover">
@@ -34,6 +35,7 @@ $totalLH = count($lastHeard);
             </tr>
         </thead>
     </table>
+  </div>
   </div>
 </div>
 <script>
