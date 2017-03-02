@@ -260,9 +260,10 @@ function getHeardList($logLines, $onlyLast) {
       } else if(strpos($logLine,"bad LC received")) {
          continue;
       }
-      
+
       if(strpos($logLine, "0000") > 0){
       	$decodedAlias = decodeAlias($logLine);
+        if ($decodedAlias == "" && $alias =="") $decodedAlias="---";
       	if ($alias =="")
 	      	$alias =$decodedAlias;
 	    else
