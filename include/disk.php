@@ -1,6 +1,7 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-     <div class="panel-heading">Disk Use</div>
+     <div class="panel-heading">Disk Use<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+     <div class="panel-body">
      <!-- Tabelle -->
      <div class="table-responsive">
          <table id="diskuse" class="table diskuse table-condensed table-striped table-hover">
@@ -56,5 +57,6 @@ try{
 ?>
                </tbody>
          </table>
+     </div>
      </div>
   </div>

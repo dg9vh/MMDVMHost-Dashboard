@@ -21,6 +21,8 @@ include "version.php";
   <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=1, user-scalable=yes">
+    <!-- Default-CSS -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- CSS for tooltip display -->
     <link rel="stylesheet" href="css/tooltip.css">
     <!-- CSS for monospaced fonts in tables -->
@@ -157,6 +159,20 @@ if (!isset($_GET['stoprefresh'])) {
     instructions how to enable JavaScript in your web browser</a>.
    </noscript>
   </body>
+  <script>
+  		$(document).on('click', '.panel-heading span.clickable', function(e){
+    var $this = $(this);
+	if(!$this.hasClass('panel-collapsed')) {
+		$this.parents('.panel').find('.panel-body').slideUp();
+		$this.addClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+	} else {
+		$this.parents('.panel').find('.panel-body').slideDown();
+		$this.removeClass('panel-collapsed');
+		$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+	}
+})
+  </script>
 </html>
 <?php
    showLapTime("End of Page");
