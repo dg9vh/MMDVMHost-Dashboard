@@ -831,16 +831,15 @@ function getName($callsign) {
 // M: 2017-02-13 15:53:31.253 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
 function decodeAlias($logLine) {
   if (substr($logLine, 34, 2) !=="04")
-   {
     $tok1 = encode(substr($logLine, 40, 2));
-    $tok2 = encode(substr($logLine, 43, 2));
-    $tok3 = encode(substr($logLine, 46, 2));
-    $tok4 = encode(substr($logLine, 49, 2));
-    $tok5 = encode(substr($logLine, 52, 2));
-    $tok6 = encode(substr($logLine, 55, 2));
-    $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
-    return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
-   } 
-   return;
+  else
+  $tok1 = "";
+  $tok2 = encode(substr($logLine, 43, 2));
+  $tok3 = encode(substr($logLine, 46, 2));
+  $tok4 = encode(substr($logLine, 49, 2));
+  $tok5 = encode(substr($logLine, 52, 2));
+  $tok6 = encode(substr($logLine, 55, 2));
+  $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
+  return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
 ?>
