@@ -101,6 +101,14 @@ checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/txinfo.php";
 showLapTime("txinfo");
+if (!defined("SHOWCPU") AND !defined("SHOWDISK") AND !defined("SHOWRPTINFO") AND !defined("SHOWMODES") AND !defined("SHOWLH") AND !defined("SHOWLOCALTX")) {
+   define("SHOWCPU", "on");
+   define("SHOWDISK", "on");
+   define("SHOWRPTINFO", "on");
+   define("SHOWMODES", "on");
+   define("SHOWLH", "on");
+   define("SHOWLOCALTX", "on");	
+}
 if (defined("SHOWCPU")) {
    include "include/sysinfo_ajax.php";
    showLapTime("sysinfo");
