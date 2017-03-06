@@ -262,8 +262,9 @@ function getHeardList($logLines, $onlyLast) {
       }
 
       if(strpos($logLine, "0000") > 0){
-      	$decodedAlias = decodeAlias($logLine);
+      	$decodedAlias = $decodedAlias = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', decodeAlias($logLine));
         if ($decodedAlias == "" && $alias =="") $decodedAlias="---";
+        else $alias = str_replace("---", "", $alias);
       	if ($alias =="")
 	      	$alias =$decodedAlias;
 	    else
