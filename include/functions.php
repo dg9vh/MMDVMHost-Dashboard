@@ -197,6 +197,7 @@ function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | tail -20`);
+
    return $logLines;
 }
 
@@ -261,14 +262,14 @@ function getHeardList($logLines, $onlyLast) {
          continue;
       }
 
-      if(strpos($logLine, "0000") > 0){
+      if(strpos($logLine, "0000")){
       	$decodedAlias = $decodedAlias = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', decodeAlias($logLine));
-        if ($decodedAlias == "" && $alias =="") $decodedAlias="---";
-        else $alias = str_replace("---", "", $alias);
-      	if ($alias =="")
-	      	$alias =$decodedAlias;
+        if ($decodedAlias == "" && $alias == "") $decodedAlias="---";
+        else if ($alias!="---") $alias = str_replace("---", "", $alias);
+      	if ($alias == "")
+	      	$alias = $decodedAlias;
 	    else
-	    	$alias =$decodedAlias.$alias;
+	    	$alias = $decodedAlias.$alias;
       }
       if (strpos($logLine,"Embedded Talker Alias")) {
       	switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
@@ -429,14 +430,14 @@ function getHeardList($logLines, $onlyLast) {
             $loss = $ts1loss;
             $ber = $ts1ber;
             $rssi = $ts1rssi;
-            $alias = $ts1alias;
+//            $alias = $ts1alias;
             break;
          case "DMR Slot 2":
             $duration = $ts2duration;
             $loss = $ts2loss;
             $ber = $ts2ber;
             $rssi = $ts2rssi;
-            $alias = $ts2alias;
+//            $alias = $ts2alias;
             break;
          case "YSF":
             $duration = $ysfduration;
