@@ -197,6 +197,7 @@ function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | tail -20`);
+
    return $logLines;
 }
 
@@ -261,13 +262,14 @@ function getHeardList($logLines, $onlyLast) {
          continue;
       }
 
-      if(strpos($logLine, "0000") > 0){
-      	$decodedAlias = decodeAlias($logLine);
-        if ($decodedAlias == "" && $alias =="") $decodedAlias="---";
-      	if ($alias =="")
-	      	$alias =$decodedAlias;
+      if(strpos($logLine, "0000")){
+      	$decodedAlias = $decodedAlias = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', decodeAlias($logLine));
+        if ($decodedAlias == "" && $alias == "") $decodedAlias="---";
+        else if ($alias!="---") $alias = str_replace("---", "", $alias);
+      	if ($alias == "")
+	      	$alias = $decodedAlias;
 	    else
-	    	$alias =$decodedAlias.$alias;
+	    	$alias = $decodedAlias.$alias;
       }
       if (strpos($logLine,"Embedded Talker Alias")) {
       	switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
@@ -428,14 +430,14 @@ function getHeardList($logLines, $onlyLast) {
             $loss = $ts1loss;
             $ber = $ts1ber;
             $rssi = $ts1rssi;
-            $alias = $ts1alias;
+//            $alias = $ts1alias;
             break;
          case "DMR Slot 2":
             $duration = $ts2duration;
             $loss = $ts2loss;
             $ber = $ts2ber;
             $rssi = $ts2rssi;
-            $alias = $ts2alias;
+//            $alias = $ts2alias;
             break;
          case "YSF":
             $duration = $ysfduration;
@@ -831,16 +833,15 @@ function getName($callsign) {
 // M: 2017-02-13 15:53:31.253 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
 function decodeAlias($logLine) {
   if (substr($logLine, 34, 2) !=="04")
-   {
     $tok1 = encode(substr($logLine, 40, 2));
-    $tok2 = encode(substr($logLine, 43, 2));
-    $tok3 = encode(substr($logLine, 46, 2));
-    $tok4 = encode(substr($logLine, 49, 2));
-    $tok5 = encode(substr($logLine, 52, 2));
-    $tok6 = encode(substr($logLine, 55, 2));
-    $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
-    return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
-   } 
-   return;
+  else
+  $tok1 = "";
+  $tok2 = encode(substr($logLine, 43, 2));
+  $tok3 = encode(substr($logLine, 46, 2));
+  $tok4 = encode(substr($logLine, 49, 2));
+  $tok5 = encode(substr($logLine, 52, 2));
+  $tok6 = encode(substr($logLine, 55, 2));
+  $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
+  return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
 ?>
