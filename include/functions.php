@@ -196,8 +196,7 @@ function getMMDVMLog() {
 function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `egrep  -v "data header" -h "from|end|watchdog|lost|Alias|0000" $logPath | tail -20`);
-
+   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" |tail -20`);
    return $logLines;
 }
 
@@ -216,9 +215,9 @@ function getYSFGatewayLog() {
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
 // M: 2016-09-16 09:14:12.886 P25, received RF from DF2ET to TG10100
 // M: 2017-02-13 15:53:30.990 DMR Slot 2, Embedded Talker Alias Header
-// M: 2017-02-13 15:53:30.991 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
+// M: 2017-02-13 15:53:30.991 DMR Slot 2, 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
 // M: 2017-02-13 15:53:31.252 DMR Slot 2, Embedded Talker Alias Block 1
-// M: 2017-02-13 15:53:31.253 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
+// M: 2017-02-13 15:53:31.253 DMR Slot 2, 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
 
 function getHeardList($logLines, $onlyLast) {
    $heardList = array();
@@ -241,7 +240,7 @@ function getHeardList($logLines, $onlyLast) {
    $ysfber = "";
    $ysfrssi = "";
    $alias = "";
-   
+
    foreach ($logLines as $logLine) {
       $duration = "";
       $loss = "";
@@ -263,23 +262,24 @@ function getHeardList($logLines, $onlyLast) {
       }
 
       if(strpos($logLine, "0000")){
-      	$decodedAlias = $decodedAlias = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', decodeAlias($logLine));
-        if ($decodedAlias == "" && $alias == "") $decodedAlias="---";
-        else if ($alias!="---") $alias = str_replace("---", "", $alias);
-      	if ($alias == "")
-	      	$alias = $decodedAlias;
-	    else
-	    	$alias = $decodedAlias.$alias;
-      }
-      if (strpos($logLine,"Embedded Talker Alias")) {
-      	switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
+      	$decodedAlias = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', decodeAlias($logLine));
+
+        switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
           case "DMR Slot 1":
-            $ts1alias = $alias;
+            if ($ts1alias == "")
+                 $ts1alias = $decodedAlias;
+            else
+                 $ts1alias = $decodedAlias.$ts1alias;
             break;
           case "DMR Slot 2":
-            $ts2alias = $alias;
+            if ($ts2alias == "")
+                 $ts2alias = $decodedAlias;
+            else
+                 $ts2alias = $decodedAlias.$ts2alias;
             break;
         }
+      if ($ts1alias!="---") $ts1alias = str_replace("---", "", $ts1alias);
+      if ($ts2alias!="---") $ts2alias = str_replace("---", "", $ts2alias);
       }
 
       if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network") || strpos($logLine,"transmission lost")) {
@@ -404,13 +404,12 @@ function getHeardList($logLines, $onlyLast) {
          $callsign = substr($callsign2, 0, strpos($callsign2,"/"));
       }
       $callsign = trim($callsign);
-      
+
       $id ="";
       if ($mode == "D-Star") {
          $id = substr($callsign2, strpos($callsign2,"/") + 1);
       }
-      
-      
+
       $target = substr($logLine, $topos + 3);
       $target = preg_replace('/\s/', '&nbsp;', $target);
       $source = "RF";
@@ -430,14 +429,14 @@ function getHeardList($logLines, $onlyLast) {
             $loss = $ts1loss;
             $ber = $ts1ber;
             $rssi = $ts1rssi;
-//            $alias = $ts1alias;
+            $alias = $ts1alias;
             break;
          case "DMR Slot 2":
             $duration = $ts2duration;
             $loss = $ts2loss;
             $ber = $ts2ber;
             $rssi = $ts2rssi;
-//            $alias = $ts2alias;
+            $alias = $ts2alias;
             break;
          case "YSF":
             $duration = $ysfduration;
@@ -520,7 +519,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
    // returns mode of repeater actual working in
    $listElem = $metaLastHeard[0];
    $timestamp = new DateTime($listElem[0],new DateTimeZone(TIMEZONE));
-   
+
    $mode = $listElem[1];
    if (startsWith($mode, "DMR")) {
       $mode = "DMR";
@@ -829,19 +828,19 @@ function getName($callsign) {
 
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
-// M: 2017-02-13 15:53:30.991 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
-// M: 2017-02-13 15:53:31.253 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
+// M: 2017-02-13 15:53:30.991 DMR Slot 2, 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
+// M: 2017-02-13 15:53:31.253 DMR Slot 2, 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
 function decodeAlias($logLine) {
-  if (substr($logLine, 34, 2) !=="04")
-    $tok1 = encode(substr($logLine, 40, 2));
+  if (substr($logLine, 46, 2) !=="04")
+    $tok1 = encode(substr($logLine, 52, 2));
   else
-  $tok1 = "";
-  $tok2 = encode(substr($logLine, 43, 2));
-  $tok3 = encode(substr($logLine, 46, 2));
-  $tok4 = encode(substr($logLine, 49, 2));
-  $tok5 = encode(substr($logLine, 52, 2));
-  $tok6 = encode(substr($logLine, 55, 2));
-  $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
+    $tok1 = "";
+  $tok2 = encode(substr($logLine, 55, 2));
+  $tok3 = encode(substr($logLine, 58, 2));
+  $tok4 = encode(substr($logLine, 61, 2));
+  $tok5 = encode(substr($logLine, 64, 2));
+  $tok6 = encode(substr($logLine, 67, 2));
+  $tok7 = encode(dechex(hexdec(substr($logLine, 70, 2))/2));
   return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
 ?>
