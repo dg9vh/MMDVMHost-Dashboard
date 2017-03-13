@@ -56,19 +56,12 @@ include "../include/sysinfo.php";
 if ($_GET['network'] == "DMRPLUS") {
    setDMRNetwork("DMRplus");
    exec( "sudo cp ".MMDVMINIPATH."/DMRPLUS.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
-   exec( "sudo killall MMDVMHost");
-   sleep(1);
-   exec( "sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." > /dev/null 2>&1 &" );
-// exec( "sudo killall MMDVMHost && sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." &");
-// exec( "sudo /etc/init.d/start_mmdvm restart ");
+   exec( REBOOTMMDVM );
 }
 if ($_GET['network'] == "BRANDMEISTER") {
    setDMRNetwork("BrandMeister");
    exec( "sudo cp ".MMDVMINIPATH."/BRANDMEISTER.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
-   exec( "sudo killall MMDVMHost");
-   sleep(1);
-   exec( "sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME."  > /dev/null 2>&1 &" );
-// exec( "sudo killall MMDVMHost && sudo ".MMDVMHOSTPATH."/MMDVMHost ".MMDVMINIPATH."/".MMDVMINIFILENAME." &" );
+   exec( REBOOTMMDVM );
 }
 ?>
 <div class="alert alert-info" role="alert">Switching network to <b><?php echo getDMRNetwork2() ?></b><br>Restarting in new selected network in progress</div>
