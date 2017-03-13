@@ -804,13 +804,13 @@ function getName($callsign) {
          $callsign = substr($callsign,0,strpos($callsign,"-"));
       }
       $delimiter =" ";
-      exec("egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
-      if (count($output) == 0) {
-         $delimiter = "\t";
-         exec("egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
-      }
+      exec("sed -e 's/[[:space:]]\+/ /g' ".DMRIDDATPATH ." | grep -m1 '".$callsign.$delimiter."'" , $output);
+//      if (count($output) == 0) {
+//         $delimiter = "\t";
+//         exec("egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
+//      }
       if (count($output) !== 0) {
-         $name = substr($output[0], strpos($output[0],$delimiter)+1);
+         $name = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', substr($output[0], strpos($output[0],$delimiter)+1));
          $name = substr($name, strpos($name,$delimiter)+1);
 
          $fp = fopen($TMP_CALL_NAME .'.TMP', 'a');
