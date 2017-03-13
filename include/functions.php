@@ -9,7 +9,11 @@ function getMMDVMHostVersion() {
       return getMMDVMHostFileVersion();
    } else {
       showLapTime("getMMDVMHostVersion");
-      return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion().")";
+      if (!startsWith(substr($output[0],31,8),"#")) {
+         return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion().")";
+      } else {
+         return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion().", GitID #<a href=\"https://github.com/g4klx/MMDVMHost/commit/".substr($output[0],32,7)."\">".substr($output[0],32,7)."</a>)";
+      }
    }
 }
 
