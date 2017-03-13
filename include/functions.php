@@ -4,12 +4,12 @@ function getMMDVMHostVersion() {
    // returns creation-time or version of MMDVMHost as version-number
    $filename = MMDVMHOSTPATH."/MMDVMHost";
    exec($filename." -v 2>&1", $output);
-   if (!startsWith(substr($output[0],18,8),"20")) {
+   if (!startsWith(substr($output[0],18,21),"20")) {
       showLapTime("getMMDVMHostVersion");
       return getMMDVMHostFileVersion();
    } else {
       showLapTime("getMMDVMHostVersion");
-      return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion().")";
+      return substr($output[0],18,21)." (compiled ".getMMDVMHostFileVersion().")";
    }
 }
 
