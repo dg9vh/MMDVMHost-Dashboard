@@ -15,9 +15,9 @@ $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 $lastHeard = getLastHeard($reverseLogLinesMMDVM, True);
 //$oldLastHeard = $_SESSION['lastHeard'];
-echo"<!--";
+/*echo"<!--";
 var_dump($lastHeard);
-echo"-->";
+echo"-->";*/
 $counter = 0;
 foreach ($lastHeard as $listElem) {
    $counter +=1;

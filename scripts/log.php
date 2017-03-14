@@ -6,6 +6,16 @@ $start = $time;
 
 // do not touch this includes!!! Never ever!!!
 include "../config/config.php";
+
+include "../locale/".LOCALE."/settings.php";
+$codeset = "UTF8";
+putenv('LANG='.LANG_LOCALE.'.'.$codeset);
+putenv('LANGUAGE='.LANG_LOCALE.'.'.$codeset);
+bind_textdomain_codeset('messages', $codeset);
+bindtextdomain('messages', dirname(__FILE__).'/../locale/');
+setlocale(LC_ALL, LANG_LOCALE.'.'.$codeset);
+textdomain('messages');
+
 include "../include/tools.php";
 include "../include/functions.php";
 include "../include/init.php";
@@ -39,32 +49,39 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && VIEWLOGUSER !== "" && VIEWLOGPW !== "")
   </head>
   <body>
   <div class="page-header">
-  <h1><small>MMDVM-Dashboard by DG9VH for <?php
+  <h1><small>MMDVM-Dashboard by DG9VH  <?php
+  echo _("for");
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
-   echo "Repeater";
+   echo " "._("Repeater");
   } else {
-   echo "Hotspot";
+   echo " "._("Hotspot");
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
-  <button onclick="window.location.href='../index.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</button>
-  <button onclick="window.location.href='./rebootmmdvm.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;Reboot MMDVMHost</button>
-  <button onclick="window.location.href='./reboot.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;Reboot System</button>
-  <button onclick="window.location.href='./halt.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;ShutDown System</button>
-
+  <button onclick="window.location.href='./scripts/log.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;<?php echo _("View Log"); ?></button>
+  <button onclick="window.location.href='./scripts/rebootmmdvm.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;<?php echo _("Reboot MMDVMHost"); ?></button>
+  <button onclick="window.location.href='./scripts/reboot.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;<?php echo _("Reboot System"); ?></button>
+  <button onclick="window.location.href='./scripts/halt.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;<?php echo _("ShutDown System"); ?></button>
+<?php
+if (defined("ENABLENETWORKSWITCHING")) {
+?>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=DMRPLUS'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<?php echo _("DMRplus"); ?></button>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;<?php echo _("BrandMeister"); ?></button>
+<?php
+}
   </script>
 </div>
 <div class="panel panel-log">
    <div class="panel-heading">
-      <span class="label label-info">Viewing log <?php echo $fileName ?></span>
+      <span class="label label-info"><?php echo _("Viewing log"); ?> <?php echo $fileName ?></span>
    </div>
   <div class="table-responsive">
   <table id="log" class="table table-condensed table-striped table-hover">
   <thead>
     <tr>
-    <th>Level</th>
-    <th>Timestamp</th>
-    <th>Info</th>
+    <th><?php echo _("Level"); ?></th>
+    <th><?php echo _("Timestamp"); ?></th>
+    <th><?php echo _("Info"); ?></th>
     </tr>
   </thead>
 <?php
@@ -114,7 +131,7 @@ echo '<!--Page generated in '.$total_time.' seconds.-->';
     exit;
       }
    }
-?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
+?> | <?php echo _("get your own at:");?> <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <a href="../credits.php"><?php echo _("Credits");?></a>
    </div>
    <script>
 $(document).ready(function(){

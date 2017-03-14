@@ -7,6 +7,16 @@ $start = $time;
 
 // do not touch this includes!!! Never ever!!!
 include "../config/config.php";
+
+include "../locale/".LOCALE."/settings.php";
+$codeset = "UTF8";
+putenv('LANG='.LANG_LOCALE.'.'.$codeset);
+putenv('LANGUAGE='.LANG_LOCALE.'.'.$codeset);
+bind_textdomain_codeset('messages', $codeset);
+bindtextdomain('messages', dirname(__FILE__).'/../locale/');
+setlocale(LC_ALL, LANG_LOCALE.'.'.$codeset);
+textdomain('messages');
+
 include "../include/tools.php";
 include "../include/functions.php";
 if (!isset($_SERVER['PHP_AUTH_USER']) && RESTARTUSER !== "" && RESTARTPW !== "")  {
@@ -36,15 +46,16 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && RESTARTUSER !== "" && RESTARTPW !== "")
   </head>
   <body>
   <div class="page-header">
-  <h1><small>MMDVM-Dashboard by DG9VH for <?php
+  <h1><small>MMDVM-Dashboard by DG9VH  <?php
+  echo _("for");
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
-   echo "Repeater";
+   echo " "._("Repeater");
   } else {
-   echo "Hotspot";
+   echo " "._("Hotspot");
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?></h4>
-  <button onclick="window.location.href='../index.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</button>
+  <button onclick="window.location.href='../index.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;<?php echo _("Home"); ?></button>
 
   </script>
 </div>
@@ -53,7 +64,7 @@ checkSetup();
 include "../include/sysinfo.php";
    exec( REBOOTMMDVM );
 ?>
-<div class="alert alert-info" role="alert">Executing  <b><?php echo REBOOTMMDVM ?></b><br>Reboot MMDVMHost service in progress</div>
+<div class="alert alert-info" role="alert"><?php echo _("Executing"); ?>  <b><?php echo REBOOTMMDVM ?></b><br><?php echo _("Reboot MMDVMHost service in progress"); ?></div>
  
    <div class="panel panel-info">
 
@@ -76,7 +87,7 @@ echo '<!--Page generated in '.$total_time.' seconds.-->';
     exit;
       }
    }
-?> | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a>
+?> | <?php echo _("get your own at:");?> <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <a href="../credits.php"><?php echo _("Credits");?></a>
    </div>
   </body>
 </html>

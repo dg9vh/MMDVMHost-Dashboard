@@ -1,0 +1,13 @@
+# Internationalization
+If you want to have the static-text-output in other languages than default 
+(english), you have to do following steps:
+* activate your locale with raspi-config as default-locale
+* set your locale within setup.php
+
+# Be a part of translators!
+To be a part of the translators-community, feel free to copy an existing 
+locale-tree within the locale-directory to your own locale, modify the 
+settings.php-file within this directory and modify the messages.po within
+the LC_MESSAGES-directory. After this, you should generate a messages.mo
+with the command 'msgfmt messages.po -o messages.mo'. The command is part
+of the gettext-package to be installed before with 'apt-get install gettext'.

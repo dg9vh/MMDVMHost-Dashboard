@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <title>MMDVM-Dashboard by DG9VH - Credits</title>
+    <title>MMDVM-Dashboard by DG9VH - <?php echo _("Credits"); ?></title>
   </head>
   <body>
   <div class="page-header">
-    <h1><small>MMDVM-Dashboard by DG9VH</small> Credits</h1>
+    <h1><small>MMDVM-Dashboard by DG9VH</small> <?php echo _("Credits"); ?></h1>
   </div>
   <div class="container">
-    <p>I think, after all the time this dashboard is developed mainly by myself, it is time to say "Thank you" to all those, wo delivered some ideas or code into this project.</p>
-    <p>This are explicit named following persons:</p>
+    <p><?php echo _("I think, after all the time this dashboard is developed mainly by myself, it is time to say \"Thank you\" to all those, wo delivered some ideas or code into this project."); ?></p>
+    <p><?php echo _("This are explicit named following persons:"); ?></p>
     <ul>
       <li>df2et</li>
       <li>dg1tal</li>
@@ -28,11 +28,11 @@
       <li>dg0cco</li>
       <li>sa7bnt</li>
       <li>ct2jay</li>
-      <li>and some others...</li>
+      <li><?php echo _("and some others..."); ?></li>
     </ul>
-   <p>Those, who felt forgotten, feel free to comit a change into github of this file.</p>
-   <p>Many thanks to you all!</p>
-   <p>Best 73, Kim, DG9VH</p>
+   <p><?php echo _("Those, who felt forgotten, feel free to commit a change into github of this file."); ?></p>
+   <p><?php echo _("Many thanks to you all!"); ?></p>
+   <p><?php echo _("Best 73, Kim, DG9VH"); ?></p>
   </div>
   </body>
 </html>
