@@ -2,7 +2,7 @@
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">YSFGateway-Infos<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php _("YSFGateway-Infos"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <table class="table">
@@ -10,10 +10,10 @@
     <td><span class="label <?php
       if (isProcessRunning("YSFGateway")) {
          echo "label-success";
-         ?>">YSFGateway Process is running</span></td><?php
+         ?>"><?php echo _("YSFGateway Process is running"); ?></span></td><?php
       } else {
          echo "label-danger\" title=\"YSFGateway is down!";
-         ?>">YSFGateway Process is down!</span></td><?php
+         ?>"><?php echo _("YSFGateway Process is down!"); ?></span></td><?php
       }
     ?>
     </tr>
@@ -22,7 +22,7 @@
 </div>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">YSFReflectors reported active<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php echo _("YSFReflectors reported active"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
@@ -34,11 +34,11 @@
       ?>
          <thead>
          <tr>
-            <th>No.</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>ID</th>
-            <th>Connections</th>
+            <th><?php echo _("No."); ?></th>
+            <th><?php echo _("Name"); ?></th>
+            <th><?php echo _("Description"); ?></th>
+            <th><?php echo _("ID"); ?></th>
+            <th><?php echo _("Connections"); ?></th>
          </tr>
          </thead>
          <tbody>

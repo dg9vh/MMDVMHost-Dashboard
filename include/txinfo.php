@@ -1,31 +1,31 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Currently TXing<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php echo _("Currently TXing"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
   <table id="currtx" class="table curTx table-condensed table-striped table-hover">
    <thead>
     <tr>
-      <th>Time (<?php echo TIMEZONE;?>)</th>
-      <th>Mode</th>
-      <th>Callsign</th>
+      <th><?php echo _("Time"); ?> (<?php echo TIMEZONE;?>)</th>
+      <th><?php echo _("Mode"); ?></th>
+      <th><?php echo _("Callsign"); ?></th>
       <?php
       if (defined("ENABLEXTDLOOKUP")) {
       ?>
-      <th>Name</th>
+      <th><?php echo _("Name"); ?></th>
       <?php
       }
       if (defined("TALKERALIAS")) {
       ?>
-      <th>Talker Alias</th>
+      <th><?php echo _("Talker Alias"); ?></th>
       <?php
       }
       ?>
-      <th>DSTAR-ID</th>
-      <th>Target</th>
-      <th>Source</th>
-      <th>TX-Time</th>
+      <th><?php echo _("DSTAR-ID"); ?></th>
+      <th><?php echo _("Target"); ?></th>
+      <th><?php echo _("Source"); ?></th>
+      <th><?php echo _("TX-Time"); ?></th>
     </tr>
    </thead>
    <tbody id="txline">

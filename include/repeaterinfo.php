@@ -1,27 +1,27 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Repeater Info<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php echo _("Repeater Info"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
   <table class="table repeaterinfo">
     <tr>
-      <th>Current Mode</th>
+      <th><?php echo _("Current Mode"); ?></th>
 <?php
    if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
 ?>
-      <th>D-Star linked to</th>
+      <th><?php echo _("D-Star linked to"); ?></th>
 <?php
    }
    if (getEnabled("System Fusion", $mmdvmconfigs) == 1) {
 ?>
-      <th>YSF linked to</th>
+      <th><?php echo _("YSF linked to"); ?></th>
 <?php
    }
    if (getEnabled("DMR", $mmdvmconfigs) == 1) {
 ?>
-      <th>DMR TS1 last linked to</th>
-      <th>DMR TS2 last linked to</th>
+      <th><?php echo _("DMR TS1 last linked to"); ?></th>
+      <th><?php echo _("DMR TS2 last linked to"); ?></th>
 <?php
    }
 ?>
@@ -45,24 +45,24 @@
       <td colspan="5">
         <table class="table">
           <tr>
-            <th>Location</th>
-            <th>TX-Freq.</th>
-            <th>RX-Freq.</th>
+            <th><?php echo _("Location"); ?></th>
+            <th><?php echo _("TX-Freq."); ?></th>
+            <th><?php echo _("RX-Freq."); ?></th>
 <?php
    if (getEnabled("System Fusion Network", $mmdvmconfigs) == 1) {
 ?>
-            <th>YSFGateway</th>
+            <th><?php echo _("YSFGateway"); ?></th>
 <?php
    }
    if (getEnabled("DMR", $mmdvmconfigs) == 1) {
 ?>
-            <th>DMR CC</th>
+            <th><?php echo _("DMR CC"); ?></th>
 <?php
       if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
 ?>
-            <th>DMR-Master</th>
-           <th>TS1</th>
-            <th>TS2</th>
+            <th><?php echo _("DMR-Master"); ?></th>
+            <th><?php echo _("TS1"); ?></th>
+            <th><?php echo _("TS2"); ?></th>
 <?php
       }
    }
@@ -94,16 +94,16 @@
          </td>
             <td><span class="label <?php
          if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == 1) {
-            echo 'label-success">enabled';
+            echo 'label-success">'._("enabled");
          } else {
-            echo 'label-default">disabled';
+            echo 'label-default">'._("disabled");
           }
     ?></span></td>
             <td><span class="label <?php
          if (getConfigItem("DMR Network", "Slot2", $mmdvmconfigs) == 1) {
-            echo 'label-success">enabled';
+            echo 'label-success">'._("enabled");
          } else {
-            echo 'label-default">disabled';
+            echo 'label-default">'._("disabled");
           }
     ?></span></td>
 <?php

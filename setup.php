@@ -186,6 +186,10 @@ function get_tz_options($selectedzone, $label, $desc = '') {
 get_tz_options(constant("TIMEZONE"), "Timezone", '');
 ?>
      <div class="input-group">
+        <span class="input-group-addon" id="LOCALE" style="width: 300px">Locale</span>
+        <input type="text" value="<?php echo constant("LOCALE") ?>" name="LOCALE" class="form-control" placeholder="en_GB" aria-describedby="LOCALE">
+      </div>
+     <div class="input-group">
         <span class="input-group-addon" id="LOGO" style="width: 300px">URL to Logo</span>
         <input type="text" value="<?php echo constant("LOGO") ?>" name="LOGO" class="form-control" placeholder="http://your-logo" aria-describedby="LOGO">
       </div>

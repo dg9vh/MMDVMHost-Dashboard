@@ -9,6 +9,16 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 // do not touch this includes!!! Never ever!!!
 include "config/config.php";
+
+include "locale/".LOCALE."/settings.php";
+$codeset = "UTF8";
+putenv('LANG='.LANG_LOCALE.'.'.$codeset);
+putenv('LANGUAGE='.LANG_LOCALE.'.'.$codeset);
+bind_textdomain_codeset('messages', $codeset);
+bindtextdomain('messages', dirname(__FILE__).'/locale/');
+setlocale(LC_ALL, LANG_LOCALE.'.'.$codeset);
+textdomain('messages');
+
 include "include/tools.php";
 startStopwatch();
 showLapTime("Start of page");
@@ -45,17 +55,19 @@ include "version.php";
   </head>
   <body>
   <div class="page-header" style="position:relative;">
-  <h1><small>MMDVM-Dashboard by DG9VH for <?php
+  <h1><small>MMDVM-Dashboard by DG9VH  <?php
+  echo _("for");
   if (getConfigItem("General", "Duplex", $mmdvmconfigs) == "1") {
-   echo "Repeater";
+   echo " "._("Repeater");
   } else {
-   echo "Hotspot";
+   echo " "._("Hotspot");
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?>
   <?php
   if (strlen(getDMRNetwork()) > 0 ) {
-   echo "<br>DMR-Network: ".getDMRNetwork();
+   echo "<br>";
+   echo _("DMR-Network: ").getDMRNetwork();
   }
   ?></h4>
   <?php
@@ -85,16 +97,16 @@ include "version.php";
 <?php
 if (defined("ENABLEMANAGEMENT")) {
 ?>
-  <button onclick="window.location.href='./scripts/log.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;View Log</button>
-  <button onclick="window.location.href='./scripts/rebootmmdvm.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;Reboot MMDVMHost</button>
-  <button onclick="window.location.href='./scripts/reboot.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;Reboot System</button>
-  <button onclick="window.location.href='./scripts/halt.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;ShutDown System</button>
+  <button onclick="window.location.href='./scripts/log.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;<?php echo _("View Log"); ?></button>
+  <button onclick="window.location.href='./scripts/rebootmmdvm.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;<?php echo _("Reboot MMDVMHost"); ?></button>
+  <button onclick="window.location.href='./scripts/reboot.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;<?php echo _("Reboot System"); ?></button>
+  <button onclick="window.location.href='./scripts/halt.php'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;<?php echo _("ShutDown System"); ?></button>
 <?php
 }
 if (defined("ENABLENETWORKSWITCHING")) {
 ?>
-  <button onclick="window.location.href='./scripts/switchnetwork.php?network=DMRPLUS'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;DMRplus</button>
-  <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;BrandMeister</button>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=DMRPLUS'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<?php echo _("DMRplus"); ?></button>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;<?php echo _("BrandMeister"); ?></button>
 <?php
 }
 checkSetup();
@@ -144,7 +156,7 @@ if (defined("ENABLEYSFGATEWAY")) {
 //$uhrzeit = date("H:i:s");
 $lastReload = new DateTime();
 $lastReload->setTimezone(new DateTimeZone(TIMEZONE));
-echo "MMDVMHost-Dashboard V ".VERSION." | Last Reload ".$lastReload->format('Y-m-d, H:i:s')." (".TIMEZONE.")";
+echo "MMDVMHost-Dashboard V ".VERSION." | "._("Last Reload")." ".$lastReload->format('Y-m-d, H:i:s')." (".TIMEZONE.")";
 /*$time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
@@ -154,12 +166,12 @@ echo '<!--Page generated in '.getLapTime().' seconds.-->';
 ?> |
 <?php
 if (!isset($_GET['stoprefresh'])) {
-   echo '<a href="?stoprefresh">stop refreshing</a>';
+   echo '<a href="?stoprefresh">'._("stop refreshing").'</a>';
 } else {
-   echo '<a href=".">start refreshing</a>';
+   echo '<a href=".">'._("start refreshing").'</a>';
 }
 ?>
- | get your own at: <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <a href="credits.php">Credits</a>
+ | <?php echo _("get your own at:");?> <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <a href="credits.php"><?php echo _("Credits");?></a>
    </div>
    <noscript>
     For full functionality of this site it is necessary to enable JavaScript.

@@ -3,29 +3,29 @@ $totalLH = count($lastHeard);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Last Heard List of today's <?php echo $totalLH; ?> callsigns.<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php echo _("Last Heard List of today's")." ".$totalLH." "._("callsigns."); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
   <table id="lastHeard" class="table lastHeard table-condensed table-striped table-hover">
         <thead>
             <tr>
-                <th>Time (<?php echo TIMEZONE;?>)</th>
-      <th>Mode</th>
-      <th>Callsign</th>
+                <th><?php echo _("Time"); ?> (<?php echo TIMEZONE;?>)</th>
+      <th><?php echo _("Mode"); ?></th>
+      <th><?php echo _("Callsign"); ?></th>
       <?php
       if (defined("ENABLEXTDLOOKUP")) {
       ?>
-      <th>Name</th>
+      <th><?php echo _("Name"); ?></th>
       <?php
       }
       ?>
-      <th>DSTAR-ID</th>
-      <th>Target</th>
-      <th>Source</th>
-      <th>Dur (s)</th>
-      <th>Loss</th>
-      <th>BER</th>
+      <th><?php echo _("DSTAR-ID"); ?></th>
+      <th><?php echo _("Target"); ?></th>
+      <th><?php echo _("Source"); ?></th>
+      <th><?php echo _("Dur (s)"); ?></th>
+      <th><?php echo _("Loss"); ?></th>
+      <th><?php echo _("BER"); ?></th>
             </tr>
         </thead>
     </table>

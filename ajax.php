@@ -3,6 +3,16 @@
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 include "config/config.php";
+
+include "locale/".LOCALE."/settings.php";
+$codeset = "UTF8";
+putenv('LANG='.LANG_LOCALE.'.'.$codeset);
+putenv('LANGUAGE='.LANG_LOCALE.'.'.$codeset);
+bind_textdomain_codeset('messages', $codeset);
+bindtextdomain('messages', dirname(__FILE__).'/locale/');
+setlocale(LC_ALL, LANG_LOCALE.'.'.$codeset);
+textdomain('messages');
+
 include "include/tools.php";
 include "include/functions.php";
 
@@ -201,30 +211,30 @@ if ($_GET['section'] == "sysinfo") {
                <?php
                if (defined("SHOWPOWERSTATE")) {
                ?>
-               <th>Power</th>
+               <th><?php echo _("Power"); ?></th>
                <?php
                }
                if ($cputemp !== NULL) {
                ?>
-               <th>CPU-Temperature</th>
+               <th><?php echo _("CPU-Temperature"); ?></th>
                <?php
                }
                if ($cpufreq !== NULL) {
                ?>
-               <th>CPU-Frequency</th>
+               <th><?php echo _("CPU-Frequency");?></th>
                <?php
                }
                ?>
-               <th>System-Load</th>
-               <th>CPU-Usage</th>
-               <th>Uptime</th>
-               <th>Idle</th>
+               <th><?php echo _("System-Load"); ?></th>
+               <th><?php echo _("CPU-Usage"); ?></th>
+               <th><?php echo _("Uptime"); ?></th>
+               <th><?php echo _("Idle"); ?></th>
             </tr>
             <tr class="gatewayinfo">
                <?php
                if (defined("SHOWPOWERSTATE")) {
                ?>
-               <td><?php if ($pinStatus == POWERONLINESTATE ) {echo "online";} else {echo "on battery";} ?></td>
+               <td><?php if ($pinStatus == POWERONLINESTATE ) {echo _("online");} else {echo _("on battery");} ?></td>
                <?php
                }
                if ($cputemp !== NULL) {

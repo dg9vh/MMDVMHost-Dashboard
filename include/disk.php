@@ -1,18 +1,18 @@
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-     <div class="panel-heading">Disk Use<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+     <div class="panel-heading"><?php echo _("Disk Use"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
      <div class="panel-body">
      <!-- Tabelle -->
      <div class="table-responsive">
          <table id="diskuse" class="table diskuse table-condensed table-striped table-hover">
                <thead>
                   <tr>
-                     <th class="w10p filesystem">File System</th>
-                     <th class="w20p">Mount Point</th>
-                     <th>Use</th>
-                     <th class="w15p">Free</th>
-                     <th class="w15p">Used</th>
-                     <th class="w15p">Total</th>
+                     <th class="w10p filesystem"><?php echo _("File System"); ?></th>
+                     <th class="w20p"><?php echo _("Mount Point"); ?></th>
+                     <th><?php echo _("Use"); ?></th>
+                     <th class="w15p"><?php echo _("Free"); ?></th>
+                     <th class="w15p"><?php echo _("Used"); ?></th>
+                     <th class="w15p"><?php echo _("Total"); ?></th>
                   </tr>
                </thead>
                <tbody>

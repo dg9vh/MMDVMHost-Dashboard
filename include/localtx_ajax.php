@@ -3,34 +3,34 @@ $totalLH = count($lastHeard);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Today's local transmissions<span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php echo _("Today's local transmissions"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
   <table id="localTx" class="table localTx table-condensed table-striped table-hover">
         <thead>
             <tr>
-      <th>Time (<?php echo TIMEZONE;?>)</th>
-      <th>Mode</th>
-      <th>Callsign</th>
+      <th><?php echo _("Time"); ?> (<?php echo TIMEZONE;?>)</th>
+      <th><?php echo _("Mode"); ?></th>
+      <th><?php echo _("Callsign"); ?></th>
       <?php
       if (defined("ENABLEXTDLOOKUP")) {
       ?>
-      <th>Name</th>
+      <th><?php echo _("Name"); ?></th>
       <?php
       }
       ?>
-      <th>DSTAR-ID</th>
-      <th>Target</th>
-      <th>Source</th>
-      <th>Dur (s)</th>
-      <th>Loss</th>
-      <th>BER</th>
+      <th><?php echo _("DSTAR-ID"); ?></th>
+      <th><?php echo _("Target"); ?></th>
+      <th><?php echo _("Source"); ?></th>
+      <th><?php echo _("Dur (s)"); ?></th>
+      <th><?php echo _("Loss"); ?></th>
+      <th><?php echo _("BER"); ?></th>
       <?php
-      if (constant("RSSI") == "min") echo "<th>RSSI (min)</th>";
-      else if (constant("RSSI") == "max") echo "<th>RSSI (max)</th>";
-      else if (constant("RSSI") == "avg") echo "<th>RSSI (avg)</th>";
-      else echo "<th>RSSI (avg)</th>"; 
+      if (constant("RSSI") == "min") echo "<th>"._("RSSI (min)")."</th>";
+      else if (constant("RSSI") == "max") echo "<th>"._("RSSI (max)")."</th>";
+      else if (constant("RSSI") == "avg") echo "<th>"._("RSSI (avg)")."</th>";
+      else echo "<th>"._("RSSI (avg)")."</th>"; 
       ?>
             </tr>
         </thead>

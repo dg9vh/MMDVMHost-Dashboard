@@ -1,0 +1,343 @@
+# Translation-Template
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 2017-03-13\n"
+"Report-Msgid-Bugs-To: dg9vh@darc.de\n"
+"POT-Creation-Date: 2017-03-13 21:28+0000\n"
+"PO-Revision-Date: 2017-03-13 21:30+0000\n"
+"Last-Translator: Kim - DG9VH <dg9vh@darc.de>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:214
+msgid "Power"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:219
+msgid "CPU-Temperature"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:224
+msgid "CPU-Frequency"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:228
+msgid "System-Load"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:229
+msgid "CPU-Usage"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:230
+msgid "Uptime"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:231
+msgid "Idle"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:237
+msgid "online"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/ajax.php:237
+msgid "on battery"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:59
+msgid "for"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:61
+msgid "Repeater"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:63
+msgid "Hotspot"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:70
+msgid "DMR-Network: "
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:100
+msgid "View Log"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:101
+msgid "Reboot MMDVMHost"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:102
+msgid "Reboot System"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:103
+msgid "ShutDown System"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:108
+msgid "DMRplus"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:109
+msgid "BrandMeister"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:159
+msgid "Last Reload"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:169
+msgid "stop refreshing"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:171
+msgid "start refreshing"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:174
+msgid "get your own at:"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/index.php:174
+msgid "Credits"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/disk.php:3
+msgid "Disk Use"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/disk.php:10
+msgid "File System"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/disk.php:11
+msgid "Mount Point"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/disk.php:12
+msgid "Use"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/disk.php:13
+msgid "Free"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/disk.php:14
+msgid "Used"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/disk.php:15
+msgid "Total"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:6
+msgid "Last Heard List of today's"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:6
+msgid "callsigns."
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:13
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:13
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:10
+msgid "Time"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:14
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:14
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:11
+msgid "Mode"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:15
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:15
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:12
+msgid "Callsign"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:19
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:19
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:16
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:38
+msgid "Name"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:23
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:23
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:25
+msgid "DSTAR-ID"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:24
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:24
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:26
+msgid "Target"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:25
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:25
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:27
+msgid "Source"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:26
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:26
+msgid "Dur (s)"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:27
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:27
+msgid "Loss"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/lh_ajax.php:28
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:28
+msgid "BER"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:6
+msgid "Today's local transmissions"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:30
+msgid "RSSI (min)"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:31
+msgid "RSSI (max)"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:32
+#: /var/www/html/Codiad/workspace/Dashboard/include/localtx_ajax.php:33
+msgid "RSSI (avg)"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/modes.php:3
+msgid "Enabled Modes"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:3
+msgid "Repeater Info"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:9
+msgid "Current Mode"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:13
+msgid "D-Star linked to"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:18
+msgid "YSF linked to"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:23
+msgid "DMR TS1 last linked to"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:24
+msgid "DMR TS2 last linked to"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:48
+msgid "Location"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:49
+msgid "TX-Freq."
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:50
+msgid "RX-Freq."
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:54
+msgid "YSFGateway"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:59
+msgid "DMR CC"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:63
+msgid "DMR-Master"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:64
+msgid "TS1"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:65
+msgid "TS2"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:97
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:104
+msgid "enabled"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:99
+#: /var/www/html/Codiad/workspace/Dashboard/include/repeaterinfo.php:106
+msgid "disabled"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/sysinfo_ajax.php:3
+msgid "System Info"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:3
+msgid "Currently TXing"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:21
+msgid "Talker Alias"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/txinfo.php:28
+msgid "TX-Time"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:5
+msgid "YSFGateway-Infos"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:13
+msgid "YSFGateway Process is running"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:16
+msgid "YSFGateway Process is down!"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:25
+msgid "YSFReflectors reported active"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:37
+msgid "No."
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:39
+msgid "Description"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:40
+msgid "ID"
+msgstr ""
+
+#: /var/www/html/Codiad/workspace/Dashboard/include/ysfgatewayinfo.php:41
+msgid "Connections"
+msgstr ""
