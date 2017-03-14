@@ -10,9 +10,9 @@ function getMMDVMHostVersion() {
    } else {
       showLapTime("getMMDVMHostVersion");
       if (strlen($output[0]) > 26) {
-         return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/MMDVMHost/commit/" . substr($output[0],32,7) . "\">" . substr($output[0],32,7) . "</a>)";
+         return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/MMDVMHost/commit/" . substr($output[0],32,7) . "\">" . substr($output[0],32,7) . "</a>)";
       } else {
-         return substr($output[0],18,8)." (compiled ".getMMDVMHostFileVersion(). ")";
+         return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ")";
       }
    }
 }
@@ -158,10 +158,10 @@ function showMode($mode, $mmdvmconfigs) {
                if (isProcessRunning(IRCDDBGATEWAY)) {
                   echo "label-success";
                } else {
-                  echo "label-danger\" title=\"ircddbgateway is down!";
+                  echo "label-danger\" title=\""._("ircddbgateway is down!");
                }
             } else {
-               echo "label-default\" title=\"Remote gateway configured - not checked!";
+               echo "label-default\" title=\""._("Remote gateway configured - not checked!");
             }
             break;
          case "System Fusion Network":
@@ -169,17 +169,17 @@ function showMode($mode, $mmdvmconfigs) {
                if (isProcessRunning("YSFGateway")) {
                   echo "label-success";
                } else {
-                  echo "label-danger\" title=\"YSFGateway is down!";
+                  echo "label-danger\" title=\""._("YSFGateway is down!");
                }
             } else {
-               echo "label-default\" title=\"Remote gateway configured - not checked!";
+               echo "label-default\" title=\""._("Remote gateway configured - not checked!");
             }
             break;
          default:
             if (isProcessRunning("MMDVMHost")) {
                echo "label-success";
             } else {
-               echo "label-danger\" title=\"MMDVMHost is down!";
+               echo "label-danger\" title=\""._("MMDVMHost is down!");
             }
       }
    } else {
@@ -547,7 +547,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
          $timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
       }
       if ($now->format('U') > $timestamp->format('U')) {
-         return "idle";
+         return _("idle");
       } else {
          return "<span class=\"label label-warning\">".$mode."</span>";
       }
@@ -620,7 +620,7 @@ function getActualLink($logLines, $mode) {
          if (isProcessRunning(IRCDDBGATEWAY)) {
             return getDSTARLinks();
          } else {
-            return "ircddbgateway not running!";
+            return _("ircddbgateway not running!");
          }
          break;
       case "DMR Slot 1":
@@ -637,7 +637,7 @@ function getActualLink($logLines, $mode) {
                }
             }
          }
-         return "not linked";
+         return _("not linked");
          break;
       case "DMR Slot 2":
          foreach ($logLines as $logLine) {
@@ -653,7 +653,7 @@ function getActualLink($logLines, $mode) {
                }
             }
          }
-         return "not linked";
+         return _("not linked");
          break;
       case "YSF":
 
@@ -689,7 +689,7 @@ function getActualLink($logLines, $mode) {
          }
 
    }
-   return "something went wrong!";
+   return _("something went wrong!");
 }
 
 function getActualReflector($logLines, $mode) {
@@ -703,9 +703,9 @@ function getActualReflector($logLines, $mode) {
 
          if (strlen($from) == 4 && startsWith($from,"4")) {
             if ($from == "4000") {
-               return "Reflector not linked";
+               return _("Reflector not linked");
             } else {
-               return "Reflector ".$from;
+               return _("Reflector")." ".$from;
             }
          }
          $source = "RF";
@@ -716,12 +716,12 @@ function getActualReflector($logLines, $mode) {
          if ( $source == "RF") {
             $to = substr($logLine, strpos($logLine, "to") + 3);
             if (strlen($to) < 6 && startsWith($to, "4")) {
-               return "Reflector ".$to." (not cfmd)";
+               return _("Reflector")." ".$to." ("._("not cfmd").")";
             }
          }
       }
    }
-   return "Reflector not linked";
+   return _("Reflector not linked");
 }
 
 function getActiveYSFReflectors() {
@@ -738,9 +738,9 @@ function getActiveYSFReflectors() {
 
 function getYSFReflectorById($id, $reflectors) {
    if ($id ==-1) {
-      return "not linked";
+      return _("not linked");
    } else if ($id == -2 ) {
-      return "YSFGateway not running";
+      return _("YSFGateway not running");
    } else {
       foreach($reflectors as $reflector) {
          if ($reflector[2] === $id) {
@@ -827,7 +827,7 @@ function getName($callsign) {
       } else
          return "---";
    } else {
-      return "DMRIDs.dat not correct!";
+      return _("DMRIDs.dat not correct!");
    }
 }
 
