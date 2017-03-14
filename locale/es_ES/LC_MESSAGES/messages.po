@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR ea4fvb@gmail.com, 2017.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: 2017-03-13\n"
-"Report-Msgid-Bugs-To: ea4fvb@gmail.com\n"
+"Report-Msgid-Bugs-To: dg9vh@darc.de\n"
 "POT-Creation-Date: 2017-03-14 19:47+0000\n"
-"PO-Revision-Date: 2017-03-14 14:47+0000\n"
+"PO-Revision-Date: 2017-03-14 20:16+0100\n"
 "Last-Translator: Pablo - EA4FVB <ea4fvb@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: include/sysinfo_ajax.php:3
 msgid "System Info"
@@ -23,7 +23,7 @@ msgstr "Información de Sistema"
 
 #: include/ysfgatewayinfo.php:5
 msgid "YSFGateway-Infos"
-msgstr "Info-YSFGateway"
+msgstr "Información del YSFGateway"
 
 #: include/ysfgatewayinfo.php:13
 msgid "YSFGateway Process is running"
@@ -48,7 +48,7 @@ msgstr "Nombre"
 
 #: include/ysfgatewayinfo.php:39
 msgid "Description"
-msgstr "Beschreibung"
+msgstr "Descripción"
 
 #: include/ysfgatewayinfo.php:40
 msgid "ID"
@@ -92,7 +92,7 @@ msgstr "Duración (s)"
 
 #: include/localtx_ajax.php:27 include/lh_ajax.php:27
 msgid "Loss"
-msgstr "Perdidos"
+msgstr "Pérdidas"
 
 #: include/localtx_ajax.php:28 include/lh_ajax.php:28
 msgid "BER"
@@ -175,17 +175,12 @@ msgid "disabled"
 msgstr "desconectado"
 
 #: include/tools.php:73
-msgid ""
-"You are using an old config.php. Please configure your Dashboard by calling "
-"<a href=\"setup.php\">setup.php</a>!"
+msgid "You are using an old config.php. Please configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"
 msgstr "Estás usando una configuracion antigua. Configura tu Dashboard a través de <a href=\"setup.php\">setup.php</a>!"
 
 #: include/tools.php:79
-msgid ""
-"You forgot to remove setup.php in root-directory of your dashboard or you "
-"forgot to configure it! Please delete the file or configure your Dashboard "
-"by calling <a href=\"setup.php\">setup.php</a>!"
-msgstr "Olvidó eliminar setup.php en el directorio raíz del Dashboards u olvidaste configurarlo,  por favor borra el fichero o configura el Dashboard mediante el artchivo <a href=\"setup.php\">setup.php</a>!"
+msgid "You forgot to remove setup.php in root-directory of your dashboard or you forgot to configure it! Please delete the file or configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"
+msgstr "Olvidaste eliminar setup.php del directorio raíz de tu Dashboards o has olvidado configurarlo,  por favor borra el fichero o configura el Dashboard mediante el fichero <a href=\"setup.php\">setup.php</a>!"
 
 #: include/modes.php:3
 msgid "Enabled Modes"
@@ -197,7 +192,7 @@ msgstr "Últimos escuchados hoy"
 
 #: include/lh_ajax.php:6
 msgid "callsigns."
-msgstr "indicativos"
+msgstr "indicativos."
 
 #: include/disk.php:3
 msgid "Disk Use"
@@ -205,7 +200,7 @@ msgstr "Uso de disco"
 
 #: include/disk.php:10
 msgid "File System"
-msgstr "Sistema"
+msgstr "Sistema de archivos"
 
 #: include/disk.php:11
 msgid "Mount Point"
@@ -221,7 +216,7 @@ msgstr "Libre"
 
 #: include/disk.php:14
 msgid "Used"
-msgstr "Utilizado"
+msgstr "Ocupado"
 
 #: include/disk.php:15
 msgid "Total"
@@ -252,7 +247,7 @@ msgstr "Repetidor"
 #: scripts/rebootmmdvm.php:54 scripts/halt.php:53 scripts/log.php:57
 #: scripts/reboot.php:54 index.php:63
 msgid "Hotspot"
-msgstr "Hotspot"
+msgstr "HotSpot"
 
 #: scripts/rebootmmdvm.php:58 scripts/reboot.php:58
 msgid "Home"
@@ -278,7 +273,7 @@ msgstr "Creditos"
 
 #: scripts/halt.php:66
 msgid "Halt in progress...bye"
-msgstr "Detener en progreso ... adiós"
+msgstr "Detención en progreso ... adiós"
 
 #: scripts/log.php:61 index.php:100
 msgid "View Log"
@@ -314,7 +309,7 @@ msgstr "Nivel"
 
 #: scripts/log.php:83
 msgid "Timestamp"
-msgstr "Fecha y hora"
+msgstr "Fecha y Hora"
 
 #: scripts/log.php:84
 msgid "Info"
@@ -338,7 +333,7 @@ msgstr "Frecuencia CPU"
 
 #: ajax.php:228
 msgid "System-Load"
-msgstr "Carga"
+msgstr "Carga de Sistema"
 
 #: ajax.php:229
 msgid "CPU-Usage"
@@ -374,13 +369,10 @@ msgstr "detener refresco"
 
 #: index.php:171
 msgid "start refreshing"
-msgstr "activar refresco"
+msgstr "iniciar refresco"
 
 #: credits.php:20
-msgid ""
-"I think, after all the time this dashboard is developed mainly by myself, it "
-"is time to say \"Thank you\" to all those, wo delivered some ideas or code "
-"into this project."
+msgid "I think, after all the time this dashboard is developed mainly by myself, it is time to say \"Thank you\" to all those, wo delivered some ideas or code into this project."
 msgstr "Después de todo este tiempo que he desarrollado yo sólo este Dashboard, es tiempo de decir \"Gracias\" a todos aquellos que me han hecho llegar bién ideas o código para mejorar este proyecto."
 
 #: credits.php:21
@@ -392,9 +384,7 @@ msgid "and some others..."
 msgstr "bueno y algunos más..."
 
 #: credits.php:33
-msgid ""
-"Those, who felt forgotten, feel free to commit a change into github of this "
-"file."
+msgid "Those, who felt forgotten, feel free to commit a change into github of this file."
 msgstr "Aquellos que se sientan olvidados, son libres de hacer modificaciones en este github."
 
 #: credits.php:34
@@ -403,12 +393,10 @@ msgstr "Muchas gracias a todos!"
 
 #: credits.php:35
 msgid "Best 73, Kim, DG9VH"
-msgstr "los mejores 73, Kim, DG9VH"
+msgstr "73, Kim, DG9VH"
 
 #: setup.php:26
-msgid ""
-"You forgot to give write-permissions to your webserver-user, see point 3 in "
-"<a href=\"linux-step-by-step.md\">linux-step-by-step.md</a>!"
+msgid "You forgot to give write-permissions to your webserver-user, see point 3 in <a href=\"linux-step-by-step.md\">linux-step-by-step.md</a>!"
 msgstr "Has olvidado dar permisos de escritura al usuario web, revisa e apartado 3 en <a href=\"linux-step-by-step.md\">linux-step-by-step.md</a>!"
 
 #: setup.php:41 setup.php:50
@@ -416,9 +404,7 @@ msgid "Setup-Process"
 msgstr "Setup en proceso"
 
 #: setup.php:42
-msgid ""
-"Your config-file is written in config/config.php, please remove setup.php "
-"for security reasons!"
+msgid "Your config-file is written in config/config.php, please remove setup.php for security reasons!"
 msgstr "La configuración se ha guardado en config/config.php, por favor elimina el fichero setup.php"
 
 #: setup.php:43
@@ -613,11 +599,7 @@ msgstr "Usuario para reiniciar los servicios:"
 msgid "Password for restart:"
 msgstr "contraseña para reiniciar los servicios:"
 
-#: setup.php:293
-msgid "Reboot MMDVMHost command:"
-msgstr Comando para reiniciar MMDVMHost:"
-
-#: setup.php:297
+#: setup.php:293 setup.php:297
 msgid "Reboot system command:"
 msgstr "Comando para reiniciar el sistema:"
 
@@ -639,7 +621,7 @@ msgstr "Estado que señala estado en línea:"
 
 #: setup.php:317
 msgid "Show link to QRZ.com on Callsigns"
-msgstr "Mostrar link a QRZ.com enindicativos"
+msgstr "Mostrar link a QRZ.com en indicativos"
 
 #: setup.php:321
 msgid "RSSI value"
@@ -647,11 +629,11 @@ msgstr "Valores RSSI"
 
 #: setup.php:323
 msgid "minimal"
-msgstr "minimo"
+msgstr "mínimo"
 
 #: setup.php:324
 msgid "maximal"
-msgstr "maximo"
+msgstr "máximo"
 
 #: setup.php:325
 msgid "average"
@@ -659,4 +641,4 @@ msgstr "media"
 
 #: setup.php:331
 msgid "Save configuration"
-msgstr "Grabar configuracion"
+msgstr "Grabar configuración"
