@@ -1,0 +1,662 @@
+# Translation-Template
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR ea4fvb@gmail.com, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 2017-03-13\n"
+"Report-Msgid-Bugs-To: ea4fvb@gmail.com\n"
+"POT-Creation-Date: 2017-03-14 19:47+0000\n"
+"PO-Revision-Date: 2017-03-14 14:47+0000\n"
+"Last-Translator: Pablo - EA4FVB <ea4fvb@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: include/sysinfo_ajax.php:3
+msgid "System Info"
+msgstr "Información de Sistema"
+
+#: include/ysfgatewayinfo.php:5
+msgid "YSFGateway-Infos"
+msgstr "Info-YSFGateway"
+
+#: include/ysfgatewayinfo.php:13
+msgid "YSFGateway Process is running"
+msgstr "YSFGateway activo"
+
+#: include/ysfgatewayinfo.php:16
+msgid "YSFGateway Process is down!"
+msgstr "YSFGateway detenido"
+
+#: include/ysfgatewayinfo.php:25
+msgid "YSFReflectors reported active"
+msgstr "Reporte ReflectoresYSF activo"
+
+#: include/ysfgatewayinfo.php:37
+msgid "No."
+msgstr "N."
+
+#: include/ysfgatewayinfo.php:38 include/localtx_ajax.php:19
+#: include/lh_ajax.php:19 include/txinfo.php:16
+msgid "Name"
+msgstr "Nombre"
+
+#: include/ysfgatewayinfo.php:39
+msgid "Description"
+msgstr "Beschreibung"
+
+#: include/ysfgatewayinfo.php:40
+msgid "ID"
+msgstr "ID"
+
+#: include/ysfgatewayinfo.php:41
+msgid "Connections"
+msgstr "Conexiones"
+
+#: include/localtx_ajax.php:6
+msgid "Today's local transmissions"
+msgstr "Transmisiones locales hoy"
+
+#: include/localtx_ajax.php:13 include/lh_ajax.php:13 include/txinfo.php:10
+msgid "Time"
+msgstr "Hora"
+
+#: include/localtx_ajax.php:14 include/lh_ajax.php:14 include/txinfo.php:11
+msgid "Mode"
+msgstr "Modo"
+
+#: include/localtx_ajax.php:15 include/lh_ajax.php:15 include/txinfo.php:12
+msgid "Callsign"
+msgstr "Indicativo"
+
+#: include/localtx_ajax.php:23 include/lh_ajax.php:23 include/txinfo.php:25
+msgid "DSTAR-ID"
+msgstr "DSTAR-ID"
+
+#: include/localtx_ajax.php:24 include/lh_ajax.php:24 include/txinfo.php:26
+msgid "Target"
+msgstr "Destino"
+
+#: include/localtx_ajax.php:25 include/lh_ajax.php:25 include/txinfo.php:27
+msgid "Source"
+msgstr "Origen"
+
+#: include/localtx_ajax.php:26 include/lh_ajax.php:26
+msgid "Dur (s)"
+msgstr "Duración (s)"
+
+#: include/localtx_ajax.php:27 include/lh_ajax.php:27
+msgid "Loss"
+msgstr "Perdidos"
+
+#: include/localtx_ajax.php:28 include/lh_ajax.php:28
+msgid "BER"
+msgstr "BER"
+
+#: include/localtx_ajax.php:30
+msgid "RSSI (min)"
+msgstr "RSSI (min)"
+
+#: include/localtx_ajax.php:31
+msgid "RSSI (max)"
+msgstr "RSSI (max)"
+
+#: include/localtx_ajax.php:32 include/localtx_ajax.php:33
+msgid "RSSI (avg)"
+msgstr "RSSI (med)"
+
+#: include/repeaterinfo.php:3
+msgid "Repeater Info"
+msgstr "Info Repetidor"
+
+#: include/repeaterinfo.php:9
+msgid "Current Mode"
+msgstr "Modo actual"
+
+#: include/repeaterinfo.php:13
+msgid "D-Star linked to"
+msgstr "D-Star conectado a"
+
+#: include/repeaterinfo.php:18
+msgid "YSF linked to"
+msgstr "YSF conectado a"
+
+#: include/repeaterinfo.php:23
+msgid "DMR TS1 last linked to"
+msgstr "DMR TS1 última conexión a"
+
+#: include/repeaterinfo.php:24
+msgid "DMR TS2 last linked to"
+msgstr "DMR TS2 última conexión a"
+
+#: include/repeaterinfo.php:48
+msgid "Location"
+msgstr "Ubicación"
+
+#: include/repeaterinfo.php:49
+msgid "TX-Freq."
+msgstr "TX-Freq."
+
+#: include/repeaterinfo.php:50
+msgid "RX-Freq."
+msgstr "RX-Freq."
+
+#: include/repeaterinfo.php:54
+msgid "YSFGateway"
+msgstr "YSFGateway"
+
+#: include/repeaterinfo.php:59
+msgid "DMR CC"
+msgstr "DMR CC"
+
+#: include/repeaterinfo.php:63
+msgid "DMR-Master"
+msgstr "DMR-Master"
+
+#: include/repeaterinfo.php:64
+msgid "TS1"
+msgstr "TS1"
+
+#: include/repeaterinfo.php:65
+msgid "TS2"
+msgstr "TS2"
+
+#: include/repeaterinfo.php:97 include/repeaterinfo.php:104
+msgid "enabled"
+msgstr "activo"
+
+#: include/repeaterinfo.php:99 include/repeaterinfo.php:106
+msgid "disabled"
+msgstr "desconectado"
+
+#: include/tools.php:73
+msgid ""
+"You are using an old config.php. Please configure your Dashboard by calling "
+"<a href=\"setup.php\">setup.php</a>!"
+msgstr "Estás usando una configuracion antigua. Configura tu Dashboard a través de <a href=\"setup.php\">setup.php</a>!"
+
+#: include/tools.php:79
+msgid ""
+"You forgot to remove setup.php in root-directory of your dashboard or you "
+"forgot to configure it! Please delete the file or configure your Dashboard "
+"by calling <a href=\"setup.php\">setup.php</a>!"
+msgstr "Olvidó eliminar setup.php en el directorio raíz del Dashboards u olvidaste configurarlo,  por favor borra el fichero o configura el Dashboard mediante el artchivo <a href=\"setup.php\">setup.php</a>!"
+
+#: include/modes.php:3
+msgid "Enabled Modes"
+msgstr "Modos Activos"
+
+#: include/lh_ajax.php:6
+msgid "Last Heard List of today's"
+msgstr "Últimos escuchados hoy"
+
+#: include/lh_ajax.php:6
+msgid "callsigns."
+msgstr "indicativos"
+
+#: include/disk.php:3
+msgid "Disk Use"
+msgstr "Uso de disco"
+
+#: include/disk.php:10
+msgid "File System"
+msgstr "Sistema"
+
+#: include/disk.php:11
+msgid "Mount Point"
+msgstr "Montado desde"
+
+#: include/disk.php:12
+msgid "Use"
+msgstr "Uso"
+
+#: include/disk.php:13
+msgid "Free"
+msgstr "Libre"
+
+#: include/disk.php:14
+msgid "Used"
+msgstr "Utilizado"
+
+#: include/disk.php:15
+msgid "Total"
+msgstr "Total"
+
+#: include/txinfo.php:3
+msgid "Currently TXing"
+msgstr "Actualmente en TX"
+
+#: include/txinfo.php:21
+msgid "Talker Alias"
+msgstr "Talker Alias"
+
+#: include/txinfo.php:28
+msgid "TX-Time"
+msgstr "Tiempo TX"
+
+#: scripts/rebootmmdvm.php:50 scripts/halt.php:49 scripts/log.php:53
+#: scripts/reboot.php:50 index.php:59
+msgid "for"
+msgstr "para"
+
+#: scripts/rebootmmdvm.php:52 scripts/halt.php:51 scripts/log.php:55
+#: scripts/reboot.php:52 index.php:61
+msgid "Repeater"
+msgstr "Repetidor"
+
+#: scripts/rebootmmdvm.php:54 scripts/halt.php:53 scripts/log.php:57
+#: scripts/reboot.php:54 index.php:63
+msgid "Hotspot"
+msgstr "Hotspot"
+
+#: scripts/rebootmmdvm.php:58 scripts/reboot.php:58
+msgid "Home"
+msgstr "Inicio"
+
+#: scripts/rebootmmdvm.php:67 scripts/reboot.php:66
+msgid "Executing"
+msgstr "Activo"
+
+#: scripts/rebootmmdvm.php:67
+msgid "Reboot MMDVMHost service in progress"
+msgstr "Reiniciando servicio MMDVMHost"
+
+#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134
+#: scripts/reboot.php:89 index.php:174
+msgid "get your own at:"
+msgstr "obtenlo en:"
+
+#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134
+#: scripts/reboot.php:89 index.php:174 credits.php:13 credits.php:17
+msgid "Credits"
+msgstr "Creditos"
+
+#: scripts/halt.php:66
+msgid "Halt in progress...bye"
+msgstr "Detener en progreso ... adiós"
+
+#: scripts/log.php:61 index.php:100
+msgid "View Log"
+msgstr "Ver Log"
+
+#: scripts/log.php:62 index.php:101
+msgid "Reboot MMDVMHost"
+msgstr "Reiniciar MMDVMHost"
+
+#: scripts/log.php:63 index.php:102
+msgid "Reboot System"
+msgstr "Reiniciar Sistema"
+
+#: scripts/log.php:64 index.php:103
+msgid "ShutDown System"
+msgstr "Apagar Sistema"
+
+#: scripts/log.php:68 index.php:108
+msgid "DMRplus"
+msgstr "DMRplus"
+
+#: scripts/log.php:69 index.php:109
+msgid "BrandMeister"
+msgstr "BrandMeister"
+
+#: scripts/log.php:76
+msgid "Viewing log"
+msgstr "Viendo Log"
+
+#: scripts/log.php:82
+msgid "Level"
+msgstr "Nivel"
+
+#: scripts/log.php:83
+msgid "Timestamp"
+msgstr "Fecha y hora"
+
+#: scripts/log.php:84
+msgid "Info"
+msgstr "Información"
+
+#: scripts/reboot.php:66
+msgid "Reboot system in progress"
+msgstr "Reiniciando el Sistema"
+
+#: ajax.php:214
+msgid "Power"
+msgstr "Power"
+
+#: ajax.php:219
+msgid "CPU-Temperature"
+msgstr "Temperatura CPU"
+
+#: ajax.php:224
+msgid "CPU-Frequency"
+msgstr "Frecuencia CPU"
+
+#: ajax.php:228
+msgid "System-Load"
+msgstr "Carga"
+
+#: ajax.php:229
+msgid "CPU-Usage"
+msgstr "Uso CPU"
+
+#: ajax.php:230
+msgid "Uptime"
+msgstr "Tiempo activo"
+
+#: ajax.php:231
+msgid "Idle"
+msgstr "Idle"
+
+#: ajax.php:237
+msgid "online"
+msgstr "online"
+
+#: ajax.php:237
+msgid "on battery"
+msgstr "funcionamiento de la batería"
+
+#: index.php:70
+msgid "DMR-Network: "
+msgstr "Red DMR: "
+
+#: index.php:159
+msgid "Last Reload"
+msgstr "Ultima actualización"
+
+#: index.php:169
+msgid "stop refreshing"
+msgstr "detener refresco"
+
+#: index.php:171
+msgid "start refreshing"
+msgstr "activar refresco"
+
+#: credits.php:20
+msgid ""
+"I think, after all the time this dashboard is developed mainly by myself, it "
+"is time to say \"Thank you\" to all those, wo delivered some ideas or code "
+"into this project."
+msgstr "Después de todo este tiempo que he desarrollado yo sólo este Dashboard, es tiempo de decir \"Gracias\" a todos aquellos que me han hecho llegar bién ideas o código para mejorar este proyecto."
+
+#: credits.php:21
+msgid "This are explicit named following persons:"
+msgstr "Deseo nombrar explícitamente a las personas siguientes:"
+
+#: credits.php:31
+msgid "and some others..."
+msgstr "bueno y algunos más..."
+
+#: credits.php:33
+msgid ""
+"Those, who felt forgotten, feel free to commit a change into github of this "
+"file."
+msgstr "Aquellos que se sientan olvidados, son libres de hacer modificaciones en este github."
+
+#: credits.php:34
+msgid "Many thanks to you all!"
+msgstr "Muchas gracias a todos!"
+
+#: credits.php:35
+msgid "Best 73, Kim, DG9VH"
+msgstr "los mejores 73, Kim, DG9VH"
+
+#: setup.php:26
+msgid ""
+"You forgot to give write-permissions to your webserver-user, see point 3 in "
+"<a href=\"linux-step-by-step.md\">linux-step-by-step.md</a>!"
+msgstr "Has olvidado dar permisos de escritura al usuario web, revisa e apartado 3 en <a href=\"linux-step-by-step.md\">linux-step-by-step.md</a>!"
+
+#: setup.php:41 setup.php:50
+msgid "Setup-Process"
+msgstr "Setup en proceso"
+
+#: setup.php:42
+msgid ""
+"Your config-file is written in config/config.php, please remove setup.php "
+"for security reasons!"
+msgstr "La configuración se ha guardado en config/config.php, por favor elimina el fichero setup.php"
+
+#: setup.php:43
+msgid "Your dashboard is now available."
+msgstr "Ya esta listo tu Dashboard."
+
+#: setup.php:51
+msgid "Please give necessary information below"
+msgstr "Por favor incuye la información requerida más abajo"
+
+#: setup.php:56
+msgid "MMDVMHost-Configuration"
+msgstr "Configuración MMDVMHost"
+
+#: setup.php:58
+msgid "Path to MMDVMHost-logfile"
+msgstr "Ruta del fichero log de MMDVMHost"
+
+#: setup.php:62
+msgid "Path to MMDVM.ini"
+msgstr "Ruta del MMDVM.ini"
+
+#: setup.php:66
+msgid "MMDVM.ini-filename"
+msgstr "Nombre del MMDVM.ini"
+
+#: setup.php:70
+msgid "Path to MMDVMHost-executable"
+msgstr "Ruta de la Aplicación MMDVMHost"
+
+#: setup.php:74
+msgid "Enable extended lookup (show names)"
+msgstr "Activar vision extendida (mostrar nombres)"
+
+#: setup.php:78
+msgid "Show Talker Alias"
+msgstr "Mostrar Talker Alias"
+
+#: setup.php:82
+msgid "Path to DMR-ID-Database-File (including filename)"
+msgstr "Ruta del fichero de IDs DMRIDs.dat (incluyendo el fichero)"
+
+#: setup.php:87
+msgid "YSFGateway-Configuration"
+msgstr "Configuración de YSFGateway"
+
+#: setup.php:89
+msgid "Enable YSFGateway"
+msgstr "YSFGateway Activo"
+
+#: setup.php:93
+msgid "Path to YSFGateway-logfile"
+msgstr "Ruta del log del YSFGateway"
+
+#: setup.php:97
+msgid "Logfile-prefix"
+msgstr "Prefijo del fichero Log"
+
+#: setup.php:101
+msgid "Path to YSFGateway.ini"
+msgstr "Ruta del YSFGateway.ini"
+
+#: setup.php:105
+msgid "YSFGateway.ini-filename"
+msgstr "Nombre del fichero YSFGateway.ini"
+
+#: setup.php:109
+msgid "Path to YSFHosts.txt"
+msgstr "Ruta del YSFHosts.txt"
+
+#: setup.php:113
+msgid "YSFHosts.txt-filename"
+msgstr "Nombre del fichero YSFHosts.txt"
+
+#: setup.php:118
+msgid "ircddbgateway-Configuration"
+msgstr "Configuración del ircddbgateway"
+
+#: setup.php:120
+msgid "Path to Links.log"
+msgstr "Ruta del Links.log"
+
+#: setup.php:124
+msgid "Name of ircddbgateway-executeable"
+msgstr "Nombre del ejecutable del ircddbgateway"
+
+#: setup.php:129
+msgid "Global Configuration"
+msgstr "Configuración Global"
+
+#: setup.php:188
+msgid "Locale"
+msgstr "Local"
+
+#: setup.php:192
+msgid "URL to Logo"
+msgstr "Logo de la URL"
+
+#: setup.php:196
+msgid "URL to DMRplus-Logo"
+msgstr "Logo de la URL de DMRplus"
+
+#: setup.php:200
+msgid "URL to BrandMeister-Logo"
+msgstr "Logo de la URL de BrandMeister"
+
+#: setup.php:204
+msgid "Refresh page after in seconds"
+msgstr "Refresco de la página en segundos"
+
+#: setup.php:208
+msgid "Show System Info"
+msgstr "Mostrar información del Sistema"
+
+#: setup.php:212
+msgid "Show Disk Use"
+msgstr "Mostrar uso de disco"
+
+#: setup.php:216
+msgid "Show Repeater Info"
+msgstr "Mostrar información del Repetidor"
+
+#: setup.php:220
+msgid "Show Enabled Modes"
+msgstr "Mostrar modos activos"
+
+#: setup.php:224
+msgid "Show Last Heard List of today's"
+msgstr "Mostrar listado de últimas estaciones escuchadas hoy"
+
+#: setup.php:228
+msgid "Show Today's local transmissions"
+msgstr "Mostrar transmisiones locales de hoy"
+
+#: setup.php:232
+msgid "Show progressbars"
+msgstr "Mostrar barra de progreso"
+
+#: setup.php:236
+msgid "Enable CPU-temperature-warning"
+msgstr "Activar alarma de temperatura CPU"
+
+#: setup.php:240
+msgid "Warning temperature"
+msgstr "Alarma de Temperatura"
+
+#: setup.php:244
+msgid "Enable Network-Switching-Function"
+msgstr "Activar la función de cambio de Red"
+
+#: setup.php:248
+msgid "Username for switching networks:"
+msgstr "Nombre de usuario para el cambio de Red:"
+
+#: setup.php:252
+msgid "Password for switching networks:"
+msgstr "Contraseña para el cambio de Red:"
+
+#: setup.php:257
+msgid "Enable Management-Functions below"
+msgstr "Habilitar funciones de administración siguientes"
+
+#: setup.php:261
+msgid "Username for view log:"
+msgstr "Usuario para ver el Log:"
+
+#: setup.php:265
+msgid "Password for view log:"
+msgstr "Contraseña para ver el Log:"
+
+#: setup.php:269
+msgid "Username for halt:"
+msgstr "Usuario para detener los servicios:"
+
+#: setup.php:273
+msgid "Password for halt:"
+msgstr "Contraseña para detener los servicios:"
+
+#: setup.php:277
+msgid "Username for reboot:"
+msgstr "Usuario para reiniciar el sistema:"
+
+#: setup.php:281
+msgid "Password for reboot:"
+msgstr "Contraseña para reiniciar el sistema:"
+
+#: setup.php:285
+msgid "Username for restart:"
+msgstr "Usuario para reiniciar los servicios:"
+
+#: setup.php:289
+msgid "Password for restart:"
+msgstr "contraseña para reiniciar los servicios:"
+
+#: setup.php:293
+msgid "Reboot MMDVMHost command:"
+msgstr Comando para reiniciar MMDVMHost:"
+
+#: setup.php:297
+msgid "Reboot system command:"
+msgstr "Comando para reiniciar el sistema:"
+
+#: setup.php:301
+msgid "Halt system command:"
+msgstr "Comando para reiniciar servicios:"
+
+#: setup.php:305
+msgid "Show Powerstate (online or battery, wiringpi needed)"
+msgstr "Mostrar estado de bateria (necesaria batería o wiringpi)"
+
+#: setup.php:309
+msgid "GPIO pin to monitor:"
+msgstr "Monitorzar pines GPIO:"
+
+#: setup.php:313
+msgid "State that signalizes online-state:"
+msgstr "Estado que señala estado en línea:"
+
+#: setup.php:317
+msgid "Show link to QRZ.com on Callsigns"
+msgstr "Mostrar link a QRZ.com enindicativos"
+
+#: setup.php:321
+msgid "RSSI value"
+msgstr "Valores RSSI"
+
+#: setup.php:323
+msgid "minimal"
+msgstr "minimo"
+
+#: setup.php:324
+msgid "maximal"
+msgstr "maximo"
+
+#: setup.php:325
+msgid "average"
+msgstr "media"
+
+#: setup.php:331
+msgid "Save configuration"
+msgstr "Grabar configuracion"
