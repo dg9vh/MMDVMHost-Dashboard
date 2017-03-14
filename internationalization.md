@@ -1,7 +1,8 @@
 # Internationalization
 If you want to have the static-text-output in other languages than default 
 (english), you have to do following steps:
-* activate your locale with raspi-config as default-locale
+* activate your locale with raspi-config, it must not be default
+* restart your webserver for loading new locale-configuration
 * set your locale within setup.php
 
 # Be a part of translators!
