@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: 2017-03-14\n"
 "Report-Msgid-Bugs-To: dg9vh@darc.de\n"
 "POT-Creation-Date: 2017-03-14 13:47+0000\n"
-"PO-Revision-Date: 2017-03-14 14:47+0000\n"
+"PO-Revision-Date: 2017-03-14 21:30+0000\n"
 "Last-Translator: Paulo - CT2JAY <pjao.ct2jay@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -237,7 +237,7 @@ msgstr "Talker Alias"
 
 #: include/txinfo.php:28
 msgid "TX-Time"
-msgstr "TX-Duração"
+msgstr "Duração-TX"
 
 #: scripts/rebootmmdvm.php:50 scripts/halt.php:49 scripts/log.php:53
 #: scripts/reboot.php:50 index.php:59
