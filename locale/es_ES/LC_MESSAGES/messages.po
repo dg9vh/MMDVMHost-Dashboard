@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2017-03-13\n"
-"Report-Msgid-Bugs-To: ea4fvb@gmail.com\n"
+"Report-Msgid-Bugs-To: dg9vh@darc.de\n"
 "POT-Creation-Date: 2017-03-14 19:47+0000\n"
-"PO-Revision-Date: 2017-03-14 19:59+0100\n"
+"PO-Revision-Date: 2017-03-14 20:16+0100\n"
 "Last-Translator: Pablo - EA4FVB <ea4fvb@gmail.com>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Información de Sistema"
 
 #: include/ysfgatewayinfo.php:5
 msgid "YSFGateway-Infos"
-msgstr "Info-YSFGateway"
+msgstr "Información del YSFGateway"
 
 #: include/ysfgatewayinfo.php:13
 msgid "YSFGateway Process is running"
@@ -41,7 +41,8 @@ msgstr "Reporte ReflectoresYSF activo"
 msgid "No."
 msgstr "N."
 
-#: include/ysfgatewayinfo.php:38 include/localtx_ajax.php:19 include/lh_ajax.php:19 include/txinfo.php:16
+#: include/ysfgatewayinfo.php:38 include/localtx_ajax.php:19
+#: include/lh_ajax.php:19 include/txinfo.php:16
 msgid "Name"
 msgstr "Nombre"
 
@@ -91,7 +92,7 @@ msgstr "Duración (s)"
 
 #: include/localtx_ajax.php:27 include/lh_ajax.php:27
 msgid "Loss"
-msgstr "Perdidos"
+msgstr "Pérdidas"
 
 #: include/localtx_ajax.php:28 include/lh_ajax.php:28
 msgid "BER"
@@ -179,7 +180,7 @@ msgstr "Estás usando una configuracion antigua. Configura tu Dashboard a travé
 
 #: include/tools.php:79
 msgid "You forgot to remove setup.php in root-directory of your dashboard or you forgot to configure it! Please delete the file or configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"
-msgstr "Olvidó eliminar setup.php en el directorio raíz del Dashboards u olvidaste configurarlo,  por favor borra el fichero o configura el Dashboard mediante el artchivo <a href=\"setup.php\">setup.php</a>!"
+msgstr "Olvidaste eliminar setup.php del directorio raíz de tu Dashboards o has olvidado configurarlo,  por favor borra el fichero o configura el Dashboard mediante el fichero <a href=\"setup.php\">setup.php</a>!"
 
 #: include/modes.php:3
 msgid "Enabled Modes"
@@ -191,7 +192,7 @@ msgstr "Últimos escuchados hoy"
 
 #: include/lh_ajax.php:6
 msgid "callsigns."
-msgstr "indicativos"
+msgstr "indicativos."
 
 #: include/disk.php:3
 msgid "Disk Use"
@@ -199,7 +200,7 @@ msgstr "Uso de disco"
 
 #: include/disk.php:10
 msgid "File System"
-msgstr "Sistema"
+msgstr "Sistema de archivos"
 
 #: include/disk.php:11
 msgid "Mount Point"
@@ -215,7 +216,7 @@ msgstr "Libre"
 
 #: include/disk.php:14
 msgid "Used"
-msgstr "Utilizado"
+msgstr "Ocupado"
 
 #: include/disk.php:15
 msgid "Total"
@@ -233,17 +234,20 @@ msgstr "Talker Alias"
 msgid "TX-Time"
 msgstr "Tiempo TX"
 
-#: scripts/rebootmmdvm.php:50 scripts/halt.php:49 scripts/log.php:53 scripts/reboot.php:50 index.php:59
+#: scripts/rebootmmdvm.php:50 scripts/halt.php:49 scripts/log.php:53
+#: scripts/reboot.php:50 index.php:59
 msgid "for"
 msgstr "para"
 
-#: scripts/rebootmmdvm.php:52 scripts/halt.php:51 scripts/log.php:55 scripts/reboot.php:52 index.php:61
+#: scripts/rebootmmdvm.php:52 scripts/halt.php:51 scripts/log.php:55
+#: scripts/reboot.php:52 index.php:61
 msgid "Repeater"
 msgstr "Repetidor"
 
-#: scripts/rebootmmdvm.php:54 scripts/halt.php:53 scripts/log.php:57 scripts/reboot.php:54 index.php:63
+#: scripts/rebootmmdvm.php:54 scripts/halt.php:53 scripts/log.php:57
+#: scripts/reboot.php:54 index.php:63
 msgid "Hotspot"
-msgstr "Hotspot"
+msgstr "HotSpot"
 
 #: scripts/rebootmmdvm.php:58 scripts/reboot.php:58
 msgid "Home"
@@ -257,17 +261,19 @@ msgstr "Activo"
 msgid "Reboot MMDVMHost service in progress"
 msgstr "Reiniciando servicio MMDVMHost"
 
-#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134 scripts/reboot.php:89 index.php:174
+#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134
+#: scripts/reboot.php:89 index.php:174
 msgid "get your own at:"
 msgstr "obtenlo en:"
 
-#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134 scripts/reboot.php:89 index.php:174 credits.php:13 credits.php:17
+#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134
+#: scripts/reboot.php:89 index.php:174 credits.php:13 credits.php:17
 msgid "Credits"
 msgstr "Creditos"
 
 #: scripts/halt.php:66
 msgid "Halt in progress...bye"
-msgstr "Detener en progreso ... adiós"
+msgstr "Detención en progreso ... adiós"
 
 #: scripts/log.php:61 index.php:100
 msgid "View Log"
@@ -303,7 +309,7 @@ msgstr "Nivel"
 
 #: scripts/log.php:83
 msgid "Timestamp"
-msgstr "Fecha y hora"
+msgstr "Fecha y Hora"
 
 #: scripts/log.php:84
 msgid "Info"
@@ -327,7 +333,7 @@ msgstr "Frecuencia CPU"
 
 #: ajax.php:228
 msgid "System-Load"
-msgstr "Carga"
+msgstr "Carga de Sistema"
 
 #: ajax.php:229
 msgid "CPU-Usage"
@@ -363,7 +369,7 @@ msgstr "detener refresco"
 
 #: index.php:171
 msgid "start refreshing"
-msgstr "activar refresco"
+msgstr "iniciar refresco"
 
 #: credits.php:20
 msgid "I think, after all the time this dashboard is developed mainly by myself, it is time to say \"Thank you\" to all those, wo delivered some ideas or code into this project."
@@ -387,7 +393,7 @@ msgstr "Muchas gracias a todos!"
 
 #: credits.php:35
 msgid "Best 73, Kim, DG9VH"
-msgstr "los mejores 73, Kim, DG9VH"
+msgstr "73, Kim, DG9VH"
 
 #: setup.php:26
 msgid "You forgot to give write-permissions to your webserver-user, see point 3 in <a href=\"linux-step-by-step.md\">linux-step-by-step.md</a>!"
