@@ -660,3 +660,60 @@ msgstr "Mittelwert"
 #: setup.php:331
 msgid "Save configuration"
 msgstr "Konfiguration speichern"
+
+#: include/functions.php:13 include/functions.php:15
+msgid "compiled"
+msgstr "übersetzt am"
+
+#: include/functions.php:161
+msgid "ircddbgateway is down!"
+msgstr "ircddbgateway läuft nicht!"
+
+#: include/functions.php:164 include/functions.php:175
+msgid "Remote gateway configured - not checked!"
+msgstr "Entferntes Gateway konfiguriert - wird nicht geprüft!"
+
+#: include/functions.php:172
+msgid "YSFGateway is down!"
+msgstr "YSFGateway läuft nicht!"
+
+#: include/functions.php:182
+msgid "MMDVMHost is down!"
+msgstr "MMDVMHost läuft nicht!"
+
+#: include/functions.php:550
+msgid "idle"
+msgstr "wartend"
+
+#: include/functions.php:623
+msgid "ircddbgateway not running!"
+msgstr "ircddbgateway läuft nicht!"
+
+#: include/functions.php:640 include/functions.php:656
+#: include/functions.php:741
+msgid "not linked"
+msgstr "nicht verbunden"
+
+#: include/functions.php:692
+msgid "something went wrong!"
+msgstr "Irgendwas lief schief!"
+
+#: include/functions.php:706 include/functions.php:724
+msgid "Reflector not linked"
+msgstr "Reflektor nicht verbunden"
+
+#: include/functions.php:708 include/functions.php:719
+msgid "Reflector"
+msgstr "Reflektor"
+
+#: include/functions.php:719
+msgid "not cfmd"
+msgstr "unbestätigt"
+
+#: include/functions.php:743
+msgid "YSFGateway not running"
+msgstr "YSFGateway läuft nicht"
+
+#: include/functions.php:830
+msgid "DMRIDs.dat not correct!"
+msgstr "DMRIDs.dat nicht korrekt!"
