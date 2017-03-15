@@ -611,7 +611,7 @@ msgstr "Показывать состояние питания (сеть или 
 
 #: setup.php:309
 msgid "GPIO pin to monitor:"
-msgstr "GPIO-Pin zur Auswertung:"
+msgstr "Пины GPIO для монитора:"
 
 #: setup.php:313
 msgid "State that signalizes online-state:"
