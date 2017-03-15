@@ -1,0 +1,698 @@
+# Translation-Template
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: The Russian language for MMDVMHost Dashboard \n"
+"Report-Msgid-Bugs-To: dg9vh@darc.de\n"
+"POT-Creation-Date: 2017-03-14 13:47+0000\n"
+"PO-Revision-Date: 2017-03-15 12:01+0300\n"
+"Last-Translator: Kim - DG9VH <dg9vh@darc.de>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.12\n"
+
+#: include/sysinfo_ajax.php:3
+msgid "System Info"
+msgstr "Информация о системе"
+
+#: include/ysfgatewayinfo.php:5
+msgid "YSFGateway-Infos"
+msgstr "Информация о YSFGateway"
+
+#: include/ysfgatewayinfo.php:13
+msgid "YSFGateway Process is running"
+msgstr "YSFGateway сервис запущен"
+
+#: include/ysfgatewayinfo.php:16
+msgid "YSFGateway Process is down!"
+msgstr "YSFGateway сервис остановлен!"
+
+#: include/ysfgatewayinfo.php:25
+msgid "YSFReflectors reported active"
+msgstr "YSFReflectors сообщение об активности"
+
+#: include/ysfgatewayinfo.php:37
+msgid "No."
+msgstr "N0."
+
+#: include/ysfgatewayinfo.php:38 include/localtx_ajax.php:19 include/lh_ajax.php:19 include/txinfo.php:16
+msgid "Name"
+msgstr "Имя"
+
+#: include/ysfgatewayinfo.php:39
+msgid "Description"
+msgstr "Описание"
+
+#: include/ysfgatewayinfo.php:40
+msgid "ID"
+msgstr "ID"
+
+#: include/ysfgatewayinfo.php:41
+msgid "Connections"
+msgstr "Соединения"
+
+#: include/localtx_ajax.php:6
+msgid "Today's local transmissions"
+msgstr "Локальная активность за сегодня"
+
+#: include/localtx_ajax.php:13 include/lh_ajax.php:13 include/txinfo.php:10
+msgid "Time"
+msgstr "Время"
+
+#: include/localtx_ajax.php:14 include/lh_ajax.php:14 include/txinfo.php:11
+msgid "Mode"
+msgstr "Режим"
+
+#: include/localtx_ajax.php:15 include/lh_ajax.php:15 include/txinfo.php:12
+msgid "Callsign"
+msgstr "Позывной"
+
+#: include/localtx_ajax.php:23 include/lh_ajax.php:23 include/txinfo.php:25
+msgid "DSTAR-ID"
+msgstr "Доп. идентификатор"
+
+#: include/localtx_ajax.php:24 include/lh_ajax.php:24 include/txinfo.php:26
+msgid "Target"
+msgstr "Назначение"
+
+#: include/localtx_ajax.php:25 include/lh_ajax.php:25 include/txinfo.php:27
+msgid "Source"
+msgstr "Источник"
+
+#: include/localtx_ajax.php:26 include/lh_ajax.php:26
+msgid "Dur (s)"
+msgstr "Длит. (сек)"
+
+#: include/localtx_ajax.php:27 include/lh_ajax.php:27
+msgid "Loss"
+msgstr "Потери"
+
+#: include/localtx_ajax.php:28 include/lh_ajax.php:28
+msgid "BER"
+msgstr "BER"
+
+#: include/localtx_ajax.php:30
+msgid "RSSI (min)"
+msgstr "RSSI (мин.)"
+
+#: include/localtx_ajax.php:31
+msgid "RSSI (max)"
+msgstr "RSSI (макс.)"
+
+#: include/localtx_ajax.php:32 include/localtx_ajax.php:33
+msgid "RSSI (avg)"
+msgstr "RSSI (сред.)"
+
+#: include/repeaterinfo.php:3
+msgid "Repeater Info"
+msgstr "Информация об узле"
+
+#: include/repeaterinfo.php:9
+msgid "Current Mode"
+msgstr "Текущий режим"
+
+#: include/repeaterinfo.php:13
+msgid "D-Star linked to"
+msgstr "D-Star соединения"
+
+#: include/repeaterinfo.php:18
+msgid "YSF linked to"
+msgstr "YSF соединения"
+
+#: include/repeaterinfo.php:23
+msgid "DMR TS1 last linked to"
+msgstr "DMR, соединения на таймслот 1"
+
+#: include/repeaterinfo.php:24
+msgid "DMR TS2 last linked to"
+msgstr "DMR, соединения на таймслот 2"
+
+#: include/repeaterinfo.php:48
+msgid "Location"
+msgstr "Месторасположение"
+
+#: include/repeaterinfo.php:49
+msgid "TX-Freq."
+msgstr "TX-частота"
+
+#: include/repeaterinfo.php:50
+msgid "RX-Freq."
+msgstr "RX-частота"
+
+#: include/repeaterinfo.php:54
+msgid "YSFGateway"
+msgstr "YSFGateway"
+
+#: include/repeaterinfo.php:59
+msgid "DMR CC"
+msgstr "DMR CC"
+
+#: include/repeaterinfo.php:63
+msgid "DMR-Master"
+msgstr "DMR сервер"
+
+#: include/repeaterinfo.php:64
+msgid "TS1"
+msgstr "Таймслот 1"
+
+#: include/repeaterinfo.php:65
+msgid "TS2"
+msgstr "Таймслот 2"
+
+#: include/repeaterinfo.php:97 include/repeaterinfo.php:104
+msgid "enabled"
+msgstr "активирован"
+
+#: include/repeaterinfo.php:99 include/repeaterinfo.php:106
+msgid "disabled"
+msgstr "деактивирован"
+
+#: include/tools.php:73
+msgid "You are using an old config.php. Please configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"
+msgstr "Внимание! Вы используете устаревшую версию config.php ! Пройдите, пожалуйста, по ссылке <a href=\"setup.php\">setup.php</a> и настройте панель управления вашего узла еще раз."
+
+#: include/tools.php:79
+msgid "You forgot to remove setup.php in root-directory of your dashboard or you forgot to configure it! Please delete the file or configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"
+msgstr "Вы забыли убрать <a href=\"setup.php\">setup.php</a> из корневой папки или не сделали настройки панели управления! Удалите этот файл или <a href=\"setup.php\">настройте панель управления</a>!"
+
+#: include/modes.php:3
+msgid "Enabled Modes"
+msgstr "Режимы работы узла"
+
+#: include/lh_ajax.php:6
+msgid "Last Heard List of today's"
+msgstr "Список активности за сегодня. "
+
+#: include/lh_ajax.php:6
+msgid "callsigns."
+msgstr "позывных."
+
+#: include/disk.php:3
+msgid "Disk Use"
+msgstr "Дисковое пространство"
+
+#: include/disk.php:10
+msgid "File System"
+msgstr "Файловая система"
+
+#: include/disk.php:11
+msgid "Mount Point"
+msgstr "Раздел диска"
+
+#: include/disk.php:12
+msgid "Use"
+msgstr "Занято, %"
+
+#: include/disk.php:13
+msgid "Free"
+msgstr "Свободно"
+
+#: include/disk.php:14
+msgid "Used"
+msgstr "Занято"
+
+#: include/disk.php:15
+msgid "Total"
+msgstr "Всего"
+
+#: include/txinfo.php:3
+msgid "Currently TXing"
+msgstr "TX сейчас"
+
+#: include/txinfo.php:21
+msgid "Talker Alias"
+msgstr "Talker Alias"
+
+#: include/txinfo.php:28
+msgid "TX-Time"
+msgstr "Длительность TX"
+
+#: scripts/rebootmmdvm.php:50 scripts/halt.php:49 scripts/log.php:53 scripts/reboot.php:50 index.php:59
+msgid "for"
+msgstr "для"
+
+#: scripts/rebootmmdvm.php:52 scripts/halt.php:51 scripts/log.php:55 scripts/reboot.php:52 index.php:61
+msgid "Repeater"
+msgstr "репитер"
+
+#: scripts/rebootmmdvm.php:54 scripts/halt.php:53 scripts/log.php:57 scripts/reboot.php:54 index.php:63
+msgid "Hotspot"
+msgstr "хотспот"
+
+#: scripts/rebootmmdvm.php:58 scripts/reboot.php:58
+msgid "Home"
+msgstr "Главная"
+
+#: scripts/rebootmmdvm.php:67 scripts/reboot.php:66
+msgid "Executing"
+msgstr "Запуск"
+
+#: scripts/rebootmmdvm.php:67
+msgid "Reboot MMDVMHost service in progress"
+msgstr "Перезапуск MMDVMHost"
+
+#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134 scripts/reboot.php:89 index.php:174
+msgid "get your own at:"
+msgstr "Исходный код:"
+
+#: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134 scripts/reboot.php:89 index.php:174 credits.php:13 credits.php:17
+msgid "Credits"
+msgstr "Благодарности"
+
+#: scripts/halt.php:66
+msgid "Halt in progress...bye"
+msgstr "Остановка ..."
+
+#: scripts/log.php:61 index.php:100
+msgid "View Log"
+msgstr "Журнал"
+
+#: scripts/log.php:62 index.php:101
+msgid "Reboot MMDVMHost"
+msgstr "Перезапустить MMDVMHost"
+
+#: scripts/log.php:63 index.php:102
+msgid "Reboot System"
+msgstr "Перезагрузить систему"
+
+#: scripts/log.php:64 index.php:103
+msgid "ShutDown System"
+msgstr "Остановить систему"
+
+#: scripts/log.php:68 index.php:108
+msgid "DMRplus"
+msgstr "DMRplus"
+
+#: scripts/log.php:69 index.php:109
+msgid "BrandMeister"
+msgstr "BrandMeister"
+
+#: scripts/log.php:76
+msgid "Viewing log"
+msgstr "Просмотр журнала"
+
+#: scripts/log.php:82
+msgid "Level"
+msgstr "Уровень"
+
+#: scripts/log.php:83
+msgid "Timestamp"
+msgstr "Дата"
+
+#: scripts/log.php:84
+msgid "Info"
+msgstr "Информация"
+
+#: scripts/reboot.php:66
+msgid "Reboot system in progress"
+msgstr "Перезагрузка ..."
+
+#: ajax.php:214
+msgid "Power"
+msgstr "Питание"
+
+#: ajax.php:219
+msgid "CPU-Temperature"
+msgstr "CPU-температура"
+
+#: ajax.php:224
+msgid "CPU-Frequency"
+msgstr "CPU-частота"
+
+#: ajax.php:228
+msgid "System-Load"
+msgstr "Загрузка системы"
+
+#: ajax.php:229
+msgid "CPU-Usage"
+msgstr "CPU-загрузка, %"
+
+#: ajax.php:230
+msgid "Uptime"
+msgstr "Общая продолжительность работы"
+
+#: ajax.php:231
+msgid "Idle"
+msgstr "Продолжительность ожидания"
+
+#: ajax.php:237
+msgid "online"
+msgstr "в сети"
+
+#: ajax.php:237
+msgid "on battery"
+msgstr "от батареи"
+
+#: index.php:70
+msgid "DMR-Network: "
+msgstr "DMR-сеть: "
+
+#: index.php:159
+msgid "Last Reload"
+msgstr "Обновлено в "
+
+#: index.php:169
+msgid "stop refreshing"
+msgstr "Остановить автообновление"
+
+#: index.php:171
+msgid "start refreshing"
+msgstr "Начать автообновление"
+
+#: credits.php:20
+msgid "I think, after all the time this dashboard is developed mainly by myself, it is time to say \"Thank you\" to all those, wo delivered some ideas or code into this project."
+msgstr "Я думаю, что настало время сказать \"Спасибо\" тем участникам, которые внесли в этот проект некоторые идеи или код."
+
+#: credits.php:21
+msgid "This are explicit named following persons:"
+msgstr "Их имена:"
+
+#: credits.php:31
+msgid "and some others..."
+msgstr "и некоторые другие..."
+
+#: credits.php:33
+msgid "Those, who felt forgotten, feel free to commit a change into github of this file."
+msgstr "Те, кто чувствовал себя забытым, могут свободно вносить изменения в github этого файла."
+
+#: credits.php:34
+msgid "Many thanks to you all!"
+msgstr "Большое спасибо вам всем!"
+
+#: credits.php:35
+msgid "Best 73, Kim, DG9VH"
+msgstr "Наилучшее 73, Kim, DG9VH"
+
+#: setup.php:26
+msgid "You forgot to give write-permissions to your webserver-user, see point 3 in <a href=\"linux-step-by-step.md\">linux-step-by-step.md</a>!"
+msgstr "Вы забыли задать требуемые разрешение доступа к файлам! См. пункт 3 в <a href=\"linux-step-by-step.md\">пошаговой инструкции linux-step-by-step.md</a>!"
+
+#: setup.php:41 setup.php:50
+msgid "Setup-Process"
+msgstr "Процесс установки"
+
+#: setup.php:42
+msgid "Your config-file is written in config/config.php, please remove setup.php for security reasons!"
+msgstr "Параметры записаны в config/config.php . Для безопасной работы следует удалить файл setup.php!"
+
+#: setup.php:43
+msgid "Your dashboard is now available."
+msgstr "Ваша панель управления теперь доступна."
+
+#: setup.php:51
+msgid "Please give necessary information below"
+msgstr "Пожалуйста, предоставьте необходимую информацию ниже"
+
+#: setup.php:56
+msgid "MMDVMHost-Configuration"
+msgstr "Конфигурация MMDVMHost"
+
+#: setup.php:58
+msgid "Path to MMDVMHost-logfile"
+msgstr "Путь к папке с log-файлам MMDVMHost"
+
+#: setup.php:62
+msgid "Path to MMDVM.ini"
+msgstr "Путь к папке с файлом настроек MMDVMHost"
+
+#: setup.php:66
+msgid "MMDVM.ini-filename"
+msgstr "Имя файла настроеек (обычно MMDVM.ini)"
+
+#: setup.php:70
+msgid "Path to MMDVMHost-executable"
+msgstr "Путь к папке с файлом запуска MMDVMHost-сервиса"
+
+#: setup.php:74
+msgid "Enable extended lookup (show names)"
+msgstr "Включить расширенный просмотр (показывать имена)"
+
+#: setup.php:78
+msgid "Show Talker Alias"
+msgstr "Показать Talker Alias"
+
+#: setup.php:82
+msgid "Path to DMR-ID-Database-File (including filename)"
+msgstr "Полный путь до файла DMRIDs.dat (включая имя файла)"
+
+#: setup.php:87
+msgid "YSFGateway-Configuration"
+msgstr "Конфигурация YSFGateway"
+
+#: setup.php:89
+msgid "Enable YSFGateway"
+msgstr "Активировать YSFGateway"
+
+#: setup.php:93
+msgid "Path to YSFGateway-logfile"
+msgstr "Путь к папке с log-файлам YSFGateway"
+
+#: setup.php:97
+msgid "Logfile-prefix"
+msgstr "Префикс log-файла"
+
+#: setup.php:101
+msgid "Path to YSFGateway.ini"
+msgstr "Путь к папке с YSFGateway.ini"
+
+#: setup.php:105
+msgid "YSFGateway.ini-filename"
+msgstr "Имя файла настроеек (обычно YSFGateway.ini)"
+
+#: setup.php:109
+msgid "Path to YSFHosts.txt"
+msgstr "Путь к папке с YSFHosts.txt"
+
+#: setup.php:113
+msgid "YSFHosts.txt-filename"
+msgstr "Имя файла хостов (обычно YSFHosts.txt)"
+
+#: setup.php:118
+msgid "ircddbgateway-Configuration"
+msgstr "Конфигурация ircddbgateway"
+
+#: setup.php:120
+msgid "Path to Links.log"
+msgstr "Путь к папке с log-файлам"
+
+#: setup.php:124
+msgid "Name of ircddbgateway-executeable"
+msgstr "Имя файла сервиса ircddbgateway"
+
+#: setup.php:129
+msgid "Global Configuration"
+msgstr "Основные настройки"
+
+#: setup.php:188
+msgid "Locale"
+msgstr "Язык"
+
+#: setup.php:192
+msgid "URL to Logo"
+msgstr "URL-адрес логотипа"
+
+#: setup.php:196
+msgid "URL to DMRplus-Logo"
+msgstr "URL-адрес логотипа сети DMRplus"
+
+#: setup.php:200
+msgid "URL to BrandMeister-Logo"
+msgstr "URL-адрес логотипа сети BrandMeister"
+
+#: setup.php:204
+msgid "Refresh page after in seconds"
+msgstr "Станица обновлена за ... секунд"
+
+#: setup.php:208
+msgid "Show System Info"
+msgstr "Показывать системную информацию"
+
+#: setup.php:212
+msgid "Show Disk Use"
+msgstr "Показывать информацию о дисковом пространстве"
+
+#: setup.php:216
+msgid "Show Repeater Info"
+msgstr "Показывать информацию об узле"
+
+#: setup.php:220
+msgid "Show Enabled Modes"
+msgstr "Показывать возможные режимы работы узла"
+
+#: setup.php:224
+msgid "Show Last Heard List of today's"
+msgstr "Показывать список активности за сегодня"
+
+#: setup.php:228
+msgid "Show Today's local transmissions"
+msgstr "Показывать список локальной активности за сегодня"
+
+#: setup.php:232
+msgid "Show progressbars"
+msgstr "Показывать графическую шкалу"
+
+#: setup.php:236
+msgid "Enable CPU-temperature-warning"
+msgstr "Активировать предупреждение о температуре CPU"
+
+#: setup.php:240
+msgid "Warning temperature"
+msgstr "Предупреждение о температуре"
+
+#: setup.php:244
+msgid "Enable Network-Switching-Function"
+msgstr "Активировать функцию управления сетями"
+
+#: setup.php:248
+msgid "Username for switching networks:"
+msgstr "Логин для управления сетями:"
+
+#: setup.php:252
+msgid "Password for switching networks:"
+msgstr "Пароль для управления сетями:"
+
+#: setup.php:257
+msgid "Enable Management-Functions below"
+msgstr "Активировать фукнции управления ниже"
+
+#: setup.php:261
+msgid "Username for view log:"
+msgstr "Логин для просмотра логов:"
+
+#: setup.php:265
+msgid "Password for view log:"
+msgstr "Пароль для просмотра логов:"
+
+#: setup.php:269
+msgid "Username for halt:"
+msgstr "Логин для оставнки системы:"
+
+#: setup.php:273
+msgid "Password for halt:"
+msgstr "Пароль для оставнки системы:"
+
+#: setup.php:277
+msgid "Username for reboot:"
+msgstr "Логин для перезагрузки:"
+
+#: setup.php:281
+msgid "Password for reboot:"
+msgstr "Пароль для перезагрузки:"
+
+#: setup.php:285
+msgid "Username for restart:"
+msgstr "Логин для перезапуска:"
+
+#: setup.php:289
+msgid "Password for restart:"
+msgstr "Пароль для перзапуска:"
+
+#: setup.php:293
+msgid "Reboot MMDVMHost command:"
+msgstr "Команда для перезапуска MMDVMHost:"
+
+#: setup.php:297
+msgid "Reboot system command:"
+msgstr "Команда для пезагрузки системы:"
+
+#: setup.php:301
+msgid "Halt system command:"
+msgstr "Команда для остановки системы:"
+
+#: setup.php:305
+msgid "Show Powerstate (online or battery, wiringpi needed)"
+msgstr "Показывать состояние питания (сеть или батарея, требует установки wiringpi)"
+
+#: setup.php:309
+msgid "GPIO pin to monitor:"
+msgstr "Пины GPIO для монитора:"
+
+#: setup.php:313
+msgid "State that signalizes online-state:"
+msgstr "Состояние статуса в сети:"
+
+#: setup.php:317
+msgid "Show link to QRZ.com on Callsigns"
+msgstr "Показывать для позывных ссылку на QRZ.com"
+
+#: setup.php:321
+msgid "RSSI value"
+msgstr "значение RSSI"
+
+#: setup.php:323
+msgid "minimal"
+msgstr "минимальное"
+
+#: setup.php:324
+msgid "maximal"
+msgstr "максимальное"
+
+#: setup.php:325
+msgid "average"
+msgstr "среднее"
+
+#: setup.php:331
+msgid "Save configuration"
+msgstr "Сохранить конфигурацию"
+
+#: include/functions.php:13 include/functions.php:15
+msgid "compiled"
+msgstr "скомпилировано"
+
+#: include/functions.php:161
+msgid "ircddbgateway is down!"
+msgstr "ircddbgateway остановлен!"
+
+#: include/functions.php:164 include/functions.php:175
+msgid "Remote gateway configured - not checked!"
+msgstr "Удаленный шлюз настроен - не проверяется!"
+
+#: include/functions.php:172
+msgid "YSFGateway is down!"
+msgstr "YSFGateway остановлен!"
+
+#: include/functions.php:182
+msgid "MMDVMHost is down!"
+msgstr "MMDVMHost остановлен!"
+
+#: include/functions.php:550
+msgid "idle"
+msgstr "ожидание"
+
+#: include/functions.php:623
+msgid "ircddbgateway not running!"
+msgstr "ircddbgateway не запущен!"
+
+#: include/functions.php:640 include/functions.php:656 include/functions.php:741
+msgid "not linked"
+msgstr "нет соединения"
+
+#: include/functions.php:692
+msgid "something went wrong!"
+msgstr "что-то пошло не так!"
+
+#: include/functions.php:706 include/functions.php:724
+msgid "Reflector not linked"
+msgstr "Рефлектор не подключен"
+
+#: include/functions.php:708 include/functions.php:719
+msgid "Reflector"
+msgstr "Рефлектор"
+
+#: include/functions.php:719
+msgid "not cfmd"
+msgstr "нет подтверждения"
+
+#: include/functions.php:743
+msgid "YSFGateway not running"
+msgstr "YSFGateway не запущен"
+
+#: include/functions.php:830
+msgid "DMRIDs.dat not correct!"
+msgstr "Некорректный файл DMRIDs.dat!"
