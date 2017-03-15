@@ -4,6 +4,8 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 include "config/config.php";
 
+if (!defined("LOCALE"))
+   define("LOCALE", "en_GB");
 include "locale/".LOCALE."/settings.php";
 $codeset = "UTF8";
 putenv('LANG='.LANG_LOCALE.'.'.$codeset);

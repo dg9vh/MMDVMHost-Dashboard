@@ -1,3 +1,17 @@
+<?php
+include "config/config.php";
+if (!defined("LOCALE"))
+   define("LOCALE", "en_GB");
+
+include "locale/".LOCALE."/settings.php";
+$codeset = "UTF8";
+putenv('LANG='.LANG_LOCALE.'.'.$codeset);
+putenv('LANGUAGE='.LANG_LOCALE.'.'.$codeset);
+bind_textdomain_codeset('messages', $codeset);
+bindtextdomain('messages', dirname(__FILE__).'/locale/');
+setlocale(LC_ALL, LANG_LOCALE.'.'.$codeset);
+textdomain('messages');
+?>
 <!doctype html>
 <html lang="de">
   <head>
