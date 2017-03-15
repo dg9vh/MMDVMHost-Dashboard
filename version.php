@@ -1,3 +1,3 @@
 <?php
-define("VERSION", "20170314-2");
+define("VERSION", "20170315-1 (".getGitVersion().")");
 ?>
