@@ -364,7 +364,7 @@ msgstr "på batterie"
 
 #: index.php:70
 msgid "DMR-Network: "
-msgstr "DMR-Netværk"
+msgstr "DMR-Netværk: "
 
 #: index.php:159
 msgid "Last Reload"
