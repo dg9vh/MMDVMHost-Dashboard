@@ -187,7 +187,7 @@ msgid ""
 "forgot to configure it! Please delete the file or configure your Dashboard "
 "by calling <a href=\"setup.php\">setup.php</a>!"
 msgstr "Du har glemt at slette setup.php i root-mappen af dit Dashboard eller du har glemt at konfigurere det! Vær så venlig at slette denne fil eller konfigurer dit Dashboard"
-"via denne link <a href=\"setup.php\">setup.php</a>!"
+" via denne link <a href=\"setup.php\">setup.php</a>!"
 
 #: include/modes.php:3
 msgid "Enabled Modes"
