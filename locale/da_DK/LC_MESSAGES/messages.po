@@ -35,7 +35,7 @@ msgstr "YSFGateway processen kører ikke"
 
 #: include/ysfgatewayinfo.php:25
 msgid "YSFReflectors reported active"
-msgstr "YSFReflectors rapporterede aktiv"
+msgstr "Aktive YSFReflectorer"
 
 #: include/ysfgatewayinfo.php:37
 msgid "No."
@@ -68,7 +68,7 @@ msgstr "Tid"
 
 #: include/localtx_ajax.php:14 include/lh_ajax.php:14 include/txinfo.php:11
 msgid "Mode"
-msgstr "Mode"
+msgstr "Module/TS"
 
 #: include/localtx_ajax.php:15 include/lh_ajax.php:15 include/txinfo.php:12
 msgid "Callsign"
@@ -76,7 +76,7 @@ msgstr "Kaldesignal"
 
 #: include/localtx_ajax.php:23 include/lh_ajax.php:23 include/txinfo.php:25
 msgid "DSTAR-ID"
-msgstr "DSTAR-ID"
+msgstr "D-STAR ID"
 
 #: include/localtx_ajax.php:24 include/lh_ajax.php:24 include/txinfo.php:26
 msgid "Target"
@@ -96,7 +96,7 @@ msgstr "Tab af data"
 
 #: include/localtx_ajax.php:28 include/lh_ajax.php:28
 msgid "BER"
-msgstr "BER"
+msgstr "BER%"
 
 #: include/localtx_ajax.php:30
 msgid "RSSI (min)"
@@ -156,7 +156,7 @@ msgstr "DMR CC"
 
 #: include/repeaterinfo.php:63
 msgid "DMR-Master"
-msgstr "DMR-Master"
+msgstr "DMR-Masterserver"
 
 #: include/repeaterinfo.php:64
 msgid "TS1"
@@ -207,7 +207,7 @@ msgstr "Anvendt plads"
 
 #: include/disk.php:10
 msgid "File System"
-msgstr "Fil system"
+msgstr "Filsystem"
 
 #: include/disk.php:11
 msgid "Mount Point"
@@ -215,7 +215,7 @@ msgstr "Mount Point"
 
 #: include/disk.php:12
 msgid "Use"
-msgstr "Plads"
+msgstr "Optaget"
 
 #: include/disk.php:13
 msgid "Free"
@@ -344,7 +344,7 @@ msgstr "Systemlast"
 
 #: ajax.php:229
 msgid "CPU-Usage"
-msgstr "CPU-forbrug"
+msgstr "CPU-last"
 
 #: ajax.php:230
 msgid "Uptime"
