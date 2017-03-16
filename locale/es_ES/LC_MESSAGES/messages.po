@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: MMDVMHost Dashboard Spanish\n"
 "Report-Msgid-Bugs-To: dg9vh@darc.de\n"
 "POT-Creation-Date: 2017-03-14 13:47+0000\n"
-"PO-Revision-Date: 2017-03-15 02:32+0100\n"
+"PO-Revision-Date: 2017-03-15 21:20+0100\n"
 "Last-Translator: Pablo - EA4FVB <ea4fvb@gmail.com>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Reporte ReflectoresYSF activo"
 
 #: include/ysfgatewayinfo.php:37
 msgid "No."
-msgstr "N."
+msgstr "Nº"
 
 #: include/ysfgatewayinfo.php:38 include/localtx_ajax.php:19
 #: include/lh_ajax.php:19 include/txinfo.php:16
@@ -113,7 +113,7 @@ msgstr "RSSI (med)"
 
 #: include/repeaterinfo.php:3
 msgid "Repeater Info"
-msgstr "Info Repetidor"
+msgstr "Información del Repetidor / HotSpot"
 
 #: include/repeaterinfo.php:9
 msgid "Current Mode"
@@ -129,11 +129,11 @@ msgstr "YSF conectado a"
 
 #: include/repeaterinfo.php:23
 msgid "DMR TS1 last linked to"
-msgstr "DMR TS1 última conexión a"
+msgstr "DMR TS1 conectado a"
 
 #: include/repeaterinfo.php:24
 msgid "DMR TS2 last linked to"
-msgstr "DMR TS2 última conexión a"
+msgstr "DMR TS2 conectado a"
 
 #: include/repeaterinfo.php:48
 msgid "Location"
@@ -227,7 +227,7 @@ msgstr "Libre"
 
 #: include/disk.php:14
 msgid "Used"
-msgstr "Ocupado"
+msgstr "Utilizado"
 
 #: include/disk.php:15
 msgid "Total"
@@ -235,7 +235,7 @@ msgstr "Total"
 
 #: include/txinfo.php:3
 msgid "Currently TXing"
-msgstr "Actualmente en TX"
+msgstr "Actualmente en TX..."
 
 #: include/txinfo.php:21
 msgid "Talker Alias"
@@ -243,7 +243,7 @@ msgstr "Talker Alias"
 
 #: include/txinfo.php:28
 msgid "TX-Time"
-msgstr "Tiempo TX"
+msgstr "Duración"
 
 #: scripts/rebootmmdvm.php:50 scripts/halt.php:49 scripts/log.php:53
 #: scripts/reboot.php:50 index.php:59
@@ -280,7 +280,7 @@ msgstr "obtenlo en:"
 #: scripts/rebootmmdvm.php:90 scripts/halt.php:89 scripts/log.php:134
 #: scripts/reboot.php:89 index.php:174 credits.php:13 credits.php:17
 msgid "Credits"
-msgstr "Creditos"
+msgstr "Créditos"
 
 #: scripts/halt.php:66
 msgid "Halt in progress...bye"
@@ -518,7 +518,7 @@ msgstr "Ruta del Links.log"
 
 #: setup.php:124
 msgid "Name of ircddbgateway-executeable"
-msgstr "Nombre del ejecutable del ircddbgateway"
+msgstr "Nombre del ejecutable del ircDDBGateway"
 
 #: setup.php:129
 msgid "Global Configuration"
@@ -682,7 +682,7 @@ msgstr "compilado"
 
 #: include/functions.php:161
 msgid "ircddbgateway is down!"
-msgstr "ircddbgateway apagado!"
+msgstr "ircDDBGateway apagado!"
 
 #: include/functions.php:164 include/functions.php:175
 msgid "Remote gateway configured - not checked!"
@@ -702,7 +702,7 @@ msgstr "idle"
 
 #: include/functions.php:623
 msgid "ircddbgateway not running!"
-msgstr "ircddbgateway no está funcionando!"
+msgstr "ircDDBGateway no funcionando!"
 
 #: include/functions.php:640 include/functions.php:656
 #: include/functions.php:741

@@ -848,4 +848,10 @@ function decodeAlias($logLine) {
   $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
   return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
+
+
+function getGitVersion(){
+	exec("git rev-parse HEAD", $output);
+	return 'GitID #<a href="https://github.com/dg9vh/MMDVMHost-Dashboard/commit/'.substr($output[0],0,7).'">'.substr($output[0],0,7).'</a>';
+}
 ?>
