@@ -29,7 +29,7 @@
 ###############################################################################
 #
 #Edit by R2AJV
-#
+#Edit by CT2JAY
 
 
 # Full path to DMR ID file
@@ -62,10 +62,7 @@ fi
 #rm -f /tmp/DMRIds.dat.$(date +%d%m%y)
 
 # Uncomment it if you want to get the data from database of the BrandMeister network
-wget http://registry.dstar.su/dmr/DMRIds.php -O DMRIds-temp1.dat
-cat DMRIds-temp1.dat | sed -e 's/ /\t\t/g' > DMRIds-temp2.dat
-cat DMRIds-temp2.dat | sed -e 's/\t/ /g' > DMRIds-temp3.dat
-cat DMRIds-temp3.dat | sed -e 's/  / /g' > ${DMRIDFILE}
-rm -f DMRIds-temp1.dat
-rm -f DMRIds-temp2.dat
-rm -f DMRIds-temp3.dat
+curl 'http://registry.dstar.su/dmr/DMRIds.php' 2>/dev/null | sed -e 's/[[:space:]]\+/ /g' > ${DMRIDFILE}
+mv /tmp/DMRIds.dat.$(date +%d%m%y) ${DMRIDFILE}
+rm -f /tmp/DMRIds.dat.$(date +%d%m%y)
+
