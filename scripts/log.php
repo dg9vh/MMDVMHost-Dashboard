@@ -137,5 +137,6 @@ echo '<!--Page generated in '.$total_time.' seconds.-->';
 $(document).ready(function(){
 
 var logT = $('#log').dataTable( {
+   "language": <?php echo DATATABLESTRANSLATION; ?>,
     "aaSorting": [[1,'asc']]
   } );});   </script>

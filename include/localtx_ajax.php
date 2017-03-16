@@ -41,6 +41,7 @@ $totalLH = count($lastHeard);
 <script>
 $(document).ready(function(){
    var localTxT = $('#localTx').dataTable( {
+    "language": <?php echo DATATABLESTRANSLATION; ?>,
     "aaSorting": [[0,'desc']],
 
    <?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";

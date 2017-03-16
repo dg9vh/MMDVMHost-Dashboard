@@ -2,7 +2,7 @@
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading"><?php _("YSFGateway-Infos"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php echo _("YSFGateway-Infos"); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <table class="table">
@@ -64,6 +64,7 @@
 <script>
 $(document).ready(function(){
 var ysfGatewaysT = $('#ysfGateways').dataTable( {
+    "language": <?php echo DATATABLESTRANSLATION; ?>,
     "aaSorting": [[0,'asc']]
   } );
 });

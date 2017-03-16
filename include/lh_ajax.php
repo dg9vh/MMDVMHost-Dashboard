@@ -35,6 +35,7 @@ $totalLH = count($lastHeard);
 <script>
 $(document).ready(function(){
   var lastHeardT = $('#lastHeard').dataTable( {
+   "language": <?php echo DATATABLESTRANSLATION; ?>,
    "aaSorting": [[0,'desc']],
    <?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";
    if (strpos($request,"index.php")> 0) {
