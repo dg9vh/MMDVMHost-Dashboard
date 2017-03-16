@@ -223,7 +223,7 @@ msgstr "Всего"
 
 #: include/txinfo.php:3
 msgid "Currently TXing"
-msgstr "TX сейчас"
+msgstr "Текущая активность"
 
 #: include/txinfo.php:21
 msgid "Talker Alias"
@@ -343,7 +343,7 @@ msgstr "Продолжительность ожидания"
 
 #: ajax.php:237
 msgid "online"
-msgstr "в сети"
+msgstr "от сети"
 
 #: ajax.php:237
 msgid "on battery"
