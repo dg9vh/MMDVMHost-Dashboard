@@ -12,3 +12,7 @@ settings.php-file within this directory and modify the messages.po within
 the LC_MESSAGES-directory. After this, you should generate a messages.mo
 with the command 'msgfmt messages.po -o messages.mo'. The command is part
 of the gettext-package to be installed before with 'apt-get install gettext'.
+
+To get the translations for DataTables, take a look at
+https://datatables.net/plug-ins/i18n/ - here you'll find links to translations
+you can copy&paste into settings.php of the locale-directory.
