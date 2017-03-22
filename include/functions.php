@@ -473,7 +473,7 @@ function getHeardList($logLines, $onlyLast) {
          $rssi = "";
          $ts1alias = "---";
          $ts2alias = "---";
-         if ($onlyLast && count($heardList )> 4) {
+         if ($onlyLast && count($heardList )> 20) {
             return $heardList;
          }
       }

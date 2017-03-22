@@ -27,7 +27,7 @@ $logLinesMMDVM = getMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 rsort($reverseLogLinesMMDVM);
 if ($_GET['section'] == "mode") {
-   $mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, FALSE), $mmdvmconfigs);
+   $mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, TRUE), $mmdvmconfigs);
    echo $mode;
 }
 if ($_GET['section'] == "lastHeard") {
