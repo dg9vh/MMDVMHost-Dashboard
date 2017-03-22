@@ -209,7 +209,7 @@ function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
-   $logLines = explode("\n", `egrep -h "Starting|DISCONNECT|Connect|Automatic" $logPath`);
+   $logLines = explode("\n", `egrep -h "Starting|DISCONNECT|Connect|Automatic|Disconnecting" $logPath`);
    return $logLines;
 }
 
