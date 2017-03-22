@@ -25,9 +25,9 @@ if (!defined("TIMEZONE"))
    define("TIMEZONE", "UTC");
 $logLinesMMDVM = getMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
-array_multisort($reverseLogLinesMMDVM,SORT_DESC);
+rsort($reverseLogLinesMMDVM);
 if ($_GET['section'] == "mode") {
-   $mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, TRUE), $mmdvmconfigs);
+   $mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, FALSE), $mmdvmconfigs);
    echo $mode;
 }
 if ($_GET['section'] == "lastHeard") {
