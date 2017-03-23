@@ -518,7 +518,7 @@ msgstr "Globalna konfiguracja"
 
 #: setup.php:188
 msgid "Locale"
-msgstr ""
+msgstr "Lokalizacja"
 
 #: setup.php:192
 msgid "URL to Logo"
