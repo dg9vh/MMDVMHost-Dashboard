@@ -206,6 +206,10 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <input type="text" value="<?php echo constant("LOGO") ?>" name="LOGO" class="form-control" placeholder="http://your-logo" aria-describedby="LOGO">
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="JSONNETWORK" style="width: 300px"><?php echo _("Use networks.php instead of configuration below"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="JSONNETWORK" <?php if (defined("JSONNETWORK")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="DMRPLUSLOGO" style="width: 300px"><?php echo _("URL to DMRplus-Logo"); ?></span>
         <input type="text" value="<?php echo constant("DMRPLUSLOGO") ?>" name="DMRPLUSLOGO" class="form-control" placeholder="http://your-logo" aria-describedby="DMRPLUSLOGO">
       </div>

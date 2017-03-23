@@ -7,6 +7,7 @@ $start = $time;
 
 // do not touch this includes!!! Never ever!!!
 include "../config/config.php";
+include("../config/networks.php");
 include "../include/tools.php";
 include "../include/functions.php";
 include "../include/init.php";
@@ -53,16 +54,27 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
 <?php
 checkSetup();
 include "../include/sysinfo.php";
-if ($_GET['network'] == "DMRPLUS") {
-   setDMRNetwork("DMRplus");
-   exec( "sudo cp ".MMDVMINIPATH."/DMRPLUS.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
-   exec( REBOOTMMDVM );
+if (defined("JSONNETWORK")) {
+  $netname = $_GET['network'];
+  $network = $networks[$netname];
+  echo "<br>";
+  echo "INI:".$network['ini'];
+  setDMRNetwork($network['label']);
+  exec( "sudo cp ".MMDVMINIPATH."/".$network['ini'].".ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
+  exec( REBOOTMMDVM );
+} else {
+  if ($_GET['network'] == "DMRPLUS") {
+    setDMRNetwork("DMRplus");
+    exec( "sudo cp ".MMDVMINIPATH."/DMRPLUS.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
+    exec( REBOOTMMDVM );
+  }
+  if ($_GET['network'] == "BRANDMEISTER") {
+    setDMRNetwork("BrandMeister");
+    exec( "sudo cp ".MMDVMINIPATH."/BRANDMEISTER.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
+    exec( REBOOTMMDVM );
+  }
 }
-if ($_GET['network'] == "BRANDMEISTER") {
-   setDMRNetwork("BrandMeister");
-   exec( "sudo cp ".MMDVMINIPATH."/BRANDMEISTER.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
-   exec( REBOOTMMDVM );
-}
+
 ?>
 <div class="alert alert-info" role="alert">Switching network to <b><?php echo getDMRNetwork2() ?></b><br>Restarting in new selected network in progress</div>
  

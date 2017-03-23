@@ -660,3 +660,11 @@ msgstr "Médio"
 #: setup.php:331
 msgid "Save configuration"
 msgstr "Gravar configuração"
+
+#: index.php:78
+msgid "Configuration"
+msgstr ""
+
+#: setup.php:209
+msgid "Use networks.php instead of configuration below"
+msgstr ""
