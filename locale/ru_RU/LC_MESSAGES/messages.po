@@ -395,7 +395,7 @@ msgstr "Вы забыли задать требуемые разрешение �
 
 #: setup.php:41 setup.php:50
 msgid "Setup-Process"
-msgstr "Процесс установки"
+msgstr "Настройка параметров панели управления"
 
 #: setup.php:42
 msgid "Your config-file is written in config/config.php, please remove setup.php for security reasons!"
@@ -699,8 +699,8 @@ msgstr "Некорректный файл DMRIDs.dat!"
 
 #: index.php:78
 msgid "Configuration"
-msgstr ""
+msgstr "Конфигурация"
 
 #: setup.php:209
 msgid "Use networks.php instead of configuration below"
-msgstr ""
+msgstr "Использовать данные из файла networks.php вместо кофигурации ниже"
