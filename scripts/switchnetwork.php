@@ -56,7 +56,8 @@ checkSetup();
 include "../include/sysinfo.php";
 if (defined("JSONNETWORK")) {
   $netname = $_GET['network'];
-  $network = $networks[$netname];
+  $key = recursive_array_search($netname,$networks);
+    $network = $networks[$key];
   echo "<br>";
   echo "INI:".$network['ini'];
   setDMRNetwork($network['label']);
