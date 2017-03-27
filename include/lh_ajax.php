@@ -1,9 +1,12 @@
 <?php
 $totalLH = count($lastHeard);
+$TMP_CALL_NAME = "/tmp/Callsign_Name.txt";
+exec("wc -l ".$TMP_CALL_NAME." | cut -f1 -d' '", $output);
+exec("wc -l ".DMRIDDATPATH." | cut -f1 -d' '", $output2);
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading"><?php echo _("Last Heard List of today's")." ".$totalLH." "._("callsigns."); ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+  <div class="panel-heading"><?php echo _("Last Heard List of today's")." ".$totalLH." "._("callsigns.")." "._("Cached")." (".$output[0]."/".$output2[0].")"; ?><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span></div>
   <div class="panel-body">
   <!-- Tabelle -->
   <div class="table-responsive">
