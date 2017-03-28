@@ -262,6 +262,10 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <div class="panel-body"><input type="checkbox" name="ENABLENETWORKSWITCHING" <?php if (defined("ENABLENETWORKSWITCHING")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="ENABLEREFLECTORSWITCHING" style="width: 300px"><?php echo _("Enable Reflector-Switching-Function"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="ENABLEREFLECTORSWITCHING" <?php if (defined("ENABLEREFLECTORSWITCHING")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="SWITCHNETWORKUSER" style="width: 300px"><?php echo _("Username for switching networks:"); ?></span>
         <input type="text" value="<?php echo constant("SWITCHNETWORKUSER") ?>" name="SWITCHNETWORKUSER" class="form-control" placeholder="username" aria-describedby="SWITCHNETWORKUSER">
       </div>

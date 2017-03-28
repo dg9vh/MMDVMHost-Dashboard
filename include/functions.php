@@ -849,9 +849,33 @@ function decodeAlias($logLine) {
   return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
 
-
 function getGitVersion(){
 	exec("git rev-parse HEAD", $output);
 	return 'GitID #<a href="https://github.com/dg9vh/MMDVMHost-Dashboard/commit/'.substr($output[0],0,7).'">'.substr($output[0],0,7).'</a>';
+}
+
+function getDMRReflectors($network) {
+  $refls = array();
+  switch ($network) {
+    case "DMRPLUS":
+      $refls = getDMRReflectorsFromURL("http://ham-dmr.de/reflector.db");
+      break;
+    case "BRANDMEISTER":
+      $refls = getDMRReflectorsFromURL("http://185.79.71.94/reflector.db");
+      break;
+         
+  }
+  return $refls;
+
+}
+
+function getDMRReflectorsFromURL($url) {
+	$data = file_get_contents($url);
+    $rows = explode("\n",$data);
+    $refls = array();
+    foreach($rows as $row) {
+        $refls[] = str_getcsv($row,"@",'');
+    }
+    return $refls;
 }
 ?>
