@@ -668,3 +668,7 @@ msgstr "Configuração"
 #: setup.php:209
 msgid "Use networks.php instead of configuration below"
 msgstr "Use networks.php em vez da configuração abaixo"
+
+#: include/lh_ajax.php:6
+msgid "Cached"
+msgstr "Em cache"
