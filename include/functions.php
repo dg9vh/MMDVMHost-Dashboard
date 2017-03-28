@@ -856,6 +856,7 @@ function getGitVersion(){
 	} else {
 		return 'GitID unknown';
 	}
+<<<<<<< HEAD
 }
 
 function getDMRReflectors($network) {
@@ -881,5 +882,7 @@ function getDMRReflectorsFromURL($url) {
         $refls[] = str_getcsv($row,"@",'');
     }
     return $refls;
+=======
+>>>>>>> 45c79329737e865e19bb761c4f3b3321107b09ba
 }
 ?>
