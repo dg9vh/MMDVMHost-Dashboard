@@ -845,7 +845,9 @@ function decodeAlias($logLine) {
   $tok4 = encode(substr($logLine, 49, 2));
   $tok5 = encode(substr($logLine, 52, 2));
   $tok6 = encode(substr($logLine, 55, 2));
-  $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
+// https://github.com/g4klx/MMDVMHost/commit/bba5cbc0bad65f32dde6f673255a05534ebc13ab
+// $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
+  $tok7 = encode(substr($logLine, 58, 2));
   return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
 
