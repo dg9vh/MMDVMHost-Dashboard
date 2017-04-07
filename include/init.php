@@ -7,18 +7,11 @@ if (!defined("TIMEZONE"))
    define("TIMEZONE", "UTC");
 $logLinesMMDVM = getMMDVMLog();
 showLapTime("getMMDVMLog");
-//getNames(" ");
-showLapTime("getNames");
-//$_SESSION['logLinesMMDVM'] = $logLinesMMDVM;
 $reverseLogLinesMMDVM = $logLinesMMDVM;
-//array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 rsort($reverseLogLinesMMDVM);
 showLapTime("array_multisort");
-//$_SESSION['reverseLogLinesMMDVM'] = $reverseLogLinesMMDVM;
 $lastHeard = getLastHeard($reverseLogLinesMMDVM, FALSE);
 showLapTime("getLastHeard");
-//$_SESSION['lastHeard'] = $lastHeard;
-
 if (defined("ENABLEYSFGATEWAY")) {
    $logLinesYSFGateway = getYSFGatewayLog();
    showLapTime("getYSFGatewayLog");

@@ -14,10 +14,6 @@ $logLinesMMDVM = getShortMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 $lastHeard = getLastHeard($reverseLogLinesMMDVM, True);
-//$oldLastHeard = $_SESSION['lastHeard'];
-/*echo"<!--";
-var_dump($lastHeard);
-echo"-->";*/
 $counter = 0;
 foreach ($lastHeard as $listElem) {
    $counter +=1;
@@ -28,21 +24,8 @@ foreach ($lastHeard as $listElem) {
       echo "<tr>";
       echo"<td nowrap>$listElem[0]</td>";
       echo"<td nowrap>$listElem[1]</td>";
-      /*if ($listElem[2] !== "??????????") {
-         if (!is_numeric($listElem[2])) {
-            if (defined("SHOWQRZ")) {
-               echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[2]\">".str_replace("0","&Oslash;",$listElem[2])."</a></td>";
-            } else {
-               echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$listElem[2]\">".$listElem[2]."</td>";
-            }
-         } else {
-            echo"<td nowrap><a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</td>";
-         }
-      }*/
       echo"<td nowrap>$listElem[2]</td>";
-
       if (defined("ENABLEXTDLOOKUP")) {
-         //echo "<td nowrap>".getName($listElem[2])."</td>";
          echo"<td nowrap>$listElem[3]</td>";
          if (defined("TALKERALIAS"))
            echo"<td nowrap>$listElem[11]</td>";

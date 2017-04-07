@@ -47,16 +47,6 @@ if ($_GET['section'] == "lastHeard") {
    }
    echo '{"data": '.json_encode($lastHeard)."}";
 }
-/*
-   for ($i = 0; $i < count($localTXList); $i++) {
-     $listElem = $localTXList[$i];
-   if (defined("ENABLEXTDLOOKUP")) {
-   	 $listElem[11] =""; 
-   } else {
-   	 $listElem[10] ="";
-   }
-   echo '{"data": '.json_encode($lastHeard)."}";
-}*/
 if ($_GET['section'] == "localTx") {
    $localTXList = getHeardList($reverseLogLinesMMDVM, FALSE);
    $lastHeard = Array();

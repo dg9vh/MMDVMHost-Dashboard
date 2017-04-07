@@ -1,10 +1,4 @@
 <?php
-//session_start();
-/*
-$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$start = $time;*/
 header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
 // do not touch this includes!!! Never ever!!!
@@ -43,7 +37,6 @@ include "version.php";
     <!-- CSS for monospaced fonts in tables -->
     <link rel="stylesheet" href="css/monospacetables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>-->
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <!-- Optionales Theme -->
@@ -197,16 +190,9 @@ if (defined("ENABLEYSFGATEWAY")) {
 ?>
    <div class="panel panel-info">
 <?php
-//$datum = date("Y-m-d");
-//$uhrzeit = date("H:i:s");
 $lastReload = new DateTime();
 $lastReload->setTimezone(new DateTimeZone(TIMEZONE));
 echo "MMDVMHost-Dashboard V ".VERSION." | "._("Last Reload")." ".$lastReload->format('Y-m-d, H:i:s')." (".TIMEZONE.")";
-/*$time = microtime();
-$time = explode(' ', $time);
-$time = $time[1] + $time[0];
-$finish = $time;
-$total_time = round(($finish - $start), 4);*/
 echo '<!--Page generated in '.getLapTime().' seconds.-->';
 ?> |
 <?php

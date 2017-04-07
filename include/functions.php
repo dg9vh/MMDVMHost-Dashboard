@@ -434,14 +434,12 @@ function getHeardList($logLines, $onlyLast) {
             $loss = $ts1loss;
             $ber = $ts1ber;
             $rssi = $ts1rssi;
-//            $alias = $ts1alias;
             break;
          case "DMR Slot 2":
             $duration = $ts2duration;
             $loss = $ts2loss;
             $ber = $ts2ber;
             $rssi = $ts2rssi;
-//            $alias = $ts2alias;
             break;
          case "YSF":
             $duration = $ysfduration;
@@ -750,39 +748,6 @@ function getYSFReflectorById($id, $reflectors) {
    }
 }
 
-/*
-function getNames($delimiter) {
-   if (!isset($_SESSION['dmrIDs'])) {
-      $dmrIDs = Array();
-      $file = fopen(DMRIDDATPATH, 'r');
-      if ($file) {
-         while (($line = fgetcsv($file, 1000, $delimiter)) !== FALSE) {
-            array_push($dmrIDs, array('id'=>$line[0], 'callsign'=>$line[1], 'name'=>$line[2]));
-         }
-      }
-      $_SESSION['dmrIDs'] = $dmrIDs;
-   }
-}
-function getName($callsign) {
-   $dmrIDs = $_SESSION['dmrIDs'];
-   $key = array_search("$callsign", array_column($dmrIDs, 'callsign'));
-   //return $key;
-   $dmrID = $_SESSION['dmrIDs'][$key];
-   //var_dump($dmrID);
-   return $dmrID['name'];
-}
-
-function getName($callsign) {
-// var_dump($_SESSION['dmrIDs']);
-   foreach ($_SESSION['dmrIDs'] as $dmrID) {
-      if ($dmrID[1] == $callsign) {
-         return $dmrID[2];
-      }
-   }
-   return "---";
-}
-*/
-
 function getName($callsign) {
    if (is_numeric($callsign)) {
       return "---";
@@ -810,10 +775,6 @@ function getName($callsign) {
       }
       $delimiter =" ";
       exec("sed -e 's/[[:space:]]\+/ /g' ".DMRIDDATPATH ." | grep -m1 '".$callsign.$delimiter."'" , $output);
-//      if (count($output) == 0) {
-//         $delimiter = "\t";
-//         exec("egrep -m1 '".$callsign.$delimiter."' ".DMRIDDATPATH, $output);
-//      }
       if (count($output) !== 0) {
          $name = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', substr($output[0], strpos($output[0],$delimiter)+1));
          $name = substr($name, strpos($name,$delimiter)+1);
@@ -845,8 +806,6 @@ function decodeAlias($logLine) {
   $tok4 = encode(substr($logLine, 49, 2));
   $tok5 = encode(substr($logLine, 52, 2));
   $tok6 = encode(substr($logLine, 55, 2));
-// https://github.com/g4klx/MMDVMHost/commit/bba5cbc0bad65f32dde6f673255a05534ebc13ab
-// $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
   $tok7 = encode(substr($logLine, 58, 2));
   return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
