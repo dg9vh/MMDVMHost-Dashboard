@@ -395,7 +395,7 @@ msgstr "Вы забыли задать требуемые разрешение �
 
 #: setup.php:41 setup.php:50
 msgid "Setup-Process"
-msgstr "Процесс установки"
+msgstr "Настройка параметров панели управления"
 
 #: setup.php:42
 msgid "Your config-file is written in config/config.php, please remove setup.php for security reasons!"
@@ -463,7 +463,7 @@ msgstr "Путь к папке с YSFGateway.ini"
 
 #: setup.php:105
 msgid "YSFGateway.ini-filename"
-msgstr "Имя файла настроеек (обычно YSFGateway.ini)"
+msgstr "Имя файла настроек (обычно YSFGateway.ini)"
 
 #: setup.php:109
 msgid "Path to YSFHosts.txt"
@@ -571,11 +571,11 @@ msgstr "Пароль для просмотра логов:"
 
 #: setup.php:269
 msgid "Username for halt:"
-msgstr "Логин для оставнки системы:"
+msgstr "Логин для остановки системы:"
 
 #: setup.php:273
 msgid "Password for halt:"
-msgstr "Пароль для оставнки системы:"
+msgstr "Пароль для остановки системы:"
 
 #: setup.php:277
 msgid "Username for reboot:"
@@ -696,3 +696,16 @@ msgstr "YSFGateway не запущен"
 #: include/functions.php:830
 msgid "DMRIDs.dat not correct!"
 msgstr "Некорректный файл DMRIDs.dat!"
+
+#: index.php:78
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: setup.php:209
+msgid "Use networks.php instead of configuration below"
+msgstr "Использовать данные из файла networks.php вместо кофигурации ниже"
+
+#: include/lh_ajax.php:6
+msgid "Cached"
+msgstr "Кэширование"
+

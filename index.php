@@ -22,6 +22,8 @@ bindtextdomain('messages', dirname(__FILE__).'/locale/');
 setlocale(LC_ALL, LANG_LOCALE.'.'.$codeset);
 textdomain('messages');
 
+
+include("config/networks.php");
 include "include/tools.php";
 startStopwatch();
 showLapTime("Start of page");
@@ -69,24 +71,37 @@ include "version.php";
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?>
   <?php
-  if (strlen(getDMRNetwork()) > 0 ) {
-   echo "<br>";
-   echo _("DMR-Network: ").getDMRNetwork();
+  if (defined("JSONNETWORK")) {
+    $key = recursive_array_search(getDMRNetwork(),$networks);
+    $network = $networks[$key];
+    echo "<br>";
+    echo _("Configuration").": ".$network['label'];
+    
+  } else {
+    if (strlen(getDMRNetwork()) > 0 ) {
+      echo "<br>";
+      echo _("DMR-Network: ").getDMRNetwork();
+    }
   }
   ?></h4>
   <?php
   $logourl = "";
-  if (getDMRNetwork() == "BrandMeister") {
-   if (constant('BRANDMEISTERLOGO') !== NULL) {
-      $logourl = BRANDMEISTERLOGO;
+  if (defined("JSONNETWORK")) {
+    $key = recursive_array_search(getDMRNetwork(),$networks);
+    $network = $networks[$key];
+    $logourl = $network['logo'];
+  } else {
+    if (getDMRNetwork() == "BrandMeister") {
+      if (constant('BRANDMEISTERLOGO') !== NULL) {
+        $logourl = BRANDMEISTERLOGO;
+      }
+    }
+    if (getDMRNetwork() == "DMRplus") {
+      if (constant('DMRPLUSLOGO') !== NULL) {
+        $logourl = DMRPLUSLOGO;
+      }
     }
   }
-  if (getDMRNetwork() == "DMRplus") {
-   if (constant('DMRPLUSLOGO') !== NULL) {
-     $logourl = DMRPLUSLOGO;
-    }
-  }
-
   if ($logourl == "") {
    $logourl = LOGO;
   }
@@ -108,10 +123,36 @@ if (defined("ENABLEMANAGEMENT")) {
 <?php
 }
 if (defined("ENABLENETWORKSWITCHING")) {
+  if (defined("JSONNETWORK")) {
+  	echo '  <br>';
+  	foreach ($networks as $network) {
+  	  echo '  <button onclick="window.location.href=\'./scripts/switchnetwork.php?network='.$network['ini'].'\'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;'.$network['label'].'</button>';
+  	}
+  	
+  } else {
 ?>
   <button onclick="window.location.href='./scripts/switchnetwork.php?network=DMRPLUS'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<?php echo _("DMRplus"); ?></button>
   <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;<?php echo _("BrandMeister"); ?></button>
 <?php
+  }
+  if (defined("ENABLEREFLECTORSWITCHING") && (getEnabled("DMR Network", $mmdvmconfigs) == 1) && !recursive_array_search(gethostbyname(getConfigItem("DMR Network", "Address", $mmdvmconfigs)),getBrandMeisterDMRMasterList()) ) {
+  	$reflectors = getDMRReflectors();
+?>
+  <form method = "get" action ="./scripts/switchreflector.php" class="form-inline" role="form">
+  <div class="form-group">
+  	<select id="reflector" name="reflector" class="form-control" style="width: 80px;">
+<?php
+    foreach ($reflectors as $reflector) {
+	  if (isset($reflector[1]))
+		echo'<option value="'.$reflector[0].'">'.$reflector[1].'</option>';
+    }
+?>
+    </select>
+    <button type="submit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;<?php echo _("ReflSwitch"); ?></button>
+  
+  </div></form>
+<?php
+  }
 }
 checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include

@@ -717,3 +717,16 @@ msgstr "YSFGateway läuft nicht"
 #: include/functions.php:830
 msgid "DMRIDs.dat not correct!"
 msgstr "DMRIDs.dat nicht korrekt!"
+
+#: index.php:78
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: setup.php:209
+msgid "Use networks.php instead of configuration below"
+msgstr "Nutze networks.php statt d. Konfig. unten"
+
+#: include/lh_ajax.php:6
+msgid "Cached"
+msgstr "Zwischengespeichert"
+

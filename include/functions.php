@@ -209,7 +209,7 @@ function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
-   $logLines = explode("\n", `egrep -h "Starting|DISCONNECT|Connect|Automatic" $logPath`);
+   $logLines = explode("\n", `egrep -h "Starting|DISCONNECT|Connect|Automatic|Disconnecting" $logPath`);
    return $logLines;
 }
 
@@ -473,7 +473,7 @@ function getHeardList($logLines, $onlyLast) {
          $rssi = "";
          $ts1alias = "---";
          $ts2alias = "---";
-         if ($onlyLast && count($heardList )> 4) {
+         if ($onlyLast && count($heardList )> 20) {
             return $heardList;
          }
       }
@@ -845,13 +845,38 @@ function decodeAlias($logLine) {
   $tok4 = encode(substr($logLine, 49, 2));
   $tok5 = encode(substr($logLine, 52, 2));
   $tok6 = encode(substr($logLine, 55, 2));
-  $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
+// https://github.com/g4klx/MMDVMHost/commit/bba5cbc0bad65f32dde6f673255a05534ebc13ab
+// $tok7 = encode(dechex(hexdec(substr($logLine, 58, 2))/2));
+  $tok7 = encode(substr($logLine, 58, 2));
   return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
 
-
 function getGitVersion(){
-	exec("git rev-parse HEAD", $output);
-	return 'GitID #<a href="https://github.com/dg9vh/MMDVMHost-Dashboard/commit/'.substr($output[0],0,7).'">'.substr($output[0],0,7).'</a>';
+	if (file_exists(".git")) {
+		exec("git rev-parse HEAD", $output);
+		return 'GitID #<a href="https://github.com/dg9vh/MMDVMHost-Dashboard/commit/'.substr($output[0],0,7).'">'.substr($output[0],0,7).'</a>';
+	} else {
+		return 'GitID unknown';
+	}
+}
+
+function getDMRReflectors() {
+	$data = file_get_contents("http://ham-dmr.de/reflector.db");
+    $rows = explode("\n",$data);
+    $refls = array();
+    foreach($rows as $row) {
+        $refls[] = str_getcsv($row,"@",'');
+    }
+    return $refls;
+}
+
+function getBrandMeisterDMRMasterList() {
+	$data = file_get_contents("http://185.79.71.94/dmr/dmrmaster.php");
+    $rows = explode("\n",$data);
+    $masters = array();
+    foreach($rows as $row) {
+        $masters[] = str_getcsv($row,"@",'');
+    }
+    return $masters;
 }
 ?>
