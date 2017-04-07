@@ -43,6 +43,8 @@ textdomain('messages');
       <li>sa7bnt</li>
       <li>ct2jay</li>
       <li>oe7jkt</li>
+      <li>f0dei</li>
+      <li>f1ptl</li>
       <li><?php echo _("and some others..."); ?></li>
     </ul>
    <p><?php echo _("Those, who felt forgotten, feel free to commit a change into github of this file."); ?></p>

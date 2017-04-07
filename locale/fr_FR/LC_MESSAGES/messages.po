@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0\n"
-"Last-Translator: \n"
+"Last-Translator: Bruno - F1PTL\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
