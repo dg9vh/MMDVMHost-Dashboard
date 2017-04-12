@@ -823,8 +823,8 @@ function decodeAlias($logLine) {
 
 function getGitVersion(){
 	if (file_exists(".git")) {
-		exec("git rev-parse HEAD", $output);
-		return 'GitID #<a href="https://github.com/dg9vh/MMDVMHost-Dashboard/commit/'.substr($output[0],0,7).'">'.substr($output[0],0,7).'</a>';
+		exec("git rev-parse --short HEAD", $output);
+		return 'GitID #<a href="https://github.com/dg9vh/MMDVMHost-Dashboard/commit/'.$output[0].' target="_blank">'.$output[0].'</a>';
 	} else {
 		return 'GitID unknown';
 	}
