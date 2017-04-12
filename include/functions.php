@@ -10,7 +10,7 @@ function getMMDVMHostVersion() {
    } else {
       showLapTime("getMMDVMHostVersion");
       if (strlen($output[0]) > 26) {
-         return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/MMDVMHost/commit/" . substr($output[0],32,7) . "\">" . substr($output[0],32,7) . "</a>)";
+         return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/MMDVMHost/commit/" . substr($output[0],32,7) . "\" target=\"_blank\">" . substr($output[0],32,7) . "</a>)";
       } else {
          return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ")";
       }
@@ -32,6 +32,7 @@ function getFirmwareVersion() {
    $firmware = "n/a";
    if (count($logLines) >= 2) {
       $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
+      $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/g4klx/MMDVM/commit/$1" target=\"_blank\">$1</a>', $firmware);
    }
    if ($firmware != "n/a") {
       $fp = fopen('/tmp/MMDVMFirmware.txt', 'w');
