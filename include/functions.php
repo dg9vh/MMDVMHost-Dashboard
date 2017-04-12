@@ -32,6 +32,7 @@ function getFirmwareVersion() {
    $firmware = "n/a";
    if (count($logLines) >= 2) {
       $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
+      $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/g4klx/MMDVM/commit/$1" target=\"_blank\">$1</a>', $firmware);
    }
    if ($firmware != "n/a") {
       $fp = fopen('/tmp/MMDVMFirmware.txt', 'w');
