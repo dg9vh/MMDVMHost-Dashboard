@@ -10,7 +10,7 @@ function getMMDVMHostVersion() {
    } else {
       showLapTime("getMMDVMHostVersion");
       if (strlen($output[0]) > 26) {
-         return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/MMDVMHost/commit/" . substr($output[0],32,7) . "\">" . substr($output[0],32,7) . "</a>)";
+         return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/MMDVMHost/commit/" . substr($output[0],32,7) . "\" target=\"_blank\">" . substr($output[0],32,7) . "</a>)";
       } else {
          return substr($output[0],18,8)." ("._("compiled")." ".getMMDVMHostFileVersion(). ")";
       }
