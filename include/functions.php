@@ -306,20 +306,25 @@ function getHeardList($logLines, $onlyLast) {
                if (constant("RSSI") == "min") $rssiVal = preg_replace('/(-\d+)\/-\d+\/-\d+ dBm/', "\\1", $rssiString);
                else if (constant("RSSI") == "max") $rssiVal = preg_replace('/-\d+\/(-\d+)\/-\d+ dBm/', "\\1", $rssiString);
                else if (constant("RSSI") == "avg") $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+               else if (constant("RSSI") == "all") $rssiVal = $rssiString;
                else $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
-               if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-63") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-73") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-83") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-93") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-99") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-105") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-111") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-117") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-123") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+               if (constant("RSSI") != "all") {
+                  if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-63") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-73") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-83") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-93") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-99") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-105") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-111") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-117") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-123") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+               } else {
+                  $rssi = $rssiVal;
+               }
             }
             $ber = substr($loss, 5);
             $loss = "";
@@ -333,20 +338,25 @@ function getHeardList($logLines, $onlyLast) {
                if (constant("RSSI") == "min") $rssiVal = preg_replace('/(-\d+)\/-\d+\/-\d+ dBm/', "\\1", $rssiString);
                else if (constant("RSSI") == "max") $rssiVal = preg_replace('/-\d+\/(-\d+)\/-\d+ dBm/', "\\1", $rssiString);
                else if (constant("RSSI") == "avg") $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+               else if (constant("RSSI") == "all") $rssiVal = $rssiString;
                else $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
-               if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-63") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-73") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-83") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-93") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-99") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-105") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-111") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-117") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-123") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               else if ($rssiVal > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+               if (constant("RSSI") != "all") {
+                  if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-63") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-73") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-83") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-93") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-99") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-105") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-111") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-117") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-123") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+               } else {
+                  $rssi = $rssiVal;
+               }
             }
          }
 

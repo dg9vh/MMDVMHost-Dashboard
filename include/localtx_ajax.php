@@ -30,6 +30,7 @@ $totalLH = count($lastHeard);
       if (constant("RSSI") == "min") echo "<th>"._("RSSI (min)")."</th>";
       else if (constant("RSSI") == "max") echo "<th>"._("RSSI (max)")."</th>";
       else if (constant("RSSI") == "avg") echo "<th>"._("RSSI (avg)")."</th>";
+      else if (constant("RSSI") == "all") echo "<th>"._("RSSI (min/max/avg)")."</th>";
       else echo "<th>"._("RSSI (avg)")."</th>"; 
       ?>
             </tr>

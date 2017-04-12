@@ -344,6 +344,7 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
            <option <?php if (constant("RSSI") == "min") echo "selected=\"selected\" "?>value="min"><?php echo _("minimal"); ?></option>
            <option <?php if (constant("RSSI") == "max") echo "selected=\"selected\" "?>value="max"><?php echo _("maximal"); ?></option>
            <option <?php if (constant("RSSI") == "avg" or (!defined("RSSI"))) echo "selected=\"selected\" "?>value="avg"><?php echo _("average"); ?></option>
+           <option <?php if (constant("RSSI") == "all") echo "selected=\"selected\" "?>value="all"><?php echo _("all"); ?></option>
         </select>
         </div>
       </div>
