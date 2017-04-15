@@ -530,6 +530,8 @@ function getLastHeard($logLines, $onlyLast) {
 }
 
 function getActualMode($metaLastHeard, $mmdvmconfigs) {
+   if (count($metaLastHeard) == 0)
+      return _("idle");
    // returns mode of repeater actual working in
    $listElem = $metaLastHeard[0];
    $timestamp = new DateTime($listElem[0],new DateTimeZone(TIMEZONE));
