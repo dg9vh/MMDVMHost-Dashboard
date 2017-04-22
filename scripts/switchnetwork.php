@@ -58,8 +58,6 @@ if (defined("JSONNETWORK")) {
   $netname = $_GET['network'];
   $key = recursive_array_search($netname,$networks);
     $network = $networks[$key];
-  echo "<br>";
-  echo "INI:".$network['ini'];
   setDMRNetwork($network['label']);
   exec( "sudo cp ".MMDVMINIPATH."/".$network['ini'].".ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
   exec( REBOOTMMDVM );
