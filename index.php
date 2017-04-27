@@ -36,7 +36,7 @@ include "version.php";
     <link rel="stylesheet" href="css/tooltip.css">
     <!-- CSS for monospaced fonts in tables -->
     <link rel="stylesheet" href="css/monospacetables.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <!-- Optionales Theme -->
