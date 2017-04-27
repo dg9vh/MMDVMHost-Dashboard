@@ -128,7 +128,7 @@ if (defined("ENABLENETWORKSWITCHING")) {
   <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;<?php echo _("BrandMeister"); ?></button>
 <?php
   }
-  if (defined("ENABLEREFLECTORSWITCHING") && (getEnabled("DMR Network", $mmdvmconfigs) == 1) && !recursive_array_search(gethostbyname(getConfigItem("DMR Network", "Address", $mmdvmconfigs)),getBrandMeisterDMRMasterList()) ) {
+  if (defined("ENABLEREFLECTORSWITCHING") && (getEnabled("DMR Network", $mmdvmconfigs) == 1) && recursive_array_search(gethostbyname(getConfigItem("DMR Network", "Address", $mmdvmconfigs)),getDMRplusDMRMasterList()) ) {
   	$reflectors = getDMRReflectors();
 ?>
   <form method = "get" action ="./scripts/switchreflector.php" class="form-inline" role="form">

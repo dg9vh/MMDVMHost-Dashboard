@@ -842,13 +842,13 @@ function getDMRReflectors() {
     return $refls;
 }
 
-function getBrandMeisterDMRMasterList() {
-	$data = file_get_contents("http://185.79.71.94/dmr/dmrmaster.php");
-    $rows = explode("\n",$data);
-    $masters = array();
-    foreach($rows as $row) {
-        $masters[] = str_getcsv($row,"@",'');
-    }
-    return $masters;
+function getDMRplusDMRMasterList() {
+  $data = file_get_contents("http://ham-dmr.de/dmr/dmrmaster2.php");
+  $rows = explode("\n",$data);
+  $s = array();
+  foreach($rows as $row) {
+    $s[] = str_getcsv($row,"@",'');
+  }
+  return $s;
 }
 ?>
