@@ -199,7 +199,39 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
 ?>
      <div class="input-group">
         <span class="input-group-addon" id="LOCALE" style="width: 300px"><?php echo _("Locale"); ?></span>
-        <input type="text" value="<?php echo constant("LOCALE") ?>" name="LOCALE" class="form-control" placeholder="en_GB" aria-describedby="LOCALE">
+        <div class="input"><select name="LOCALE">
+<?php
+$path = "./locale";
+
+if ($handle = opendir($path)) {
+    $files = array();
+    while ($files[] = readdir($handle));
+    sort($files);
+    closedir($handle);
+}
+$blacklist = array('','.','..','somedir','somefile.php');
+
+foreach ($files as $file) {
+    if (!in_array($file, $blacklist)) {
+?>		   <option <?php if (constant("LOCALE") == $file) echo "selected=\"selected\" "?>value="<?php echo $file?>"><?php echo $file; ?></option>
+<?php
+    }
+}
+/*
+  $path = "./locale";
+  $blacklist = array('somedir','somefile.php');
+
+  foreach (new DirectoryIterator($path) as $fileInfo) {
+    if($fileInfo->isDot()) continue;
+    $file =  $fileInfo->getFilename();
+?>		   <option <?php if (constant("LOCALE") == $file) echo "selected=\"selected\" "?>value="<?php echo $file?>"><?php echo $file; ?></option>
+<?php
+  }
+*/
+?>
+        </select>
+        </div>
+        <!--input type="text" value="<?php echo constant("LOCALE") ?>" name="LOCALE" class="form-control" placeholder="en_GB" aria-describedby="LOCALE"-->
       </div>
      <div class="input-group">
         <span class="input-group-addon" id="LOGO" style="width: 300px"><?php echo _("URL to Logo"); ?></span>
