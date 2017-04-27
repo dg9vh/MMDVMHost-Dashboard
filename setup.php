@@ -184,7 +184,6 @@ function get_tz_options($selectedzone, $label, $desc = '') {
         }
 
         $selectcontinent = $continent;
-     // }
     }
     $structure .= '</optgroup>';
     return $structure;
@@ -217,21 +216,9 @@ foreach ($files as $file) {
 <?php
     }
 }
-/*
-  $path = "./locale";
-  $blacklist = array('somedir','somefile.php');
-
-  foreach (new DirectoryIterator($path) as $fileInfo) {
-    if($fileInfo->isDot()) continue;
-    $file =  $fileInfo->getFilename();
-?>		   <option <?php if (constant("LOCALE") == $file) echo "selected=\"selected\" "?>value="<?php echo $file?>"><?php echo $file; ?></option>
-<?php
-  }
-*/
 ?>
         </select>
         </div>
-        <!--input type="text" value="<?php echo constant("LOCALE") ?>" name="LOCALE" class="form-control" placeholder="en_GB" aria-describedby="LOCALE"-->
       </div>
      <div class="input-group">
         <span class="input-group-addon" id="LOGO" style="width: 300px"><?php echo _("URL to Logo"); ?></span>
