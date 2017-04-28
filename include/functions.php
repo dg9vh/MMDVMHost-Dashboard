@@ -210,7 +210,7 @@ function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
-   $logLines = explode("\n", `egrep -h "Starting|DISCONNECT|Connect|Automatic|Disconnecting" $logPath`);
+   $logLines = explode("\n", `egrep -h "Starting|Disconnect|Connect|Automatic|Disconnecting" $logPath`);
    return $logLines;
 }
 
@@ -626,6 +626,7 @@ function getActualLink($logLines, $mode) {
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
+
    switch ($mode) {
       case "D-Star":
          if (isProcessRunning(IRCDDBGATEWAY)) {
@@ -672,24 +673,23 @@ function getActualLink($logLines, $mode) {
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH
 // M: 2016-10-01 17:52:36.586 Automatic connection to 62829
-
          if (isProcessRunning("YSFGateway")) {
             foreach($logLines as $logLine) {
                $to = "";
+               if (strpos($logLine,"Disconnect has been requested")) {
+                  $to = -1;
+               }
                if (strpos($logLine,"Connect to")) {
                   $to = substr($logLine, 38, 5);
                }
                if (strpos($logLine,"Automatic connection to")) {
                   $to = substr($logLine, 51, 5);
                }
-               if ($to !== "") {
-                  return $to;
-               }
                if (strpos($logLine,"Starting YSFGateway")) {
                   $to = -1;
                }
-               if (strpos($logLine,"DISCONNECT Reply")) {
-                  $to = -1;
+               if ($to !== "") {
+                  return $to;
                }
             }
             return -1;
