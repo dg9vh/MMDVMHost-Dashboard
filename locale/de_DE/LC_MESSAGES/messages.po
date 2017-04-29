@@ -294,7 +294,7 @@ msgstr "System neustarten"
 
 #: scripts/log.php:64 index.php:103
 msgid "ShutDown System"
-msgstr "System heruntefahren"
+msgstr "System herunterfahren"
 
 #: scripts/log.php:68 index.php:108
 msgid "DMRplus"
@@ -730,3 +730,6 @@ msgstr "Nutze networks.php statt d. Konfig. unten"
 msgid "Cached"
 msgstr "Zwischengespeichert"
 
+#: index.php:144
+msgid "ReflSwitch"
+msgstr "Reflektor umschalten"
