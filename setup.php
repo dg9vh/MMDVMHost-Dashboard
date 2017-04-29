@@ -143,7 +143,7 @@ include "include/tools.php";
 <?php
 function get_tz_options($selectedzone, $label, $desc = '') {
    echo '<div class="input-group">';
-    echo '<span class="input-group-addon" id="TIMEZONE" style="width: 300px"><?php echo _("Timezone"); ?></span>';
+    echo '<span class="input-group-addon" id="TIMEZONE" style="width: 300px">'._("Timezone").'</span>';
    echo '<div class="input"><select name="TIMEZONE">';
   function timezonechoice($selectedzone) {
     $all = timezone_identifiers_list();

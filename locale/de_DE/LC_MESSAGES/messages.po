@@ -733,3 +733,8 @@ msgstr "Zwischengespeichert"
 #: index.php:144
 msgid "ReflSwitch"
 msgstr "Reflektor umschalten"
+
+#: setup.php:146
+msgid "Timezone"
+msgstr "Zeitzone"
+

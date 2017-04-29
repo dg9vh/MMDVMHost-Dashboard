@@ -734,3 +734,6 @@ msgstr ""
 msgid "ReflSwitch"
 msgstr ""
 
+#: setup.php:146
+msgid "Timezone"
+msgstr ""
