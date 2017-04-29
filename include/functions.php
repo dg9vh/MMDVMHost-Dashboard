@@ -210,7 +210,7 @@ function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
-   $logLines = explode("\n", `egrep -h "Starting|Disconnect|Connect|Automatic|Disconnecting" $logPath`);
+   $logLines = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting" $logPath`);
    return $logLines;
 }
 
@@ -682,11 +682,11 @@ function getActualLink($logLines, $mode) {
                if (strpos($logLine,"Connect to")) {
                   $to = substr($logLine, 38, 5);
                }
+               if (strpos($logLine,"The ID of this repeater is")) {
+                  $to = -1;
+               }
                if (strpos($logLine,"Automatic connection to")) {
                   $to = substr($logLine, 51, 5);
-               }
-               if (strpos($logLine,"Starting YSFGateway")) {
-                  $to = -1;
                }
                if ($to !== "") {
                   return $to;
