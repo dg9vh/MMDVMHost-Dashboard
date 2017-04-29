@@ -137,7 +137,7 @@ if (defined("ENABLENETWORKSWITCHING")) {
 <?php
     foreach ($reflectors as $reflector) {
 	  if (isset($reflector[1]))
-		echo'<option value="'.$reflector[0].'">'.$reflector[1].'</option>';
+		echo'<option value="'.$reflector[0].'">'.mb_convert_encoding($reflector[1], "UTF-8", "ISO-8859-1").'</option>';
     }
 ?>
     </select>
