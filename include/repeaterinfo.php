@@ -30,14 +30,14 @@
    echo"<tr>";
    echo"<td id=\"mode\">".getActualMode($lastHeard, $mmdvmconfigs)."</td>";
    if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
-     echo"<td>".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
+     echo"<td id=\"dstarlink\">".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
    }
    if (getEnabled("System Fusion", $mmdvmconfigs) == 1) {
-     echo"<td>".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
+     echo"<td id=\"ysflink\">".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
    }
    if (getEnabled("DMR", $mmdvmconfigs) == 1) {
-     echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
-     echo"<td>".getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ."</td>";
+     echo"<td id=\"dmr1link\">".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
+     echo"<td id=\"dmr2link\">".getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ."</td>";
    }
    echo"</tr>\n";
 ?>

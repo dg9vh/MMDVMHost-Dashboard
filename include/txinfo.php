@@ -55,6 +55,22 @@ function refreshMode() {
    doXMLHTTPRequest("ajax.php?section=mode","mode");
 }
 
+function refreshDstarLink() {
+   doXMLHTTPRequest("ajax.php?section=dstarlink","dstarlink");
+}
+
+function refreshYSFLink() {
+   doXMLHTTPRequest("ajax.php?section=ysflink","ysflink");
+}
+
+function refreshDMR1Link() {
+   doXMLHTTPRequest("ajax.php?section=dmr1link","dmr1link");
+}
+
+function refreshDMR2Link() {
+   doXMLHTTPRequest("ajax.php?section=dmr2link","dmr2link");
+}
+
 var transmitting = false;
 function loadXMLDoc() {
    var xmlhttp;
@@ -73,6 +89,26 @@ function loadXMLDoc() {
 
    var timeout = window.setTimeout("loadXMLDoc()", 1000);
    refreshMode();
+<?php
+  if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+  ?>
+   refreshDstarLink();
+  <?php
+  }
+?>
+<?php
+  if (getEnabled("System Fusion", $mmdvmconfigs) == 1) {
+  ?>refreshYSFLink();
+  <?php
+  }
+?>
+<?php
+  if (getEnabled("DMR", $mmdvmconfigs) == 1) {
+  ?>refreshDMR1Link();
+  refreshDMR2Link();
+  <?php
+  }
+?>
 }
 loadXMLDoc();
 </script>

@@ -30,6 +30,34 @@ if ($_GET['section'] == "mode") {
    $mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, TRUE), $mmdvmconfigs);
    echo $mode;
 }
+
+if ($_GET['section'] == "dstarlink") {
+   $link = getActualLink($reverseLogLinesMMDVM, "D-Star");
+   echo $link;
+}
+
+
+if ($_GET['section'] == "ysflink") {
+   $logLinesYSFGateway = getYSFGatewayLog();
+   $reverseLogLinesYSFGateway = $logLinesYSFGateway;
+   rsort($reverseLogLinesYSFGateway);
+   $activeYSFReflectors = getActiveYSFReflectors();
+   $link = getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors);
+   echo $link;
+}
+
+
+if ($_GET['section'] == "dmr1link") {
+   $link = getActualLink($reverseLogLinesMMDVM, "DMR Slot 1");
+   echo $link;
+}
+
+
+if ($_GET['section'] == "dmr2link") {
+   $link = getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ;
+   echo $link;
+}
+
 if ($_GET['section'] == "lastHeard") {
    $lastHeardList = getLastHeard($reverseLogLinesMMDVM, FALSE);
    $lastHeard = Array();
