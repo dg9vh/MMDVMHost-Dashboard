@@ -209,7 +209,7 @@ function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
-   $logLines = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting" $logPath`);
+   $logLines = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting|Reverting" $logPath`);
    return $logLines;
 }
 
@@ -700,6 +700,8 @@ function getActualLink($logLines, $mode) {
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH
 // M: 2016-10-01 17:52:36.586 Automatic connection to 62829
+// M: 2017-05-15 21:19:42.870 Reverting connection to 62829
+
          if (isProcessRunning("YSFGateway")) {
             foreach($logLines as $logLine) {
                $to = "";
@@ -708,6 +710,9 @@ function getActualLink($logLines, $mode) {
                }
                if (strpos($logLine,"Connect to")) {
                   $to = substr($logLine, 38, 5);
+               }
+               if (strpos($logLine,"Reverting connection")) {
+                  $to = substr($logLine, 51, 5);
                }
                if (strpos($logLine,"The ID of this repeater is")) {
                   $to = -1;
@@ -727,7 +732,7 @@ function getActualLink($logLines, $mode) {
          }
          if (file_exists('/tmp/YSFState.txt')) {
            $fp = fopen('/tmp/YSFState.txt', 'r');
-           $contents = fread($fp, filesize("/tmp/DMR2State.txt"));
+           $contents = fread($fp, filesize("/tmp/YSFState.txt"));
            fclose($fp);
            if (count($contents)>0){
               return $contents;
