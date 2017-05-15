@@ -97,7 +97,6 @@ function getDMRMasterState() {
       $state = $contents;
    }
    return $state;
-
 }
 
 function getMMDVMConfig() {
@@ -645,11 +644,25 @@ function getActualLink($logLines, $mode) {
                   $to = trim(substr($logLine, strpos($logLine,"to") + 3));
                }
                if ($to !== "") {
+                  $fp = fopen('/tmp/DMR1State.txt', 'w');
+                  fwrite($fp, $to);
+                  fclose($fp);
                   return $to;
                }
             }
          }
-         return _("not linked");
+         if (file_exists('/tmp/DMR1State.txt')) {
+           $fp = fopen('/tmp/DMR1State.txt', 'r');
+           $contents = fread($fp, filesize("/tmp/DMR1State.txt"));
+           fclose($fp);
+           if (count($contents)>0){
+              return $contents;
+           } else {
+              return _("not linked");
+           }
+         } else {
+         	return _("not linked");
+         }
          break;
       case "DMR Slot 2":
          foreach ($logLines as $logLine) {
@@ -661,11 +674,25 @@ function getActualLink($logLines, $mode) {
                   $to = trim(substr($logLine, strpos($logLine,"to") + 3));
                }
                if ($to !== "") {
+                  $fp = fopen('/tmp/DMR2State.txt', 'w');
+                  fwrite($fp, $to);
+                  fclose($fp);
                   return $to;
                }
             }
          }
-         return _("not linked");
+         if (file_exists('/tmp/DMR2State.txt')) {
+           $fp = fopen('/tmp/DMR2State.txt', 'r');
+           $contents = fread($fp, filesize("/tmp/DMR2State.txt"));
+           fclose($fp);
+           if (count($contents)>0){
+              return $contents;
+           } else {
+              return _("not linked");
+           }
+         } else {
+         	return _("not linked");
+         }
          break;
       case "YSF":
 
@@ -689,21 +716,58 @@ function getActualLink($logLines, $mode) {
                   $to = substr($logLine, 51, 5);
                }
                if ($to !== "") {
+                  $fp = fopen('/tmp/YSFState.txt', 'w');
+                  fwrite($fp, $to);
+                  fclose($fp);
                   return $to;
                }
             }
-            return -1;
-            break;
          } else {
-            return -2;
-            break;
+         	return -2;
          }
-
+         if (file_exists('/tmp/YSFState.txt')) {
+           $fp = fopen('/tmp/YSFState.txt', 'r');
+           $contents = fread($fp, filesize("/tmp/DMR2State.txt"));
+           fclose($fp);
+           if (count($contents)>0){
+              return $contents;
+           } else {
+              return -1;
+           }
+         } else {
+           return -1;
+         }
+         break;
    }
    return _("something went wrong!");
 }
 
 function getActualReflector($logLines, $mode) {
+   $to = getActualReflector2($logLines, $mode);
+   if ($to >= -1 ) {
+      $fp = fopen('/tmp/DMR2RefState.txt', 'w');
+      fwrite($fp, $to);
+      fclose($fp);
+      if ($to == -1) {
+         return _("Reflector not linked");
+      } else {
+         return $to;
+      }
+   }
+  
+   if (file_exists('/tmp/DMR2RefState.txt')) {
+      $fp = fopen('/tmp/DMR2RefState.txt', 'r');
+      $contents = fread($fp, filesize("/tmp/DMR2RefState.txt"));
+      fclose($fp);
+      if (count($contents)>0){
+         return $contents;
+      } else {
+         return _("not linked");
+      }
+   }
+}
+
+function getActualReflector2($logLines, $mode) {
    // returns actual link state of specific mode
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
@@ -714,7 +778,7 @@ function getActualReflector($logLines, $mode) {
 
          if (strlen($from) == 4 && startsWith($from,"4")) {
             if ($from == "4000") {
-               return _("Reflector not linked");
+               return -1;
             } else {
                return _("Reflector")." ".$from;
             }
@@ -732,7 +796,7 @@ function getActualReflector($logLines, $mode) {
          }
       }
    }
-   return _("Reflector not linked");
+   return -1;
 }
 
 function getActiveYSFReflectors() {
