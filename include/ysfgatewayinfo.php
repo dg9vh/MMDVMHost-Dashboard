@@ -48,7 +48,11 @@
             echo "<tr>";
             echo "<td>$counter</td>";
             for ($i = 0; $i < 4; $i++) {
-               echo"<td>$reflector[$i]</td>";
+               if ($i == 0 && defined("ENABLEYSFREFLECTORSWITCHING")) {
+                 echo"<td><a href=\"scripts/switchysfreflector.php?reflector=$reflector[2]\" title=\"Click to connect to\">$reflector[$i]</a></td>";
+               } else {
+                 echo"<td>$reflector[$i]</td>";
+               }
             }
             echo "</tr>\n";
             $counter++;

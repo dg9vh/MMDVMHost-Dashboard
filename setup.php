@@ -281,8 +281,12 @@ foreach ($files as $file) {
         <div class="panel-body"><input type="checkbox" name="ENABLENETWORKSWITCHING" <?php if (defined("ENABLENETWORKSWITCHING")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="ENABLEREFLECTORSWITCHING" style="width: 300px"><?php echo _("Enable Reflector-Switching-Function"); ?></span>
+        <span class="input-group-addon" id="ENABLEREFLECTORSWITCHING" style="width: 300px"><?php echo _("Enable Reflector-Switching-Function (DMR)"); ?></span>
         <div class="panel-body"><input type="checkbox" name="ENABLEREFLECTORSWITCHING" <?php if (defined("ENABLEREFLECTORSWITCHING")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="ENABLEYSFREFLECTORSWITCHING" style="width: 300px"><?php echo _("Enable Reflector-Switching-Function (YSF)"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="ENABLEYSFREFLECTORSWITCHING" <?php if (defined("ENABLEYSFREFLECTORSWITCHING")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="SWITCHNETWORKUSER" style="width: 300px"><?php echo _("Username for switching networks:"); ?></span>
@@ -328,6 +332,10 @@ foreach ($files as $file) {
       <div class="input-group">
         <span class="input-group-addon" id="RESTARTPW" style="width: 300px"><?php echo _("Password for restart:"); ?></span>
         <input type="text" value="<?php echo constant("RESTARTPW") ?>" name="RESTARTPW" class="form-control" placeholder="password" aria-describedby="RESTARTPW">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="REBOOTYSFGATEWAY" style="width: 300px"><?php echo _("Reboot YSFGateway command:"); ?></span>
+        <input type="text" value="<?php echo constant("REBOOTYSFGATEWAY") ?>" name="REBOOTYSFGATEWAY" class="form-control" placeholder="sudo systemctl restart ysfgateway.service" aria-describedby="REBOOTYSFGATEWAY">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="REBOOTMMDVM" style="width: 300px"><?php echo _("Reboot MMDVMHost command:"); ?></span>
