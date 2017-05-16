@@ -150,10 +150,10 @@ function get_tz_options($selectedzone, $label, $desc = '') {
 
     $i = 0;
     foreach($all AS $zone) {
-      $zone = explode('/',$zone);
+      $zone                   = explode('/',$zone);
       $zonen[$i]['continent'] = isset($zone[0]) ? $zone[0] : '';
-      $zonen[$i]['city'] = isset($zone[1]) ? $zone[1] : '';
-      $zonen[$i]['subcity'] = isset($zone[2]) ? $zone[2] : '';
+      $zonen[$i]['city']      = isset($zone[1]) ? $zone[1] : '';
+      $zonen[$i]['subcity']   = isset($zone[2]) ? $zone[2] : '';
       $i++;
     }
 

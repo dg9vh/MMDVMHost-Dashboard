@@ -36,9 +36,9 @@ foreach ($lastHeard as $listElem) {
          }else{
             echo"<td nowrap>$listElem[6]</td>";
          }
-         $d1 = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
-         $d2 = new DateTime('now', new DateTimeZone(TIMEZONE));
-         $diff = $d2->getTimestamp() - $d1->getTimestamp();
+         $d1     = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
+         $d2     = new DateTime('now', new DateTimeZone(TIMEZONE));
+         $diff   = $d2->getTimestamp() - $d1->getTimestamp();
          echo"<td nowrap>$diff s</td>";
       } else {
       	 if (defined("TALKERALIAS"))
@@ -50,10 +50,10 @@ foreach ($lastHeard as $listElem) {
          }else{
             echo"<td nowrap>$listElem[5]</td>";
          }
-         $tz = new DateTimeZone(TIMEZONE);
-         $d1 = new DateTime($listElem[0], $tz);
-         $d2 = new DateTime('now', $tz);
-         $diff = $d2->getTimestamp() - $d1->getTimestamp();
+         $tz     = new DateTimeZone(TIMEZONE);
+         $d1     = new DateTime($listElem[0], $tz);
+         $d2     = new DateTime('now', $tz);
+         $diff   = $d2->getTimestamp() - $d1->getTimestamp();
          echo"<td nowrap>$diff s</td>";
       }
       echo "</tr>";

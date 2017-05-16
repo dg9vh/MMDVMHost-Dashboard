@@ -1,10 +1,10 @@
 <?php
 function format_time($seconds) {
-   $secs = intval($seconds % 60);
-   $mins = intval($seconds / 60 % 60);
-   $hours = intval($seconds / 3600 % 24);
-   $days = intval($seconds / 86400);
-   $uptimeString = "";
+   $secs           = intval($seconds % 60);
+   $mins           = intval($seconds / 60 % 60);
+   $hours          = intval($seconds / 3600 % 24);
+   $days           = intval($seconds / 86400);
+   $uptimeString   = "";
 
    if ($days > 0) {
       $uptimeString .= $days;
@@ -84,20 +84,20 @@ function checkSetup() {
 }
 
 function startStopwatch() {
-   $time = microtime();
-   $time = explode(' ', $time);
-   $time = $time[1] + $time[0];
-   $_SESSION['starttime'] = $time;
+   $time                   = microtime();
+   $time                   = explode(' ', $time);
+   $time                   = $time[1] + $time[0];
+   $_SESSION['starttime']  = $time;
    return $time;
 }
 
 function getLapTime() {
-   $start = $_SESSION['starttime'];
-   $time = microtime();
-   $time = explode(' ', $time);
-   $time = $time[1] + $time[0];
-   $finish = $time;
-   $lap_time = round(($finish - $start), 4);
+   $start      = $_SESSION['starttime'];
+   $time       = microtime();
+   $time       = explode(' ', $time);
+   $time       = $time[1] + $time[0];
+   $finish     = $time;
+   $lap_time   = round(($finish - $start), 4);
    return $lap_time;
 }
 
@@ -115,9 +115,9 @@ function convertTimezone($timestamp) {
 
 function encode($hex) {
 	$validchars = " abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789";
-    $str = '';
-    $chrval = hexdec($hex);
-    $str = chr($chrval);
+    $str        = '';
+    $chrval     = hexdec($hex);
+    $str        = chr($chrval);
     if (strpos($validchars, $str)>=0)
       return $str;
     else
@@ -126,7 +126,7 @@ function encode($hex) {
 
 function recursive_array_search($needle,$haystack) {
     foreach($haystack as $key=>$value) {
-        $current_key=$key;
+        $current_key = $key;
         if($needle===$value OR (is_array($value) && recursive_array_search($needle,$value) !== false)) {
             return $current_key;
         }

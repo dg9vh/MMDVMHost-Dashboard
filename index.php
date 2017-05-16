@@ -65,8 +65,8 @@ include "version.php";
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?>
   <?php
   if (defined("JSONNETWORK")) {
-    $key = recursive_array_search(getDMRNetwork(),$networks);
-    $network = $networks[$key];
+    $key        = recursive_array_search(getDMRNetwork(),$networks);
+    $network    = $networks[$key];
     echo "<br>";
     echo _("Configuration").": ".$network['label'];
     
@@ -80,9 +80,9 @@ include "version.php";
   <?php
   $logourl = "";
   if (defined("JSONNETWORK")) {
-    $key = recursive_array_search(getDMRNetwork(),$networks);
-    $network = $networks[$key];
-    $logourl = $network['logo'];
+    $key        = recursive_array_search(getDMRNetwork(),$networks);
+    $network    = $networks[$key];
+    $logourl    = $network['logo'];
   } else {
     if (getDMRNetwork() == "BrandMeister") {
       if (constant('BRANDMEISTERLOGO') !== NULL) {

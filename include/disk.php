@@ -18,7 +18,6 @@
                <tbody>
 <?php
  error_reporting(E_ERROR | E_WARNING | E_PARSE);
- //include "./functions.php";
 try{
    $datas = array();
    if (!(exec('/bin/df -T | awk -v c=`/bin/df -T | grep -bo "Type" | awk -F: \'{print $2}\'` \'{print substr($0,c);}\' | tail -n +2 | awk \'{print $1","$2","$3","$4","$5","$6","$7}\'', $df))) {

@@ -27,9 +27,9 @@ function getMMDVMHostFileVersion() {
 }
 
 function getFirmwareVersion() {
-   $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `egrep "MMDVM protocol version" $logPath`);
-   $firmware = "n/a";
+   $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+   $logLines   = explode("\n", `egrep "MMDVM protocol version" $logPath`);
+   $firmware   = "n/a";
    if (count($logLines) >= 2) {
       $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
       $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/g4klx/MMDVM/commit/$1" target=\"_blank\">$1</a>', $firmware);
@@ -53,8 +53,8 @@ function setDMRNetwork($network) {
 }
 
 function getDMRNetwork() {
-   $filename = 'config/DMRNetwork.txt';
-   $network = '';
+   $filename   = 'config/DMRNetwork.txt';
+   $network    = '';
    if (file_exists($filename)) {
       $fp = fopen($filename, 'r');
       $network = fread($fp, filesize($filename));
@@ -64,8 +64,8 @@ function getDMRNetwork() {
 }
 
 function getDMRNetwork2() {
-   $filename = '../config/DMRNetwork.txt';
-   $network = '';
+   $filename   = '../config/DMRNetwork.txt';
+   $network    = '';
    if (file_exists($filename)) {
       $fp = fopen($filename, 'r');
       $network = fread($fp, filesize($filename));
@@ -76,9 +76,9 @@ function getDMRNetwork2() {
 }
 
 function getDMRMasterState() {
-   $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);
-   $state = -1;
+   $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+   $logLines   = explode("\n", `egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);
+   $state      = -1;
    foreach($logLines as $logLine) {
       if (strpos($logLine, "successfully") > 0) {
          $state = 1;
@@ -132,7 +132,7 @@ function getCallsign($mmdvmconfigs) {
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
    $sectionpos = array_search("[" . $section . "]", $configs) + 1;
-   $len = count($configs);
+   $len        = count($configs);
    while(startsWith($configs[$sectionpos],$key."=") === false && $sectionpos <= ($len) ) {
       if (startsWith($configs[$sectionpos],"[")) {
          return null;
@@ -191,25 +191,22 @@ function showMode($mode, $mmdvmconfigs) {
 
 function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
-   $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   //$logLines = explode("\n", `grep M: $logPath`);
-   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
+   $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
    return $logLines;
 }
 
 function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
-   $logPath = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" | tail -20`);
-
+   $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
+   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" | tail -20`);
    return $logLines;
 }
 
 function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
-   $logPath = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
-   //$logLines = explode("\n", `egrep -h "D:|M:" $logPath`);
-   $logLines = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting|Reverting" $logPath`);
+   $logPath    = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
+   $logLines   = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting|Reverting" $logPath`);
    return $logLines;
 }
 
@@ -225,32 +222,32 @@ function getYSFGatewayLog() {
 // M: 2017-02-13 15:53:31.253 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
 
 function getHeardList($logLines, $onlyLast) {
-   $heardList = array();
-   $ts1duration = "";
-   $ts1loss = "";
-   $ts1ber = "";
-   $ts1rssi = "";
-   $ts1alias = "---";
-   $ts2duration = "";
-   $ts2loss = "";
-   $ts2ber = "";
-   $ts2rssi = "";
-   $ts2alias = "---";
-   $dstarduration = "";
-   $dstarloss = "";
-   $dstarber = "";
-   $dstarrssi = "";
-   $ysfduration = "";
-   $ysfloss = "";
-   $ysfber = "";
-   $ysfrssi = "";
-   $alias = "";
+   $heardList      = array();
+   $ts1duration    = "";
+   $ts1loss        = "";
+   $ts1ber         = "";
+   $ts1rssi        = "";
+   $ts1alias       = "---";
+   $ts2duration    = "";
+   $ts2loss        = "";
+   $ts2ber         = "";
+   $ts2rssi        = "";
+   $ts2alias       = "---";
+   $dstarduration  = "";
+   $dstarloss      = "";
+   $dstarber       = "";
+   $dstarrssi      = "";
+   $ysfduration    = "";
+   $ysfloss        = "";
+   $ysfber         = "";
+   $ysfrssi        = "";
+   $alias          = "";
    
    foreach ($logLines as $logLine) {
-      $duration = "";
-      $loss = "";
-      $ber = "";
-      $rssi = "";
+      $duration   = "";
+      $loss       = "";
+      $ber        = "";
+      $rssi       = "";
       //removing invalid lines
       if(strpos($logLine,"BS_Dwn_Act")) {
          continue;
@@ -310,23 +307,23 @@ function getHeardList($logLines, $onlyLast) {
                else $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
                if (constant("RSSI") != "all") {
                   if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-63") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-73") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-83") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-93") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-99") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-105") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-111") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-117") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-123") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-63") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-73") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-83") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-93") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-99") $rssi    = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-105") $rssi   = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-111") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-117") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-123") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-129") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-135") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-141") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
                } else {
                   $rssi = $rssiVal;
                }
             }
-            $ber = substr($loss, 5);
+            $ber  = substr($loss, 5);
             $loss = "";
          } else {
             $loss = strtok($loss, " ");
@@ -342,18 +339,18 @@ function getHeardList($logLines, $onlyLast) {
                else $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
                if (constant("RSSI") != "all") {
                   if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-63") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-73") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-83") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-93") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-99") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-105") $rssi = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-111") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-117") $rssi = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-123") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-129") $rssi = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-135") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-141") $rssi = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-63") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-73") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-83") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-93") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-99") $rssi    = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-105") $rssi   = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-111") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-117") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-123") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-129") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-135") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+                  else if ($rssiVal > "-141") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
                } else {
                   $rssi = $rssiVal;
                }
@@ -372,34 +369,34 @@ function getHeardList($logLines, $onlyLast) {
          } else {
             switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
                case "D-Star":
-                  $dstarduration = $duration;
-                  $dstarloss = $loss;
-                  $dstarber = $ber;
-                  $dstarrssi = $rssi;
+                  $dstarduration  = $duration;
+                  $dstarloss      = $loss;
+                  $dstarber       = $ber;
+                  $dstarrssi      = $rssi;
                   break;
                case "DMR Slot 1":
-                  $ts1duration = $duration;
-                  $ts1loss = $loss;
-                  $ts1ber = $ber;
-                  $ts1rssi = $rssi;
+                  $ts1duration    = $duration;
+                  $ts1loss        = $loss;
+                  $ts1ber         = $ber;
+                  $ts1rssi        = $rssi;
                   break;
                case "DMR Slot 2":
-                  $ts2duration = $duration;
-                  $ts2loss = $loss;
-                  $ts2ber = $ber;
-                  $ts2rssi = $rssi;
+                  $ts2duration    = $duration;
+                  $ts2loss        = $loss;
+                  $ts2ber         = $ber;
+                  $ts2rssi        = $rssi;
                   break;
                case "YSF":
-                  $ysfduration = $duration;
-                  $ysfloss = $loss;
-                  $ysfber = $ber;
-                  $ysfrssi = $rssi;
+                  $ysfduration    = $duration;
+                  $ysfloss        = $loss;
+                  $ysfber         = $ber;
+                  $ysfrssi        = $rssi;
                   break;
                case "P25":
-                  $p25duration = $duration;
-                  $p25loss = $loss;
-                  $p25ber = $ber;
-                  $p25rssi = $rssi;
+                  $p25duration    = $duration;
+                  $p25loss        = $loss;
+                  $p25ber         = $ber;
+                  $p25rssi        = $rssi;
                   break;
             }
          }
@@ -434,34 +431,34 @@ function getHeardList($logLines, $onlyLast) {
 
       switch ($mode) {
          case "D-Star":
-            $duration = $dstarduration;
-            $loss = $dstarloss;
-            $ber = $dstarber;
-            $rssi = $dstarrssi;
+            $duration   = $dstarduration;
+            $loss       = $dstarloss;
+            $ber        = $dstarber;
+            $rssi       = $dstarrssi;
             break;
          case "DMR Slot 1":
-            $duration = $ts1duration;
-            $loss = $ts1loss;
-            $ber = $ts1ber;
-            $rssi = $ts1rssi;
+            $duration   = $ts1duration;
+            $loss       = $ts1loss;
+            $ber        = $ts1ber;
+            $rssi       = $ts1rssi;
             break;
          case "DMR Slot 2":
-            $duration = $ts2duration;
-            $loss = $ts2loss;
-            $ber = $ts2ber;
-            $rssi = $ts2rssi;
+            $duration   = $ts2duration;
+            $loss       = $ts2loss;
+            $ber        = $ts2ber;
+            $rssi       = $ts2rssi;
             break;
          case "YSF":
-            $duration = $ysfduration;
-            $loss = $ysfloss;
-            $ber = $ysfber;
-            $rssi = $ysfrssi;
+            $duration   = $ysfduration;
+            $loss       = $ysfloss;
+            $ber        = $ysfber;
+            $rssi       = $ysfrssi;
             break;
          case "P25":
-            $duration = $p25duration;
-            $loss = $p25loss;
-            $ber = $p25ber;
-            $rssi = $p25rssi;
+            $duration   = $p25duration;
+            $loss       = $p25loss;
+            $ber        = $p25ber;
+            $rssi       = $p25rssi;
             break;
       }
 
@@ -475,12 +472,12 @@ function getHeardList($logLines, $onlyLast) {
             array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $id, $target, $source, $duration, $loss, $ber, $rssi, $alias));
             $alias = "";
          }
-         $duration = "";
-         $loss ="";
-         $ber = "";
-         $rssi = "";
-         $ts1alias = "---";
-         $ts2alias = "---";
+         $duration   = "";
+         $loss       = "";
+         $ber        = "";
+         $rssi       = "";
+         $ts1alias   = "---";
+         $ts2alias   = "---";
          if ($onlyLast && count($heardList )> 20) {
             return $heardList;
          }
@@ -491,10 +488,10 @@ function getHeardList($logLines, $onlyLast) {
 
 function getLastHeard($logLines, $onlyLast) {
    //returns last heard list from log
-   $lastHeard = array();
+   $lastHeard  = array();
    $heardCalls = array();
-   $heardList = getHeardList($logLines, $onlyLast);
-   $counter = 0;
+   $heardList  = getHeardList($logLines, $onlyLast);
+   $counter    = 0;
    foreach ($heardList as $listElem) {
       if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || (startsWith($listElem[1], "DMR")) ) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
@@ -503,7 +500,6 @@ function getLastHeard($logLines, $onlyLast) {
             array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[4]);
             if (defined("ENABLEXTDLOOKUP")) {
                if ($listElem[2] !== "??????????") {
-                  //$listElem[3] = "Dummy"; //Should speed up this function - time-issue!
                   $listElem[3] = getName($call_canon); //Should speed up this function - time-issue!
                } else {
                   $listElem[3] = "---";
@@ -532,18 +528,17 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
    if (count($metaLastHeard) == 0)
       return _("idle");
    // returns mode of repeater actual working in
-   $listElem = $metaLastHeard[0];
-   $timestamp = new DateTime($listElem[0],new DateTimeZone(TIMEZONE));
-   
-   $mode = $listElem[1];
+   $listElem   = $metaLastHeard[0];
+   $timestamp  = new DateTime($listElem[0],new DateTimeZone(TIMEZONE));
+   $mode       = $listElem[1];
    if (startsWith($mode, "DMR")) {
       $mode = "DMR";
    }
    if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
       return "<span class=\"label label-danger\">".$mode."</span>";
    } else {
-      $now =  new DateTime('NOW',new DateTimeZone(TIMEZONE));
-      $hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
+      $now        =  new DateTime('NOW',new DateTimeZone(TIMEZONE));
+      $hangtime   = getConfigItem("General", "ModeHang", $mmdvmconfigs);
 
       if ($hangtime != "") {
          $timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
@@ -572,44 +567,44 @@ function getDSTARLinks() {
    $out = "<table>";
    if ($linkLog = fopen(LINKLOGPATH."/Links.log",'r')) {
       while ($linkLine = fgets($linkLog)) {
-         $linkDate = "&nbsp;";
-         $protocol = "&nbsp;";
-         $linkType = "&nbsp;";
+         $linkDate   = "&nbsp;";
+         $protocol   = "&nbsp;";
+         $linkType   = "&nbsp;";
          $linkSource = "&nbsp;";
-         $linkDest = "&nbsp;";
-         $linkDir = "&nbsp;";
+         $linkDest   = "&nbsp;";
+         $linkDir    = "&nbsp;";
 // Reflector-Link, sample:
 // 2011-09-22 02:15:06: DExtra link - Type: Repeater Rptr: DB0LJ  B Refl: XRF023 A Dir: Outgoing
 // 2012-04-03 08:40:07: DPlus link - Type: Dongle Rptr: DB0ERK B Refl: REF006 D Dir: Outgoing
 // 2012-04-03 08:40:07: DCS link - Type: Repeater Rptr: DB0ERK C Refl: DCS001 C Dir: Outgoing
          if(preg_match_all('/^(.{19}).*(D[A-Za-z]*).*Type: ([A-Za-z]*).*Rptr: (.{8}).*Refl: (.{8}).*Dir: (.{8})/',$linkLine,$linx) > 0){
-            $linkDate = $linx[1][0];
-            $protocol = $linx[2][0];
-            $linkType = $linx[3][0];
+            $linkDate   = $linx[1][0];
+            $protocol   = $linx[2][0];
+            $linkType   = $linx[3][0];
             $linkSource = $linx[4][0];
-            $linkDest = $linx[5][0];
-            $linkDir = $linx[6][0];
+            $linkDest   = $linx[5][0];
+            $linkDir    = $linx[6][0];
          }
 // CCS-Link, sample:
 // 2013-03-30 23:21:53: CCS link - Rptr: PE1AGO C Remote: PE1KZU  Dir: Incoming
          if(preg_match_all('/^(.{19}).*(CC[A-Za-z]*).*Rptr: (.{8}).*Remote: (.{8}).*Dir: (.{8})/',$linkLine,$linx) > 0){
-            $linkDate = $linx[1][0];
-            $protocol = $linx[2][0];
-            $linkType = $linx[2][0];
+            $linkDate   = $linx[1][0];
+            $protocol   = $linx[2][0];
+            $linkType   = $linx[2][0];
             $linkSource = $linx[3][0];
-            $linkDest = $linx[4][0];
-            $linkDir = $linx[5][0];
+            $linkDest   = $linx[4][0];
+            $linkDir    = $linx[5][0];
          }
 // Dongle-Link, sample:
 // 2011-09-24 07:26:59: DPlus link - Type: Dongle User: DC1PIA Dir: Incoming
 // 2012-03-14 21:32:18: DPlus link - Type: Dongle User: DC1PIA Dir: Incoming
          if(preg_match_all('/^(.{19}).*(D[A-Za-z]*).*Type: ([A-Za-z]*).*User: (.{6,8}).*Dir: (.*)$/',$linkLine,$linx) > 0){
-            $linkDate = $linx[1][0];
-            $protocol = $linx[2][0];
-            $linkType = $linx[3][0];
+            $linkDate   = $linx[1][0];
+            $protocol   = $linx[2][0];
+            $linkType   = $linx[3][0];
             $linkSource = "&nbsp;";
-            $linkDest = $linx[4][0];
-            $linkDir = $linx[5][0];
+            $linkDest   = $linx[4][0];
+            $linkDir    = $linx[5][0];
          }
          $out .= "<tr><td>" . $linkSource . "</td><td>&nbsp;" . $protocol . "-link</td><td>&nbsp;to&nbsp;</td><td>" . $linkDest . "</td><td>&nbsp;" . $linkDir . "</td></tr>";
       }
@@ -652,8 +647,8 @@ function getActualLink($logLines, $mode) {
             }
          }
          if (file_exists('/tmp/DMR1State.txt')) {
-           $fp = fopen('/tmp/DMR1State.txt', 'r');
-           $contents = fread($fp, filesize("/tmp/DMR1State.txt"));
+           $fp         = fopen('/tmp/DMR1State.txt', 'r');
+           $contents   = fread($fp, filesize("/tmp/DMR1State.txt"));
            fclose($fp);
            if (count($contents)>0){
               return $contents;
@@ -682,8 +677,8 @@ function getActualLink($logLines, $mode) {
             }
          }
          if (file_exists('/tmp/DMR2State.txt')) {
-           $fp = fopen('/tmp/DMR2State.txt', 'r');
-           $contents = fread($fp, filesize("/tmp/DMR2State.txt"));
+           $fp         = fopen('/tmp/DMR2State.txt', 'r');
+           $contents   = fread($fp, filesize("/tmp/DMR2State.txt"));
            fclose($fp);
            if (count($contents)>0){
               return $contents;
@@ -731,8 +726,8 @@ function getActualLink($logLines, $mode) {
          	return -2;
          }
          if (file_exists('/tmp/YSFState.txt')) {
-           $fp = fopen('/tmp/YSFState.txt', 'r');
-           $contents = fread($fp, filesize("/tmp/YSFState.txt"));
+           $fp         = fopen('/tmp/YSFState.txt', 'r');
+           $contents   = fread($fp, filesize("/tmp/YSFState.txt"));
            fclose($fp);
            if (count($contents)>0){
               return $contents;
@@ -761,8 +756,8 @@ function getActualReflector($logLines, $mode) {
    }
   
    if (file_exists('/tmp/DMR2RefState.txt')) {
-      $fp = fopen('/tmp/DMR2RefState.txt', 'r');
-      $contents = fread($fp, filesize("/tmp/DMR2RefState.txt"));
+      $fp         = fopen('/tmp/DMR2RefState.txt', 'r');
+      $contents   = fread($fp, filesize("/tmp/DMR2RefState.txt"));
       fclose($fp);
       if (count($contents)>0){
          return $contents;
@@ -902,9 +897,9 @@ function getGitVersion(){
 }
 
 function getDMRReflectors() {
-	$data = file_get_contents("http://ham-dmr.de/reflector.db");
-    $rows = explode("\n",$data);
-    $refls = array();
+	$data   = file_get_contents("http://ham-dmr.de/reflector.db");
+    $rows   = explode("\n",$data);
+    $refls  = array();
     foreach($rows as $row) {
         $refls[] = str_getcsv($row,"@",'');
     }
@@ -912,9 +907,9 @@ function getDMRReflectors() {
 }
 
 function getDMRplusDMRMasterList() {
-  $data = file_get_contents("http://ham-dmr.de/dmr/dmrmaster2.php");
-  $rows = explode("\n",$data);
-  $s = array();
+  $data   = file_get_contents("http://ham-dmr.de/dmr/dmrmaster2.php");
+  $rows   = explode("\n",$data);
+  $s      = array();
   foreach($rows as $row) {
     $s[] = str_getcsv($row,"@",'');
   }

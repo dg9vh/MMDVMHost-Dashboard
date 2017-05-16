@@ -194,31 +194,31 @@ if ($_GET['section'] == "sysinfo") {
 <?php
    }
 
-   $output = shell_exec('cat /proc/loadavg');
-   $sysload = substr($output,0,strpos($output," "))*100;
+   $output         = shell_exec('cat /proc/loadavg');
+   $sysload        = substr($output,0,strpos($output," "))*100;
    showLapTime("sysload");
-   $stat1 = file('/proc/stat');
+   $stat1          = file('/proc/stat');
    sleep(1);
-   $stat2 = file('/proc/stat');
-   $info1 = explode(" ", preg_replace("!cpu +!", "", $stat1[0]));
-   $info2 = explode(" ", preg_replace("!cpu +!", "", $stat2[0]));
-   $dif = array();
-   $dif['user'] = $info2[0] - $info1[0];
-   $dif['nice'] = $info2[1] - $info1[1];
-   $dif['sys'] = $info2[2] - $info1[2];
-   $dif['idle'] = $info2[3] - $info1[3];
-   $total = array_sum($dif);
-   $cpu = array();
+   $stat2          = file('/proc/stat');
+   $info1          = explode(" ", preg_replace("!cpu +!", "", $stat1[0]));
+   $info2          = explode(" ", preg_replace("!cpu +!", "", $stat2[0]));
+   $dif            = array();
+   $dif['user']    = $info2[0] - $info1[0];
+   $dif['nice']    = $info2[1] - $info1[1];
+   $dif['sys']     = $info2[2] - $info1[2];
+   $dif['idle']    = $info2[3] - $info1[3];
+   $total          = array_sum($dif);
+   $cpu            = array();
    foreach($dif as $x=>$y) $cpu[$x] = round($y / $total * 100, 1);
-   $cpuusage = round($cpu['user'] + $cpu['sys'], 2);
+   $cpuusage   = round($cpu['user'] + $cpu['sys'], 2);
    showLapTime("cpuusage");
 
-   $output = shell_exec('grep -c processor /proc/cpuinfo');
-   $cpucores = $output;
+   $output     = shell_exec('grep -c processor /proc/cpuinfo');
+   $cpucores   = $output;
 
-   $output = shell_exec('cat /proc/uptime');
-   $uptime = format_time(substr($output,0,strpos($output," ")));
-   $idletime = format_time((substr($output,strpos($output," ")))/$cpucores);
+   $output     = shell_exec('cat /proc/uptime');
+   $uptime     = format_time(substr($output,0,strpos($output," ")));
+   $idletime   = format_time((substr($output,strpos($output," ")))/$cpucores);
    showLapTime("idletime");
 
    if (defined("SHOWPOWERSTATE")) {
