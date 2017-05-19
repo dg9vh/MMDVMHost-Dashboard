@@ -202,7 +202,7 @@ if (!isset($_GET['stoprefresh'])) {
    echo '<a href=".">'._("start refreshing").'</a>';
 }
 ?>
- | <?php echo _("get your own at:");?> <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <a href="credits.php"><?php echo _("Credits");?></a>
+ | <?php echo _("get your own at:");?> <a href="https://github.com/dg9vh/MMDVMHost-Dashboard">https://github.com/dg9vh/MMDVMHost-Dashboard</a> | <?php echo _("Follow me");?> <a href="https://twitter.com/DG9VH">@DG9VH</a> | <a href="credits.php"><?php echo _("Credits");?></a>
    </div>
    <noscript>
     For full functionality of this site it is necessary to enable JavaScript.
