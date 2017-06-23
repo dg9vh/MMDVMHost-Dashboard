@@ -59,16 +59,19 @@ if (defined("JSONNETWORK")) {
   $key = recursive_array_search($netname,$networks);
     $network = $networks[$key];
   setDMRNetwork($network['label']);
+  exec( "sudo cp ".MMDVMINIPATH."/".MMDVMINIFILENAME." ".MMDVMINIPATH."/".MMDVMINIFILENAME .".bak" );
   exec( "sudo cp ".MMDVMINIPATH."/".$network['ini'].".ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
   exec( REBOOTMMDVM );
 } else {
   if ($_GET['network'] == "DMRPLUS") {
     setDMRNetwork("DMRplus");
+    exec( "sudo cp ".MMDVMINIPATH."/".MMDVMINIFILENAME." ".MMDVMINIPATH."/".MMDVMINIFILENAME .".bak" );
     exec( "sudo cp ".MMDVMINIPATH."/DMRPLUS.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
     exec( REBOOTMMDVM );
   }
   if ($_GET['network'] == "BRANDMEISTER") {
     setDMRNetwork("BrandMeister");
+    exec( "sudo cp ".MMDVMINIPATH."/".MMDVMINIFILENAME." ".MMDVMINIPATH."/".MMDVMINIFILENAME .".bak" );
     exec( "sudo cp ".MMDVMINIPATH."/BRANDMEISTER.ini ".MMDVMINIPATH."/".MMDVMINIFILENAME );
     exec( REBOOTMMDVM );
   }
