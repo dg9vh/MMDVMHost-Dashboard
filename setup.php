@@ -128,6 +128,33 @@ include "include/tools.php";
       </div>
     </div>
     <div class="container">
+      <h2><?php echo _("DMRGateway-Configuration"); ?></h2>
+      <div class="input-group">
+        <span class="input-group-addon" id="ENABLEDMRGATEWAY" style="width: 300px"><?php echo _("Enable DMRGateway"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="ENABLEDMRGATEWAY" <?php if (defined("ENABLEDMRGATEWAY")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DMRGATEWAYLOGPATH" style="width: 300px"><?php echo _("Path to DMRGateway-logfile"); ?></span>
+        <input type="text" value="<?php echo constant("DMRGATEWAYLOGPATH") ?>" name="DMRGATEWAYLOGPATH" class="form-control" placeholder="/var/log/DMRGateway/" aria-describedby="DMRGATEWAYLOGPATH">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DMRGATEWAYLOGPREFIX" style="width: 300px"><?php echo _("Logfile-prefix"); ?></span>
+        <input type="text" value="<?php echo constant("DMRGATEWAYLOGPREFIX") ?>" name="DMRGATEWAYLOGPREFIX" class="form-control" placeholder="DMRGateway" aria-describedby="DMRGATEWAYLOGPREFIX">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DMRGATEWAYINIPATH" style="width: 300px"><?php echo _("Path to DMRGateway.ini"); ?></span>
+        <input type="text" value="<?php echo constant("YSFGATEWAYINIPATH") ?>" name="YSFGATEWAYINIPATH" class="form-control" placeholder="/etc/YSFGateway/" aria-describedby="YSFGATEWAYINIPATH">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DMRGATEWAYPATH" style="width: 300px"><?php echo _("Path to DMRGateway-executable"); ?></span>
+        <input type="text" value="<?php echo constant("DMRGATEWAYPATH") ?>" name="DMRGATEWAYPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="DMRGATEWAYPATH">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="YSFGATEWAYINIFILENAME" style="width: 300px"><?php echo _("YSFGateway.ini-filename"); ?></span>
+        <input type="text" value="<?php echo constant("DMRGATEWAYINIFILENAME") ?>" name="DMRGATEWAYINIFILENAME" class="form-control" placeholder="DMRGateway.ini" aria-describedby="DMRGATEWAYINIFILENAME">
+      </div>
+    </div>
+    <div class="container">
       <h2><?php echo _("ircddbgateway-Configuration"); ?></h2>
       <div class="input-group">
         <span class="input-group-addon" id="LINKLOGPATH" style="width: 300px"><?php echo _("Path to Links.log"); ?></span>

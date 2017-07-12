@@ -26,6 +26,32 @@ function getMMDVMHostFileVersion() {
    }
 }
 
+function getDMRGatewayVersion() {
+   // returns creation-time or version of DMRGateway as version-number
+   $filename = DMRGATEWAYPATH."/DMRGateway";
+   exec($filename." -v 2>&1", $output);
+   if (!startsWith(substr($output[0],19,8),"20")) {
+      showLapTime("getDMRGatewayVersion");
+      return getDMRGatewayFileVersion();
+   } else {
+      showLapTime("getDMRGatewayVersion");
+      if (strlen($output[0]) > 26) {
+         return substr($output[0],19,8)." ("._("compiled")." ".getDMRGatewayFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/DMRGateway/commit/" . substr($output[0],32,7) . "\" target=\"_blank\">" . substr($output[0],32,7) . "</a>)";
+      } else {
+         return substr($output[0],19,8)." ("._("compiled")." ".getDMRGatewayFileVersion(). ")";
+      }
+   }
+}
+
+function getDMRGatewayFileVersion() {
+   // returns creation-time of DMRGateway as version-number
+   $filename = DMRGATEWAYPATH."/DMRGateway";
+   if (file_exists($filename)) {
+      showLapTime("getDMRGatewayFileVersion");
+      return date("d M Y", filectime($filename));
+   }
+}
+
 function getFirmwareVersion() {
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines   = explode("\n", `egrep "MMDVM protocol version" $logPath`);

@@ -62,7 +62,11 @@ include "version.php";
    echo " "._("Hotspot");
   }
   ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
-  <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion() ?>
+  <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion();
+  if (defined("ENABLEDMRGATEWAY")) {
+?>
+<br>DMRGateway by G4KLX Version: <?php echo getDMRGatewayVersion(); 
+  } ?>
   <?php
   if (defined("JSONNETWORK")) {
     $key        = recursive_array_search(getDMRNetwork(),$networks);
