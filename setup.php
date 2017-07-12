@@ -143,14 +143,14 @@ include "include/tools.php";
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="DMRGATEWAYINIPATH" style="width: 300px"><?php echo _("Path to DMRGateway.ini"); ?></span>
-        <input type="text" value="<?php echo constant("YSFGATEWAYINIPATH") ?>" name="YSFGATEWAYINIPATH" class="form-control" placeholder="/etc/YSFGateway/" aria-describedby="YSFGATEWAYINIPATH">
+        <input type="text" value="<?php echo constant("DMRGATEWAYINIPATH") ?>" name="DMRGATEWAYINIPATH" class="form-control" placeholder="/etc/DMRGateway/" aria-describedby="DMRGATEWAYINIPATH">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="DMRGATEWAYPATH" style="width: 300px"><?php echo _("Path to DMRGateway-executable"); ?></span>
         <input type="text" value="<?php echo constant("DMRGATEWAYPATH") ?>" name="DMRGATEWAYPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="DMRGATEWAYPATH">
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="YSFGATEWAYINIFILENAME" style="width: 300px"><?php echo _("YSFGateway.ini-filename"); ?></span>
+        <span class="input-group-addon" id="YSFGATEWAYINIFILENAME" style="width: 300px"><?php echo _("DMRGateway.ini-filename"); ?></span>
         <input type="text" value="<?php echo constant("DMRGATEWAYINIFILENAME") ?>" name="DMRGATEWAYINIFILENAME" class="form-control" placeholder="DMRGateway.ini" aria-describedby="DMRGATEWAYINIFILENAME">
       </div>
     </div>
