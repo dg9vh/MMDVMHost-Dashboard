@@ -44,10 +44,16 @@ function isProcessRunning($processname) {
    }
 }
 
+function clean($string) {
+   
+   return preg_replace('/[^A-Za-z0-9\-\/\ \.\_]/', '', $string); // Removes special chars.
+}
+
 function createConfigLines() {
    $out ="";
    foreach($_GET as $key=>$val) {
       if($key != "cmd") {
+         $val = clean($val);
          $out .= "define(\"$key\", \"$val\");"."\n";
       }
    }
