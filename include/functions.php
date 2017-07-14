@@ -36,7 +36,7 @@ function getDMRGatewayVersion() {
    } else {
       showLapTime("getDMRGatewayVersion");
       if (strlen($output[0]) > 26) {
-         return substr($output[0],19,8)." ("._("compiled")." ".getDMRGatewayFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/DMRGateway/commit/" . substr($output[0],32,7) . "\" target=\"_blank\">" . substr($output[0],32,7) . "</a>)";
+         return substr($output[0],19,8)." ("._("compiled")." ".getDMRGatewayFileVersion(). ", GitID #<a href=\"https://github.com/g4klx/DMRGateway/commit/" . substr($output[0],33,7) . "\" target=\"_blank\">" . substr($output[0],33,7) . "</a>)";
       } else {
          return substr($output[0],19,8)." ("._("compiled")." ".getDMRGatewayFileVersion(). ")";
       }
