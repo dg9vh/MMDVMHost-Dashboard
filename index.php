@@ -30,12 +30,6 @@ include "version.php";
   <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=1, user-scalable=yes">
-    <!-- Default-CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- CSS for tooltip display -->
-    <link rel="stylesheet" href="css/tooltip.css">
-    <!-- CSS for monospaced fonts in tables -->
-    <link rel="stylesheet" href="css/monospacetables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
@@ -45,6 +39,12 @@ include "version.php";
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <!-- Default-CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS for tooltip display -->
+    <link rel="stylesheet" href="css/tooltip.css">
+    <!-- CSS for monospaced fonts in tables -->
+    <link rel="stylesheet" href="css/monospacetables.css">
    <style>
    .nowrap {
       white-space:nowrap
@@ -123,13 +123,26 @@ if (defined("ENABLENETWORKSWITCHING")) {
   if (defined("JSONNETWORK")) {
   	echo '  <br>';
   	foreach ($networks as $network) {
-  	  echo '  <button onclick="window.location.href=\'./scripts/switchnetwork.php?network='.$network['ini'].'\'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;'.$network['label'].'</button>';
+  	  echo '  <button onclick="window.location.href=\'./scripts/switchnetwork.php?network='.$network['ini'].'\'"  type="button" ';
+          if (getDMRNetwork() == $network['label'] )
+            echo 'class="btn btn-active navbar-btn">';
+          else
+            echo 'class="btn btn-default navbar-btn">';
+          echo '<span class="glyphicon glyphicon-link" aria-hidden="true"></span>&nbsp;'.$network['label'].'</button>';
   	}
   	
   } else {
 ?>
-  <button onclick="window.location.href='./scripts/switchnetwork.php?network=DMRPLUS'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<?php echo _("DMRplus"); ?></button>
-  <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;<?php echo _("BrandMeister"); ?></button>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=DMRPLUS'"  type="button" <?php
+      if (getDMRNetwork() == "DMRplus" )
+        echo 'class="btn btn-active navbar-btn">';
+      else
+        echo 'class="btn btn-default navbar-btn">'; ?><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<?php echo _("DMRplus"); ?></button>
+  <button onclick="window.location.href='./scripts/switchnetwork.php?network=BRANDMEISTER'"  type="button" <?php
+      if (getDMRNetwork() == "BrandMeister" )
+        echo 'class="btn btn-active navbar-btn">';
+      else
+        echo 'class="btn btn-default navbar-btn">'; ?><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>&nbsp;<?php echo _("BrandMeister"); ?></button>
 <?php
   }
   if (defined("ENABLEREFLECTORSWITCHING") && (getEnabled("DMR Network", $mmdvmconfigs) == 1) && recursive_array_search(gethostbyname(getConfigItem("DMR Network", "Address", $mmdvmconfigs)),getDMRplusDMRMasterList()) ) {
