@@ -61,7 +61,8 @@ include "version.php";
   } else {
    echo " "._("Hotspot");
   }
-  ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?></h1>
+  ?>:</small>  <?php echo getCallsign($mmdvmconfigs) ?><br>
+  <small>DMR-Id: <?php echo getDMRId($mmdvmconfigs) ?></small></h1><hr>
   <h4>MMDVMHost by G4KLX Version: <?php echo getMMDVMHostVersion() ?><br>Firmware: <?php echo getFirmwareVersion();
   if (defined("ENABLEDMRGATEWAY")) {
 ?>
