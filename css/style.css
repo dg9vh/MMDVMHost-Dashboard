@@ -5,3 +5,16 @@
 .panel-heading span {
 	font-size: 15px;
 }
+
+.btn-active {
+    text-shadow: 0 1px 0 #fff;
+    background-image: -webkit-linear-gradient(top,#fff 0,#3c763d 100%);
+    background-image: -o-linear-gradient(top,#fff 0,#3c763d 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(##3c763d));
+    background-image: linear-gradient(to bottom,#fff 0,#3c763d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ff3c763d', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #dbdbdb;
+    border-color: #ccc;
+}
