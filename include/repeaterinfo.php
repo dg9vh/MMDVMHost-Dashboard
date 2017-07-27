@@ -19,8 +19,12 @@
 <?php
    }
    if (getEnabled("DMR", $mmdvmconfigs) == 1) {
+     if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == "1") {
 ?>
       <th><?php echo _("DMR TS1 last linked to"); ?></th>
+<?php
+     }
+?>
       <th><?php echo _("DMR TS2 last linked to"); ?></th>
 <?php
    }
@@ -36,7 +40,9 @@
      echo"<td id=\"ysflink\">".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
    }
    if (getEnabled("DMR", $mmdvmconfigs) == 1) {
-     echo"<td id=\"dmr1link\">".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
+     if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == "1") {
+       echo"<td id=\"dmr1link\">".getActualLink($reverseLogLinesMMDVM, "DMR Slot 1")."</td>";
+     }
      echo"<td id=\"dmr2link\">".getActualLink($reverseLogLinesMMDVM, "DMR Slot 2")."/". getActualReflector($reverseLogLinesMMDVM, "DMR Slot 2") ."</td>";
    }
    echo"</tr>\n";
