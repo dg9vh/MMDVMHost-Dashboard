@@ -155,6 +155,10 @@ function getCallsign($mmdvmconfigs) {
    return getConfigItem("General", "Callsign", $mmdvmconfigs);
 }
 
+function getDMRId ($mmdvmconfigs) {
+   // returns DMRId from MMDVM-Config
+   return getConfigItem("DMR", "Id", $mmdvmconfigs);
+}
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
    $sectionpos = array_search("[" . $section . "]", $configs) + 1;
