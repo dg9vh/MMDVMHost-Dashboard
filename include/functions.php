@@ -136,7 +136,17 @@ function getMMDVMConfig() {
    }
    return $conf;
 }
-
+function getDMRGatewayConfig() {
+   // loads DMRGateway.ini into array for further use
+   $conf = array();
+   if ($configs = fopen(DMRGATEWAYINIPATH."/".DMRGATEWAYINIFILENAME, 'r')) {
+      while ($config = fgets($configs)) {
+         array_push($conf, trim ( $config, " \t\n\r\0\x0B"));
+      }
+      fclose($configs);
+   }
+   return $conf;
+}
 function getYSFGatewayConfig() {
    // loads YSFGateway.ini into array for further use
    $conf = array();
@@ -159,6 +169,27 @@ function getDMRId ($mmdvmconfigs) {
    // returns DMRId from MMDVM-Config
    return getConfigItem("DMR", "Id", $mmdvmconfigs);
 }
+
+function getXLX1Name ($dmrgatewayconfigs) {
+   // returns XLX1 Name from DMRGateway.ini
+   return getConfigItem("XLX Network 1", "Name", $dmrgatewayconfigs);
+}
+
+function getXLX2Name ($dmrgatewayconfigs) {
+   // returns XLX2 Name from DMRGateway.ini
+   return getConfigItem("XLX Network 2", "Name", $dmrgatewayconfigs);
+}
+
+function getDMR1Name ($dmrgatewayconfigs) {
+   // returns DMR Network 1 Name from DMRGateway.ini
+   return getConfigItem("DMR Network 1", "Name", $dmrgatewayconfigs);
+}
+
+function getDMR2Name ($dmrgatewayconfigs) {
+   // returns DMR Network 2 Name from DMRGateway.ini
+   return getConfigItem("DMR Network 2", "Name", $dmrgatewayconfigs);
+}
+
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
    $sectionpos = array_search("[" . $section . "]", $configs) + 1;
