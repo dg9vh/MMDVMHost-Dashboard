@@ -291,6 +291,8 @@ function getHeardList($logLines, $onlyLast) {
          continue;
       } else if(strpos($logLine,"bad LC received")) {
          continue;
+      } else if(strpos($logLine,"non repeater RF header received")) {
+         continue;
       }
 
       if(strpos($logLine, "0000")){
@@ -449,6 +451,8 @@ function getHeardList($logLines, $onlyLast) {
       $id ="";
       if ($mode == "D-Star") {
          $id = substr($callsign2, strpos($callsign2,"/") + 1);
+         if(!$id)
+             $id="";
       }
       
       
