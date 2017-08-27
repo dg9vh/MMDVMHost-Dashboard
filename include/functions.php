@@ -161,7 +161,7 @@ function getCallsign($mmdvmconfigs) {
 
 function getDMRId ($mmdvmconfigs) {
    // returns DMRId from MMDVM-Config
-   return getConfigItem("DMR", "Id", $mmdvmconfigs);
+   return getConfigItem("General", "Id", $mmdvmconfigs);
 }
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
