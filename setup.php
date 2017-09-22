@@ -92,6 +92,10 @@ include "include/tools.php";
         <div class="panel-body"><input type="checkbox" name="TALKERALIAS" <?php if (defined("TALKERALIAS")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="USESQLITE" style="width: 300px"><?php echo _("Use SQLITE3-Database instead of DMRIDs.dat"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="USESQLITE" <?php if (defined("USESQLITE")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="DMRIDDATPATH" style="width: 300px"><?php echo _("Path to DMR-ID-Database-File (including filename)"); ?></span>
         <input type="text" value="<?php echo constant("DMRIDDATPATH") ?>" name="DMRIDDATPATH" class="form-control" placeholder="/var/mmdvm/DMRIDs.dat" aria-describedby="DMRIDDATPATH">
       </div>
