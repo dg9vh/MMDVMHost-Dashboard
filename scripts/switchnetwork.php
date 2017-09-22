@@ -10,7 +10,14 @@ include "../config/config.php";
 include("../config/networks.php");
 include "../include/tools.php";
 include "../include/functions.php";
-include "../include/init.php";
+
+//Some basic inits
+$mmdvmconfigs = getMMDVMConfig();
+if (!defined("MMDVMLOGPREFIX"))
+   define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+if (!defined("TIMEZONE"))
+   define("TIMEZONE", "UTC");
+
 if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWORKPW !== "") {
     header('WWW-Authenticate: Basic realm="Dashboard"');
     header('HTTP/1.0 401 Unauthorized');
@@ -53,7 +60,6 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
 </div>
 <?php
 checkSetup();
-//include "../include/sysinfo_ajax.php";
 if (defined("JSONNETWORK")) {
   $netname = $_GET['network'];
   $key = recursive_array_search($netname,$networks);

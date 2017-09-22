@@ -9,7 +9,14 @@ $start = $time;
 include "../config/config.php";
 include "../include/tools.php";
 include "../include/functions.php";
-include "../include/init.php";
+
+//Some basic inits
+$mmdvmconfigs = getMMDVMConfig();
+if (!defined("MMDVMLOGPREFIX"))
+   define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+if (!defined("TIMEZONE"))
+   define("TIMEZONE", "UTC");
+
 if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWORKPW !== "") {
     header('WWW-Authenticate: Basic realm="Dashboard"');
     header('HTTP/1.0 401 Unauthorized');
@@ -53,7 +60,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
 <?php
 $reflektor_nr=$_GET['reflector'];
 checkSetup();
-include "../include/sysinfo.php";
+
 exec( "sudo /bin/sed '/#Startup=/d' -i ".YSFGATEWAYINIPATH."/".YSFGATEWAYINIFILENAME);
 exec( "sudo /bin/sed 's/Startup=.*$/Startup=".$reflektor_nr."/' -i ".YSFGATEWAYINIPATH."/".YSFGATEWAYINIFILENAME);
 exec( REBOOTYSFGATEWAY );
