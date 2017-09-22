@@ -53,7 +53,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
 <?php
 $reflektor_nr=$_GET['reflector'];
 checkSetup();
-include "../include/sysinfo.php";
+//include "../include/sysinfo.php";
 exec( "sudo /bin/sed '/#Options/d' -i ".MMDVMINIPATH."/".MMDVMINIFILENAME);
 exec( "sudo /bin/sed 's/Options=StartRef=.*$/Options=StartRef=".$reflektor_nr.";RelinkTime=20;Userlink=1;/' -i ".MMDVMINIPATH."/".MMDVMINIFILENAME);
 exec( REBOOTMMDVM );

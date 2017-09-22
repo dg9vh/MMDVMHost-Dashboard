@@ -53,7 +53,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && SWITCHNETWORKUSER !== "" && SWITCHNETWO
 </div>
 <?php
 checkSetup();
-include "../include/sysinfo.php";
+//include "../include/sysinfo_ajax.php";
 if (defined("JSONNETWORK")) {
   $netname = $_GET['network'];
   $key = recursive_array_search($netname,$networks);
