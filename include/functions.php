@@ -867,7 +867,23 @@ function getName($callsign) {
    if (is_numeric($callsign)) {
       return "---";
    }
+   if (defined("USESQLITE")) {
+      return resolveNameFromDB($callsign);
+   } else {
+      return resolveNameFromFile($callsign);
+   }
+}
 
+function resolveNameFromDB($callsign) {
+   $db = new SQLite3('database/callsigns.db');
+   $results = $db->query("SELECT distinct name FROM callsign where callsign = '$callsign'");
+   while ($row = $results->fetchArray()) {
+      return $row['name'];
+   }
+   return "---";
+}
+
+function resolveNameFromFile($callsign) {
    $TMP_CALL_NAME = "/tmp/Callsign_Name.txt";
    if (file_exists($TMP_CALL_NAME)) {
       $callsign = trim($callsign);

@@ -34,6 +34,12 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 	>sudo apt-get install php5-common php5-cgi php5
 
+if you want to use the sqlite3-database based resolving of the operator-names you need following, too:
+
+	>sudo apt-get install sqlite3 php5-sqlite
+
+Now continue with:
+
 	>sudo lighty-enable-mod fastcgi
 
 	>sudo lighty-enable-mod fastcgi-php
