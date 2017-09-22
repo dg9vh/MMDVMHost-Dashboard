@@ -56,6 +56,9 @@ Cronjob for updating DMR IDs
 ============================
 You can use the included script to update the DMR IDs periodically. Copy the files updateDMRIDs to /etc/cron.d/ and updateDMRIDs.sh to /var/www from the cron folder in this repo. The paths may have to be aligned to your system architecture. The Update script will then be executed once every 24 hours at 3:30. For security considerations please make sure that the cron folder is not copied to your web server's www root directory.
 
+If you are using the sqlite3-database, in the database-folder you can find a update-script that updates the database from MARC-database.
+
+
 Contact
 =======
 Feel free to contact the author via email: dg9vh[@]darc.de
