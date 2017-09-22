@@ -17,7 +17,7 @@ Required are
 ============
 * Webserver like lighttpd or similar
 * php5
-
+* if using sqlite3-database name resolving sqlite3 and php5-sqlite also needed
 
 Installation
 ============
