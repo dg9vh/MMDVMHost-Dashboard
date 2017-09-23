@@ -18,7 +18,13 @@ textdomain('messages');
 
 include "../include/tools.php";
 include "../include/functions.php";
-include "../include/init.php";
+
+//Some basic inits
+$mmdvmconfigs = getMMDVMConfig();
+if (!defined("MMDVMLOGPREFIX"))
+   define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
+if (!defined("TIMEZONE"))
+   define("TIMEZONE", "UTC");
 
 if (!isset($_SERVER['PHP_AUTH_USER']) && VIEWLOGUSER !== "" && VIEWLOGPW !== "") {
     header('WWW-Authenticate: Basic realm="Dashboard"');

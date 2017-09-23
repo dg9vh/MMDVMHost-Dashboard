@@ -60,7 +60,6 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && HALTUSER !== "" && HALTPW !== "") {
 </div>
 <?php
 checkSetup();
-include "../include/sysinfo.php";
    exec(HALTSYS. ' > /dev/null 2>&1 &');
 ?>
 <div class="alert alert-info" role="alert">Executing  <b><?php echo HALTSYS ?></b><br><?php echo _("Halt in progress...bye"); ?></div>

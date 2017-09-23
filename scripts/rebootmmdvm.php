@@ -61,7 +61,6 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && RESTARTUSER !== "" && RESTARTPW !== "")
 </div>
 <?php
 checkSetup();
-include "../include/sysinfo.php";
    exec( REBOOTMMDVM );
 ?>
 <div class="alert alert-info" role="alert"><?php echo _("Executing"); ?>  <b><?php echo REBOOTMMDVM ?></b><br><?php echo _("Reboot MMDVMHost service in progress"); ?></div>
