@@ -195,8 +195,9 @@ if ($_GET['section'] == "sysinfo") {
    }
 
    $output         = shell_exec('cat /proc/loadavg');
-   $sysload        = substr($output,0,strpos($output," "))*100;
-   showLapTime("sysload");
+   $loadavg	   = explode(" ", $output);
+   $sysload	   = $loadavg[0] . " / " . $loadavg[1] . " / " . $loadavg[2];
+   Showlaptime("sysload");
    $stat1          = file('/proc/stat');
    sleep(1);
    $stat2          = file('/proc/stat');
@@ -268,7 +269,7 @@ if ($_GET['section'] == "sysinfo") {
                <?php
                }
                ?>
-               <td><?php echo $sysload; ?> %</td>
+               <td><?php echo $sysload; ?></td>
                <td>
 <?php
    if (defined("SHOWPROGRESSBARS")) {
