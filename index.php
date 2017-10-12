@@ -177,6 +177,23 @@ if (!defined("SHOWCPU") AND !defined("SHOWDISK") AND !defined("SHOWRPTINFO") AND
    define("SHOWLH", "on");
    define("SHOWLOCALTX", "on");	
 }
+if (defined("SHOWCUSTOM")) {
+   print "<div class=\"panel panel-default\">\n";
+   print "<div class=\"panel-heading\">";
+   echo _("Custom Info");
+   print "<span class=\"pull-right clickable\"><i class=\"glyphicon glyphicon-chevron-up\"></i></span></div>\n";
+   print "<div class=\"panel-body\">\n";
+   $custom = 'custom.php';
+   if (file_exists($custom)) {
+      include $custom;
+   } else {
+      print "<div class=\"alert alert-danger\" role=\"alert\">";
+      echo _("File custom.php not found! Did you forget to create it?");
+      print "</div>\n";
+   }
+   print "</div>\n";
+   print "</div>\n";
+}
 if (defined("SHOWCPU")) {
    include "include/sysinfo_ajax.php";
    showLapTime("sysinfo");

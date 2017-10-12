@@ -17,6 +17,14 @@ msgstr ""
 "Language-Team: ru\n"
 "X-Generator: Poedit 1.8.12\n"
 
+#: index.php:183
+msgid "Custom Info"
+msgstr "Custom info"
+
+#: index.php:191
+msgid "File custom.php not found! Did you forget to create it?"
+msgstr "File custom.php not found! Did you forget to create it?"
+
 #: include/sysinfo_ajax.php:3
 msgid "System Info"
 msgstr "Информация о системе"

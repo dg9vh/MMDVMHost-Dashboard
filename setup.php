@@ -272,6 +272,10 @@ foreach ($files as $file) {
         <input type="text" value="<?php echo constant("REFRESHAFTER") ?>" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="SHOWCUSTOM" style="width: 300px"><?php echo _("Show Custom Info"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="SHOWCUSTOM" <?php if (defined("SHOWCUSTOM")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="SHOWCPU" style="width: 300px"><?php echo _("Show System Info"); ?></span>
         <div class="panel-body"><input type="checkbox" name="SHOWCPU" <?php if (defined("SHOWCPU")) echo "checked" ?>></div>
       </div>

@@ -18,6 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
+#: index.php:183
+msgid "Custom Info"
+msgstr "Custom info"
+
+#: index.php:191
+msgid "File custom.php not found! Did you forget to create it?"
+msgstr "File custom.php not found! Did you forget to create it?"
+
 #: include/sysinfo_ajax.php:3
 msgid "System Info"
 msgstr "Informations sur le système"
