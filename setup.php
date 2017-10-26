@@ -65,6 +65,13 @@ include "include/tools.php";
   </div>
   <form id="config" action="setup.php" method="get">
     <input type="hidden" name="cmd" value="writeconfig">
+<?php
+    if (defined("DISABLESETUPWARNING")) {
+?>
+    <input type="hidden" name="DISABLESETUPWARNING" value="">
+<?php
+}
+?>
     <div class="container">
       <h2><?php echo _("MMDVMHost-Configuration"); ?></h2>
       <div class="input-group">
