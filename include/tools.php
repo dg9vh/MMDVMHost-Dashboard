@@ -79,7 +79,7 @@ function checkSetup() {
 <?php
 
       } else {
-      if (file_exists ("setup.php")) {
+      if (file_exists ("setup.php") && ! defined("DISABLESETUPWARNING")) {
    ?>
    <div class="alert alert-danger" role="alert"><?php echo _("You forgot to remove setup.php in root-directory of your dashboard or you forgot to configure it! Please delete the file or configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"); ?></div>
    <?php
