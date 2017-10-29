@@ -451,7 +451,11 @@ function getHeardList($logLines, $onlyLast) {
          $callsign = substr($callsign2, 0, strpos($callsign2,"/"));
       }
       $callsign = trim($callsign);
-      
+      if (defined("USESQLITE")) {
+         if (is_numeric($callsign)) {
+            $callsign = getCallsignFromDB($callsign);
+         }
+      }
       $id ="";
       if ($mode == "D-Star") {
          $id = substr($callsign2, strpos($callsign2,"/") + 1);
@@ -864,19 +868,22 @@ function getYSFReflectorById($id, $reflectors) {
 }
 
 function getName($callsign) {
-   if (is_numeric($callsign)) {
-      return "---";
-   }
    if (defined("USESQLITE")) {
       return resolveNameFromDB($callsign);
    } else {
+      if (is_numeric($callsign)) {
+         return "---";
+      }
       return resolveNameFromFile($callsign);
    }
 }
 
 function resolveNameFromDB($callsign) {
    $db = new SQLite3('database/callsigns.db');
-   $results = $db->query("SELECT distinct name FROM callsign where callsign = '$callsign'");
+   if (is_numeric($callsign))
+      $results = $db->query("SELECT distinct name FROM callsign where id = '$callsign'");
+   else
+      $results = $db->query("SELECT distinct name FROM callsign where callsign = '$callsign'");
    while ($row = $results->fetchArray()) {
       return $row['name'];
    }
@@ -921,6 +928,15 @@ function resolveNameFromFile($callsign) {
    } else {
       return _("DMRIDs.dat not correct!");
    }
+}
+
+function getCallsignFromDB($id) {
+   $db = new SQLite3('database/callsigns.db');
+   $results = $db->query("SELECT distinct callsign FROM callsign where id = '$id'");
+   while ($row = $results->fetchArray()) {
+      return $row['callsign'];
+   }
+   return $id;
 }
 
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
