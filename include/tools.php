@@ -52,7 +52,7 @@ function createConfigLines() {
    $out ="";
    foreach($_GET as $key=>$val) {
       if($key != "cmd") {
-         $val = clean($val);
+         //$val = clean($val);
          $out .= "define(\"$key\", \"$val\");"."\n";
       }
    }
