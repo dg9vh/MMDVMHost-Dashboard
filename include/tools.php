@@ -45,7 +45,7 @@ function isProcessRunning($processname) {
 }
 
 function clean($string) {
-   return preg_replace('/[^A-Za-z0-9\-\/\ \.\_\>\&]/', '', $string); // Removes special chars.
+   return preg_replace('/[^A-Za-z0-9:\-\/\ \.\_\>\&]/', '', $string); // Removes special chars.
 }
 
 function createConfigLines() {
