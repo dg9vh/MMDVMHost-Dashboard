@@ -199,7 +199,7 @@ function showMode($mode, $mmdvmconfigs) {
             }
             break;
          case "System Fusion Network":
-            if (getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "localhost" || getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs) == "127.0.0.1") {
+            if (getConfigItem("System Fusion Network", "GatewayAddress", $mmdvmconfigs) == "localhost" || getConfigItem("System Fusion Network", "GatewayAddress", $mmdvmconfigs) == "127.0.0.1") {
                if (isProcessRunning("YSFGateway")) {
                   echo "label-success";
                } else {
