@@ -80,7 +80,7 @@
    echo"<td>".getMHZ(getConfigItem("Info", "TXFrequency", $mmdvmconfigs))."</td>";
    echo"<td>".getMHZ(getConfigItem("Info", "RXFrequency", $mmdvmconfigs))."</td>";
    if (getEnabled("System Fusion Network", $mmdvmconfigs) == 1) {
-      echo"<td>".getConfigItem("System Fusion Network", "GwyAddress", $mmdvmconfigs)."</td>";
+      echo"<td>".getConfigItem("System Fusion Network", "GatewayAddress", $mmdvmconfigs)."</td>";
    }
    if (getEnabled("DMR", $mmdvmconfigs) == 1) {
       echo"<td>".getConfigItem("DMR", "ColorCode", $mmdvmconfigs)."</td>";
