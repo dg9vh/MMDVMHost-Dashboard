@@ -19,11 +19,11 @@ msgstr ""
 
 #: index.php:183
 msgid "Custom Info"
-msgstr "Custom info"
+msgstr "Пользовательские данные"
 
 #: index.php:191
 msgid "File custom.php not found! Did you forget to create it?"
-msgstr "File custom.php not found! Did you forget to create it?"
+msgstr "Не найден файл custom.php! Может Вы забыли его создать?"
 
 #: include/sysinfo_ajax.php:3
 msgid "System Info"
