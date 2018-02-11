@@ -87,9 +87,9 @@
       if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
          echo"<td>";
          if (getDMRMasterState()) {
-            echo "<span class=\"label label-success\" title=\"Master connected\">";
+            echo "<span class=\"badge badge-success\" title=\"Master connected\">";
          } else {
-            echo "<span class=\"label label-danger\" title=\"Master not connected\">";
+            echo "<span class=\"badge badge-danger\" title=\"Master not connected\">";
          }
          echo getConfigItem("DMR Network", "Address", $mmdvmconfigs);
          if (strlen(getDMRNetwork()) > 0 ) {
@@ -98,18 +98,18 @@
 ?>
          </span>
          </td>
-            <td><span class="label <?php
+            <td><span class="badge <?php
          if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == 1) {
-            echo 'label-success">'._("enabled");
+            echo 'badge-success">'._("enabled");
          } else {
-            echo 'label-default">'._("disabled");
+            echo 'badge-default">'._("disabled");
           }
     ?></span></td>
-            <td><span class="label <?php
+            <td><span class="badge <?php
          if (getConfigItem("DMR Network", "Slot2", $mmdvmconfigs) == 1) {
-            echo 'label-success">'._("enabled");
+            echo 'badge-success">'._("enabled");
          } else {
-            echo 'label-default">'._("disabled");
+            echo 'badge-default">'._("disabled");
           }
     ?></span></td>
 <?php

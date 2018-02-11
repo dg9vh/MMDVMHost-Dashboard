@@ -7,12 +7,12 @@
   <!-- Tabelle -->
   <table class="table">
     <tr>
-    <td><span class="label <?php
+    <td><span class="badge <?php
       if (isProcessRunning("YSFGateway")) {
-         echo "label-success";
+         echo "badge-success";
          ?>"><?php echo _("YSFGateway Process is running"); ?></span></td><?php
       } else {
-         echo "label-danger\" title=\"YSFGateway is down!";
+         echo "badge-danger\" title=\"YSFGateway is down!";
          ?>"><?php echo _("YSFGateway Process is down!"); ?></span></td><?php
       }
     ?>

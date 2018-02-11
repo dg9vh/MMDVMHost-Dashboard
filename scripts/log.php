@@ -69,7 +69,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) && VIEWLOGUSER !== "" && VIEWLOGPW !== "")
 </div>
 <div class="panel panel-log">
    <div class="panel-heading">
-      <span class="label label-info"><?php echo _("Viewing log"); ?> <?php echo $fileName ?></span>
+      <span class="badge badge-info"><?php echo _("Viewing log"); ?> <?php echo $fileName ?></span>
    </div>
   <div class="table-responsive">
   <table id="log" class="table table-condensed table-striped table-hover">

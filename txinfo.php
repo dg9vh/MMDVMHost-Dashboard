@@ -32,7 +32,7 @@ foreach ($lastHeard as $listElem) {
          echo"<td nowrap>$listElem[4]</td>";
          echo"<td nowrap>$listElem[5]</td>";
          if ($listElem[6] == "RF"){
-            echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
+            echo "<td nowrap><span class=\"badge badge-success\">RF</span></td>";
          }else{
             echo"<td nowrap>$listElem[6]</td>";
          }
@@ -46,7 +46,7 @@ foreach ($lastHeard as $listElem) {
          echo"<td nowrap>$listElem[3]</td>";
          echo"<td nowrap>$listElem[4]</td>";
          if ($listElem[5] == "RF"){
-            echo "<td nowrap><span class=\"label label-success\">RF</span></td>";
+            echo "<td nowrap><span class=\"badge badge-success\">RF</span></td>";
          }else{
             echo"<td nowrap>$listElem[5]</td>";
          }

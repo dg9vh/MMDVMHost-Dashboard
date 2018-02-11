@@ -184,40 +184,40 @@ function getEnabled ($mode, $mmdvmconfigs) {
 function showMode($mode, $mmdvmconfigs) {
    // shows if mode is enabled or not.
 ?>
-      <td><span class="label <?php
+      <td><span class="badge <?php
    if (getEnabled($mode, $mmdvmconfigs) == 1) {
       switch ($mode) {
          case "D-Star Network":
             if (getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "localhost" || getConfigItem("D-Star Network", "GatewayAddress", $mmdvmconfigs) == "127.0.0.1") {
                if (isProcessRunning(IRCDDBGATEWAY)) {
-                  echo "label-success";
+                  echo "badge-success";
                } else {
-                  echo "label-danger\" title=\""._("ircddbgateway is down!");
+                  echo "badge-danger\" title=\""._("ircddbgateway is down!");
                }
             } else {
-               echo "label-default\" title=\""._("Remote gateway configured - not checked!");
+               echo "badge-default\" title=\""._("Remote gateway configured - not checked!");
             }
             break;
          case "System Fusion Network":
             if (getConfigItem("System Fusion Network", "GatewayAddress", $mmdvmconfigs) == "localhost" || getConfigItem("System Fusion Network", "GatewayAddress", $mmdvmconfigs) == "127.0.0.1") {
                if (isProcessRunning("YSFGateway")) {
-                  echo "label-success";
+                  echo "badge-success";
                } else {
-                  echo "label-danger\" title=\""._("YSFGateway is down!");
+                  echo "badge-danger\" title=\""._("YSFGateway is down!");
                }
             } else {
-               echo "label-default\" title=\""._("Remote gateway configured - not checked!");
+               echo "badge-default\" title=\""._("Remote gateway configured - not checked!");
             }
             break;
          default:
             if (isProcessRunning("MMDVMHost")) {
-               echo "label-success";
+               echo "badge-success";
             } else {
-               echo "label-danger\" title=\""._("MMDVMHost is down!");
+               echo "badge-danger\" title=\""._("MMDVMHost is down!");
             }
       }
    } else {
-      echo "label-default";
+      echo "badge-default";
     }
     ?>"><?php echo $mode ?></span></td>
 <?php
@@ -577,7 +577,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
       $mode = "DMR";
    }
    if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
-      return "<span class=\"label label-danger\">".$mode."</span>";
+      return "<span class=\"badge badge-danger\">".$mode."</span>";
    } else {
       $now        =  new DateTime('NOW',new DateTimeZone(TIMEZONE));
       $hangtime   = getConfigItem("General", "ModeHang", $mmdvmconfigs);
@@ -596,7 +596,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
       if ($now->format('U') > $timestamp->format('U')) {
          return _("idle");
       } else {
-         return "<span class=\"label label-warning\">".$mode."</span>";
+         return "<span class=\"badge badge-warning\">".$mode."</span>";
       }
    }
 }
