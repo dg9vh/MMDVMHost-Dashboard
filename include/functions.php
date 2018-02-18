@@ -1,5 +1,4 @@
 <?php
-
 function getMMDVMHostVersion() {
    // returns creation-time or version of MMDVMHost as version-number
    $filename = MMDVMHOSTPATH."/MMDVMHost";
@@ -16,7 +15,6 @@ function getMMDVMHostVersion() {
       }
    }
 }
-
 function getMMDVMHostFileVersion() {
    // returns creation-time of MMDVMHost as version-number
    $filename = MMDVMHOSTPATH."/MMDVMHost";
@@ -25,7 +23,6 @@ function getMMDVMHostFileVersion() {
       return date("d M Y", filectime($filename));
    }
 }
-
 function getDMRGatewayVersion() {
    // returns creation-time or version of DMRGateway as version-number
    $filename = DMRGATEWAYPATH."/DMRGateway";
@@ -42,7 +39,6 @@ function getDMRGatewayVersion() {
       }
    }
 }
-
 function getDMRGatewayFileVersion() {
    // returns creation-time of DMRGateway as version-number
    $filename = DMRGATEWAYPATH."/DMRGateway";
@@ -51,7 +47,6 @@ function getDMRGatewayFileVersion() {
       return date("d M Y", filectime($filename));
    }
 }
-
 function getFirmwareVersion() {
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines   = explode("\n", `egrep "MMDVM protocol version" $logPath`);
@@ -75,13 +70,11 @@ function getFirmwareVersion() {
    }
    echo $firmware;
 }
-
 function setDMRNetwork($network) {
    $fp = fopen('../config/DMRNetwork.txt', 'w');
    fwrite($fp, $network);
    fclose($fp);
 }
-
 function getDMRNetwork() {
    $filename   = 'config/DMRNetwork.txt';
    $network    = '';
@@ -92,7 +85,6 @@ function getDMRNetwork() {
    }
    return $network;
 }
-
 function getDMRNetwork2() {
    $filename   = '../config/DMRNetwork.txt';
    $network    = '';
@@ -102,9 +94,7 @@ function getDMRNetwork2() {
       fclose($fp);
    }
    return $network;
-
 }
-
 function getDMRMasterState() {
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines   = explode("\n", `egrep -h "(DMR, Logged into the master successfully)|(DMR, Closing DMR Network)" $logPath`);
@@ -128,7 +118,6 @@ function getDMRMasterState() {
    }
    return $state;
 }
-
 function getMMDVMConfig() {
    // loads MMDVM.ini into array for further use
    $conf = array();
@@ -140,7 +129,6 @@ function getMMDVMConfig() {
    }
    return $conf;
 }
-
 function getYSFGatewayConfig() {
    // loads YSFGateway.ini into array for further use
    $conf = array();
@@ -153,12 +141,10 @@ function getYSFGatewayConfig() {
    showLapTime("getYSFGatewayConfig");
    return $conf;
 }
-
 function getCallsign($mmdvmconfigs) {
    // returns Callsign from MMDVM-config
    return getConfigItem("General", "Callsign", $mmdvmconfigs);
 }
-
 function getDMRId ($mmdvmconfigs) {
    // returns DMRId from MMDVM-Config
    return getConfigItem("General", "Id", $mmdvmconfigs);
@@ -175,12 +161,10 @@ function getConfigItem($section, $key, $configs) {
    }
    return substr($configs[$sectionpos], strlen($key) + 1);
 }
-
 function getEnabled ($mode, $mmdvmconfigs) {
    // returns enabled/disabled-State of mode
    return getConfigItem($mode, "Enable", $mmdvmconfigs);
 }
-
 function showMode($mode, $mmdvmconfigs) {
    // shows if mode is enabled or not.
 ?>
@@ -222,28 +206,24 @@ function showMode($mode, $mmdvmconfigs) {
     ?>"><?php echo $mode ?></span></td>
 <?php
 }
-
 function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
    return $logLines;
 }
-
 function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" | tail -20`);
    return $logLines;
 }
-
 function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
    $logLines   = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting|Reverting" $logPath`);
    return $logLines;
 }
-
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
@@ -254,7 +234,6 @@ function getYSFGatewayLog() {
 // M: 2017-02-13 15:53:30.991 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
 // M: 2017-02-13 15:53:31.252 DMR Slot 2, Embedded Talker Alias Block 1
 // M: 2017-02-13 15:53:31.253 0000:  05 00 20 47 69 6F 76 61 DC                         *.. Giova.*
-
 function getHeardList($logLines, $onlyLast) {
    $heardList      = array();
    $ts1duration    = "";
@@ -298,7 +277,6 @@ function getHeardList($logLines, $onlyLast) {
       } else if(strpos($logLine,"non repeater RF header received")) {
          continue;
       }
-
       if(strpos($logLine, "0000")){
       	$decodedAlias = $decodedAlias = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', decodeAlias($logLine));
         if ($decodedAlias == "" && $alias == "") $decodedAlias="---";
@@ -318,7 +296,6 @@ function getHeardList($logLines, $onlyLast) {
             break;
         }
       }
-
       if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network") || strpos($logLine,"transmission lost")) {
          $lineTokens = explode(", ",$logLine);
          if (array_key_exists(2,$lineTokens)) {
@@ -330,7 +307,6 @@ function getHeardList($logLines, $onlyLast) {
          if (array_key_exists(4,$lineTokens)) {
             $ber = $lineTokens[4];
          }
-
          // if RF-Packet, no LOSS would be reported, so BER is in LOSS position
          // and RSSI in BER position
          if (startsWith($loss,"BER")) {
@@ -392,7 +368,6 @@ function getHeardList($logLines, $onlyLast) {
                }
             }
          }
-
          if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
             switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
                case "DMR Slot 1":
@@ -434,10 +409,15 @@ function getHeardList($logLines, $onlyLast) {
                   $p25ber         = $ber;
                   $p25rssi        = $rssi;
                   break;
+               case "NXDN":
+                  $nxdnduration    = $duration;
+                  $nxdnloss        = $loss;
+                  $nxdnber         = $ber;
+                  $nxdnrssi        = $rssi;
+                  break;
             }
          }
       }
-
       $timestamp = substr($logLine, 3, 23);
       $mode = substr($logLine, 27, strpos($logLine,",") - 27);
       if ($topos = strpos($logLine, "to follow)")) {
@@ -470,7 +450,6 @@ function getHeardList($logLines, $onlyLast) {
       if (strpos($logLine,"network") > 0 ) {
          $source = "Net";
       }
-
       switch ($mode) {
          case "D-Star":
             $duration   = $dstarduration;
@@ -502,8 +481,13 @@ function getHeardList($logLines, $onlyLast) {
             $ber        = $p25ber;
             $rssi       = $p25rssi;
             break;
+         case "NXDN":
+            $duration   = $nxdnduration;
+            $loss       = $nxdnloss;
+            $ber        = $nxdnber;
+            $rssi       = $nxdnrssi;
+            break;
       }
-
       // Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
       if ( strlen($callsign) < 11 ) {
          $name = "";
@@ -527,7 +511,6 @@ function getHeardList($logLines, $onlyLast) {
    }
    return $heardList;
 }
-
 function getLastHeard($logLines, $onlyLast) {
    //returns last heard list from log
    $lastHeard  = array();
@@ -535,7 +518,7 @@ function getLastHeard($logLines, $onlyLast) {
    $heardList  = getHeardList($logLines, $onlyLast);
    $counter    = 0;
    foreach ($heardList as $listElem) {
-      if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || (startsWith($listElem[1], "DMR")) ) {
+      if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || ($listElem[1] == "NXDN") || (startsWith($listElem[1], "DMR")) ) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
             // Generate a canonicalized call for QRZ and name lookups
             $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
@@ -565,7 +548,6 @@ function getLastHeard($logLines, $onlyLast) {
    }
    return $lastHeard;
 }
-
 function getActualMode($metaLastHeard, $mmdvmconfigs) {
    if (count($metaLastHeard) == 0)
       return _("idle");
@@ -581,7 +563,6 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
    } else {
       $now        =  new DateTime('NOW',new DateTimeZone(TIMEZONE));
       $hangtime   = getConfigItem("General", "ModeHang", $mmdvmconfigs);
-
       if ($hangtime != "") {
          $timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
       } else {
@@ -600,7 +581,6 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
       }
    }
 }
-
 function getDSTARLinks() {
    // returns link-states of all D-Star-modules
    if (filesize(LINKLOGPATH."/Links.log") == 0) {
@@ -652,17 +632,14 @@ function getDSTARLinks() {
       }
    }
    $out .= "</table>";
-
    fclose($linkLog);
    return $out;
 }
-
 function getActualLink($logLines, $mode) {
    // returns actual link state of specific mode
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
 //M: 2016-04-03 16:16:18.638 DMR Slot 2, received network voice header from 4000 to 2625094
 //M: 2016-04-03 19:30:03.099 DMR Slot 2, received network voice header from 4020 to 2625094
-
    switch ($mode) {
       case "D-Star":
          if (isProcessRunning(IRCDDBGATEWAY)) {
@@ -732,13 +709,11 @@ function getActualLink($logLines, $mode) {
          }
          break;
       case "YSF":
-
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH
 // M: 2016-10-01 17:52:36.586 Automatic connection to 62829
 // M: 2017-05-15 21:19:42.870 Reverting connection to 62829
-
          if (isProcessRunning("YSFGateway")) {
             foreach($logLines as $logLine) {
                $to = "";
@@ -783,7 +758,6 @@ function getActualLink($logLines, $mode) {
    }
    return _("something went wrong!");
 }
-
 function getActualReflector($logLines, $mode) {
    $to = getActualReflector2($logLines, $mode);
    if ($to >= -1 ) {
@@ -808,7 +782,6 @@ function getActualReflector($logLines, $mode) {
       }
    }
 }
-
 function getActualReflector2($logLines, $mode) {
    // returns actual link state of specific mode
 //M: 2016-05-02 07:04:10.504 D-Star link status set to "Verlinkt zu DCS002 S"
@@ -817,7 +790,6 @@ function getActualReflector2($logLines, $mode) {
    foreach ($logLines as $logLine) {
       if(substr($logLine, 27, strpos($logLine,",") - 27) == "DMR Slot 2") {
          $from = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
-
          if (strlen($from) == 4 && startsWith($from,"4")) {
             if ($from == "4000") {
                return -1;
@@ -829,7 +801,6 @@ function getActualReflector2($logLines, $mode) {
          if (strpos($logLine,"network") > 0 ) {
             $source = "Net";
          }
-
          if ( $source == "RF") {
             $to = substr($logLine, strpos($logLine, "to") + 3);
             if (strlen($to) < 6 && startsWith($to, "4")) {
@@ -840,7 +811,6 @@ function getActualReflector2($logLines, $mode) {
    }
    return -1;
 }
-
 function getActiveYSFReflectors() {
    $reflectorlist = Array();
    $file = fopen(YSFHOSTSPATH."/".YSFHOSTSFILENAME, 'r');
@@ -852,7 +822,6 @@ function getActiveYSFReflectors() {
    fclose($file);
    return $reflectorlist;
 }
-
 function getYSFReflectorById($id, $reflectors) {
    if ($id ==-1) {
       return _("not linked");
@@ -866,7 +835,6 @@ function getYSFReflectorById($id, $reflectors) {
       }
    }
 }
-
 function getName($callsign) {
    if (defined("USESQLITE")) {
       return resolveNameFromDB($callsign);
@@ -877,7 +845,6 @@ function getName($callsign) {
       return resolveNameFromFile($callsign);
    }
 }
-
 function resolveNameFromDB($callsign) {
    $db = new SQLite3('database/callsigns.db');
    if (is_numeric($callsign))
@@ -889,7 +856,6 @@ function resolveNameFromDB($callsign) {
    }
    return "---";
 }
-
 function resolveNameFromFile($callsign) {
    $TMP_CALL_NAME = "/tmp/Callsign_Name.txt";
    if (file_exists($TMP_CALL_NAME)) {
@@ -905,7 +871,6 @@ function resolveNameFromFile($callsign) {
          return $name;
       }
    }
-
    if (file_exists(DMRIDDATPATH)) {
       $callsign = trim($callsign);
       if (strpos($callsign,"-")) {
@@ -916,7 +881,6 @@ function resolveNameFromFile($callsign) {
       if (count($output) !== 0) {
          $name = preg_replace('/[\x00-\x1F\x7F-\xA0\xAD]/u', '', substr($output[0], strpos($output[0],$delimiter)+1));
          $name = substr($name, strpos($name,$delimiter)+1);
-
          $fp = fopen($TMP_CALL_NAME .'.TMP', 'a');
 	 $TMP_STRING = $callsign .' '  .$name;
          fwrite($fp, $TMP_STRING.PHP_EOL);
@@ -929,7 +893,6 @@ function resolveNameFromFile($callsign) {
       return _("DMRIDs.dat not correct!");
    }
 }
-
 function getCallsignFromDB($id) {
    $db = new SQLite3('database/callsigns.db');
    $results = $db->query("SELECT distinct callsign FROM callsign where id = '$id'");
@@ -938,7 +901,6 @@ function getCallsignFromDB($id) {
    }
    return $id;
 }
-
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2017-02-13 15:53:30.991 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
@@ -956,7 +918,6 @@ function decodeAlias($logLine) {
   $tok7 = encode(substr($logLine, 58, 2));
   return $tok1.$tok2.$tok3.$tok4.$tok5.$tok6.$tok7;
 }
-
 function getGitVersion(){
 	if (file_exists(".git")) {
 		exec("git rev-parse --short HEAD", $output);
@@ -965,7 +926,6 @@ function getGitVersion(){
 		return 'GitID unknown';
 	}
 }
-
 function getDMRReflectors() {
 	$data   = file_get_contents("http://ham-dmr.de/reflector.db");
     $rows   = explode("\n",$data);
@@ -975,7 +935,6 @@ function getDMRReflectors() {
     }
     return $refls;
 }
-
 function getDMRplusDMRMasterList() {
   $data   = file_get_contents("http://ham-dmr.de/dmr/dmrmaster2.php");
   $rows   = explode("\n",$data);
