@@ -14,6 +14,8 @@
     <?php showMode("System Fusion Network", $mmdvmconfigs);?>
     <?php showMode("P25", $mmdvmconfigs);?>
     <?php showMode("P25 Network", $mmdvmconfigs);?>
+    <?php showMode("NXDN", $mmdvmconfigs);?>
+    <?php showMode("NXDN Network", $mmdvmconfigs);?>
     </tr>
   </table>
   </div>
