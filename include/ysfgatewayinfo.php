@@ -59,7 +59,19 @@
                  }
                  echo"</td>";
                } else {
-                 echo"<td>$reflector[$i]</td>";
+                 if ($i == 0) {
+                   echo"<td>$reflector[$i]";
+                   $i++;
+                   if ($reflector[$i] !=="") {
+                     if (startsWith($reflector[$i],"http")) 
+                       echo ' <a target="_new" href="'.$reflector[$i].'"><img src="images/dashboard.png" /></a>';
+                     else
+                       echo ' <a target="_new" href="http://'.$reflector[$i].'"><img src="images/dashboard.png" /></a>';
+                   }
+                   echo"</td>";
+                 } else {
+                   echo"<td>$reflector[$i]</td>";
+                 }
                }
             }
             echo "</tr>\n";
