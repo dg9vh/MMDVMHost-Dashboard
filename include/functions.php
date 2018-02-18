@@ -846,7 +846,7 @@ function getActiveYSFReflectors() {
    $file = fopen(YSFHOSTSPATH."/".YSFHOSTSFILENAME, 'r');
    if ($file) {
       while (($line = fgetcsv($file, 1000, ";")) !== FALSE) {
-         array_push($reflectorlist, array($line[1], $line[2], $line[0], $line[5]));
+         array_push($reflectorlist, array($line[1], $line[6],$line[2], $line[0], $line[5]));
       }
    }
    fclose($file);

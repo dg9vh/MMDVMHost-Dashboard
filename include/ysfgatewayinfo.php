@@ -47,9 +47,17 @@
          foreach ($activeYSFReflectors as $reflector) {
             echo "<tr>";
             echo "<td>$counter</td>";
-            for ($i = 0; $i < 4; $i++) {
+            for ($i = 0; $i < 5; $i++) {
                if ($i == 0 && defined("ENABLEYSFREFLECTORSWITCHING")) {
-                 echo"<td><a href=\"scripts/switchysfreflector.php?reflector=$reflector[2]\" title=\"Click to connect to\">$reflector[$i]</a></td>";
+                 echo"<td><a href=\"scripts/switchysfreflector.php?reflector=$reflector[3]\" title=\"Click to connect to\">$reflector[$i]</a>";
+                 $i++;
+                 if ($reflector[$i] !=="") {
+                   if (startsWith($reflector[$i],"http")) 
+                     echo ' <a target="_new" href="'.$reflector[$i].'"><img src="images/dashboard.png" /></a>';
+                   else
+                     echo ' <a target="_new" href="http://'.$reflector[$i].'"><img src="images/dashboard.png" /></a>';
+                 }
+                 echo"</td>";
                } else {
                  echo"<td>$reflector[$i]</td>";
                }
