@@ -860,7 +860,7 @@ function getYSFReflectorById($id, $reflectors) {
       return _("YSFGateway not running");
    } else {
       foreach($reflectors as $reflector) {
-         if ($reflector[2] === $id) {
+         if ($reflector[3] === $id) {
             return $reflector[0];
          }
       }
