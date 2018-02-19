@@ -434,10 +434,15 @@ function getHeardList($logLines, $onlyLast) {
                   $p25ber         = $ber;
                   $p25rssi        = $rssi;
                   break;
+               case "NXDN":
+                  $nxdnduration    = $duration;
+                  $nxdnloss        = $loss;
+                  $nxdnber         = $ber;
+                  $nxdnrssi        = $rssi;
+                  break;
             }
          }
       }
-
       $timestamp = substr($logLine, 3, 23);
       $mode = substr($logLine, 27, strpos($logLine,",") - 27);
       if ($topos = strpos($logLine, "to follow)")) {
@@ -502,8 +507,13 @@ function getHeardList($logLines, $onlyLast) {
             $ber        = $p25ber;
             $rssi       = $p25rssi;
             break;
+         case "NXDN":
+            $duration   = $nxdnduration;
+            $loss       = $nxdnloss;
+            $ber        = $nxdnber;
+            $rssi       = $nxdnrssi;
+            break;
       }
-
       // Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
       if ( strlen($callsign) < 11 ) {
          $name = "";
@@ -535,7 +545,7 @@ function getLastHeard($logLines, $onlyLast) {
    $heardList  = getHeardList($logLines, $onlyLast);
    $counter    = 0;
    foreach ($heardList as $listElem) {
-      if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || (startsWith($listElem[1], "DMR")) ) {
+      if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || ($listElem[1] == "NXDN") || (startsWith($listElem[1], "DMR")) ) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
             // Generate a canonicalized call for QRZ and name lookups
             $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
