@@ -5,6 +5,9 @@ if (!defined("MMDVMLOGPREFIX"))
    define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
 if (!defined("TIMEZONE"))
    define("TIMEZONE", "UTC");
+if (defined("RESOLVETGS")) {
+   $tgList = getTGList();
+}
 $logLinesMMDVM = getMMDVMLog();
 showLapTime("getMMDVMLog");
 $reverseLogLinesMMDVM = $logLinesMMDVM;

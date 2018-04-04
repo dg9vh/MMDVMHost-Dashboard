@@ -6,6 +6,9 @@ include "config/config.php";
 include "include/tools.php";
 include "include/functions.php";
 $mmdvmconfigs = getMMDVMConfig();
+if (defined("RESOLVETGS")) {
+   $tgList = getTGList();
+}
 if (!defined("MMDVMLOGPREFIX"))
    define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
 if (!defined("TIMEZONE"))

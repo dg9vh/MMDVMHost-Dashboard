@@ -23,9 +23,13 @@ if (!defined("MMDVMLOGPREFIX"))
    define("MMDVMLOGPREFIX", getConfigItem("Log", "FileRoot", $mmdvmconfigs));
 if (!defined("TIMEZONE"))
    define("TIMEZONE", "UTC");
+if (defined("RESOLVETGS")) {
+   $tgList = getTGList();
+}
 $logLinesMMDVM = getMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 rsort($reverseLogLinesMMDVM);
+
 if ($_GET['section'] == "mode") {
    $mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, TRUE), $mmdvmconfigs);
    echo $mode;

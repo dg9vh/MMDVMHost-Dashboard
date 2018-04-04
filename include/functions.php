@@ -471,6 +471,10 @@ function getHeardList($logLines, $onlyLast) {
       
       $target = substr($logLine, $topos + 3);
       $target = preg_replace('/\s/', '&nbsp;', $target);
+      if (defined("RESOLVETGS")) {
+         $target = $target." ".getTGName($target);
+      }
+      
       $source = "RF";
       if (strpos($logLine,"network") > 0 ) {
          $source = "Net";
@@ -994,5 +998,22 @@ function getDMRplusDMRMasterList() {
     $s[] = str_getcsv($row,"@",'');
   }
   return $s;
+}
+function getTGList() {
+  $list = array_map('str_getcsv', file(getcwd().'/database/tgs.csv'));
+  return $list;
+}
+
+function getTGName($id) {
+  global $tgList;
+  $name ="";
+  if (startsWith($id, "TG")) {
+    $name = $tgList[recursive_array_search(substr($id, 8), $tgList)][2];
+//    $name = substr($id, 8);
+    return "(".$name.")";
+
+  } else {
+    return $name;
+  }
 }
 ?>

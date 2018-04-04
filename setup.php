@@ -106,6 +106,10 @@ include "include/tools.php";
         <span class="input-group-addon" id="DMRIDDATPATH" style="width: 300px"><?php echo _("Path to DMR-ID-Database-File (including filename)"); ?></span>
         <input type="text" value="<?php echo constant("DMRIDDATPATH") ?>" name="DMRIDDATPATH" class="form-control" placeholder="/var/mmdvm/DMRIDs.dat" aria-describedby="DMRIDDATPATH">
       </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="RESOLVETGS" style="width: 300px"><?php echo _("Enable TG-Names"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="RESOLVETGS" <?php if (defined("RESOLVETGS")) echo "checked" ?>></div>
+      </div>
     </div>
     <div class="container">
       <h2><?php echo _("YSFGateway-Configuration"); ?></h2>
