@@ -89,37 +89,39 @@ function checkSetup() {
 }
 
 function startStopwatch() {
-   $time                   = microtime();
-   $time                   = explode(' ', $time);
-   $time                   = $time[1] + $time[0];
-   $_SESSION['starttime']  = $time;
-   return $time;
+    $time                   = microtime();
+    $time                   = explode(' ', $time);
+    $time                   = $time[1] + $time[0];
+    $_SESSION['starttime']  = $time;
+    return $time;
 }
 
 function getLapTime() {
-   $start      = $_SESSION['starttime'];
-   $time       = microtime();
-   $time       = explode(' ', $time);
-   $time       = $time[1] + $time[0];
-   $finish     = $time;
-   $lap_time   = round(($finish - $start), 4);
-   return $lap_time;
+    $start      = $_SESSION['starttime'];
+    $time       = microtime();
+    $time       = explode(' ', $time);
+    $time       = $time[1] + $time[0];
+    $finish     = $time;
+    $lap_time   = round(($finish - $start), 4);
+    return $lap_time;
 }
 
 function showLapTime($func) {
-   if( defined("DEBUG") ) {
-   ?><script>console.log('<?php echo $func . ": ". getLapTime(); ?> sec.');</script><?php
-   }
+    if( defined("DEBUG") ) {
+    ?><script>console.log('<?php echo $func . ": ". getLapTime(); ?> sec.');</script><?php
+    }
 }
 
 function convertTimezone($timestamp) {
-   $date = new DateTime($timestamp);
-   $date->setTimezone(new DateTimeZone(TIMEZONE));   
-   return $date->format('Y-m-d H:i:s');
+    try {
+        $date = new DateTime($timestamp);
+        $date->setTimezone(new DateTimeZone(TIMEZONE));
+        return $date->format('Y-m-d H:i:s');
+    } catch (Exception $err) {}
 }
 
 function encode($hex) {
-	$validchars = " abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789";
+    $validchars = " abcdefghijklmnopqrstuvwxyzäöüßABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ0123456789";
     $str        = '';
     $chrval     = hexdec($hex);
     $str        = chr($chrval);
