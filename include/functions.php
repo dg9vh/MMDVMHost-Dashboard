@@ -662,7 +662,7 @@ function getDSTARLinks() {
             $linkDest   = $linx[4][0];
             $linkDir    = $linx[5][0];
          }
-         $out .= "<tr>" . $linkSource . "&nbsp;" . $protocol . "-link&nbsp;to&nbsp;" . $linkDest . "&nbsp;" . $linkDir ."</tr>";
+         $out .= "<tr>" . $linkSource . "&nbsp;" . $protocol . "-link&nbsp;to&nbsp;" . $linkDest . "&nbsp;" . $linkDir . "</tr>";
       }
    }
    $out .= "</table>";
@@ -757,19 +757,19 @@ function getActualLink($logLines, $mode) {
             foreach($logLines as $logLine) {
                $to = "";
                if (strpos($logLine,"Disconnect has been requested")) {
-                  $to = -1;
+                  return _("not linked");
                }
                if (strpos($logLine,"Connect to")) {
-                  $to = substr($logLine, 38, 5);
+                  $to = substr($logLine, 47, 16);
                }
-               if (strpos($logLine,"Reverting connection")) {
-                  $to = substr($logLine, 51, 5);
-               }
-               if (strpos($logLine,"The ID of this repeater is")) {
-                  $to = -1;
-               }
-               if (strpos($logLine,"Automatic connection to")) {
-                  $to = substr($logLine, 51, 5);
+               //if (strpos($logLine,"Reverting connection")) {
+               //   $to = substr($logLine, 51, 5);
+               //}
+               //if (strpos($logLine,"The ID of this repeater is")) {
+               //   $to = -1;
+               //}
+               if (strpos($logLine,"Automatic (re-)connection to")) {
+                  $to = substr($logLine, 65, 16);
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/YSFState.txt', 'w');
@@ -779,7 +779,7 @@ function getActualLink($logLines, $mode) {
                }
             }
          } else {
-         	return -2;
+         	return _("YSFGateway not running");
          }
          if (file_exists('/tmp/YSFState.txt')) {
            $fp         = fopen('/tmp/YSFState.txt', 'r');
@@ -788,10 +788,10 @@ function getActualLink($logLines, $mode) {
            if (count($contents)>0){
               return $contents;
            } else {
-              return -1;
+	      return _("not linked");
            }
          } else {
-           return -1;
+	   return _("not linked");
          }
          break;
    }
@@ -865,20 +865,6 @@ function getActiveYSFReflectors() {
    }
    fclose($file);
    return $reflectorlist;
-}
-
-function getYSFReflectorById($id, $reflectors) {
-   if ($id ==-1) {
-      return _("not linked");
-   } else if ($id == -2 ) {
-      return _("YSFGateway not running");
-   } else {
-      foreach($reflectors as $reflector) {
-         if ($reflector[3] === $id) {
-            return $reflector[0];
-         }
-      }
-   }
 }
 
 function getName($callsign) {

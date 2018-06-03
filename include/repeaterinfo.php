@@ -37,7 +37,7 @@
      echo"<td id=\"dstarlink\">".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td>";
    }
    if (getEnabled("System Fusion", $mmdvmconfigs) == 1) {
-     echo"<td id=\"ysflink\">".getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors)."</td>";
+     echo"<td id=\"ysflink\">".getActualLink($reverseLogLinesYSFGateway, "YSF")."</td>";
    }
    if (getEnabled("DMR", $mmdvmconfigs) == 1) {
      if (getConfigItem("DMR Network", "Slot1", $mmdvmconfigs) == "1") {
