@@ -662,7 +662,7 @@ function getDSTARLinks() {
             $linkDest   = $linx[4][0];
             $linkDir    = $linx[5][0];
          }
-         $out .= "<tr><td>" . $linkSource . "</td><td>&nbsp;" . $protocol . "-link</td><td>&nbsp;to&nbsp;</td><td>" . $linkDest . "</td><td>&nbsp;" . $linkDir . "</td></tr>";
+         $out .= "<tr>" . $linkSource . "&nbsp;" . $protocol . "-link&nbsp;to&nbsp;" . $linkDest . "&nbsp;" . $linkDir ."</tr>";
       }
    }
    $out .= "</table>";
