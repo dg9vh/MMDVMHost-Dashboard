@@ -46,7 +46,7 @@ if ($_GET['section'] == "ysflink") {
    $reverseLogLinesYSFGateway = $logLinesYSFGateway;
    rsort($reverseLogLinesYSFGateway);
    $activeYSFReflectors = getActiveYSFReflectors();
-   $link = getYSFReflectorById(getActualLink($reverseLogLinesYSFGateway, "YSF"), $activeYSFReflectors);
+   $link = getActualLink($reverseLogLinesYSFGateway, "YSF");
    echo $link;
 }
 

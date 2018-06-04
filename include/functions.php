@@ -240,7 +240,7 @@ function getShortMMDVMLog() {
 function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting|Reverting" $logPath`);
+   $logLines   = explode("\n", `egrep -h "repeater|Startinf|Disconnect|Linked|Automatic|Reverting|No connection" $logPath`);
    return $logLines;
 }
 
@@ -662,7 +662,7 @@ function getDSTARLinks() {
             $linkDest   = $linx[4][0];
             $linkDir    = $linx[5][0];
          }
-         $out .= "<tr>" . $linkSource . "&nbsp;" . $protocol . "-link&nbsp;to&nbsp;" . $linkDest . "&nbsp;" . $linkDir ."</tr>";
+         $out .= "<tr>" . $linkSource . "&nbsp;" . $protocol . "-link&nbsp;to&nbsp;" . $linkDest . "&nbsp;" . $linkDir . "</tr>";
       }
    }
    $out .= "</table>";
@@ -749,27 +749,19 @@ function getActualLink($logLines, $mode) {
 
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
-// M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH
-// M: 2016-10-01 17:52:36.586 Automatic connection to 62829
-// M: 2017-05-15 21:19:42.870 Reverting connection to 62829
+//I: 2018-06-04 11:04:22.190 The ID of this repeater is 50735
+//M: 2018-06-04 11:04:22.202 No connection startup
+//M: 2018-06-04 11:04:24.005 Linked to IT C4FM Piemonte		   
+
 
          if (isProcessRunning("YSFGateway")) {
             foreach($logLines as $logLine) {
                $to = "";
-               if (strpos($logLine,"Disconnect has been requested")) {
-                  $to = -1;
+               if (strpos($logLine,"Disconnect") || strpos($logLine, "Unknown reflector") || strpos($logLine, "Disconnecting due to inactivity") || strpos($logLine, "No connection startup")) {
+                  return _("not linked");
                }
-               if (strpos($logLine,"Connect to")) {
-                  $to = substr($logLine, 38, 5);
-               }
-               if (strpos($logLine,"Reverting connection")) {
-                  $to = substr($logLine, 51, 5);
-               }
-               if (strpos($logLine,"The ID of this repeater is")) {
-                  $to = -1;
-               }
-               if (strpos($logLine,"Automatic connection to")) {
-                  $to = substr($logLine, 51, 5);
+               if (strpos($logLine,"Linked to")) {
+                  $to = substr($logLine, 37, 16);
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/YSFState.txt', 'w');
@@ -779,7 +771,7 @@ function getActualLink($logLines, $mode) {
                }
             }
          } else {
-         	return -2;
+         	return _("YSFGateway not running");
          }
          if (file_exists('/tmp/YSFState.txt')) {
            $fp         = fopen('/tmp/YSFState.txt', 'r');
@@ -788,10 +780,10 @@ function getActualLink($logLines, $mode) {
            if (count($contents)>0){
               return $contents;
            } else {
-              return -1;
+	      return _("not linked");
            }
          } else {
-           return -1;
+	   return _("not linked");
          }
          break;
    }
@@ -865,20 +857,6 @@ function getActiveYSFReflectors() {
    }
    fclose($file);
    return $reflectorlist;
-}
-
-function getYSFReflectorById($id, $reflectors) {
-   if ($id ==-1) {
-      return _("not linked");
-   } else if ($id == -2 ) {
-      return _("YSFGateway not running");
-   } else {
-      foreach($reflectors as $reflector) {
-         if ($reflector[3] === $id) {
-            return $reflector[0];
-         }
-      }
-   }
 }
 
 function getName($callsign) {
