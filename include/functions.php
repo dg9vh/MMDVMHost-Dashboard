@@ -240,7 +240,7 @@ function getShortMMDVMLog() {
 function getYSFGatewayLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "repeater|Starting|Disconnect|Connect|Automatic|Disconnecting|Reverting" $logPath`);
+   $logLines   = explode("\n", `egrep -h "repeater|Startinf|Disconnect|Linked|Automatic|Reverting|No connection" $logPath`);
    return $logLines;
 }
 
@@ -749,27 +749,19 @@ function getActualLink($logLines, $mode) {
 
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
-// M: 2016-09-25 16:08:05.811 Connect to 62829 has been requested by DG9VH
-// M: 2016-10-01 17:52:36.586 Automatic connection to 62829
-// M: 2017-05-15 21:19:42.870 Reverting connection to 62829
+//I: 2018-06-04 11:04:22.190 The ID of this repeater is 50735
+//M: 2018-06-04 11:04:22.202 No connection startup
+//M: 2018-06-04 11:04:24.005 Linked to IT C4FM Piemonte		   
+
 
          if (isProcessRunning("YSFGateway")) {
             foreach($logLines as $logLine) {
                $to = "";
-               if (strpos($logLine,"Disconnect has been requested")) {
+               if (strpos($logLine,"Disconnect") || strpos($logLine, "Unknown reflector") || strpos($logLine, "Disconnecting due to inactivity") || strpos($logLine, "No connection startup")) {
                   return _("not linked");
                }
-               if (strpos($logLine,"Connect to")) {
-                  $to = substr($logLine, 47, 16);
-               }
-               //if (strpos($logLine,"Reverting connection")) {
-               //   $to = substr($logLine, 51, 5);
-               //}
-               //if (strpos($logLine,"The ID of this repeater is")) {
-               //   $to = -1;
-               //}
-               if (strpos($logLine,"Automatic (re-)connection to")) {
-                  $to = substr($logLine, 65, 16);
+               if (strpos($logLine,"Linked to")) {
+                  $to = substr($logLine, 37, 16);
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/YSFState.txt', 'w');
