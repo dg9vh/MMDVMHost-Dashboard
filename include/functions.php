@@ -762,6 +762,9 @@ function getActualLink($logLines, $mode) {
                }
                if (strpos($logLine,"Linked to")) {
                   $to = substr($logLine, 37, 16);
+                  if ($to == "MMDVM" )
+                    continue;
+
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/YSFState.txt', 'w');
