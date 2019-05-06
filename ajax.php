@@ -95,10 +95,10 @@ if ($_GET['section'] == "localTx") {
                   if (defined("SHOWQRZ")) {
                      $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$call_canon\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
                   } else {
-                     $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$call_canon\">".$listElem[2]."</a>";
+                     $listElem[2] = "<a target=\"_new\" href=\"http://ham-digital.org/dmr-userreg.php?callsign=$call_canon\">".$listElem[2]."</a>";
                   }
                } else {
-                  $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</a>";
+                  $listElem[2] = "<a target=\"_new\" href=\"http://ham-digital.org/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</a>";
                }
             }
             array_push($lastHeard, $listElem);
@@ -111,10 +111,10 @@ if ($_GET['section'] == "localTx") {
                   if (defined("SHOWQRZ")) {
                      $listElem[2] = "<a target=\"_new\" href=\"https://qrz.com/db/$call_canon\">".str_replace("0","&Oslash;",$listElem[2])."</a>";
                   } else {
-                     $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?callsign=$call_canon\">".$listElem[2]."</a>";
+                     $listElem[2] = "<a target=\"_new\" href=\"http://ham-digital.org/dmr-userreg.php?callsign=$call_canon\">".$listElem[2]."</a>";
                   }
                } else {
-                  $listElem[2] = "<a target=\"_new\" href=\"http://dmr.darc.de/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</a>";
+                  $listElem[2] = "<a target=\"_new\" href=\"http://ham-digital.org/dmr-userreg.php?usrid=$listElem[2]\">".$listElem[2]."</a>";
                }
             }
             array_push($lastHeard, $listElem);
