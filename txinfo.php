@@ -14,6 +14,9 @@ if (!defined("MMDVMLOGPREFIX"))
 if (!defined("TIMEZONE"))
    define("TIMEZONE", "UTC");
 $logLinesMMDVM = getShortMMDVMLog();
+   echo"<!--";
+   var_dump($logLinesMMDVM);
+   echo"-->";
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 $lastHeard = getLastHeard($reverseLogLinesMMDVM, True);

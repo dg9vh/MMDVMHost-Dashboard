@@ -163,6 +163,7 @@ function getDMRId ($mmdvmconfigs) {
    // returns DMRId from MMDVM-Config
    return getConfigItem("General", "Id", $mmdvmconfigs);
 }
+
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
    $sectionpos = array_search("[" . $section . "]", $configs) + 1;
@@ -226,14 +227,16 @@ function showMode($mode, $mmdvmconfigs) {
 function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
+//   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
+   $logLines   = explode("\n", `egrep -h "end|watchdog|lost" $logPath`);
    return $logLines;
 }
 
 function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" | tail -20`);
+   //$logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" | tail -20`);
+   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath | sed '/\(CSBK\|overflow\|Downlink\)/d' | tail -20`);
    return $logLines;
 }
 
@@ -249,6 +252,7 @@ function getYSFGatewayLog() {
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
+// M: 2019-12-09 18:56:46.947 DMR Slot 1, received RF voice header from 2625094 to TG 26266
 // M: 2016-09-16 09:14:12.886 P25, received RF from DF2ET to TG10100
 // M: 2017-02-13 15:53:30.990 DMR Slot 2, Embedded Talker Alias Header
 // M: 2017-02-13 15:53:30.991 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
@@ -467,14 +471,15 @@ function getHeardList($logLines, $onlyLast) {
          if(!$id)
              $id="";
       }
-      
-      
+
       $target = substr($logLine, $topos + 3);
+      if (strpos($target,",") > 0)
+         $target = substr($target, 0, strpos($target,","));
       $target = preg_replace('/\s/', '&nbsp;', $target);
       if (defined("RESOLVETGS")) {
          $target = $target." ".getTGName($target);
       }
-      
+
       $source = "RF";
       if (strpos($logLine,"network") > 0 ) {
          $source = "Net";
@@ -693,6 +698,7 @@ function getActualLink($logLines, $mode) {
                $to = "";
                if (strpos($logLine,"to")) {
                   $to = trim(substr($logLine, strpos($logLine,"to") + 3));
+                  $to = substr($to, 0, strpos($to,","));
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/DMR1State.txt', 'w');
@@ -723,6 +729,9 @@ function getActualLink($logLines, $mode) {
                $to = "";
                if (strpos($logLine,"to")) {
                   $to = trim(substr($logLine, strpos($logLine,"to") + 3));
+                  $to = trim(substr($logLine, strpos($logLine,"to") + 3));
+                  $to = substr($to, 0, strpos($to,","));
+
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/DMR2State.txt', 'w');
@@ -751,8 +760,7 @@ function getActualLink($logLines, $mode) {
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 //I: 2018-06-04 11:04:22.190 The ID of this repeater is 50735
 //M: 2018-06-04 11:04:22.202 No connection startup
-//M: 2018-06-04 11:04:24.005 Linked to IT C4FM Piemonte		   
-
+//M: 2018-06-04 11:04:24.005 Linked to IT C4FM Piemonte
 
          if (isProcessRunning("YSFGateway")) {
             foreach($logLines as $logLine) {
@@ -805,7 +813,7 @@ function getActualReflector($logLines, $mode) {
          return $to;
       }
    }
-  
+
    if (file_exists('/tmp/DMR2RefState.txt')) {
       $fp         = fopen('/tmp/DMR2RefState.txt', 'r');
       $contents   = fread($fp, filesize("/tmp/DMR2RefState.txt"));
