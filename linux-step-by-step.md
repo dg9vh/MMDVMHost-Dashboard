@@ -38,7 +38,7 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 	
 	If you use a Raspian Stretch use:
 	
-	>sudo apt-get install php7.0-common php7.0-cgi php
+	>sudo apt-get install php7.3-common php7.3-cgi php
 
 if you want to use the sqlite3-database based resolving of the operator-names you need following, too Raspian Wheezy and Raspbian Jessie:
 
