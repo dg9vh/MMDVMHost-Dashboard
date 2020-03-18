@@ -781,7 +781,27 @@ function getActualLink($logLines, $mode) {
                   return $to;
                }
             }
-         } else {
+         
+		if ( ($to == "") && file_exists('/tmp/YSFState.txt')) { // reflector is in yesterday's log 
+			$logPath2    = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date('Y-m-d',strtotime(date('Y-m-d').' -1 day')).".log"; //open yesterday's log
+			$logLines2   = explode("\n", `egrep -h "Linked to" $logPath2`);
+			$to = "";
+			foreach($logLines2 as $logLine) {
+				  if ($logLine!=='') {
+					$to = substr($logLine, 37, 16);
+					if ($to == "MMDVM" )
+						continue;
+				  }
+				}
+			if ($to !== "") {
+				  $fp = fopen('/tmp/YSFState.txt', 'w');
+				  fwrite($fp, $to);
+				  fclose($fp);
+				  return $to;
+			   }
+		}
+		 
+	 } else {
          	return _("YSFGateway not running");
          }
          if (file_exists('/tmp/YSFState.txt')) {
