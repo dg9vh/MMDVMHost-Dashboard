@@ -366,12 +366,20 @@ function getHeardList($logLines, $onlyLast) {
             $ber  = substr($loss, 5);
             $loss = "";
          } else {
-            $loss = strtok($loss, " ");
-            if (array_key_exists(4,$lineTokens)) {
-               $ber = substr($lineTokens[4], 5);
-            }
-            if (array_key_exists(5,$lineTokens) && substr($lineTokens[5], 6) != "-0/-0/-0 dBm") {
-               $rssiString = substr($lineTokens[5], 6);
+		if (startsWith($loss,"RSSI:")) { //for short RF packets and "X" button requests, BER sometimes in not showed. RSSI is in BER position
+			$loss="";
+			$ber = "";
+			$rssiString = substr($lineTokens[3], 6);
+		} else {
+			$loss = strtok($loss, " ");
+			if (array_key_exists(4,$lineTokens)) {
+				$ber = substr($lineTokens[4], 5);
+				}	
+			$rssiString = substr($lineTokens[5], 6); 
+			if (array_key_exists(5,$lineTokens) && substr($lineTokens[5], 6) != "-0/-0/-0 dBm") {
+				$rssiString = substr($lineTokens[5], 6);
+			}
+		}
                if (constant("RSSI") == "min") $rssiVal = preg_replace('/(-\d+)\/-\d+\/-\d+ dBm/', "\\1", $rssiString);
                else if (constant("RSSI") == "max") $rssiVal = preg_replace('/-\d+\/(-\d+)\/-\d+ dBm/', "\\1", $rssiString);
                else if (constant("RSSI") == "avg") $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
@@ -394,7 +402,6 @@ function getHeardList($logLines, $onlyLast) {
                } else {
                   $rssi = $rssiVal;
                }
-            }
          }
 
          if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
