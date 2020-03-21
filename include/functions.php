@@ -58,7 +58,9 @@ function getFirmwareVersion() {
    $firmware   = "n/a";
    if (count($logLines) >= 2) {
       $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
-      if (0 === strpos($firmware, 'MMDVM')) {
+      if (0 === strpos($firmware, 'MMDVM_HS_Dual_Hat')) {
+         $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/juribeparada/MMDVM_HS/commit/$1" target=\"_blank\">$1</a>', $firmware);
+      } else if (0 === strpos($firmware, 'MMDVM')) {
          $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/g4klx/MMDVM/commit/$1" target=\"_blank\">$1</a>', $firmware);
       } else if (0 === strpos($firmware, 'ZUMspot')) {
          $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/juribeparada/MMDVM_HS/commit/$1" target=\"_blank\">$1</a>', $firmware);
