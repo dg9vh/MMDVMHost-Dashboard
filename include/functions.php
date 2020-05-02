@@ -586,6 +586,10 @@ function getLastHeard($logLines, $onlyLast) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
             // Generate a canonicalized call for QRZ and name lookups
             $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
+	    //remove suffix used sometimes in YSF (es: -FT2 , -991)
+            if (strpos($call_canon,"-")!=false) {
+                $call_canon = substr($call_canon, 0, strpos($call_canon, "-"));
+            }
             array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[4]);
             if (defined("ENABLEXTDLOOKUP")) {
                if ($listElem[2] !== "??????????") {
