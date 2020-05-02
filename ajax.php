@@ -86,6 +86,10 @@ if ($_GET['section'] == "localTx") {
       $listElem = $localTXList[$i];
       // Generate a canonicalized call for QRZ and name lookups
       $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
+      //remove suffix used sometimes in YSF (es: -FT2 , -991)
+      if (strpos($call_canon,"-")!=false) {
+          $call_canon = substr($call_canon, 0, strpos($call_canon, "-"));
+      }
       if (defined("ENABLEXTDLOOKUP")) {
       	 $listElem[11] ="";
          if ($listElem[6] == "RF" && ($listElem[1]=="D-Star" || startsWith($listElem[1], "DMR") || $listElem[1]=="YSF" || $listElem[1]=="P25" || $listElem[1]=="NXDN")) {
