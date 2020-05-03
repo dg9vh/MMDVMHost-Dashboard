@@ -223,11 +223,11 @@ if ($_GET['section'] == "sysinfo") {
    showLapTime("cpuusage");
 
    $output     = shell_exec('grep -c processor /proc/cpuinfo');
-   $cpucores   = $output;
+   $cpucores   = intval($output);
 
    $output     = shell_exec('cat /proc/uptime');
    $uptime     = format_time(substr($output,0,strpos($output," ")));
-   $idletime   = format_time((substr($output,strpos($output," ")))/$cpucores);
+   $idletime   = format_time(doubleval((substr($output,strpos($output," "))))/$cpucores);
    showLapTime("idletime");
 
    if (defined("SHOWPOWERSTATE")) {

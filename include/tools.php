@@ -1,5 +1,7 @@
 <?php
 function format_time($seconds) {
+   echo gettype($seconds);
+   echo $seconds;
    $secs           = intval($seconds % 60);
    $mins           = intval($seconds / 60 % 60);
    $hours          = intval($seconds / 3600 % 24);
@@ -73,17 +75,10 @@ function getSize($filesize, $precision = 2) {
 function checkSetup() {
    $el = error_reporting();
    error_reporting(E_ERROR | E_WARNING | E_PARSE);
-   if (defined(DISTRIBUTION)) {
-?>
-<div class="alert alert-danger" role="alert"><?php echo _("You are using an old config.php. Please configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"); ?></div>
-<?php
-
-      } else {
-      if (file_exists ("setup.php") && ! defined("DISABLESETUPWARNING")) {
+   if (file_exists ("setup.php") && ! defined("DISABLESETUPWARNING")) {
    ?>
    <div class="alert alert-danger" role="alert"><?php echo _("You forgot to remove setup.php in root-directory of your dashboard or you forgot to configure it! Please delete the file or configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"); ?></div>
    <?php
-      }
    }
    error_reporting($el);
 }
