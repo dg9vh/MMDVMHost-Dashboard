@@ -1,7 +1,5 @@
 <?php
 function format_time($seconds) {
-   echo gettype($seconds);
-   echo $seconds;
    $secs           = intval($seconds % 60);
    $mins           = intval($seconds / 60 % 60);
    $hours          = intval($seconds / 3600 % 24);
