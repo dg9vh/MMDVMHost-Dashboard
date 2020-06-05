@@ -229,7 +229,6 @@ function showMode($mode, $mmdvmconfigs) {
 function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-//   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
    $logLines   = explode("\n", `egrep -h "end|watchdog|lost" $logPath`);
    return $logLines;
 }
@@ -237,8 +236,7 @@ function getMMDVMLog() {
 function getShortMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   //$logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" | tail -20`);
-   $logLines = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath | sed '/\(CSBK\|overflow\|Downlink\)/d' | tail -20`);
+   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|Alias|0000" $logPath | grep -v "data header" | tail -20`);
    return $logLines;
 }
 
