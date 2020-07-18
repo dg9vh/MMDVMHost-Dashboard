@@ -45,7 +45,7 @@ $(document).ready(function(){
     "language": <?php echo DATATABLESTRANSLATION; ?>,
     "aaSorting": [[0,'desc']],
 
-   <?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}";
+   <?php $request = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['SERVER_NAME']}:{$_SERVER['SERVER_PORT']}/{$_SERVER['REQUEST_URI']}";
    if (strpos($request,"index.php")> 0) {
       $request = substr($request,0,strpos($request,"index.php"));
    }

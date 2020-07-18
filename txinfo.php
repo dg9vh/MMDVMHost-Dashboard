@@ -14,15 +14,18 @@ if (!defined("MMDVMLOGPREFIX"))
 if (!defined("TIMEZONE"))
    define("TIMEZONE", "UTC");
 $logLinesMMDVM = getShortMMDVMLog();
+//   echo"<!--";
+//   var_dump($logLinesMMDVM);
+//   echo"-->";
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 $lastHeard = getLastHeard($reverseLogLinesMMDVM, True);
 $counter = 0;
 foreach ($lastHeard as $listElem) {
    $counter +=1;
-   echo"<!--";
-   var_dump($listElem);
-   echo"-->";
+//   echo"<!--";
+//   var_dump($listElem);
+//   echo"-->";
    if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
       echo "<tr>";
       echo"<td nowrap>$listElem[0]</td>";

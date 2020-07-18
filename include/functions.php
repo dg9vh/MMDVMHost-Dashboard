@@ -58,7 +58,9 @@ function getFirmwareVersion() {
    $firmware   = "n/a";
    if (count($logLines) >= 2) {
       $firmware = substr($logLines[count($logLines)-2], strpos($logLines[count($logLines)-2], "description")+13, strlen($logLines[count($logLines)-2])-strpos($logLines[count($logLines)-2], "description")+13);
-      if (0 === strpos($firmware, 'MMDVM')) {
+      if (0 === strpos($firmware, 'MMDVM_HS_Dual_Hat')) {
+         $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/juribeparada/MMDVM_HS/commit/$1" target=\"_blank\">$1</a>', $firmware);
+      } else if (0 === strpos($firmware, 'MMDVM')) {
          $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/g4klx/MMDVM/commit/$1" target=\"_blank\">$1</a>', $firmware);
       } else if (0 === strpos($firmware, 'ZUMspot')) {
          $firmware = preg_replace('/GitID #([0-9A-Fa-f]{7})/', 'GitID #<a href="http://www.github.com/juribeparada/MMDVM_HS/commit/$1" target=\"_blank\">$1</a>', $firmware);
@@ -163,6 +165,7 @@ function getDMRId ($mmdvmconfigs) {
    // returns DMRId from MMDVM-Config
    return getConfigItem("General", "Id", $mmdvmconfigs);
 }
+
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
    $sectionpos = array_search("[" . $section . "]", $configs) + 1;
@@ -226,7 +229,7 @@ function showMode($mode, $mmdvmconfigs) {
 function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
+   $logLines   = explode("\n", `egrep -h "end|watchdog|lost" $logPath`);
    return $logLines;
 }
 
@@ -249,6 +252,7 @@ function getYSFGatewayLog() {
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
 // M: 2016-04-29 19:43:21.839 DMR Slot 2, received network voice header from DL1ESZ to TG 9
 // M: 2016-04-30 14:57:43.072 DMR Slot 2, received RF voice header from DG9VH to 5000
+// M: 2019-12-09 18:56:46.947 DMR Slot 1, received RF voice header from 2625094 to TG 26266
 // M: 2016-09-16 09:14:12.886 P25, received RF from DF2ET to TG10100
 // M: 2017-02-13 15:53:30.990 DMR Slot 2, Embedded Talker Alias Header
 // M: 2017-02-13 15:53:30.991 0000:  04 00 5E 49 57 38 44 59 94                         *..^IW8DY.*
@@ -359,39 +363,65 @@ function getHeardList($logLines, $onlyLast) {
                   $rssi = $rssiVal;
                }
             }
-            $ber  = substr($loss, 5);
-            $loss = "";
-         } else {
-            $loss = strtok($loss, " ");
-            if (array_key_exists(4,$lineTokens)) {
-               $ber = substr($lineTokens[4], 5);
-            }
-            if (array_key_exists(5,$lineTokens) && substr($lineTokens[5], 6) != "-0/-0/-0 dBm") {
-               $rssiString = substr($lineTokens[5], 6);
-               if (constant("RSSI") == "min") $rssiVal = preg_replace('/(-\d+)\/-\d+\/-\d+ dBm/', "\\1", $rssiString);
-               else if (constant("RSSI") == "max") $rssiVal = preg_replace('/-\d+\/(-\d+)\/-\d+ dBm/', "\\1", $rssiString);
-               else if (constant("RSSI") == "avg") $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
-               else if (constant("RSSI") == "all") $rssiVal = $rssiString;
-               else $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
-               if (constant("RSSI") != "all") {
-                  if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-63") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-73") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-83") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-93") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-99") $rssi    = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-105") $rssi   = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-111") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-117") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-123") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-129") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-135") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-                  else if ($rssiVal > "-141") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
-               } else {
-                  $rssi = $rssiVal;
-               }
-            }
-         }
+        $ber  = substr($loss, 5);
+        $loss = "";
+		} else if (startsWith($loss,"RSSI:")) { //for short RF packets and "X" button requests, BER sometimes in not showed. RSSI is in BER position
+			   $loss="";
+			   $ber = "";
+			   $rssiString = substr($lineTokens[3], 6);
+			   if (constant("RSSI") == "min") $rssiVal = preg_replace('/(-\d+)\/-\d+\/-\d+ dBm/', "\\1", $rssiString);
+			   else if (constant("RSSI") == "max") $rssiVal = preg_replace('/-\d+\/(-\d+)\/-\d+ dBm/', "\\1", $rssiString);
+			   else if (constant("RSSI") == "avg") $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+			   else if (constant("RSSI") == "all") $rssiVal = $rssiString;
+			   else $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+			   if (constant("RSSI") != "all") {
+				  if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-63") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-73") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-83") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-93") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-99") $rssi    = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-105") $rssi   = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-111") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-117") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-123") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-129") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-135") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-141") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+			   } else {
+					$rssi = $rssiVal;
+					}
+		} else {
+			$loss = strtok($loss, " ");
+			if (array_key_exists(4,$lineTokens)) {
+				$ber = substr($lineTokens[4], 5);
+				}
+			if (array_key_exists(5,$lineTokens) && substr($lineTokens[5], 6) != "-0/-0/-0 dBm") {
+			   $rssiString = substr($lineTokens[5], 6);
+			   if (constant("RSSI") == "min") $rssiVal = preg_replace('/(-\d+)\/-\d+\/-\d+ dBm/', "\\1", $rssiString);
+			   else if (constant("RSSI") == "max") $rssiVal = preg_replace('/-\d+\/(-\d+)\/-\d+ dBm/', "\\1", $rssiString);
+			   else if (constant("RSSI") == "avg") $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+			   else if (constant("RSSI") == "all") $rssiVal = $rssiString;
+			   else $rssiVal = preg_replace('/-\d+\/-\d+\/(-\d+) dBm/', "\\1", $rssiString);
+			   if (constant("RSSI") != "all") {
+				  if ($rssiVal > "-53") $rssi = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +40dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-63") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +30dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-73") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +20dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-83") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9<sup> +10dB</sup> ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-93") $rssi    = "<img src=\"images/4.png\" \> <div class=\"tooltip2\">S9 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-99") $rssi    = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S8 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-105") $rssi   = "<img src=\"images/3.png\" \> <div class=\"tooltip2\">S7 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-111") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S6 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-117") $rssi   = "<img src=\"images/2.png\" \> <div class=\"tooltip2\">S5 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-123") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S4 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-129") $rssi   = "<img src=\"images/1.png\" \> <div class=\"tooltip2\">S3 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-135") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S2 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+				  else if ($rssiVal > "-141") $rssi   = "<img src=\"images/0.png\" \> <div class=\"tooltip2\">S1 ($rssiVal dBm)<span class=\"tooltip2text\">(min/max/avg)<br>$rssiString</span></div>";
+			   } else {
+					$rssi = $rssiVal;
+					}
+			}
+		}
 
          if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
             switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
@@ -467,14 +497,15 @@ function getHeardList($logLines, $onlyLast) {
          if(!$id)
              $id="";
       }
-      
-      
+
       $target = substr($logLine, $topos + 3);
+      if (strpos($target,",") > 0)
+         $target = substr($target, 0, strpos($target,","));
       $target = preg_replace('/\s/', '&nbsp;', $target);
       if (defined("RESOLVETGS")) {
          $target = $target." ".getTGName($target);
       }
-      
+
       $source = "RF";
       if (strpos($logLine,"network") > 0 ) {
          $source = "Net";
@@ -553,6 +584,10 @@ function getLastHeard($logLines, $onlyLast) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
             // Generate a canonicalized call for QRZ and name lookups
             $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
+	    //remove suffix used sometimes in YSF (es: -FT2 , -991)
+            if (strpos($call_canon,"-")!=false) {
+                $call_canon = substr($call_canon, 0, strpos($call_canon, "-"));
+            }
             array_push($heardCalls, $listElem[2]."#".$listElem[1].$listElem[4]);
             if (defined("ENABLEXTDLOOKUP")) {
                if ($listElem[2] !== "??????????") {
@@ -693,6 +728,7 @@ function getActualLink($logLines, $mode) {
                $to = "";
                if (strpos($logLine,"to")) {
                   $to = trim(substr($logLine, strpos($logLine,"to") + 3));
+                  $to = substr($to, 0, strpos($to,","));
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/DMR1State.txt', 'w');
@@ -723,6 +759,9 @@ function getActualLink($logLines, $mode) {
                $to = "";
                if (strpos($logLine,"to")) {
                   $to = trim(substr($logLine, strpos($logLine,"to") + 3));
+                  $to = trim(substr($logLine, strpos($logLine,"to") + 3));
+                  $to = substr($to, 0, strpos($to,","));
+
                }
                if ($to !== "") {
                   $fp = fopen('/tmp/DMR2State.txt', 'w');
@@ -751,8 +790,7 @@ function getActualLink($logLines, $mode) {
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 //I: 2018-06-04 11:04:22.190 The ID of this repeater is 50735
 //M: 2018-06-04 11:04:22.202 No connection startup
-//M: 2018-06-04 11:04:24.005 Linked to IT C4FM Piemonte		   
-
+//M: 2018-06-04 11:04:24.005 Linked to IT C4FM Piemonte
 
          if (isProcessRunning("YSFGateway")) {
             foreach($logLines as $logLine) {
@@ -773,7 +811,27 @@ function getActualLink($logLines, $mode) {
                   return $to;
                }
             }
-         } else {
+         
+		if ( ($to == "") && file_exists('/tmp/YSFState.txt')) { // reflector is in yesterday's log 
+			$logPath2    = YSFGATEWAYLOGPATH."/".YSFGATEWAYLOGPREFIX."-".date('Y-m-d',strtotime(date('Y-m-d').' -1 day')).".log"; //open yesterday's log
+			$logLines2   = explode("\n", `egrep -h "Linked to" $logPath2`);
+			$to = "";
+			foreach($logLines2 as $logLine) {
+				  if ($logLine!=='') {
+					$to = substr($logLine, 37, 16);
+					if ($to == "MMDVM" )
+						continue;
+				  }
+				}
+			if ($to !== "") {
+				  $fp = fopen('/tmp/YSFState.txt', 'w');
+				  fwrite($fp, $to);
+				  fclose($fp);
+				  return $to;
+			   }
+		}
+		 
+	 } else {
          	return _("YSFGateway not running");
          }
          if (file_exists('/tmp/YSFState.txt')) {
@@ -805,7 +863,7 @@ function getActualReflector($logLines, $mode) {
          return $to;
       }
    }
-  
+
    if (file_exists('/tmp/DMR2RefState.txt')) {
       $fp         = fopen('/tmp/DMR2RefState.txt', 'r');
       $contents   = fread($fp, filesize("/tmp/DMR2RefState.txt"));
