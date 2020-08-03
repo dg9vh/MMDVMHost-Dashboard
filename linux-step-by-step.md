@@ -18,7 +18,7 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 	
 4. Set permissions so you and the webserver have full access to the files:
 
-	If you use a current Raspbian Jessie and Raspian Stretch, use following commands:
+	If you use a current Raspbian Jessie, Raspian Stretch & Raspbian Buster, use following commands:
 
 	>sudo chown -R www-data:www-data /var/www/html
 
@@ -36,7 +36,7 @@ This short howto describes step-by-step how to install the MMDVMHost-Dashboard o
 
 	>sudo apt-get install php5-common php5-cgi php5
 	
-	If you use a Raspian Stretch use:
+	If you use a Raspian Stretch or Raspbian Buster use:
 	
 	>sudo apt-get install php7.3-common php7.3-cgi php
 
@@ -47,6 +47,10 @@ if you want to use the sqlite3-database based resolving of the operator-names yo
 Raspian Stretch:
 
 	>sudo apt-get install sqlite3 php7.0-sqlite
+	
+Raspian Buster:
+
+	>sudo apt-get install sqlite3 php7.3-sqlite3	
 
 Now continue with:
 
@@ -68,7 +72,7 @@ Now continue with:
 
 8. Next, you need to copy the files into the webroot so they can be served by lighttpd:
 
-	If you are using Raspbian Jessie and Raspian Stretch, run:
+	If you are using Raspbian Jessie, Raspian Stretch or Raspbian Buster, run:
 
 	>sudo cp -R /home/pi/MMDVMHost-Dashboard/* /var/www/html/	
 
