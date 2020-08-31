@@ -168,15 +168,21 @@ function getDMRId ($mmdvmconfigs) {
 
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
-   $sectionpos = array_search("[" . $section . "]", $configs) + 1;
-   $len        = count($configs);
-   while(startsWith($configs[$sectionpos],$key."=") === false && $sectionpos <= ($len) ) {
-      if (startsWith($configs[$sectionpos],"[")) {
-         return null;
-      }
+   $sectionpos = arraye_search("[" . $section . "]", $configs);
+   if ($sectionpos !== FALSE) {
       $sectionpos++;
+      $len = count($configs);
+      while(($sectionpos < $len) && (startsWith($configs[$sectionpos],$key."=") === false) ) {
+         if (startsWith($configs[$sectionpos],"[")) {
+             return null;
+         }
+         $sectionpos++;
+      }
+      if ($sectionpos < $len) {
+         return substr($configs[$sectionpos], strlen($key) + 1);
+      }
    }
-   return substr($configs[$sectionpos], strlen($key) + 1);
+    return null;
 }
 
 function getEnabled ($mode, $mmdvmconfigs) {
