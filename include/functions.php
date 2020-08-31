@@ -175,8 +175,8 @@ function getConfigItem($section, $key, $configs) {
       while(($sectionpos < $len) && (startsWith($configs[$sectionpos],$key."=") === false) ) {
          if (startsWith($configs[$sectionpos],"[")) {
              return null;
-	 }
-	 $sectionpos++;
+         }
+         $sectionpos++;
       }
       if ($sectionpos < $len) {
          return substr($configs[$sectionpos], strlen($key) + 1);
