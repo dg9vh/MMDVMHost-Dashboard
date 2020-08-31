@@ -168,7 +168,7 @@ function getDMRId ($mmdvmconfigs) {
 
 function getConfigItem($section, $key, $configs) {
    // retrieves the corresponding config-entry within a [section]
-   $sectionpos = arraye_search("[" . $section . "]", $configs);
+   $sectionpos = array_search("[" . $section . "]", $configs);
    if ($sectionpos !== FALSE) {
       $sectionpos++;
       $len = count($configs);
