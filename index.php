@@ -218,10 +218,6 @@ if (defined("SHOWLOCALTX")) {
    include "include/localtx_ajax.php";
    showLapTime("localtx_ajax");
 }
-if (defined("SHOWDAPNET")) {
-   include "include/dapnet_ajax.php";
-   showLapTime("dapnet_ajax");
-}
 if (defined("ENABLEYSFGATEWAY")|| defined("ENABLEDMRGATEWAY")) {
    include "include/gatewayinfo.php";
    showLapTime("gatewayinfo");
