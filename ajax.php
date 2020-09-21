@@ -30,15 +30,6 @@ $logLinesMMDVM = getMMDVMLog();
 $reverseLogLinesMMDVM = $logLinesMMDVM;
 rsort($reverseLogLinesMMDVM);
 
-
-if (defined("ENABLEDAPNETGATEWAY")) {
-   $logLinesDAPNETGateway = getDAPNETGatewayLog();
-   showLapTime("getDAPNETGatewayLog");
-   $reverseLogLinesDAPNETGateway = $logLinesDAPNETGateway;
-   rsort($reverseLogLinesDAPNETGateway);
-   showLapTime("array_multisort");
-}
-
 if ($_GET['section'] == "mode") {
    $mode = getActualMode(getLastHeard($reverseLogLinesMMDVM, TRUE), $mmdvmconfigs);
    echo $mode;
@@ -88,17 +79,6 @@ if ($_GET['section'] == "lastHeard") {
    }
    echo '{"data": '.json_encode($lastHeard)."}";
 }
-
-if ($_GET['section'] == "DAPNETTx") {
-   $DAPNETTxList = getDAPNETTxList($reverseLogLinesDAPNETGateway);
-   $DAPNETTx = Array();
-   for ($i = 0; $i < count($DAPNETTxList); $i++) {
-      $listElem = $DAPNETTxList[$i];
-      array_push($DAPNETTx, $listElem);
-   }
-   echo '{"data": '.json_encode($DAPNETTx)."}";
-}
-
 if ($_GET['section'] == "localTx") {
    $localTXList = getHeardList($reverseLogLinesMMDVM, FALSE);
    $lastHeard = Array();

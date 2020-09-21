@@ -264,13 +264,6 @@ function getYSFGatewayLog() {
    return $logLines;
 }
 
-function getDAPNETGatewayLog() {
-   // Open Logfile and copy loglines into LogLines-Array()
-   $logPath    = DAPNETGATEWAYLOGPATH."/".DAPNETGATEWAYLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "Sending" $logPath`);
-   return $logLines;
-}
-
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2016-04-29 00:15:00.013 D-Star, received network header from DG9VH   /ZEIT to CQCQCQ   via DCS002 S
@@ -597,33 +590,6 @@ function getHeardList($logLines, $onlyLast) {
    return $heardList;
 }
 
-// 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
-// 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
-// D: 2020-09-21 18:16:12.814 Messages in Queue 0002
-// M: 2020-09-21 18:16:12.824 Sending message in slot 13 to 0000216, type 6, func Alphanumeric: "YYYYMMDDHHMMSS200921181600"
-// D: 2020-09-21 18:16:12.825 Messages in Queue 0001
-// D: 2020-09-21 18:17:00.036 Queueing message to 0000208, type 6, func Alphanumeric: "XTIME=2017210920XTIME=2017210920"
-function getDAPNETTxList($logLines) {
-   $DAPNETTxList = array();
-   foreach ($logLines as $logLine) {
-      if (strpos($logLine,"Sending")) {
-         $timestamp = substr($logLine, 3, 23);
-         $slot = substr($logLine,51, 2);
-         if ($slot[1] == " ") {
-            $target = substr($logLine,56, 7);
-         } else {
-            $target = substr($logLine,57, 7);
-         }
-         $message = substr($logLine,strpos($logLine, "\""));
-         $message = substr($message,1 , -1);
-         if ($target == "0004520")
-            $message = rot1($message);
-         array_push($DAPNETTxList, array(convertTimezone($timestamp), $slot, $target, $message));
-      }
-   }
-   return $DAPNETTxList;
-}
-
 function getLastHeard($logLines, $onlyLast) {
    //returns last heard list from log
    $lastHeard  = array();
@@ -635,7 +601,7 @@ function getLastHeard($logLines, $onlyLast) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
             // Generate a canonicalized call for QRZ and name lookups
             $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
-            //remove suffix used sometimes in YSF (es: -FT2 , -991)
+	    //remove suffix used sometimes in YSF (es: -FT2 , -991)
             if (strpos($call_canon,"-")!=false) {
                 $call_canon = substr($call_canon, 0, strpos($call_canon, "-"));
             }
