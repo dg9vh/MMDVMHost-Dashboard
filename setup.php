@@ -115,7 +115,7 @@ include "include/tools.php";
       <h2><?php echo _("YSFGateway-Configuration"); ?></h2>
       <div class="input-group">
         <span class="input-group-addon" id="ENABLEYSFGATEWAY" style="width: 300px"><?php echo _("Enable YSFGateway"); ?></span>
-        <div class="panel-body"><input type="checkbox" name="ENABLEGATEWAY" <?php if (defined("ENABLEYSFGATEWAY")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="ENABLEYSFGATEWAY" <?php if (defined("ENABLEYSFGATEWAY")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="YSFGATEWAYLOGPATH" style="width: 300px"><?php echo _("Path to YSFGateway-logfile"); ?></span>
@@ -165,8 +165,35 @@ include "include/tools.php";
         <input type="text" value="<?php echo constant("DMRGATEWAYPATH") ?>" name="DMRGATEWAYPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="DMRGATEWAYPATH">
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="YSFGATEWAYINIFILENAME" style="width: 300px"><?php echo _("DMRGateway.ini-filename"); ?></span>
+        <span class="input-group-addon" id="DMRGATEWAYINIFILENAME" style="width: 300px"><?php echo _("DMRGateway.ini-filename"); ?></span>
         <input type="text" value="<?php echo constant("DMRGATEWAYINIFILENAME") ?>" name="DMRGATEWAYINIFILENAME" class="form-control" placeholder="DMRGateway.ini" aria-describedby="DMRGATEWAYINIFILENAME">
+      </div>
+    </div>
+    <div class="container">
+      <h2><?php echo _("DAPNETGateway-Configuration"); ?></h2>
+      <div class="input-group">
+        <span class="input-group-addon" id="ENABLEDAPNETGATEWAY" style="width: 300px"><?php echo _("Enable DAPNETGateway"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="ENABLEDAPNETGATEWAY" <?php if (defined("ENABLEDAPNETGATEWAY")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DAPNETGATEWAYLOGPATH" style="width: 300px"><?php echo _("Path to DAPNETGateway-logfile"); ?></span>
+        <input type="text" value="<?php echo constant("DAPNETGATEWAYLOGPATH") ?>" name="DAPNETGATEWAYLOGPATH" class="form-control" placeholder="/var/log/DAPNETGateway/" aria-describedby="DAPNETGATEWAYLOGPATH">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DAPNETGATEWAYLOGPREFIX" style="width: 300px"><?php echo _("Logfile-prefix"); ?></span>
+        <input type="text" value="<?php echo constant("DAPNETGATEWAYLOGPREFIX") ?>" name="DAPNETGATEWAYLOGPREFIX" class="form-control" placeholder="DAPNETGateway" aria-describedby="DAPNETGATEWAYLOGPREFIX">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DAPNETGATEWAYINIPATH" style="width: 300px"><?php echo _("Path to DAPNETGateway.ini"); ?></span>
+        <input type="text" value="<?php echo constant("DAPNETGATEWAYINIPATH") ?>" name="DAPNETGATEWAYINIPATH" class="form-control" placeholder="/etc/DAPNETGateway/" aria-describedby="DAPNETGATEWAYINIPATH">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DAPNETGATEWAYPATH" style="width: 300px"><?php echo _("Path to DAPNETGateway-executable"); ?></span>
+        <input type="text" value="<?php echo constant("DAPNETGATEWAYPATH") ?>" name="DAPNETGATEWAYPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="DAPNETGATEWAYPATH">
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="DAPNETGATEWAYINIFILENAME" style="width: 300px"><?php echo _("DAPNETGateway.ini-filename"); ?></span>
+        <input type="text" value="<?php echo constant("DAPNETGATEWAYINIFILENAME") ?>" name="DAPNETGATEWAYINIFILENAME" class="form-control" placeholder="DAPNETGateway.ini" aria-describedby="DAPNETGATEWAYINIFILENAME">
       </div>
     </div>
     <div class="container">
@@ -309,6 +336,10 @@ foreach ($files as $file) {
       <div class="input-group">
         <span class="input-group-addon" id="SHOWLOCALTX" style="width: 300px"><?php echo _("Show Today's local transmissions"); ?></span>
         <div class="panel-body"><input type="checkbox" name="SHOWLOCALTX" <?php if (defined("SHOWLOCALTX")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon" id="SHOWDAPNET" style="width: 300px"><?php echo _("Show DAPNET transmissions"); ?></span>
+        <div class="panel-body"><input type="checkbox" name="SHOWDAPNET" <?php if (defined("SHOWDAPNET")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="SHOWPROGRESSBARS" style="width: 300px"><?php echo _("Show progressbars"); ?></span>
