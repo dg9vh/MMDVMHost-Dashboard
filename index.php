@@ -218,9 +218,9 @@ if (defined("SHOWLOCALTX")) {
    include "include/localtx_ajax.php";
    showLapTime("localtx_ajax");
 }
-if (defined("ENABLEYSFGATEWAY")) {
-   include "include/ysfgatewayinfo.php";
-   showLapTime("ysfgatewayinfo");
+if (defined("ENABLEYSFGATEWAY")|| defined("ENABLEDMRGATEWAY")) {
+   include "include/gatewayinfo.php";
+   showLapTime("gatewayinfo");
 }
 ?>
    <div class="panel panel-info">

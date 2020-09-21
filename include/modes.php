@@ -16,6 +16,8 @@
     <?php showMode("P25 Network", $mmdvmconfigs);?>
     <?php showMode("NXDN", $mmdvmconfigs);?>
     <?php showMode("NXDN Network", $mmdvmconfigs);?>
+    <?php showMode("POCSAG", $mmdvmconfigs);?>
+    <?php showMode("POCSAG Network", $mmdvmconfigs);?>
     </tr>
   </table>
   </div>

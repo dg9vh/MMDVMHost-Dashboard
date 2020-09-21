@@ -218,6 +218,17 @@ function showMode($mode, $mmdvmconfigs) {
                echo "badge-default\" title=\""._("Remote gateway configured - not checked!");
             }
             break;
+         case "POCSAG Network":
+            if (getConfigItem("POCSAG Network", "GatewayAddress", $mmdvmconfigs) == "localhost" || getConfigItem("POCSAG Network", "GatewayAddress", $mmdvmconfigs) == "127.0.0.1") {
+               if (isProcessRunning("DAPNETGateway")) {
+                  echo "badge-success";
+               } else {
+                  echo "badge-danger\" title=\""._("Gateway is down!");
+               }
+            } else {
+               echo "badge-default\" title=\""._("Remote gateway configured - not checked!");
+            }
+            break;
          default:
             if (isProcessRunning("MMDVMHost")) {
                echo "badge-success";

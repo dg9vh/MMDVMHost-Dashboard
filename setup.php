@@ -115,7 +115,7 @@ include "include/tools.php";
       <h2><?php echo _("YSFGateway-Configuration"); ?></h2>
       <div class="input-group">
         <span class="input-group-addon" id="ENABLEYSFGATEWAY" style="width: 300px"><?php echo _("Enable YSFGateway"); ?></span>
-        <div class="panel-body"><input type="checkbox" name="ENABLEYSFGATEWAY" <?php if (defined("ENABLEYSFGATEWAY")) echo "checked" ?>></div>
+        <div class="panel-body"><input type="checkbox" name="ENABLEGATEWAY" <?php if (defined("ENABLEYSFGATEWAY")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="YSFGATEWAYLOGPATH" style="width: 300px"><?php echo _("Path to YSFGateway-logfile"); ?></span>
