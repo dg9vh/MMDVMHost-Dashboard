@@ -246,7 +246,7 @@ function showMode($mode, $mmdvmconfigs) {
 function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "end|watchdog|lost" $logPath`);
+   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
    return $logLines;
 }
 
@@ -652,7 +652,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
          $timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
       } else {
          $source = $listElem[6];
-         if ($source === "Network") {
+         if ($source === "Net") {
             $hangtime = getConfigItem("General", "NetModeHang", $mmdvmconfigs);
          } else {
             $hangtime = getConfigItem("General", "RFModeHang", $mmdvmconfigs);
