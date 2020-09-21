@@ -133,4 +133,19 @@ function recursive_array_search($needle,$haystack) {
     }
     return false;
 }
+
+function rot1($text) {
+    $ric = 0;
+    $slot = 0;
+    $out = "";
+    for ($i = 0; $i < strlen($text); $i++) {
+        if ($i == 0)
+            $ric = ord($text[$i])-31;
+        if ($i == 1)
+            $slot = ord($text[$i])-32;
+        if ($i > 1)
+            $out .= chr(ord($text[$i])-1);
+    }
+    return "Skyper-Rubric-No.: ".$ric.", Slot: ".$slot.", message: ".$out;
+}
 ?>
