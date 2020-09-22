@@ -26,7 +26,7 @@ foreach ($lastHeard as $listElem) {
 //   echo"<!--";
 //   var_dump($listElem);
 //   echo"-->";
-   if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
+   if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null && $listElem[1] != "POCSAG" || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null && $listElem[1] != "POCSAG" ) {
       echo "<tr>";
       echo"<td nowrap>$listElem[0]</td>";
       echo"<td nowrap>$listElem[1]</td>";

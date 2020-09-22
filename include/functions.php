@@ -246,7 +246,7 @@ function showMode($mode, $mmdvmconfigs) {
 function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
-   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost" $logPath`);
+   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|POCSAG" $logPath`);
    return $logLines;
 }
 
@@ -572,6 +572,18 @@ function getHeardList($logLines, $onlyLast) {
             $ber        = $nxdnber;
             $rssi       = $nxdnrssi;
             break;
+         case "POCSAG":
+            $callsign   = "POCSAG";
+			$name = "";
+			$id = "";
+			$target = "";
+			$source = "";
+            $duration   = "";
+            $loss       = "";
+            $ber        = "";
+            $rssi       = "";
+			$alias = "";
+            break;
       }
       // Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
       if ( strlen($callsign) < 11 ) {
@@ -631,7 +643,7 @@ function getLastHeard($logLines, $onlyLast) {
    $heardList  = getHeardList($logLines, $onlyLast);
    $counter    = 0;
    foreach ($heardList as $listElem) {
-      if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || ($listElem[1] == "NXDN") || (startsWith($listElem[1], "DMR")) ) {
+      if ( ($listElem[1] == "D-Star") || ($listElem[1] == "YSF") || ($listElem[1] == "P25") || ($listElem[1] == "NXDN") || ($listElem[1] == "POCSAG") || (startsWith($listElem[1], "DMR")) ) {
          if(!(array_search($listElem[2]."#".$listElem[1].$listElem[4], $heardCalls) > -1)) {
             // Generate a canonicalized call for QRZ and name lookups
             $call_canon = preg_replace('/\s+\w$/', '', $listElem[2]);
@@ -672,14 +684,17 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
    // returns mode of repeater actual working in
    $listElem   = $metaLastHeard[0];
    $timestamp  = new DateTime($listElem[0],new DateTimeZone(TIMEZONE));
+   $timestamp2 = $timestamp;
+   $timestamp2->add(new DateInterval('PT3S'));
    $mode       = $listElem[1];
    if (startsWith($mode, "DMR")) {
       $mode = "DMR";
    }
-   if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null) {
+   $now = new DateTime('NOW',new DateTimeZone(TIMEZONE));
+   if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null && $mode != "POCSAG" || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null && $mode != "POCSAG" || $mode == "POCSAG" && $now->format('U') <= $timestamp2->format('U') ) {
       return "<span class=\"badge badge-danger\">".$mode."</span>";
    } else {
-      $now        =  new DateTime('NOW',new DateTimeZone(TIMEZONE));
+      
       $hangtime   = getConfigItem("General", "ModeHang", $mmdvmconfigs);
 
       if ($hangtime != "") {
