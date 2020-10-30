@@ -26,26 +26,42 @@ foreach ($lastHeard as $listElem) {
 //   echo"<!--";
 //   var_dump($listElem);
 //   echo"-->";
-   if (defined("ENABLEXTDLOOKUP") && $listElem[7] == null && $listElem[1] != "POCSAG" || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null && $listElem[1] != "POCSAG" ) {
+   if (getEnabled("D-Star", $mmdvmconfigs) == 1 && defined("ENABLEXTDLOOKUP") && $listElem[7] == null && $listElem[1] != "POCSAG" || !defined("ENABLEXTDLOOKUP") && $listElem[6] == null && $listElem[1] != "POCSAG"  || \
+   getEnabled("D-Star", $mmdvmconfigs) == 0 && defined("ENABLEXTDLOOKUP") && $listElem[6] == null && $listElem[1] != "POCSAG" || !defined("ENABLEXTDLOOKUP") && $listElem[5] == null && $listElem[1] != "POCSAG" ) {
       echo "<tr>";
       echo"<td nowrap>$listElem[0]</td>";
       echo"<td nowrap>$listElem[1]</td>";
       echo"<td nowrap>$listElem[2]</td>";
       if (defined("ENABLEXTDLOOKUP")) {
          echo"<td nowrap>$listElem[3]</td>";
-         if (defined("TALKERALIAS"))
-           echo"<td nowrap>$listElem[11]</td>";
-         echo"<td nowrap>$listElem[4]</td>";
-         echo"<td nowrap>$listElem[5]</td>";
-         if ($listElem[6] == "RF"){
-            echo "<td nowrap><span class=\"badge badge-success\">RF</span></td>";
-         }else{
-            echo"<td nowrap>$listElem[6]</td>";
+         if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+            if (defined("TALKERALIAS"))
+              echo"<td nowrap>$listElem[11]</td>";
+            echo"<td nowrap>$listElem[4]</td>";
+            echo"<td nowrap>$listElem[5]</td>";
+            if ($listElem[6] == "RF"){
+               echo "<td nowrap><span class=\"badge badge-success\">RF</span></td>";
+            }else{
+               echo"<td nowrap>$listElem[6]</td>";
+            }
+            $d1     = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
+            $d2     = new DateTime('now', new DateTimeZone(TIMEZONE));
+            $diff   = $d2->getTimestamp() - $d1->getTimestamp();
+            echo"<td nowrap>$diff s</td>";
+         } else {
+            if (defined("TALKERALIAS"))
+              echo"<td nowrap>$listElem[10]</td>";
+            echo"<td nowrap>$listElem[4]</td>";
+            if ($listElem[5] == "RF"){
+               echo "<td nowrap><span class=\"badge badge-success\">RF</span></td>";
+            }else{
+               echo"<td nowrap>$listElem[5]</td>";
+            }
+            $d1     = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
+            $d2     = new DateTime('now', new DateTimeZone(TIMEZONE));
+            $diff   = $d2->getTimestamp() - $d1->getTimestamp();
+            echo"<td nowrap>$diff s</td>";
          }
-         $d1     = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
-         $d2     = new DateTime('now', new DateTimeZone(TIMEZONE));
-         $diff   = $d2->getTimestamp() - $d1->getTimestamp();
-         echo"<td nowrap>$diff s</td>";
       } else {
       	 if (defined("TALKERALIAS"))
            echo"<td nowrap>$listElem[10]</td>";

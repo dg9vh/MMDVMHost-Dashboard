@@ -247,7 +247,7 @@ function getMMDVMLog() {
    // Open Logfile and copy loglines into LogLines-Array()
    $logPath    = MMDVMLOGPATH."/".MMDVMLOGPREFIX."-".date("Y-m-d").".log";
    //$logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|POCSAG" $logPath`);
-   $logLines   = explode("\n", `egrep -h "from|watchdog|lost|POCSAG" $logPath`);
+   $logLines   = explode("\n", `egrep -h "from|end|watchdog|lost|POCSAG" $logPath`);
    return $logLines;
 }
 
@@ -593,18 +593,26 @@ function getHeardList($logLines, $onlyLast) {
       if ( strlen($callsign) < 11 ) {
          $name = "";
          if (defined("ENABLEXTDLOOKUP")) {
-            array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber, $rssi, $alias));
+            if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+               array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber, $rssi, $alias));
+            } else {
+               array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $name, $target, $source, $duration, $loss, $ber, $rssi, $alias));
+            }
             $alias = "";
          } else {
-            array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $id, $target, $source, $duration, $loss, $ber, $rssi, $alias));
+            if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+               array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $id, $target, $source, $duration, $loss, $ber, $rssi, $alias));
+            } else {
+               array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $target, $source, $duration, $loss, $ber, $rssi, $alias));
+            }
             $alias = "";
-         }/*
+         }
          $duration   = "";
          $loss       = "";
          $ber        = "";
          $rssi       = "";
          $ts1alias   = "---";
-         $ts2alias   = "---";*/
+         $ts2alias   = "---";
          if ($onlyLast && count($heardList )> 20) {
             return $heardList;
          }

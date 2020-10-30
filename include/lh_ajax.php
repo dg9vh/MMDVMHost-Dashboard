@@ -29,8 +29,12 @@ exec("wc -l ".DMRIDDATPATH." | cut -f1 -d' '", $output2);
       <th><?php echo _("Name"); ?></th>
       <?php
       }
+      if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
       ?>
       <th><?php echo _("DSTAR-ID"); ?></th>
+      <?php
+      }
+      ?>
       <th><?php echo _("Target"); ?></th>
       <th><?php echo _("Source"); ?></th>
       <th><?php echo _("Dur (s)"); ?></th>

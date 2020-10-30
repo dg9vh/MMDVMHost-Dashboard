@@ -21,8 +21,12 @@
       <th><?php echo _("Talker Alias"); ?></th>
       <?php
       }
+      if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
       ?>
       <th><?php echo _("DSTAR-ID"); ?></th>
+      <?php
+      }
+      ?>
       <th><?php echo _("Target"); ?></th>
       <th><?php echo _("Source"); ?></th>
       <th><?php echo _("TX-Time"); ?></th>
