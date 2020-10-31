@@ -593,14 +593,14 @@ function getHeardList($logLines, $onlyLast) {
       if ( strlen($callsign) < 11 ) {
          $name = "";
          if (defined("ENABLEXTDLOOKUP")) {
-            if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+            if (getEnabled("D-Star", getMMDVMConfig()) == 1) {
                array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $name, $id, $target, $source, $duration, $loss, $ber, $rssi, $alias));
             } else {
                array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $name, $target, $source, $duration, $loss, $ber, $rssi, $alias));
             }
             $alias = "";
          } else {
-            if (getEnabled("D-Star", $mmdvmconfigs) == 1) {
+            if (getEnabled("D-Star", getMMDVMConfig()) == 1) {
                array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $id, $target, $source, $duration, $loss, $ber, $rssi, $alias));
             } else {
                array_push($heardList, array(convertTimezone($timestamp), $mode, $callsign, $target, $source, $duration, $loss, $ber, $rssi, $alias));
