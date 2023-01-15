@@ -2,6 +2,8 @@
 Dashboard for MMDVMHost (by G4KLX)
 ==================================
 
+THIS CODE IS NO LONGER UNDER DEVELOPMENT!!!
+
 About
 =====
 MMDVMHost-Dashboard is a web-dashboard for visualization of different data like
