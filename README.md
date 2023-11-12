@@ -1,4 +1,7 @@
 # MMDVMHost-Dashboard
+
+_No further development and support!_
+
 Dashboard for MMDVMHost (by G4KLX)
 ==================================
 
